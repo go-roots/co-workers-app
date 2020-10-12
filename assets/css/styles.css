@@ -1,3 +1,5 @@
+/* Landing page */
+
 body {
   background: #000000;
 }
@@ -146,3 +148,14 @@ html {
 #headerContainer {
   width: 100%;
 }
+
+/* login/register */
+
+#sign-in {
+  margin-bottom: 10px;
+}
+
+.forgot {
+  margin-top: 20px;
+}
+
