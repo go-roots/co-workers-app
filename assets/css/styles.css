@@ -1,20 +1,11 @@
-/* Landing page */
-
-body {
-  background: #000000;
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
-#section {
-  width: 100%;
-  height: 100vh;
-  background: url("../../assets/img/office-space-1744801_1280.jpg") center / cover no-repeat;
-}
-
-@media (min-width: 768px) {
-  #section {
-    background-image: url(../../assets/img/office-space-1744801_1920.jpg);
-  }
-}
+/* Navbar */
 
 .navbar-light .navbar-brand {
   padding-top: 30px;
@@ -24,7 +15,7 @@ body {
 }
 
 #navcol-1 {
-  font-size: 21px;
+  font-size: 20px;
   font-family: Asul, sans-serif;
   text-transform: uppercase;
 }
@@ -33,29 +24,42 @@ body {
   color: rgb(5,88,14);
 }
 
-#overlay {
-  width: 100%;
-  height: 100vh;
-  background: #ffffff33;
-}
-
 .navbar-light .navbar-toggler {
   color: rgba(0,0,0,0);
   background: #ffffff;
 }
 
+.navbar.navbar-light.navbar-expand-md {
+  padding-top: 0px;
+}
+
+.btn.btn-link.btn-block.text-white.arrow-button {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+/* Landing, landing-search page */
+
+#section {
+  width: 100%;
+  height: 100vh;
+  background: url("../../assets/img/office-space-1744801_1280.jpg") center / cover no-repeat;
+}
+
+@media (min-width: 768px) {
+  #section {
+    background: url("../../assets/img/office-space-1744801_1920.jpg") center / cover no-repeat;
+  }
+}
+
+#overlay {
+  width: 100%;
+  height: 100vh;
+  background: rgba(255,255,255,0.3);
+}
+
 #content {
   height: 70%;
-}
-
-#COworking {
-  color: rgb(18,82,52);
-  font-size: 50px;
-}
-
-#COworking-1 {
-  font-family: Alatsi, sans-serif;
-  font-size: 45px;
 }
 
 .input-field {
@@ -76,15 +80,6 @@ body {
 
 .input-icons {
   display: flex;
-}
-
-.navbar.navbar-light.navbar-expand-md {
-  padding-top: 0px;
-}
-
-.btn.btn-link.btn-block.text-white.arrow-button {
-  font-size: 45px;
-  font-weight: bold;
 }
 
 #video {
@@ -108,13 +103,6 @@ body {
 
 #join-now-button {
   margin-top: 40px;
-}
-
-html {
-  font-family: sans-serif;
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
 }
 
 #map-results {
@@ -149,7 +137,12 @@ html {
   width: 100%;
 }
 
-/* login/register */
+.nav-login {
+  font-size: 16px;
+  margin: 5px;
+}
+
+/* Login */
 
 #sign-in {
   margin-bottom: 10px;
@@ -157,5 +150,94 @@ html {
 
 .forgot {
   margin-top: 20px;
+}
+
+/* Dashboard */
+
+#main {
+  width: 100%;
+  background: #ffffff;
+}
+
+#display-map {
+  transform: rotate(90deg);
+}
+
+#map-container {
+  height: 70vh;
+  background: url("../../assets/img/ZntUT.jpg") center / cover no-repeat;
+  box-shadow: 1px 1px 5px 2px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 10px;
+}
+
+#people-map {
+  height: 70vh;
+  border-radius: 20px;
+  border-style: dotted;
+  border-top-width: 3px;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+  padding: 10px;
+}
+
+.add-friend-icon {
+  font-size: 25px;
+  color: green;
+}
+
+.user-icon {
+  font-size: 25px;
+  padding-right: 10px;
+}
+
+.report-icon {
+  padding-right: 5px;
+  padding-left: 5px;
+  height: 20px;
+  font-size: 25px;
+  color: red;
+}
+
+.comment-icon {
+  font-size: 25px;
+  color: blue;
+}
+
+.filter-icon {
+  padding-right: 10px;
+}
+
+.filters-container {
+  padding-bottom: 25px;
+}
+
+#recommandations-inner-container {
+  background: rgba(156,157,78,0.16);
+  width: 100%;
+  height: auto;
+  padding: 5px;
+}
+
+.small-image-container {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 1px;
+  border-style: solid;
+  border-color: rgba(245,221,8,0.56);
+  margin-bottom: 15px;
+}
+
+#recommendation-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+#people-inner-container {
+  overflow: scroll;
+  max-height: 65vh;
 }
 

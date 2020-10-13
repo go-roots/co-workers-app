@@ -4,15 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>landing-search</title>
+    <title>CO-workers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asul:400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
     <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -23,42 +27,29 @@
                 <div class="container-fluid"><a class="navbar-brand" href="#">
 <img src="assets/img/logo_medium.svg" alt="logo"/></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav mx-auto">
-                            <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Consumption</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Members</a></li>
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item"><a class="nav-link active" href="#">My Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">My Consumption</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">My profile &amp; friends</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Navigate</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">awards</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">CW Points</a></li>
                         </ul>
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item"><a class="btn btn-outline-success" style="margin:10px" href="login.html">LOGIN</a></li>
-                            <li class="nav-item"><a class="btn btn-outline-success" style="margin:10px" href="register.html">REGISTER</a></li>
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item"><a class="btn btn-outline-success nav-login" href="login.html">LOGIN</a></li>
+                            <li class="nav-item"><a class="btn btn-outline-success nav-login" href="register.html">REGISTER</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
             <div class="d-flex flex-column justify-content-between align-items-center" id="content">
                 <div class="form-group row input-field">
-                    <div class="col-xl-12 offset-xl-0 d-flex"><a class="input-icons" href="#"><i class="fas fa-search-location"></i></a><input class="my-auto input-field form-control" type="search" placeholder="Find a workspace nearby" size="40"></div>
+                    <div class="col-xl-12 offset-0 d-flex"><a class="input-icons" href="#"><i class="fas fa-search-location" style="font-size: 20px;"></i></a><input class="my-auto input-field form-control" type="search" placeholder="Find a workspace nearby" size="40"></div>
                 </div>
-                <div class="container d-flex flex-row justify-content-center flex-wrap" id="headerContainer" style="flex-flow: row wrap">
-                    <div class="row">
-                        <div class="col-11 col-sm-5 col-md-5 col-xl-5 offset-1 offset-sm-0 offset-md-0 offset-lg-0 offset-xl-0">
-                            <div id="map-results">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><span>Jean Jaurès 1.5km</span></li>
-                                    <li class="list-group-item"><span>François Verdier 2.4km</span></li>
-                                    <li class="list-group-item"><span>Blagnac 10km</span></li>
-                                    <li class="list-group-item"><span>Blagnac 10km</span></li>
-                                    <li class="list-group-item"><span>Blagnac 10km</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-11 col-sm-7 col-md-7 offset-1 offset-sm-0 offset-md-0 offset-lg-0 offset-xl-0">
-                            <div id="map"></div>
-                        </div>
-                    </div>
+                <div id="headerContainer">
+                    <h1 class="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-once="true" id="COworking">CO workers</h1>
+                    <h2 class="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-delay="1000" data-aos-once="true" id="COworking-1">Be social,&nbsp;</h2>
+                    <h2 class="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-delay="2000" data-aos-once="true" id="COworking-2" style="font-size: 44px;">be green.</h2>
                 </div><a href="#video"><button class="btn btn-link btn-block text-white arrow-button" data-bs-hover-animate="bounce" type="button"><i class="icon ion-ios-arrow-down"></i></button></a></div>
         </div>
     </section>
@@ -77,6 +68,8 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init-1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
 </body>
