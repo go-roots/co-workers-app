@@ -15,7 +15,7 @@ html {
 }
 
 #navcol-1 {
-  font-size: 20px;
+  font-size: 18px;
   font-family: Asul, sans-serif;
   text-transform: uppercase;
 }
@@ -173,37 +173,37 @@ html {
   margin-bottom: 10px;
 }
 
-#people-map {
-  height: 70vh;
-  border-radius: 20px;
-  border-style: dotted;
-  border-top-width: 3px;
-  border-right-width: 3px;
-  border-bottom-width: 3px;
-  padding: 10px;
-}
-
 .add-friend-icon {
-  font-size: 25px;
+  font-size: 20px;
   color: green;
+  padding-right: 3px;
+  padding-left: 3px;
 }
 
-.user-icon {
-  font-size: 25px;
+.user-icon-available {
+  font-size: 22px;
   padding-right: 10px;
+  color: #61fe00;
 }
 
-.report-icon {
-  padding-right: 5px;
-  padding-left: 5px;
+.user-icon-dnd {
+  font-size: 22px;
+  padding-right: 10px;
+  color: #fe0000;
+}
+
+.ask-help-icon {
+  padding-right: 3px;
+  padding-left: 3px;
   height: 20px;
-  font-size: 25px;
-  color: red;
+  font-size: 20px;
+  color: #000000;
 }
 
 .comment-icon {
-  font-size: 25px;
+  font-size: 20px;
   color: blue;
+  padding-left: 3px;
 }
 
 .filter-icon {
@@ -214,13 +214,6 @@ html {
   padding-bottom: 25px;
 }
 
-#recommandations-inner-container {
-  background: rgba(156,157,78,0.16);
-  width: 100%;
-  height: auto;
-  padding: 5px;
-}
-
 .small-image-container {
   height: 150px;
   width: 150px;
@@ -228,16 +221,81 @@ html {
   box-shadow: 1px 1px 5px 1px;
   border-style: solid;
   border-color: rgba(245,221,8,0.56);
-  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
-#recommendation-container {
+.recommendation-room-container {
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
 #people-inner-container {
   overflow: scroll;
-  max-height: 65vh;
+  height: 70vh;
+  border-radius: 20px;
+  border-style: dotted;
+  border-top-width: 3px;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 25px;
+  margin-top: 20px !important;
+}
+
+@media (min-width: 768px) {
+  #people-inner-container {
+    overflow: scroll;
+    height: 70vh;
+    border-radius: 20px;
+    border-style: dotted;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 25px;
+    margin-top: 0px !important;
+  }
+}
+
+.social-dropdown {
+  padding-right: 5px;
+}
+
+.delete-friend-icon {
+  color: #fe0000;
+  padding-right: 3px;
+  padding-left: 3px;
+  font-size: 20px;
+}
+
+.people-inner-element {
+  font-size: 1rem;
+}
+
+#search-rooms-facilities-text {
+  padding-right: 10px;
+}
+
+.row.rooms-reco-inner-container {
+  padding-top: 10px;
+}
+
+#help-request {
+  color: rgba(11,118,225,0.82);
+  background: #f6f6f6;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px;
+  text-shadow: 0px 0px;
+  border: 1px solid rgb(0,0,0) ;
+}
+
+.social-dropdown-button {
+  margin-left: 5px;
+}
+
+#help-request:active {
+  transform: translateY(4px);
 }
 
