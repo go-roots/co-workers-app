@@ -7,5 +7,11 @@ $(document).ready(function () {
   $('#help-request').click(function () {
     $('#help-request-modal').modal('show');
   });
+    $('.answer-msg').click(function () {
+    $('#answer-msg-modal').modal('show');
+  });
+    $('.delete-msg').click(function () {
+    $('#del-msg-modal').modal('show');
+  });
 });
 

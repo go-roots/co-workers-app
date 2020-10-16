@@ -154,7 +154,7 @@ html {
 
 /* Dashboard */
 
-#main {
+.main {
   width: 100%;
   background: #ffffff;
 }
@@ -181,13 +181,13 @@ html {
 }
 
 .user-icon-available {
-  font-size: 22px;
+  font-size: 13px;
   padding-right: 10px;
   color: #61fe00;
 }
 
 .user-icon-dnd {
-  font-size: 22px;
+  font-size: 13px;
   padding-right: 10px;
   color: #fe0000;
 }
@@ -240,23 +240,6 @@ html {
   padding: 10px;
   margin-left: 10px;
   font-size: 25px;
-  margin-top: 20px !important;
-}
-
-@media (min-width: 768px) {
-  #people-inner-container {
-    overflow: scroll;
-    height: 70vh;
-    border-radius: 20px;
-    border-style: dotted;
-    border-top-width: 3px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    padding: 10px;
-    margin-left: 10px;
-    font-size: 25px;
-    margin-top: 0px !important;
-  }
 }
 
 .social-dropdown {
@@ -297,5 +280,99 @@ html {
 
 #help-request:active {
   transform: translateY(4px);
+}
+
+#profile-info {
+  text-align: center;
+}
+
+#profile-status {
+  padding-right: 15px;
+}
+
+.notif-image {
+  width: 40px;
+  height: 40px;
+}
+
+.notif-text-button {
+  padding-top: 10px;
+}
+
+.notif-button {
+  width: 40%;
+}
+
+.msg-content {
+  border-left-width: 1px;
+  border-left-style: solid;
+  padding-left: 10px;
+  width: 90%;
+}
+
+.msg-name {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+
+.msg-date {
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+.friends-item:hover {
+  cursor: pointer;
+  background: rgba(185,216,247,0.82);
+}
+
+.msg-item {
+  padding: 10px;
+}
+
+.msg-item:hover {
+  background-color: #f6f6f6;
+  cursor: pointer;
+}
+
+.friends-msg-container {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.header-msg-friends {
+  margin-bottom: 5px;
+}
+
+.responsive-margin {
+  margin-top: 20px !important;
+}
+
+.responsive-padding {
+  padding-top: 20px !important;
+}
+
+@media (min-width: 992px) {
+  .responsive-padding {
+    padding-top: 0px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-margin {
+    margin-top: 0px !important;
+  }
+}
+
+.italic-small {
+  font-size: 13px;
+  font-family: Asul, sans-serif;
+  color: rgb(128,128,128);
+}
+
+.response-msg-modal {
+  margin-top: 10px;
 }
 
