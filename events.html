@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md">
+    <nav class="navbar navbar-light navbar-expand-md" style="margin-top: 0px;">
         <div class="container-fluid"><a class="navbar-brand" href="#">
 <img src="assets/img/logo_medium.svg" alt="logo"/></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -45,56 +45,26 @@
             </div>
         </div>
     </nav>
-    <section class="main container">
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col d-flex flex-column justify-content-center align-items-center profile-main-container" style="background: #00a3ff;">
-                <div id="round-profile-image"></div>
-                <div class="text-center" id="profile-main-content">
-                    <div class="d-flex flex-row justify-content-center align-items-center" id="trophys-container"><i class="icon-trophy" data-toggle="tooltip" data-bs-tooltip="" style="font-size: 40px;color: rgb(20,255,0);" title="CoWorkers IoT championship winner"></i><i class="la la-trophy" data-toggle="tooltip" data-bs-tooltip="" style="font-size: 50px;color: rgb(255,15,0);"
-                            title="Events: has organized 3 events"></i><i class="fas fa-medal" data-toggle="tooltip" data-bs-tooltip="" style="font-size: 40px;color: rgb(233,254,0);" title="Hero: helped 10 different persons"></i></div>
-                    <p class="profile-big-text"
-                        style="color:white">Bob</p>
-                    <p id="profile-content-position">Electrical engineer at Airbus</p><strong>Toulouse</strong></div>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col d-flex flex-column justify-content-center align-items-center profile-skill-bio-container">
-                <header>
-                    <p class="text-info profile-skill-bio-title profile-big-text">Bob's Bio</p>
-                </header>
-                <p class="profile-skill-bio-content">I am an electrical engineer with 20+ years experience. Due to to current situation (Covid), I have to now work part-time. As I have more free-time I want to find a place where I can exchange with workers from different fields and maybe
-                    teach/learn something new, start new thrilling projects.</p>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col d-flex flex-column justify-content-center align-items-center profile-skill-bio-container">
-                <header>
-                    <p class="profile-big-text profile-skill-bio-title text-info">Skill Set</p>
-                </header>
-                <p class="profile-skill-bio-content"><i class="fas fa-check"></i>&nbsp;manufacturing of electrical devices&nbsp;<i class="fas fa-check"></i>&nbsp;IoT-raspberryPi<br>&nbsp;</p>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col d-flex flex-column profile-skill-bio-container">
-                <header>
-                    <p class="profile-big-text profile-skill-bio-title text-info">Awards &amp; Achievements</p>
-                </header>
-                <div class="d-flex flex-column justify-content-center align-items-baseline"></div>
-                <ul class="list-group align-self-center awards-container">
-                    <li class="list-group-item d-flex flex-row align-items-baseline awards-item"><button class="btn" type="button"><i class="icon-trophy"></i></button>
-                        <p>CoWorkers IoT championship winner</p>
-                        <p class="award-date">(25 July 2020)</p>
+    <section class="container main">
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-1">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="d-flex flex-row justify-content-between align-items-start">
+                            <p id="halloween-party-header" style="font-family: Alatsi, sans-serif;">Halloween party</p><img id="halloween-pumpkin" src="assets/img/pumpkin-halloween.svg"></div>
+                        <p class="text-center" id="halloween-event-text">We welcome all of you ! If you're interested in that event, join us the 30th October 8pm-2am</p>
                     </li>
-                    <li class="list-group-item d-flex flex-row align-items-baseline awards-item"><button class="btn" type="button"><i class="la la-trophy" style="font-size: 20px;"></i></button>
-                        <p>Events: has organized 3 events</p>
-                        <p class="award-date">(11 April 2020)</p>
+                    <li class="list-group-item">
+                        <p class="text-right" id="cinema-event-header">Cinema night</p>
+                        <p class="text-center">You are a cinema fan ? Come to the Cinema night for an entry fee of 2€, and enjoy a nice movie + appetizers &amp; drinks</p>
                     </li>
-                    <li class="list-group-item d-flex flex-row align-items-baseline awards-item"><button class="btn" type="button"><i class="fas fa-medal"></i></button>
-                        <p>Hero: helped 10 different persons</p>
-                        <p class="award-date">(22th March 2020)</p>
+                    <li class="list-group-item">
+                        <p class="text-center" id="chinese-class-event-header">Chinese class</p>
+                        <p class="text-center">If you're interested in Chinese or Chinese culture, we have free chinese class every Friday afternoon from 4 to 5.30pm</p>
                     </li>
                 </ul>
             </div>
+            <div class="col-md-8 col-lg-8 col-xl-7 align-self-center responsive-margin"><img class="img-fluid" src="assets/img/halloween-event.svg"></div>
         </div>
     </section>
     <div class="footer-basic">

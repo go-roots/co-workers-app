@@ -490,3 +490,27 @@ html {
   padding-top: 25px;
 }
 
+#halloween-party-header {
+  transform: rotate(-15deg);
+  font-size: 25px;
+  color: #0000ff;
+}
+
+#halloween-pumpkin {
+  margin-right: 15px;
+}
+
+#halloween-event-text {
+  font-family: Asul, sans-serif;
+}
+
+#cinema-event-header {
+  transform: rotate(15deg);
+  font-family: 'Aguafina Script', cursive;
+  font-size: 25px;
+}
+
+#chinese-class-event-header {
+  font-family: 'Aguafina Script', cursive;
+}
+
