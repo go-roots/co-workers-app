@@ -1,8 +1,30 @@
+/* General */
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+}
+
+.responsive-padding {
+  padding-top: 20px !important;
+}
+
+@media (min-width: 992px) {
+  .responsive-padding {
+    padding-top: 0px !important;
+  }
+}
+
+.responsive-margin {
+  margin-top: 20px !important;
+}
+
+@media (min-width: 768px) {
+  .responsive-margin {
+    margin-top: 0px !important;
+  }
 }
 
 /* Navbar */
@@ -15,7 +37,7 @@ html {
 }
 
 #navcol-1 {
-  font-size: 18px;
+  font-size: 20px;
   font-family: Asul, sans-serif;
   text-transform: uppercase;
 }
@@ -144,12 +166,11 @@ html {
 
 /* Login */
 
-#sign-in {
-  margin-bottom: 10px;
-}
-
-.forgot {
-  margin-top: 20px;
+#social {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #808080 ;
+  padding-top: 20px;
 }
 
 /* Dashboard */
@@ -282,6 +303,8 @@ html {
   transform: translateY(4px);
 }
 
+/* Social */
+
 #profile-info {
   text-align: center;
 }
@@ -346,26 +369,6 @@ html {
   margin-bottom: 5px;
 }
 
-.responsive-margin {
-  margin-top: 20px !important;
-}
-
-.responsive-padding {
-  padding-top: 20px !important;
-}
-
-@media (min-width: 992px) {
-  .responsive-padding {
-    padding-top: 0px !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .responsive-margin {
-    margin-top: 0px !important;
-  }
-}
-
 .italic-small {
   font-size: 13px;
   font-family: Asul, sans-serif;
@@ -374,5 +377,88 @@ html {
 
 .response-msg-modal {
   margin-top: 10px;
+}
+
+/* Create/edit profile */
+
+.profile-inputs {
+  width: 250px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+#social-networks-toggler {
+  margin-top: 50px;
+}
+
+#preview {
+  width: 200px;
+  margin-top: 10px;
+}
+
+/* View profile */
+
+.profile-main-container {
+  padding: 20px;
+}
+
+#round-profile-image {
+  background: url("https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200") center / cover no-repeat;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#profile-main-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.profile-big-text {
+  font-size: 30px;
+  font-family: Asul, sans-serif;
+}
+
+#profile-content-position {
+  color: rgb(255,255,255);
+  font-size: 22px;
+  font-family: Asul, sans-serif;
+  padding-bottom: 30px;
+}
+
+.profile-skill-bio-title {
+  text-align: center;
+}
+
+.profile-skill-bio-content {
+  text-align: center;
+  width: 60%;
+  font-size: 20px;
+}
+
+.profile-skill-bio-container {
+  background-color: #f6F6F6;
+  margin-top: 20px;
+}
+
+.awards-item {
+  background: rgba(228,228,73,0.65);
+}
+
+.awards-item:hover {
+  background: rgb(255,255,0);
+}
+
+.awards-container {
+  padding: 15px;
+}
+
+.award-date {
+  padding-left: 10px;
+  font-size: 12px;
+  font-style: italic;
+}
+
+#trophys-container {
 }
 
