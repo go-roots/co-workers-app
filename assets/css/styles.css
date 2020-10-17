@@ -443,14 +443,9 @@ html {
   padding-bottom: 30px;
 }
 
-.profile-skill-bio-title {
-  text-align: center;
-}
-
 .profile-skill-bio-content {
-  text-align: center;
-  width: 60%;
   font-size: 20px;
+  width: 70%;
 }
 
 .profile-skill-bio-container {
@@ -512,5 +507,9 @@ html {
 
 #chinese-class-event-header {
   font-family: 'Aguafina Script', cursive;
+}
+
+.social-link:hover {
+  background-color: #f6f6f6;
 }
 
