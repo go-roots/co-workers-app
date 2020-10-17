@@ -476,3 +476,17 @@ html {
   font-style: italic;
 }
 
+/* My consumption */
+
+.consumption-title {
+  padding-bottom: 25px;
+  padding-top: 30px;
+}
+
+#consumption-graph-label {
+  color: #05580e;
+  font-style: italic;
+  font-size: 20px;
+  padding-top: 25px;
+}
+

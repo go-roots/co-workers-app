@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CO-workers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asul:400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
+    <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md" style="margin-top: 0px;">
+        <div class="container-fluid"><a class="navbar-brand" href="#">
+<img src="assets/img/logo_medium.svg" alt="logo"/></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">My Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">My Consumption</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social.html">Social</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Navigate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">CW Points</a></li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="btn btn-outline-success nav-login" href="login.html">LOGIN</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-success nav-login" href="register.html">REGISTER</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="container main">
+        <div class="row">
+            <div class="col d-flex flex-column align-items-center">
+                <h3 class="text-center consumption-title">My electricity consumption</h3><img class="img-fluid" src="assets/img/graph-consumption.png"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="lead text-center" id="consumption-graph-label">You use less electricity than 80% of the members.</p>
+                <h3 class="text-center consumption-title">Billing</h3>
+                <p>Standard formula : 10€ + c * electricity consumption</p>
+                <p>monthly subscription</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>May 2020</th>
+                                <th>June 2020</th>
+                                <th>July 2020</th>
+                                <th>August 2020</th>
+                                <th>September 2020</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fixed cost</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>Variable cost</td>
+                                <td>10</td>
+                                <td>5</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>20€</td>
+                                <td>15€</td>
+                                <td>17€</td>
+                                <td>16€</td>
+                                <td>17€</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">CO workers © 2020</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init-1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
+    <script src="assets/js/profile-photo-preview.js"></script>
+    <script src="assets/js/tooltips-triggers.js"></script>
+</body>
+
+</html>
