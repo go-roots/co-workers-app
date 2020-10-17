@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
@@ -53,16 +54,24 @@
                                 <p>Polar Bear</p>
                                 <p>polar.bear2020@gmail.com</p>
                             </div>
-                            <div class="d-flex flex-row justify-content-center align-items-baseline" id="status-info"><i class="fas fa-circle user-icon-available"></i>
-                                <p id="profile-status">Available</p>
-                                <div class="dropdown"><button class="btn btn-outline-dark dropdown-toggle text-info" data-toggle="dropdown" aria-expanded="false" id="social-status-choice" type="button">Status&nbsp;</button>
-                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Do not disturb</a><a class="dropdown-item" href="#">Invisible</a><a class="dropdown-item" href="#">Offline</a><a class="dropdown-item" href="#">Prefer to stay alone</a></div>
+                            <div class="d-flex flex-row justify-content-center align-items-baseline status-info">
+                                <p class="profile-status">Current status</p>
+                                <div class="dropdown current-status-dropdown"><button class="btn text-info d-flex flex-row-reverse align-items-center" data-toggle="dropdown" aria-expanded="false" type="button">Select your status</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Do not disturb</a><a class="dropdown-item" href="#">Invisible</a><a class="dropdown-item" href="#">Available</a></div>
                                 </div>
                             </div>
+                            <div class="d-flex flex-row justify-content-center align-items-baseline status-info">
+                                <p class="profile-status">Mood</p>
+                                <div class="dropdown current-status-dropdown"><button class="btn text-info d-flex flex-row-reverse align-items-center" data-toggle="dropdown" aria-expanded="false" type="button">Select your mood</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Prefer to stay alone</a><a class="dropdown-item" href="#">Feeling sociable</a><a class="dropdown-item" href="#">Willing to help others</a></div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-center align-items-baseline status-info">
+                                <p class="profile-status">Stories</p><textarea placeholder="Tell to others what you are working on"></textarea></div>
                             <div class="card-body">
                                 <h4 class="card-title">Bio</h4>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus...</p><a class="btn btn-outline-dark text-info border rounded-0"
-                                    role="button" href="create-edit-profile.html">Edit profile</a></div>
+                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus...</p><a class="btn text-info border rounded-0" role="button"
+                                    href="create-edit-profile.html">Edit profile</a></div>
                         </div>
                         <div class="card">
                             <div class="card-body">
@@ -98,7 +107,7 @@
                                             <p class="msg-date">2 days ago</p>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center align-items-center msg-content">
-                                            <p>Hey, do you think we will need a video projector for the next meeting ?</p>
+                                            <p class="lead">Hey, do you think we will need a video projector for the next meeting ?</p>
                                             <div class="dropdown"><button class="btn btn-primary" data-toggle="dropdown" aria-expanded="false" type="button"><i class="icon-envelope-letter"></i></button>
                                                 <div class="dropdown-menu"><a class="dropdown-item answer-msg" href="#">Answer</a><a class="dropdown-item delete-msg bg-danger" href="#">Delete</a></div>
                                             </div>
@@ -110,7 +119,7 @@
                                             <p class="msg-date">3 minutes ago</p>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center align-items-center msg-content">
-                                            <p>Are you up for a coffee-break ?</p>
+                                            <p class="lead">Are you up for a coffee-break ?</p>
                                             <div class="dropdown"><button class="btn btn-primary" data-toggle="dropdown" aria-expanded="false" id="action-message-1" type="button"><i class="icon-envelope-letter"></i></button>
                                                 <div class="dropdown-menu"><a class="dropdown-item answer-msg" href="#">Answer</a><a class="dropdown-item delete-msg bg-danger" href="#">Delete</a></div>
                                             </div>

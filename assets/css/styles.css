@@ -194,29 +194,30 @@ html {
   margin-bottom: 10px;
 }
 
-.add-friend-icon {
-  font-size: 20px;
-  color: green;
+.mood-status-icon {
+  font-size: 17px;
   padding-right: 3px;
   padding-left: 3px;
 }
 
 .user-icon-available {
   font-size: 13px;
-  padding-right: 10px;
   color: #61fe00;
+}
+
+.user-icon-invisible {
+  font-size: 13px;
+  color: #f6F6F6;
 }
 
 .user-icon-dnd {
   font-size: 13px;
-  padding-right: 10px;
   color: #fe0000;
 }
 
 .ask-help-icon {
   padding-right: 3px;
   padding-left: 3px;
-  height: 20px;
   font-size: 20px;
   color: #000000;
 }
@@ -276,6 +277,17 @@ html {
 
 .people-inner-element {
   font-size: 1rem;
+  padding-bottom: 12px;
+}
+
+.dashboard-name-link {
+  padding-left: 10px;
+  color: initial;
+}
+
+.dashboard-name-link:hover {
+  color: initial;
+  text-decoration: initial;
 }
 
 #search-rooms-facilities-text {
@@ -309,7 +321,7 @@ html {
   text-align: center;
 }
 
-#profile-status {
+.profile-status {
   padding-right: 15px;
 }
 
@@ -377,6 +389,11 @@ html {
 
 .response-msg-modal {
   margin-top: 10px;
+}
+
+.current-status-dropdown {
+  border-width: 1px;
+  border-style: dotted;
 }
 
 /* Create/edit profile */
@@ -457,8 +474,5 @@ html {
   padding-left: 10px;
   font-size: 12px;
   font-style: italic;
-}
-
-#trophys-container {
 }
 
