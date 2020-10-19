@@ -197,7 +197,7 @@ html {
 
 #map-container {
   height: 70vh;
-  background: url("../../assets/img/ZntUT.jpg") center / cover no-repeat;
+  background: url("../../assets/img/map.jpeg") center / contain no-repeat;
   box-shadow: 1px 1px 5px 2px;
   border-radius: 10px;
   border-width: 1px;
