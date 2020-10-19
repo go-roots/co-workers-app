@@ -27,6 +27,16 @@ html {
   }
 }
 
+.vh-container {
+  height: 100vh;
+  overflow: scroll;
+}
+
+.vh-container-small {
+  height: 75vh;
+  overflow: scroll;
+}
+
 /* Navbar */
 
 .navbar-light .navbar-brand {
@@ -178,6 +188,7 @@ html {
 .main {
   width: 100%;
   background: #ffffff;
+  margin-bottom: 20px;
 }
 
 #display-map {
@@ -471,6 +482,20 @@ html {
   font-style: italic;
 }
 
+.profile-recommendation-element {
+  margin-bottom: 15px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+#profile-user-recommendations {
+  border-style: solid;
+  border-radius: 20px;
+  padding: 10px;
+  overflow: scroll;
+  height: 250px;
+}
+
 /* My consumption */
 
 .consumption-title {
@@ -484,6 +509,8 @@ html {
   font-size: 20px;
   padding-top: 25px;
 }
+
+/* Events */
 
 #halloween-party-header {
   transform: rotate(-15deg);
@@ -511,5 +538,24 @@ html {
 
 .social-link:hover {
   background-color: #f6f6f6;
+}
+
+/* CW Points */
+
+#redeem-items-container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#redeem-caroussel {
+  padding-top: 25px;
+}
+
+.carroussel-image {
+  height: 350px;
+}
+
+#social-profile-inside {
+  padding: 7px;
 }
 

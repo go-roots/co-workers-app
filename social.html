@@ -36,7 +36,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Social</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Navigate</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">CW Points</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">My CW Points</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item"><a class="btn btn-outline-success nav-login" href="login.html">LOGIN</a></li>
@@ -50,31 +50,31 @@
             <div class="row">
                 <div class="col-md-12 col-lg-7 col-xl-7">
                     <div class="card-group">
-                        <div class="card"><img class="card-img-top w-100 d-block" src="assets/img/profile-image.png">
+                        <div class="card vh-container" id="social-profile-inside"><img class="card-img-top w-100 d-block" src="assets/img/profile-image.png">
                             <div id="profile-info">
                                 <p>Polar Bear</p>
                                 <p>polar.bear2020@gmail.com</p>
                             </div>
-                            <div class="d-flex flex-row justify-content-center align-items-baseline status-info">
+                            <div class="d-flex flex-row justify-content-between align-items-baseline status-info">
                                 <p class="profile-status">Current status</p>
                                 <div class="dropdown current-status-dropdown"><button class="btn text-info d-flex flex-row-reverse align-items-center" data-toggle="dropdown" aria-expanded="false" type="button">Select your status</button>
                                     <div class="dropdown-menu"><a class="dropdown-item" href="#">Do not disturb</a><a class="dropdown-item" href="#">Invisible</a><a class="dropdown-item" href="#">Available</a></div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row justify-content-center align-items-baseline status-info">
+                            <div class="d-flex flex-row justify-content-between align-items-baseline status-info">
                                 <p class="profile-status">Mood</p>
                                 <div class="dropdown current-status-dropdown"><button class="btn text-info d-flex flex-row-reverse align-items-center" data-toggle="dropdown" aria-expanded="false" type="button">Select your mood</button>
                                     <div class="dropdown-menu"><a class="dropdown-item" href="#">Prefer to stay alone</a><a class="dropdown-item" href="#">Feeling sociable</a><a class="dropdown-item" href="#">Willing to help others</a></div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row justify-content-center align-items-baseline status-info">
+                            <div class="d-flex flex-row justify-content-between align-items-baseline status-info">
                                 <p class="profile-status">Stories</p><textarea placeholder="Tell to others what you are working on"></textarea></div>
                             <div class="card-body">
                                 <h4 class="card-title">Bio</h4>
                                 <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus...</p><a class="btn text-info border rounded-0" role="button"
                                     href="create-edit-profile.html">Edit profile</a></div>
                         </div>
-                        <div class="card">
+                        <div class="card vh-container">
                             <div class="card-body">
                                 <h4 class="card-title">Notifications</h4>
                                 <ul class="list-group">
@@ -90,6 +90,10 @@
                                         <p class="notif-text-button">Ilya wants to be your friend.</p>
                                         <div class="d-flex flex-row justify-content-around"><button class="btn btn-success btn-sm text-nowrap notif-button" type="button">Accept</button><button class="btn btn-danger btn-sm text-nowrap notif-button" type="button">Decline</button></div>
                                     </li>
+                                    <li class="list-group-item d-flex flex-column friend-request-notif"><img class="notif-image" src="assets/img/notif-profile-picture.jpg">
+                                        <p class="notif-text-button">You asked Shradda for help. Feel free to leave a comment on her profile and recommend her skills !</p>
+                                        <div class="text-center"><button class="btn btn-info btn-sm notif-button" type="submit">Go to profile</button></div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -98,7 +102,7 @@
                 </div>
                 <div class="col-lg-5 col-xl-5">
                     <div class="container">
-                        <div class="row">
+                        <div class="row vh-container">
                             <div class="col responsive-padding" style="margin-bottom: 20px;"><button class="btn btn-outline-primary btn-block btn-lg header-msg-friends" data-toggle="tooltip" data-bs-tooltip="" type="button" title="Messages"><i class="typcn typcn-messages" style="font-size: 30px;" title="Messages"></i></button>
                                 <div
                                     class="border border-primary friends-msg-container">
