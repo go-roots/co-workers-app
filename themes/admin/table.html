@@ -20,8 +20,8 @@
             <div class="container-fluid d-flex flex-column p-1"><a class="navbar-brand align-self-start sidebar-brand m-0" href="#"><img src="assets/img/logo_small.svg"></a>
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt sidebar-icon"></i><span class="sidebar-menu-text">Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user sidebar-icon"></i><span class="sidebar-menu-text">Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="table.html"><i class="fas fa-table sidebar-icon"></i><span class="sidebar-menu-text">Rooms</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-table sidebar-icon"></i><span class="sidebar-menu-text">Rooms</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="table.html"><i class="fas fa-user sidebar-icon"></i><span class="sidebar-menu-text">Users</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="blank.html"><i class="fas fa-window-maximize sidebar-icon"></i><span class="sidebar-menu-text">Settings</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -43,122 +43,141 @@
             </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Team</h3>
+                <h3 class="text-dark mb-4">Users</h3>
                 <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Employee Info</p>
-                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 text-nowrap">
                                 <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                            <div class="col-md-6 d-flex flex-row justify-content-end align-items-baseline">
+                                <div class="text-md-right" id="dataTable_search"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
                             </div>
                         </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th class="text-truncate align-items-baseline">Name&nbsp;<button class="btn" type="button"><i class="far fa-arrow-alt-circle-down"></i></button></th>
+                                        <th class="text-truncate align-items-baseline">Activity&nbsp;<button class="btn" type="button"><i class="far fa-arrow-alt-circle-down"></i></button></th>
+                                        <th class="text-truncate align-items-baseline">Last visited&nbsp;<button class="btn" type="button"><i class="far fa-arrow-alt-circle-down"></i></button></th>
+                                        <th class="text-truncate">Subscription&nbsp;<button class="btn" type="button"><i class="far fa-arrow-alt-circle-down"></i></button></th>
+                                        <th class="text-truncate">Start date&nbsp;<button class="btn" type="button"><i class="far fa-arrow-alt-circle-down"></i></button></th>
+                                        <th class="text-truncate">Asked help&nbsp;<button class="btn" type="button"><i class="far fa-arrow-alt-circle-down"></i></button></th>
+                                        <th class="text-truncate">Provided help&nbsp;<button class="btn" type="button"><i class="far fa-arrow-alt-circle-down"></i></button></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Ilja</td>
+                                        <td>some field</td>
+                                        <td>2 days ago</td>
+                                        <td>Standard</td>
+                                        <td>2018/11/28</td>
+                                        <td>18</td>
+                                        <td>18</td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                        <td>Chief Executive Officer(CEO)</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009/10/09<br></td>
-                                        <td>$1,200,000</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Laurent</td>
+                                        <td>some field</td>
+                                        <td>yesterday<br></td>
+                                        <td>Premium</td>
+                                        <td>2019/10/09<br></td>
+                                        <td>0<br></td>
+                                        <td>0<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12<br></td>
-                                        <td>$86,000</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Nicolas Cage</td>
+                                        <td>some field</td>
+                                        <td>1 week ago<br></td>
+                                        <td>Premium</td>
+                                        <td>2019/01/12<br></td>
+                                        <td>17<br></td>
+                                        <td>17<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg">Bradley Greer</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13<br></td>
-                                        <td>$132,000</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg">Shradda</td>
+                                        <td>some field</td>
+                                        <td>2 weeks ago<br></td>
+                                        <td>Standard</td>
+                                        <td>2020/10/13<br></td>
+                                        <td>5<br></td>
+                                        <td>5<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg">Brenden Wagner</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011/06/07<br></td>
-                                        <td>$206,850</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg">Lonely Panda</td>
+                                        <td>some field</td>
+                                        <td>Inside<br></td>
+                                        <td>Standard</td>
+                                        <td>2020/06/07</td>
+                                        <td>0<br></td>
+                                        <td>0<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Brielle Williamson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2012/12/02<br></td>
-                                        <td>$372,000</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Jorgo Titis</td>
+                                        <td>some field</td>
+                                        <td>Inside<br></td>
+                                        <td>Standard</td>
+                                        <td>2020/12/02<br></td>
+                                        <td>10<br></td>
+                                        <td>10<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Bruno Nash<br></td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>38</td>
-                                        <td>2011/05/03<br></td>
-                                        <td>$163,500</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Polar Bear<br></td>
+                                        <td>some field</td>
+                                        <td>Inside<br></td>
+                                        <td>Premium</td>
+                                        <td>2020/05/03<br></td>
+                                        <td>20<br></td>
+                                        <td>20<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Caesar Vance</td>
-                                        <td>Pre-Sales Support</td>
-                                        <td>New York</td>
-                                        <td>21</td>
-                                        <td>2011/12/12<br></td>
-                                        <td>$106,450</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Happy Dear</td>
+                                        <td>some field</td>
+                                        <td>Inside<br></td>
+                                        <td>Standard</td>
+                                        <td>1<br></td>
+                                        <td>9<br></td>
+                                        <td>9<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg">Cara Stevens</td>
-                                        <td>Sales Assistant</td>
-                                        <td>New York</td>
-                                        <td>46</td>
-                                        <td>2011/12/06<br></td>
-                                        <td>$145,600</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg">Worried Wolf</td>
+                                        <td>some field</td>
+                                        <td>5 hours ago<br></td>
+                                        <td>Standard</td>
+                                        <td>117<br></td>
+                                        <td>342</td>
+                                        <td>342</td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg">Cedric Kelly</td>
-                                        <td>Senior JavaScript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29<br></td>
-                                        <td>$433,060</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg">Crazy Monkey</td>
+                                        <td>some field</td>
+                                        <td>3 days ago<br></td>
+                                        <td>Standard</td>
+                                        <td>1<br></td>
+                                        <td>1<br></td>
+                                        <td>1<br></td>
+                                        <td><button class="btn btn-primary" type="button">Edit</button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td><strong>Name</strong></td>
-                                        <td><strong>Position</strong></td>
-                                        <td><strong>Office</strong></td>
-                                        <td><strong>Age</strong></td>
+                                        <td><strong>Last Visited</strong></td>
+                                        <td><strong>Subscription</strong></td>
                                         <td><strong>Start date</strong></td>
-                                        <td><strong>Salary</strong></td>
+                                        <td><strong>Asked help</strong></td>
+                                        <td><strong>Provided help</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>

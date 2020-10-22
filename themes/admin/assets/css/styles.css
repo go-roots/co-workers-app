@@ -32,3 +32,11 @@
   height: 200px;
 }
 
+#table-filter-separator {
+  margin-left: 10px;
+}
+
+#table-filter-icon {
+  font-size: 20px;
+}
+
