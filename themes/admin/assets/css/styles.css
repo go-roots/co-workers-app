@@ -1,0 +1,34 @@
+.sidebar .nav-item .nav-link span {
+  font-size: 1rem;
+}
+
+#accordionSidebar {
+  margin-top: 40px;
+}
+
+.sidebar-icon {
+  font-size: 25px !important;
+}
+
+.sidebar-menu-text {
+  padding-left: 5px;
+}
+
+.sidebar {
+  width: 8rem;
+  min-height: 100vh;
+}
+
+#nav-user-icon {
+  font-size: 30px;
+}
+
+#graph-select-icon {
+  font-size: 20px;
+}
+
+.system-log-events-container {
+  overflow: scroll;
+  height: 200px;
+}
+
