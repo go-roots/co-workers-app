@@ -1,3 +1,33 @@
+/* General */
+
+.main {
+  width: 100%;
+  background: #ffffff;
+  margin-bottom: 20px;
+}
+
+.responsive-padding {
+  padding-top: 20px !important;
+}
+
+@media (min-width: 992px) {
+  .responsive-padding {
+    padding-top: 0px !important;
+  }
+}
+
+.responsive-margin {
+  margin-top: 20px !important;
+}
+
+@media (min-width: 768px) {
+  .responsive-margin {
+    margin-top: 0px !important;
+  }
+}
+
+/* Sidebar */
+
 .sidebar .nav-item .nav-link span {
   font-size: 1rem;
 }
@@ -19,6 +49,8 @@
   min-height: 100vh;
 }
 
+/* Dashboard */
+
 #nav-user-icon {
   font-size: 30px;
 }
@@ -32,11 +64,120 @@
   height: 200px;
 }
 
+/* User table */
+
 #table-filter-separator {
   margin-left: 10px;
 }
 
 #table-filter-icon {
   font-size: 20px;
+}
+
+/* rooms */
+
+#display-map {
+  transform: rotate(90deg);
+}
+
+#map-container {
+  height: 50vh;
+  background: url("../../assets/img/map2.jpeg") center / contain no-repeat;
+  box-shadow: 1px 1px 5px 2px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+  #map-container {
+    height: 70vh !important;
+    background: url("../../assets/img/map2.jpeg") center / contain no-repeat;
+    box-shadow: 1px 1px 5px 2px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 10px;
+  }
+}
+
+.mood-status-icon {
+  font-size: 17px;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.user-icon-available {
+  font-size: 13px;
+  color: #61fe00;
+}
+
+.user-icon-invisible {
+  font-size: 13px;
+  color: #f6F6F6;
+}
+
+.user-icon-dnd {
+  font-size: 13px;
+  color: #fe0000;
+}
+
+.comment-icon {
+  font-size: 20px;
+  color: blue;
+  padding-left: 3px;
+}
+
+.filter-icon {
+  padding-right: 10px;
+}
+
+.filters-container {
+  padding-bottom: 25px;
+}
+
+.small-image-container {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 1px;
+  border-style: solid;
+  border-color: rgba(245,221,8,0.56);
+  margin-top: 10px;
+}
+
+#people-inner-container {
+  overflow: scroll;
+  height: 50vh;
+  border-radius: 20px;
+  border-style: dotted;
+  border-top-width: 3px;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+@media (min-width: 992px) {
+  #people-inner-container {
+    height: 70vh !important;
+  }
+}
+
+.people-inner-element {
+  font-size: 1rem;
+  padding-bottom: 12px;
+}
+
+.dashboard-name-link {
+  padding-left: 10px;
+  color: initial;
+}
+
+.dashboard-name-link:hover {
+  color: initial;
+  text-decoration: initial;
 }
 
