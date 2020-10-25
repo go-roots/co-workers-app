@@ -181,3 +181,40 @@
   text-decoration: initial;
 }
 
+#social-links-container {
+}
+
+.reedemable-element {
+  margin-bottom: 30px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+#redeemable-container {
+  margin-top: 30px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.reedemable-text {
+  padding-left: 20px;
+}
+
+#add-redeemable-icon {
+  font-size: 100px;
+  cursor: pointer;
+}
+
+.events-cards-element {
+  border-width: 1px;
+  border-style: solid;
+  margin-left: 15px;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#events-cards-container {
+  padding: 15px;
+}
+
