@@ -472,7 +472,6 @@ html {
 
 .profile-skill-bio-container {
   background-color: #f6F6F6;
-  margin-top: 20px;
 }
 
 .awards-item {
@@ -502,7 +501,7 @@ html {
 #profile-user-recommendations {
   border-style: solid;
   border-radius: 20px;
-  padding: 10px;
+  padding: 15px;
   overflow: scroll;
   height: 250px;
 }

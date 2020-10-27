@@ -1,0 +1,41 @@
+[
+    {
+        "_id": "7a7e514b5d2c13b7119be345",
+        "title": "Halloween party",
+        "organizer": "administration",
+        "image": "https://cdn.pixabay.com/photo/2017/10/26/20/00/pumpkin-2892303_960_720.jpg",
+        "description": "We welcome all of you ! If you're interested in that event, join us the 30th October 8pm-2am",
+        "date": "30-10-2020",
+        "capacity": "30",
+        "attendance": 11
+    },
+    {
+        "_id": "8d7a5n4J5f2c12e7443be044",
+        "title": "Cinema night",
+        "organizer": "administration",
+        "image": "https://cdn.pixabay.com/photo/2015/12/09/17/12/popcorn-1085072_960_720.jpg",
+        "description": "You are a cinema fan ? Come to the Cinema night for an entry fee of 2€, and enjoy a nice movie + appetizers & drinks",
+        "date": "11-11-2020",
+        "capacity": "22",
+        "attendance": 15
+    },
+    {
+        "_id": "3d7b514b5d4v12c74p9be0m9",
+        "title": "Chinese class",
+        "organizer": "administration",
+        "image": "https://cdn.pixabay.com/photo/2012/02/29/11/53/chinese-18654_960_720.jpg",
+        "description": "If you're interested in Chinese or Chinese culture, we have free chinese class every Friday afternoon from 4 to 5.30pm",
+        "capacity": "6",
+        "attendance": 4
+    },
+    {
+        "_id": "1d7a5l435d2c14c74219be0o7",
+        "title": "Speed chess",
+        "organizer": "administration",
+        "image": "https://cdn.pixabay.com/photo/2016/07/12/11/39/checkmate-1511866_960_720.jpg",
+        "description": "Speed chess competition to chill out after a hard work day, 3rd November 6pm !",
+        "date": "03-11-2020",
+        "capacity": "24",
+        "attendance": 12
+    }
+]
