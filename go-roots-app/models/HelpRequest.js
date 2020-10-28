@@ -1,0 +1,32 @@
+const mongoose = require('mongoose');
+
+
+const HelpRequestSchema = new mongoose.Schema({
+    requester: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
+        required: [true, 'Who is the initiator of the help request huh ?']
+    },
+    targetedUsers: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'user',
+            required: [true, 'A request must target at least one user']
+        },
+    ],
+    status: {
+        type: String,
+        enum: ['ongoing', 'resolved', 'canceled', 'expired'],
+        required: [true, 'Provide a state']
+    },
+    tags: {
+        type: [String]
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+
+module.exports = mongoose.model('Help-request', HelpRequestSchema);

@@ -1,6 +1,5 @@
 [
     {
-        "_id": "9d37514bdd2c12c7119be228",
         "user": "5d7a514b5d2c12c7449be045",
         "mainActivitySector": "Student or Learning",
         "photo": "https://cdn.pixabay.com/photo/2020/10/22/10/15/chipmunk-5675631_960_720.jpg",
@@ -11,7 +10,7 @@
             "public law"
         ],
         "bio": "Hello this is a test bio.",
-        "status": "available",
+        "status": "Available",
         "mood": "Willing to help others",
         "story": "Currently debating on the role of the judge in a conciliation procedure",
         "social": {
@@ -20,7 +19,6 @@
         }
     },
     {
-        "_id": "1d38514bdv2c12z7110be233",
         "user": "5d7a514b5d2c12c7449be046",
         "mainActivitySector": "Instructor or teacher",
         "photo": "https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_960_720.jpg",
@@ -34,7 +32,6 @@
         "status": "Do not disturb"
     },
     {
-        "_id": "3a7a614b0d2c13c7450ze125",
         "user": "5c8a1d5b0190b214360dc031",
         "mainActivitySector": "Charity and voluntary work",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
@@ -45,7 +42,7 @@
             "Excel"
         ],
         "bio": "Hello this is a test bio.",
-        "status": "available",
+        "status": "Available",
         "mood": "Feeling sociable",
         "story": "Currently debating on the role of the judge in a conciliation procedure",
         "social": {
@@ -56,7 +53,6 @@
         }
     },
     {
-        "_id": "9b7a614b0d2c13c1452ze121",
         "user": "5c8a1d5b0190b214360dc040",
         "mainActivitySector": "Creative arts and design",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
@@ -69,7 +65,7 @@
             "artistical designing"
         ],
         "bio": "Hello this is a test bio.",
-        "status": "available",
+        "status": "Available",
         "mood": "Feeling sociable",
         "story": "Working on a commercial cartoon",
         "social": {
@@ -81,7 +77,6 @@
         }
     },
     {
-        "_id": "5b7z614b0d2c13c1452ze122",
         "user": "5c8a1d5b0190b214360dc032",
         "mainActivitySector": "Law",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
@@ -94,7 +89,7 @@
         ],
         "bio": "I am specialized in business-business litigations as well as taw related issues. Native english speaker.",
         "status": "Do not disturb",
-        "mood": "I prefer to stay alone",
+        "mood": "Prefer to stay alone",
         "social": {
             "facebook": "https://facebook.com/test",
             "linkedin": "https://linkedin.com/test",
@@ -102,7 +97,6 @@
         }
     },
     {
-        "_id": "0b7z614b0d2c13c1k52ze118",
         "user": "5c8a1d5b0190b214360dc033",
         "mainActivitySector": "Media and internet",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
@@ -123,7 +117,6 @@
         }
     },
     {
-        "_id": "0b7z614b0d2x13c1k52zm118",
         "user": "5c8a1d5b0190b214360dc034",
         "mainActivitySector": "Media and internet",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
@@ -146,7 +139,6 @@
         }
     },
     {
-        "_id": "ub7z614b0d2x03c1k52zm138",
         "user": "5c8a1d5b0190b214360dc035",
         "mainActivitySector": "Engineering and manufacturing",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
@@ -161,7 +153,6 @@
         "mood": "Willing to help others"
     },
     {
-        "_id": "5rta5af4b5d2c1227bb9re042",
         "user": "5c8a1d5b0190b214360dc036",
         "mainActivitySector": "Information technologies",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
@@ -174,7 +165,7 @@
             "e-commerce"
         ],
         "bio": "Hello this is a test bio.",
-        "status": "invisible",
+        "status": "Invisible",
         "mood": "Prefer to stay alone",
         "social": {
             "facebook": "https://facebook.com/test",
@@ -185,13 +176,12 @@
         }
     },
     {
-        "_id": "5rta5af4b5d2c1227bb9re042",
         "user": "5c8a1d5b0190b214360dc037",
         "mainActivitySector": "Accountancy, banking and finance",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "BNP Paribas",
         "position": "Accountant",
-        "website": "https://mabanque.bnpparibas",
+        "website": "https://mabanque.bnpparibas.com",
         "skills": [
             "accountancy",
             "banking",
@@ -199,7 +189,7 @@
         ],
         "bio": "Hello this is a test bio.",
         "status": "Available",
-        "mood": "Feeling social",
+        "mood": "Feeling sociable",
         "social": {
             "facebook": "https://facebook.com/test",
             "twitter": "https://twitter.com/test",
@@ -209,7 +199,6 @@
         }
     },
     {
-        "_id": "5rta5af4b5d2c1227bb9re042",
         "user": "5c8a1d5b0190b214360dc038",
         "mainActivitySector": "Creative arts and design",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
@@ -222,7 +211,7 @@
         ],
         "bio": "Hello this is a test bio.",
         "status": "Available",
-        "mood": "Feeling social",
+        "mood": "Feeling sociable",
         "social": {
             "facebook": "https://facebook.com/test",
             "twitter": "https://twitter.com/test",
@@ -231,7 +220,6 @@
         }
     },
     {
-        "_id": "5rta5af4b5d2c1227bb9re042",
         "user": "5c8a1d5b0190b214360dc039",
         "mainActivitySector": "Student or learning",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
@@ -243,7 +231,7 @@
         ],
         "bio": "Hello this is a test bio.",
         "status": "Available",
-        "mood": "I prefer to stay alone",
+        "mood": "Prefer to stay alone",
         "story": "Working on my quantum pysics exam"
     }
 ]

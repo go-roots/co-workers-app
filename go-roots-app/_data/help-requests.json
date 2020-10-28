@@ -1,17 +1,14 @@
 [
     {
-        "_id": "4daz51rg4d2dw8c7v27ae017",
-        "requester": "5d7a514b5d2c12c7449be042",
+        "requester": "5c8a1d5b0190b214360dc032",
         "targetedUsers": [
             "5c8a1d5b0190b214360dc034",
             "5c8a1d5b0190b214360dc033"
         ],
         "status": "ongoing",
-        "date": "27-10-2020",
         "tags": "e-commerce, digital marketing"
     },
     {
-        "_id": "3daz11rf4dh2dw8c7v27ae020",
         "requester": "5d7a514b5d2c12c7449be045",
         "targetedUsers": [
             "5c8a1d5b0190b214360dc040",
@@ -23,18 +20,23 @@
             "5c8a1d5b0190b214360dc038",
             "5c8a1d5b0190b214360dc039"
         ],
-        "status": "solved",
-        "date": "27-10-2020",
+        "status": "resolved",
         "tags": "cwpoints, redeeming"
     },
     {
-        "_id": "4daz51rg4d2dw8c7v27ae017",
-        "requester": "5d7a514b5d2c12c7449be042",
+        "requester": "5d7a514b5d2c12c7449be040",
+        "targetedUsers": [
+            "5d7a514b5d2c12c7449be046"
+        ],
+        "status": "canceled",
+        "tags": "fluid mechanics"
+    },
+    {
+        "requester": "5c8a1d5b0190b214360dc032",
         "targetedUsers": [
             "5c8a1d5b0190b214360dc039"
         ],
         "status": "expired",
-        "date": "27-10-2020",
         "tags": "fluid mechanics"
     }
 ]
