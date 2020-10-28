@@ -1,6 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-//morgan: logger middleware
 const morgan = require('morgan');
 const colors = require('colors');
 const cors = require('cors');
@@ -18,20 +17,15 @@ const app = express();
 //body parser middleware
 app.use(express.json());
 
-/*Dev logging middleware
-To be used only in development mode*/
+// Dev logger middleware
 if (process.env.NODE_ENV === "development") {
     app.use(morgan('dev'));
 }
 
-/*Enable cross-origin ressource sharing (default is same origin policy)
-But if we want our api to be public, we must enable it.*/
+// Enable cross-origin ressource sharing (default is same origin policy) 
 app.use(cors());
 
-/*By default NODE_ENV is set to development
-If you don't have two separate scripts for dev and prod, 
-we cannot really distinguish devlopment and production
-dependencies.*/
+// By default NODE_ENV is set to development
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT,
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
