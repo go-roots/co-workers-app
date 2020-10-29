@@ -1,6 +1,9 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css");
 @import url("https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css");
 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css");
+
 @import url("https://fonts.googleapis.com/css?family=Aguafina+Script");
 @import url("https://fonts.googleapis.com/css?family=Alatsi");
 @import url("https://fonts.googleapis.com/css?family=Asul:400,700");
@@ -109,16 +112,18 @@ html {
   margin-bottom: 5px;
 }
 
-.input-icons i {
+.input-icons {
+  display: flex;
   padding: 15px;
   background: dodgerblue;
   color: white;
   min-width: 50px;
   border-radius: 25px;
+  font-size: 20px;
 }
 
-.input-icons {
-  display: flex;
+.input-icons:hover {
+  color: rgb(82,255,0)
 }
 
 #video {
@@ -156,6 +161,11 @@ html {
     min-width: 200px;
     max-height: 250px !important;
   }
+}
+
+.map-results-item:hover {
+  cursor: pointer;
+  background: #f6F6F6;
 }
 
 #map {
