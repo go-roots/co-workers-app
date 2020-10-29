@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const ProfileSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        unique: true
     },
     mainActivitySector: {
         type: String,
