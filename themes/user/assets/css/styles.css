@@ -102,7 +102,8 @@ html {
   margin-bottom: 5px;
 }
 
-.input-icons i {
+.input-icons {
+  display: flex;
   padding: 15px;
   background: dodgerblue;
   color: white;
@@ -110,8 +111,8 @@ html {
   border-radius: 25px;
 }
 
-.input-icons {
-  display: flex;
+.input-icons:hover {
+  color: rgb(82,255,0);
 }
 
 #video {
@@ -149,6 +150,11 @@ html {
     min-width: 200px;
     max-height: 250px !important;
   }
+}
+
+.map-results-item:hover {
+  cursor: pointer;
+  background: #f6F6F6;
 }
 
 #map {

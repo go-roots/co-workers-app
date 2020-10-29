@@ -47,6 +47,12 @@ html {
   overflow: scroll;
 }
 
+#not-found { 
+  text-align: center; 
+  margin-top: 50px; 
+  margin-bottom: 200px;
+}
+
 /* Navbar */
 
 .navbar-light .navbar-brand {

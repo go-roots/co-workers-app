@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import logoMedium from '../../assets/img/logo_medium.svg';
 
 
@@ -6,20 +7,19 @@ const Navbar = props => {
     return (
         <nav className="navbar navbar-light navbar-expand-md">
             <div className="container-fluid">
-                <a className="navbar-brand" href="landing.html">
+                <Link className="navbar-brand" to="/landing">
                     <img src={logoMedium} alt="logo" />
-                </a>
+                </Link>
                 <button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1">
                     <span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navcol-1">
                     <ul className="nav navbar-nav mr-auto">
-                        <li className="nav-item"><a className="nav-link active" href="dashboard.html">My Dashboard</a></li>
-                        <li className="nav-item"><a className="nav-link" href="consumption.html">My Consumption</a></li>
-                        <li className="nav-item"><a className="nav-link" href="social.html">Social</a></li>
-                        <li className="nav-item"><a className="nav-link" href="qr-code.html">Navigate</a></li>
-                        <li className="nav-item"><a className="nav-link" href="events.html">Events</a></li>
-                        <li className="nav-item"><a className="nav-link" href="cw-points.html">My CW Points</a></li>
+                        <li className="nav-item"><Link className="nav-link active" to="/dashboard">My Dashboard</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/consumption">My Consumption</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/social">Social</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/events">Events</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/cw-points">My CW Points</Link></li>
                     </ul>
                 </div>
             </div>

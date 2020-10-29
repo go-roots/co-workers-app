@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom'
 import logoMedium from '../../assets/img/logo_medium.svg';
 import { FaSearchLocation } from 'react-icons/fa';
 import { BsChevronCompactDown } from 'react-icons/bs';
@@ -20,10 +21,10 @@ const Landing = () => {
                             navigation</span><span className="navbar-toggler-icon"></span></button>
                             <div className="collapse navbar-collapse" id="navcol-1">
                                 <ul className="nav navbar-nav ml-auto">
-                                    <li className="nav-item"><a className="btn btn-outline-success nav-login"
-                                        href="login.html">LOGIN</a></li>
-                                    <li className="nav-item"><a className="btn btn-outline-success nav-login"
-                                        href="register.html">REGISTER</a></li>
+                                    <li className="nav-item">
+                                        <Link className="btn btn-outline-success nav-login" to="/login">LOGIN</Link></li>
+                                    <li className="nav-item">
+                                        <Link className="btn btn-outline-success nav-login" to="/register">REGISTER</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +84,7 @@ const Landing = () => {
             </section>
             <section className="d-flex flex-column justify-content-center align-items-center" id="video">
                 <iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/mm6vO9Os7vs" id="videoPlayer" width="560" height="315"></iframe>
-                <a id="join-now-button" className="btn btn-lg btn-outline-success" href="register.html">Join now !</a>
+                <Link id="join-now-button" className="btn btn-lg btn-outline-success" to="/register">Join now !</Link>
             </section>
         </Fragment>
     )
