@@ -16,7 +16,25 @@
         "social": {
             "facebook": "https://facebook.com/test",
             "instagram": "https://instagram.com/test"
-        }
+        },
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcbb"
+            },
+            {
+                "award": "5f9bde4c0e66374ed61cfcbd"
+            }
+        ],
+        "comments": [
+            {
+                "author": "5d7a514b5d2c12c7449be046",
+                "text": "John is an amazing teacher"
+            },
+            {
+                "author": "5c8a1d5b0190b214360dc031",
+                "text": "John is always willing to help and his advise are always wise !"
+            }
+        ]
     },
     {
         "user": "5d7a514b5d2c12c7449be046",
@@ -29,7 +47,15 @@
             "Geography"
         ],
         "bio": "Hello this is a test bio.",
-        "status": "Do not disturb"
+        "status": "Do not disturb",
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcbb"
+            },
+            {
+                "award": "5f9bde4c0e66374ed61cfcbd"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc031",
@@ -50,7 +76,15 @@
             "instagram": "https://instagram.com/test",
             "linkedin": "https://linkedin.com/test",
             "youtube": "https://youtube.com/test"
-        }
+        },
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcbb"
+            },
+            {
+                "award": "5f9bde4c0e66374ed61cfcbd"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc040",
@@ -74,7 +108,15 @@
             "linkedin": "https://linkedin.com/test",
             "youtube": "https://youtube.com/test",
             "twitter": "https://twitter.com/test"
-        }
+        },
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcc1"
+            },
+            {
+                "award": "5f9bde4c0e66374ed61cfcc5"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc032",
@@ -94,7 +136,12 @@
             "facebook": "https://facebook.com/test",
             "linkedin": "https://linkedin.com/test",
             "twitter": "https://twitter.com/test"
-        }
+        },
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcc5"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc033",
@@ -114,7 +161,12 @@
             "facebook": "https://facebook.com/test",
             "linkedin": "https://linkedin.com/test",
             "twitter": "https://twitter.com/test"
-        }
+        },
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcc7"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc034",
@@ -136,7 +188,12 @@
             "linkedin": "https://linkedin.com/test",
             "youtube": "https://youtube.com/test",
             "twitter": "https://twitter.com/test"
-        }
+        },
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcc7"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc035",
@@ -150,7 +207,12 @@
         ],
         "bio": "This is a test bio.",
         "status": "Available",
-        "mood": "Willing to help others"
+        "mood": "Willing to help others",
+        "awards": [
+            {
+                "award": "5f9bde4c0e66374ed61cfcc7"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc036",
@@ -217,7 +279,13 @@
             "twitter": "https://twitter.com/test",
             "youtube": "https://youtube.com/test",
             "instagram": "https://instagram.com/test"
-        }
+        },
+        "comments": [
+            {
+                "author": "5c8a1d5b0190b214360dc031",
+                "text": "Don't hesitate to ask help to Derek, he probably knows the answer !"
+            }
+        ]
     },
     {
         "user": "5c8a1d5b0190b214360dc039",
@@ -232,6 +300,16 @@
         "bio": "Hello this is a test bio.",
         "status": "Available",
         "mood": "Prefer to stay alone",
-        "story": "Working on my quantum pysics exam"
+        "story": "Working on my quantum pysics exam",
+        "comments": [
+            {
+                "author": "5c8a1d5b0190b214360dc033",
+                "text": "Don't hesitate to ask help to Sarah, she probably knows the answer !"
+            },
+            {
+                "author": "5c8a1d5b0190b214360dc034",
+                "text": "John is always willing to help and his advise are always wise !"
+            }
+        ]
     }
 ]

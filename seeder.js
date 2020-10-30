@@ -13,6 +13,8 @@ const Profile = require('./models/Profile');
 const Redeemable = require('./models/Redeemable');
 const Room = require('./models/Room');
 const User = require('./models/User');
+const Notification = require('./models/Notification');
+const Award = require('./models/Award');
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI, {
@@ -29,6 +31,8 @@ const profiles = JSON.parse(fs.readFileSync(`${__dirname}/_data/profiles.json`, 
 const redeemables = JSON.parse(fs.readFileSync(`${__dirname}/_data/redeemables.json`, 'utf-8'));
 const rooms = JSON.parse(fs.readFileSync(`${__dirname}/_data/rooms.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8'));
+const notifications = JSON.parse(fs.readFileSync(`${__dirname}/_data/notifications.json`, 'utf-8'));
+const awards = JSON.parse(fs.readFileSync(`${__dirname}/_data/awards.json`, 'utf-8'));
 
 //Populate or delete data collections
 const importD = async () => {
@@ -39,6 +43,8 @@ const importD = async () => {
         await Profile.create(profiles);
         await Redeemable.create(redeemables);
         await Room.create(rooms);
+        await Notification.create(notifications);
+        await Award.create(awards);
         console.log('Data imported...'.green.inverse);
         process.exit();
     } catch (err) {
@@ -54,6 +60,8 @@ const deleteD = async () => {
         await Profile.deleteMany();
         await Redeemable.deleteMany();
         await Room.deleteMany();
+        await Notification.deleteMany();
+        await Award.deleteMany();
         console.log('Data deleted...'.red.inverse);
         process.exit();
     } catch (err) {

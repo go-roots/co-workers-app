@@ -55,10 +55,52 @@ const UserSchema = new mongoose.Schema({
     cwpoints: {
         type: Number
     },
+    stats: {
+        seniority: {
+            lastEnteredAt: {
+                type: Date
+            },
+            lastLeftAt: {
+                type: Date
+            },
+            totalTimeSpentInCW: {
+                type: Number
+            }
+        }
+    },
+    electricityConsumptionLogs: [
+        {
+            date: {
+                type: Date,
+                default: Date.now
+            },
+            value: {
+                type: Number
+            }
+        }
+    ],
+    billing: {
+        contractType: {
+            type: String,
+            enum: ["basic", "standard", "premium"]
+        },
+        bills: [
+            {
+                date: {
+                    type: Date,
+                    default: Date.now
+                },
+                amount: {
+                    type: Number
+                }
+            }
+        ]
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
 });
+
 
 module.exports = mongoose.model('User', UserSchema);

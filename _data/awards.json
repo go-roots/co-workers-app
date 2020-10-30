@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "5f9bde4c0e66374ed61cfcbb",
+        "name": "Mastermind",
+        "conditions": {
+            "answeredQuestions": 10
+        },
+        "description": "The user accepted at least 10 help requests",
+        "reward": 300
+    },
+    {
+        "_id": "5f9bde4c0e66374ed61cfcbd",
+        "name": "Curious",
+        "conditions": {
+            "askedQuestions": 10
+        },
+        "description": "The user addressed at least 10 help requests",
+        "reward": 300
+    },
+    {
+        "_id": "5f9bde4c0e66374ed61cfcbf",
+        "name": "Events master",
+        "conditions": {
+            "organizedEvents": 5
+        },
+        "description": "The user has personnaly organized at least 5 events. For now this feature is only available to the admin",
+        "reward": 500
+    },
+    {
+        "_id": "5f9bde4c0e66374ed61cfcc1",
+        "name": "Green hero",
+        "conditions": {
+            "periodInMonths": 1
+        },
+        "description": "The user has consumed less electricity than 80% of users other a period of 1 month",
+        "reward": 250
+    },
+    {
+        "_id": "5f9bde4c0e66374ed61cfcc3",
+        "name": "Root",
+        "conditions": {
+            "timeSpentInCWInHours": 10
+        },
+        "description": "The user has spent 10 hours working in the coworking space. This is a reward for seniority",
+        "reward": 100
+    },
+    {
+        "_id": "5f9bde4c0e66374ed61cfcc5",
+        "name": "Seedling",
+        "conditions": {
+            "timeSpentInCWInHours": 100
+        },
+        "description": "The user has spent 100 hours working in the coworking space. This is a reward for seniority",
+        "reward": 200
+    },
+    {
+        "_id": "5f9bde4c0e66374ed61cfcc7",
+        "name": "Tree",
+        "conditions": {
+            "timeSpentInCWInHours": 1000
+        },
+        "description": "The user has spent 1000 hours working in the coworking space. This is a reward for seniority",
+        "reward": 500
+    },
+    {
+        "_id": "5f9bde4c0e66374ed61cfcc8",
+        "name": "Collector",
+        "conditions": {
+            "cwpoints": 2500
+        },
+        "description": "The user has reached 2500 cwpoints",
+        "reward": 100
+    }
+]

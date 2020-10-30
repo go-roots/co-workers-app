@@ -52,6 +52,33 @@ const ProfileSchema = new mongoose.Schema({
     story: {
         type: [String]
     },
+    awards: [
+        {
+            award: {
+                type: mongoose.Schema.ObjectId,
+                ref: 'award'
+            },
+            obtainedAt: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ],
+    comments: [
+        {
+            author: {
+                type: mongoose.Schema.ObjectId,
+                ref: 'user'
+            },
+            text: {
+                type: String
+            },
+            date: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ],
     social: {
         youtube: {
             type: String
