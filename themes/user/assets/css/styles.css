@@ -424,6 +424,10 @@ html {
   border-style: dotted;
 }
 
+#edit-profile-container {
+  text-align: center;
+}
+
 /* Create/edit profile */
 
 .profile-inputs {

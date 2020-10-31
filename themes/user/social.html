@@ -47,7 +47,7 @@
     <section class="main">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-lg-7 col-xl-7">
+                <div class="col-md-12 col-lg-7 col-xl-7" style="padding: 10px;">
                     <div class="card-group">
                         <div class="card vh-container" id="social-profile-inside"><img class="card-img-top w-100 d-block" src="assets/img/profile-image.png">
                             <div id="profile-info">
@@ -71,7 +71,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Bio</h4>
                                 <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus...</p><a class="btn text-info border rounded-0" role="button"
-                                    href="create-edit-profile.html">Edit profile</a></div>
+                                    href="#" data-toggle="modal" data-target="#edit-profile-modal">Edit profile</a></div>
                         </div>
                         <div class="card vh-container">
                             <div class="card-body">
@@ -97,7 +97,111 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-column justify-content-start align-items-center" id="profile"></div>
+                    <div class="modal fade" role="dialog" tabindex="-1" id="edit-profile-modal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body" id="edit-profile-container"><small>* = required field</small>
+<form class="form">
+    <div class="form-group">
+        <select class="profile-inputs" name="activity-sector">
+            <option value="0">* Select your main activity-sector</option>
+            <option value="Accountancy, banking and finance">Accountancy, banking and finance</option>
+            <option value="Business, consulting and management">Business, consulting and management</option>
+            <option value="Charity and voluntary work">Charity and voluntary work</option>
+            <option value="Creative arts and design">Creative arts and design</option>
+            <option value="Student or Learning">Student or Learning</option>
+            <option value="Instructor or Teacher">Instructor or Teacher</option>
+            <option value="Energy and utilities">Energy and utilities</option>
+            <option value="Engineering and manufacturing">Engineering and manufacturing</option>
+            <option value="Environement and agriculture">Environement and agriculture</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Hospitality and events management">Hospitality and events management</option>
+            <option value="Information technologies">Information technologies</option>
+            <option value="Law">Law</option>
+            <option value="Leisure, sport and tourism">Leisure, sport and tourism</option>
+            <option value="Marketing, advertising and PR">Marketing, advertising and PR</option>
+            <option value="Media and internet">Media and internet</option>
+            <option value="Recruitement and retailement">Recruitement and retailement</option>
+            <option value="HR">HR</option>
+            <option value="Sales">Sales</option>
+            <option value="Science and pharmaceuticals">Science and pharmaceuticals</option>
+            <option value="Social care">Social care</option>
+            <option value="Transportation and logistics">Transportation and logistics</option>
+        </select>
+        <small class="form-text">Give us an idea of your field of work</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="file" onchange="handleFiles(files,preview);" name="userfile" id="photo"
+            size="20">
+        <small class="form-text">Select a photo from your local files</small>
+        <input class="profile-inputs" type="text" name="webPhoto" id="photo2" size="20"
+            placeholder="http://website.com/someImage.jpg">
+        <small class="form-text">Or from the web...</small>
+        <div>
+            <label for="photo">
+                <div id="preview"></div>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="* Company" name="company" />
+        <small class="form-text">Could be your own company or one you work for</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="Position" name="position" />
+        <small class="form-text">Your position in the above-mentioned company</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="Website" name="website" />
+        <small class="form-text">Could be your own or a company website</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="* Skills" name="skills" />
+        <small class="form-text">Please use comma separated values (eg.
+            advertisement,e-commerce,teaching,front-end-web-development)</small>
+    </div>
+    <div class="form-group">
+        <textarea placeholder="A short bio of yourself" rows="5" cols="50" name="bio"
+            style="margin-top: 10px;"></textarea>
+        <small class="form-text">Tell us a little about yourself</small>
+    </div>
+
+    <div id="social-networks-toggler">
+        <button type="button" class="btn btn-light">
+            Add Social Network Links
+        </button>
+        <span>Optional</span>
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-twitter fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Twitter URL" name="twitter" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-facebook fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Facebook URL" name="facebook" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-youtube fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="YouTube URL" name="youtube" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-linkedin fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Linkedin URL" name="linkedin" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-instagram fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Instagram URL" name="instagram" />
+    </div>
+</form></div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Save</button></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-5 col-xl-5">
                     <div class="container">

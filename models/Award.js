@@ -29,6 +29,13 @@ const AwardSchema = new mongoose.Schema({
             }
         }
     ],
+    image: {
+        type: String,
+        match: [
+            /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+            'Please add a valid photo url'
+        ]
+    },
     description: {
         type: String
     },

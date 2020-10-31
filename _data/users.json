@@ -1,14 +1,16 @@
 [
     {
         "_id": "5d7a514b5d2c12c7449be042",
-        "name": "Admin Account",
+        "firstName": "admin",
+        "lastName": "admin",
         "email": "admin@gmail.com",
         "role": "admin",
         "password": "testtest"
     },
     {
         "_id": "5d7a514b5d2c12c7449be045",
-        "name": "John Doe",
+        "name": "John",
+        "firstName": "Doe",
         "email": "john@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -34,7 +36,8 @@
     },
     {
         "_id": "5d7a514b5d2c12c7449be046",
-        "name": "Kevin Smith",
+        "lastName": "Kevin",
+        "firstName": "Smith",
         "email": "kevin@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -66,7 +69,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc031",
-        "name": "Mary Williams",
+        "lastName": "Mary",
+        "firstName": "Williams",
         "email": "mary@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -101,7 +105,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc032",
-        "name": "Sasha Ryan",
+        "lastName": "Sasha",
+        "firstName": "Ryan",
         "email": "sasha@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -117,7 +122,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc033",
-        "name": "Greg Harris",
+        "firstName": "Greg",
+        "lastName": "Harris",
         "email": "greg@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -143,7 +149,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc034",
-        "name": "Derek Glover",
+        "firstName": "Derek",
+        "lastName": "Glover",
         "email": "derek@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -181,7 +188,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc035",
-        "name": "Stephanie Hanson",
+        "firstName": "Stephanie",
+        "lastName": "Hanson",
         "email": "steph@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -225,7 +233,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc036",
-        "name": "Jerry Wiliams",
+        "firstName": "Jerry",
+        "lastName": "Wiliams",
         "email": "jerry@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -263,7 +272,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc037",
-        "name": "Maggie Johnson",
+        "firstName": "Maggie",
+        "lastName": "Johnson",
         "email": "maggie@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -301,7 +311,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc038",
-        "name": "Barry Dickens",
+        "firstName": "Barry",
+        "lastName": "Dickens",
         "email": "barry@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -327,7 +338,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc039",
-        "name": "Ryan Bolin",
+        "firstName": "Ryan",
+        "lastName": "Bolin",
         "email": "ryan@gmail.com",
         "role": "user",
         "password": "testtest",
@@ -359,7 +371,8 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc040",
-        "name": "Sara Kensing",
+        "firstName": "Sara",
+        "lastName": "Kensing",
         "email": "sara@gmail.com",
         "role": "user",
         "password": "testtest",

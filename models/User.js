@@ -7,9 +7,13 @@ const UserSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user'
     },
-    name: {
+    firstName: {
         type: String,
-        required: [true, 'Please add a name']
+        required: [true, 'Please add a firstName']
+    },
+    lastName: {
+        type: String,
+        required: [true, 'Please add a lastName']
     },
     email: {
         type: String,
