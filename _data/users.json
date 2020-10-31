@@ -9,8 +9,8 @@
     },
     {
         "_id": "5d7a514b5d2c12c7449be045",
-        "name": "John",
-        "firstName": "Doe",
+        "firstName": "John",
+        "lastName": "Doe",
         "email": "john@gmail.com",
         "role": "user",
         "password": "testtest",
