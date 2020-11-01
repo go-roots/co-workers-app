@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 
 //load env vars
@@ -11,11 +12,17 @@ dotenv.config({ path: './config/config.env' });
 //Connect to database
 connectDB();
 
+//import routes
+const auth = require('./routes/auth');
+
 //Initialize express
 const app = express();
 
 //body parser middleware
 app.use(express.json());
+
+//cookie parser
+app.use(cookieParser());
 
 // Dev logger middleware
 if (process.env.NODE_ENV === "development") {
@@ -24,6 +31,9 @@ if (process.env.NODE_ENV === "development") {
 
 // Enable cross-origin ressource sharing (default is same origin policy) 
 app.use(cors());
+
+//Mount routers
+app.use('/api/cw-api/auth', auth);
 
 // By default NODE_ENV is set to development
 const PORT = process.env.PORT || 5000;
