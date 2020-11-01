@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
+const errorHandler = require('./middlewares/error');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
@@ -34,6 +35,9 @@ app.use(cors());
 
 //Mount routers
 app.use('/api/cw-api/auth', auth);
+
+//Error handling middleware
+app.use(errorHandler);
 
 // By default NODE_ENV is set to development
 const PORT = process.env.PORT || 5000;

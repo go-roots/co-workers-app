@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const axios = require('axios');
 const qs = require('querystring');
+const ErrorResponse = require('../utils/errorResponse');
 const sendTokenResponse = require('../utils/sendTokenResponse');
 
 // Controller for managing authorization related routes (login/register/getMe...),
@@ -38,17 +39,17 @@ exports.login = async (req, res, next) => {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            res.status(404).json({ success: false, msg: 'Please provide an email and a password' });
+            return next(new ErrorResponse('Please provide an email and a password', 404));
         }
 
         const user = await User.findOne({ email }).select('+password');
 
         if (!user || !user.password) {
-            return res.status(400).json({ success: false, msg: 'Invalid credentials' });
+            return next(new ErrorResponse('Invalid credentials', 400));
         }
 
         if (!await user.matchPasswords(password, user.password)) {
-            return res.status(400).json({ success: false, msg: 'Invalid credentials' });
+            return next(new ErrorResponse('Invalid credentials', 400));
         }
 
         sendTokenResponse(user, 200, res);
@@ -66,7 +67,7 @@ exports.linkedinAuth = async (req, res, next) => {
         const { code } = req.body;
 
         if (!code) {
-            return res.status(400).json({ success: false, msg: 'Invalid credentials' });
+            return next(new ErrorResponse('Not authorized to access resource.', 401));
         }
 
         // Token endpoint
