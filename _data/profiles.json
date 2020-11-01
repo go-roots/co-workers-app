@@ -1,7 +1,7 @@
 [
     {
         "user": "5d7a514b5d2c12c7449be045",
-        "mainActivitySector": "Student or Learning",
+        "activitySector": "Student or Learning",
         "photo": "https://cdn.pixabay.com/photo/2020/10/22/10/15/chipmunk-5675631_960_720.jpg",
         "company": "UT1",
         "position": "Student",
@@ -38,7 +38,7 @@
     },
     {
         "user": "5d7a514b5d2c12c7449be046",
-        "mainActivitySector": "Instructor or teacher",
+        "activitySector": "Instructor or teacher",
         "photo": "https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_960_720.jpg",
         "company": "Lycée Pierre de Fermat",
         "position": "High-school teacher",
@@ -59,7 +59,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc031",
-        "mainActivitySector": "Charity and voluntary work",
+        "activitySector": "Charity and voluntary work",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Pets savers of Toulouse",
         "position": "Manager",
@@ -88,7 +88,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc040",
-        "mainActivitySector": "Creative arts and design",
+        "activitySector": "Creative arts and design",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Beaux-arts",
         "position": "Designer",
@@ -120,7 +120,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc032",
-        "mainActivitySector": "Law",
+        "activitySector": "Law",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Pearson & Pearson",
         "position": "Business Lawyer",
@@ -145,7 +145,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc033",
-        "mainActivitySector": "Media and internet",
+        "activitySector": "Media and internet",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Google",
         "position": "In charge of commercials in Europe",
@@ -170,7 +170,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc034",
-        "mainActivitySector": "Media and internet",
+        "activitySector": "Media and internet",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Self-employed",
         "position": "travel vlogger",
@@ -197,7 +197,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc035",
-        "mainActivitySector": "Engineering and manufacturing",
+        "activitySector": "Engineering and manufacturing",
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Retired",
         "position": "Retired",
@@ -216,7 +216,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc036",
-        "mainActivitySector": "Information technologies",
+        "activitySector": "Information technologies",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "Facebook",
         "position": "Freelancer",
@@ -239,7 +239,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc037",
-        "mainActivitySector": "Accountancy, banking and finance",
+        "activitySector": "Accountancy, banking and finance",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "BNP Paribas",
         "position": "Accountant",
@@ -262,7 +262,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc038",
-        "mainActivitySector": "Creative arts and design",
+        "activitySector": "Creative arts and design",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "Arts",
         "position": "Designer",
@@ -289,7 +289,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc039",
-        "mainActivitySector": "Student or learning",
+        "activitySector": "Student or learning",
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "Paul Sabatier",
         "position": "Physics students",

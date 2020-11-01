@@ -384,6 +384,12 @@
         },
         "billing": {
             "contractType": "premium"
-        }
+        },
+        "messages": [
+            {
+                "from": "5c8a1d5b0190b214360dc039",
+                "text": "Hello world"
+            }
+        ]
     }
 ]

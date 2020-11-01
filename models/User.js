@@ -4,7 +4,24 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // A user might have a linkedin connection so he doesn't need to have firstName, 
-// lastName, email, password in the db. 
+// lastName, email, password in the db.
+
+/* messages: {
+    type: [{
+        from: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'user'
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now
+        },
+        text: {
+            type: String
+        }
+    }],
+    select: false
+} */
 
 const UserSchema = new mongoose.Schema({
     role: {
@@ -55,25 +72,15 @@ const UserSchema = new mongoose.Schema({
                 type: Date,
                 default: Date.now
             },
-            text: {
-                type: String
-            }
+            text: String
         }
     ],
-    cwpoints: {
-        type: Number
-    },
+    cwpoints: Number,
     stats: {
         seniority: {
-            lastEnteredAt: {
-                type: Date
-            },
-            lastLeftAt: {
-                type: Date
-            },
-            totalTimeSpentInCW: {
-                type: Number
-            }
+            lastEnteredAt: Date,
+            lastLeftAt: Date,
+            totalTimeSpentInCW: Number
         }
     },
     electricityConsumptionLogs: [
@@ -82,9 +89,7 @@ const UserSchema = new mongoose.Schema({
                 type: Date,
                 default: Date.now
             },
-            value: {
-                type: Number
-            }
+            value: Number
         }
     ],
     billing: {
@@ -98,9 +103,7 @@ const UserSchema = new mongoose.Schema({
                     type: Date,
                     default: Date.now
                 },
-                amount: {
-                    type: Number
-                }
+                amount: Number
             }
         ]
     },
@@ -108,6 +111,24 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+});
+
+//Reverse populate with Profile and Room virtuals
+UserSchema.virtual('profile', {
+    ref: 'Profile',
+    localField: '_id',
+    foreignField: 'user',
+    justOne: true
+});
+
+UserSchema.virtual('room', {
+    ref: 'Room',
+    localField: '_id',
+    foreignField: 'users.user',
+    justOne: true
 });
 
 

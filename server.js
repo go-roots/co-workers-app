@@ -2,9 +2,11 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
+const path = require('path');
 const errorHandler = require('./middlewares/error');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const fileupload = require('express-fileupload');
 const connectDB = require('./config/db');
 
 //load env vars
@@ -15,6 +17,8 @@ connectDB();
 
 //import routes
 const auth = require('./routes/auth');
+const profiles = require('./routes/profiles');
+const Room = require('./models/Room'); //This is just for populating user
 
 //Initialize express
 const app = express();
@@ -30,14 +34,21 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan('dev'));
 }
 
+//File uploading
+app.use(fileupload());
+
 // Enable cross-origin ressource sharing (default is same origin policy) 
 app.use(cors());
 
 //Mount routers
 app.use('/api/cw-api/auth', auth);
+app.use('/api/cw-api/profiles', profiles);
 
 //Error handling middleware
 app.use(errorHandler);
+
+//Set static folder (accessible in the url through localhost:port/public/...)
+app.use(express.static(path.join(__dirname, 'public')));
 
 // By default NODE_ENV is set to development
 const PORT = process.env.PORT || 5000;
