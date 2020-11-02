@@ -7,11 +7,7 @@ const ProfileSchema = new mongoose.Schema({
         ref: 'user',
         unique: true
     },
-<<<<<<< HEAD
-    mainActivitySector: {
-=======
     activitySector: {
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         type: String,
         required: [true, 'Please, select an activity sector']
     },

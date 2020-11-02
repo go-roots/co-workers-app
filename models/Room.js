@@ -11,8 +11,6 @@ const RoomSchema = new mongoose.Schema({
         type: Number,
         unique: true
     },
-<<<<<<< HEAD
-=======
     image: {
         type: String,
         match: [
@@ -20,7 +18,6 @@ const RoomSchema = new mongoose.Schema({
             'Please add a valid photo url'
         ]
     },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     users: [
         {
             user: {

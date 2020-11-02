@@ -6,18 +6,9 @@ Indeed, the default error handling tool in express render html*/
 const errorHandler = (err, req, res, next) => {
     let error = { ...err };
 
-<<<<<<< HEAD
-    //Typically here, if the error is not CastError, we gonna have the default err message
-    error.message = err.message;
-
-    //log to console for dev
-    console.log(err);
-    console.log(err.name);
-=======
     error.message = err.message;
 
     console.log(err.message);
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
 
     //Mongoose bad ObjectId
     if (err.name == 'CastError') {
