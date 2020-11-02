@@ -33,6 +33,7 @@ const UserSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user'
     },
+    linkedin: String,
     firstName: {
         type: String,
         required: true

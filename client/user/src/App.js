@@ -10,6 +10,7 @@ import Routes from './components/routing/Routes';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Loading from './components/layout/Loading';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path='/' component={Landing} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
+        <Route exact path='/loading' component={Loading} />
         <Route component={Routes} />
       </Switch>
     </Router>

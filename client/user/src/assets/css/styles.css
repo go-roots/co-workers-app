@@ -53,6 +53,19 @@ html {
   margin-bottom: 200px;
 }
 
+#loading-screen {
+  width: 200px;
+  height: 200px;
+  
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+    
+  margin: auto;
+}
+
 /* Navbar */
 
 .navbar-light .navbar-brand {

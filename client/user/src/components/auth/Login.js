@@ -17,7 +17,7 @@ const Login = props => {
                         <a
                             className="btn"
                             role="button"
-                            href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&amp;state=s95bid7c9z9UC3B9bcdczu90ngg&amp;scope=r_liteprofile%20w_member_social%20r_emailaddress&amp;client_id=78c26netqagx2n&amp;redirect_uri=https%3A%2F%2Fshy-surf-2412.bss.design%2Fdashboard.html"
+                            href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&amp;state=s95bid7c9z9UC3B9bcdczu90ngg&amp;scope=r_liteprofile%20w_member_social%20r_emailaddress&amp;client_id=78c26netqagx2n&amp;redirect_uri=https%3A%2F%2Fco-workers.herokuapp.com%2Floading"
                         >
                             <img alt='' src={connectLinkedin} />
                         </a>
