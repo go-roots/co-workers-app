@@ -2,6 +2,7 @@ import React from 'react'
 
 const Comments = () => {
     return (
+<<<<<<< HEAD
         <div className="row">
             <div className="col responsive-margin">
                 <div className="d-flex flex-column justify-content-start" id="profile-user-recommendations">
@@ -25,6 +26,10 @@ const Comments = () => {
                     </div>
                 </div>
             </div>
+=======
+        <div>
+            Comments
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         </div>
     )
 }

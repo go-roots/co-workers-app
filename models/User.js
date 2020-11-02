@@ -4,7 +4,28 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // A user might have a linkedin connection so he doesn't need to have firstName, 
+<<<<<<< HEAD
 // lastName, email, password in the db. 
+=======
+// lastName, email, password in the db.
+
+/* messages: {
+    type: [{
+        from: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'user'
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now
+        },
+        text: {
+            type: String
+        }
+    }],
+    select: false
+} */
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
 
 const UserSchema = new mongoose.Schema({
     role: {
@@ -55,6 +76,7 @@ const UserSchema = new mongoose.Schema({
                 type: Date,
                 default: Date.now
             },
+<<<<<<< HEAD
             text: {
                 type: String
             }
@@ -74,6 +96,34 @@ const UserSchema = new mongoose.Schema({
             totalTimeSpentInCW: {
                 type: Number
             }
+=======
+            text: String
+        }
+    ],
+    cwpoints: {
+        current: Number,
+        history: [
+            {
+                date: {
+                    type: Date,
+                    default: Date.now
+                },
+                value: Number,
+                description: String
+            }
+        ]
+    },
+    rfid: {
+        type: String,
+        unique: true,
+        sparse: true
+    },
+    stats: {
+        seniority: {
+            lastEnteredAt: Date,
+            lastLeftAt: Date,
+            totalTimeSpentInCW: Number
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         }
     },
     electricityConsumptionLogs: [
@@ -82,9 +132,13 @@ const UserSchema = new mongoose.Schema({
                 type: Date,
                 default: Date.now
             },
+<<<<<<< HEAD
             value: {
                 type: Number
             }
+=======
+            value: Number
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         }
     ],
     billing: {
@@ -98,9 +152,13 @@ const UserSchema = new mongoose.Schema({
                     type: Date,
                     default: Date.now
                 },
+<<<<<<< HEAD
                 amount: {
                     type: Number
                 }
+=======
+                amount: Number
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
             }
         ]
     },
@@ -108,6 +166,27 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+<<<<<<< HEAD
+=======
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+});
+
+//Reverse populate with Profile and Room virtuals
+UserSchema.virtual('profile', {
+    ref: 'Profile',
+    localField: '_id',
+    foreignField: 'user',
+    justOne: true
+});
+
+UserSchema.virtual('room', {
+    ref: 'Room',
+    localField: '_id',
+    foreignField: 'users.user',
+    justOne: true
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
 });
 
 

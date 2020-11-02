@@ -14,7 +14,20 @@
         "email": "john@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 50,
+=======
+        "rfid": "12345",
+        "cwpoints": {
+            "current": 50,
+            "history": [
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 36000
@@ -41,7 +54,20 @@
         "email": "kevin@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 500,
+=======
+        "rfid": "123456",
+        "cwpoints": {
+            "current": 500,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 360000
@@ -74,7 +100,28 @@
         "email": "mary@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 1000,
+=======
+        "rfid": "1234567",
+        "cwpoints": {
+            "current": 1000,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 7200000
@@ -110,7 +157,32 @@
         "email": "sasha@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 100,
+=======
+        "rfid": "12345678",
+        "cwpoints": {
+            "current": 900,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 10000
@@ -127,7 +199,35 @@
         "email": "greg@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 200,
+=======
+        "cwpoints": {
+            "current": 200,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                },
+                {
+                    "value": 75,
+                    "description": "3 months green behaviour streak  !"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 720000
@@ -154,7 +254,36 @@
         "email": "derek@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 1000,
+=======
+        "rfid": "23456789",
+        "cwpoints": {
+            "current": 1000,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                },
+                {
+                    "value": 75,
+                    "description": "3 months green behaviour streak  !"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 3600000
@@ -193,7 +322,35 @@
         "email": "steph@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 1500,
+=======
+        "cwpoints": {
+            "current": 1500,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                },
+                {
+                    "value": 75,
+                    "description": "3 months green behaviour streak  !"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 540000
@@ -238,7 +395,35 @@
         "email": "jerry@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 300,
+=======
+        "cwpoints": {
+            "current": 300,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                },
+                {
+                    "value": 75,
+                    "description": "3 months green behaviour streak  !"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 90561
@@ -277,7 +462,36 @@
         "email": "maggie@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 250,
+=======
+        "rfid": "84567801",
+        "cwpoints": {
+            "current": 250,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                },
+                {
+                    "value": 75,
+                    "description": "3 months green behaviour streak  !"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 18561
@@ -316,7 +530,36 @@
         "email": "barry@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 2000,
+=======
+        "rfid": "24517801",
+        "cwpoints": {
+            "current": 2000,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                },
+                {
+                    "value": 75,
+                    "description": "3 months green behaviour streak  !"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 11111
@@ -343,7 +586,35 @@
         "email": "ryan@gmail.com",
         "role": "user",
         "password": "testtest",
+<<<<<<< HEAD
         "cwpoints": 300,
+=======
+        "cwpoints": {
+            "current": 300,
+            "history": [
+                {
+                    "value": 200,
+                    "description": "Helped Franck on #Front-end-developper"
+                },
+                {
+                    "value": 100,
+                    "description": "helped Jorgo on #MachineLearning"
+                },
+                {
+                    "value": 100,
+                    "description": "Helped in organizing the halloween party"
+                },
+                {
+                    "value": 75,
+                    "description": "Recommended Daiqiao on #Bizagi"
+                },
+                {
+                    "value": 75,
+                    "description": "3 months green behaviour streak  !"
+                }
+            ]
+        },
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 33561
@@ -384,6 +655,16 @@
         },
         "billing": {
             "contractType": "premium"
+<<<<<<< HEAD
         }
+=======
+        },
+        "messages": [
+            {
+                "from": "5c8a1d5b0190b214360dc039",
+                "text": "Hello world"
+            }
+        ]
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     }
 ]

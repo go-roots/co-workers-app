@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import graph from '../../assets/img/graph-consumption.png'
 
 const Graph = () => {
@@ -9,6 +10,14 @@ const Graph = () => {
             <img className="img-fluid" src={graph}/>
         </div>
     </div>
+=======
+
+const Graph = () => {
+    return (
+        <div>
+            Graph
+        </div>
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Recommend = () => {
+<<<<<<< HEAD
     return (        
             <div className="col">
                 <ul className="list-group">
@@ -10,6 +11,12 @@ const Recommend = () => {
                 </ul>
             </div>
         
+=======
+    return (
+        <div>
+            Recommend
+        </div>
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     )
 }
 

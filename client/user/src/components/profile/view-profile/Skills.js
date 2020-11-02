@@ -2,6 +2,7 @@ import React from 'react'
 
 const Skills = () => {
     return (
+<<<<<<< HEAD
   
             <div className="col d-flex flex-column justify-content-center align-items-center profile-skill-bio-container">
                 <header>
@@ -11,6 +12,11 @@ const Skills = () => {
             </div>
             
     
+=======
+        <div>
+            Skills
+        </div>
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     )
 }
 

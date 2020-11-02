@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import shooping from '../../assets/img/shooping-bag.png'
 import straw from '../../assets/img/steel-straw.jpg'
 import mug from '../../assets/img/steel-mug.png'
@@ -39,6 +40,14 @@ const Products = () => {
             </div>
         </div>
     </div>
+=======
+
+const Products = () => {
+    return (
+        <div>
+            Products
+        </div>
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     )
 }
 

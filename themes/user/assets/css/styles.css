@@ -280,8 +280,12 @@ html {
   padding-bottom: 30px;
 }
 
+<<<<<<< HEAD
 #people-inner-container {
   overflow: scroll;
+=======
+#people-container {
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
   height: 50vh;
   border-radius: 20px;
   border-style: dotted;
@@ -294,11 +298,29 @@ html {
 }
 
 @media (min-width: 992px) {
+<<<<<<< HEAD
   #people-inner-container {
+=======
+  #people-container {
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     height: 70vh !important;
   }
 }
 
+<<<<<<< HEAD
+=======
+#people-body {
+  overflow: scroll !important;
+  height: 35vh;
+}
+
+@media (min-width: 992px) {
+  #people-body {
+    height: 55vh;
+  }
+}
+
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
 .social-dropdown {
   padding-right: 5px;
 }

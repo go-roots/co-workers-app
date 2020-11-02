@@ -2,6 +2,7 @@ import React from 'react'
 
 const Awards = () => {
     return (
+<<<<<<< HEAD
         <div className="row" style="margin-bottom: 15px;">
             <div className="col d-flex flex-column profile-skill-bio-container">
                 <header>
@@ -27,6 +28,10 @@ const Awards = () => {
                     </li>
                 </ul>
             </div>
+=======
+        <div>
+            Awards
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         </div>
     )
 }

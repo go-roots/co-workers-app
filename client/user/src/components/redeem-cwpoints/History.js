@@ -2,6 +2,7 @@ import React from 'react'
 
 const History = () => {
     return (
+<<<<<<< HEAD
         <div className="col responsive-margin">
         <ul className="list-group">
           <li className="list-group-item"><span>200 cwp : Helped in organizing the halloween party</span></li>
@@ -15,6 +16,11 @@ const History = () => {
           </li>
         </ul>
       </div>
+=======
+        <div>
+            History
+        </div>
+>>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     )
 }
 
