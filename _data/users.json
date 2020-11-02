@@ -1,0 +1,389 @@
+[
+    {
+        "_id": "5d7a514b5d2c12c7449be042",
+        "firstName": "admin",
+        "lastName": "admin",
+        "email": "admin@gmail.com",
+        "role": "admin",
+        "password": "testtest"
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be045",
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 50,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 36000
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 100
+            }
+        ],
+        "billing": {
+            "contractType": "standard",
+            "bills": [
+                {
+                    "amount": 15
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be046",
+        "lastName": "Kevin",
+        "firstName": "Smith",
+        "email": "kevin@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 500,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 360000
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 100
+            },
+            {
+                "value": 150
+            },
+            {
+                "value": 100
+            }
+        ],
+        "billing": {
+            "contractType": "premium",
+            "bills": [
+                {
+                    "amount": 25
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc031",
+        "lastName": "Mary",
+        "firstName": "Williams",
+        "email": "mary@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 1000,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 7200000
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 100
+            },
+            {
+                "value": 150
+            },
+            {
+                "value": 100
+            },
+            {
+                "value": 200
+            }
+        ],
+        "billing": {
+            "contractType": "standard",
+            "bills": [
+                {
+                    "amount": 10
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc032",
+        "lastName": "Sasha",
+        "firstName": "Ryan",
+        "email": "sasha@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 100,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 10000
+            }
+        },
+        "billing": {
+            "contractType": "standard"
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc033",
+        "firstName": "Greg",
+        "lastName": "Harris",
+        "email": "greg@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 200,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 720000
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 50
+            }
+        ],
+        "billing": {
+            "contractType": "standard",
+            "bills": [
+                {
+                    "amount": 10
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc034",
+        "firstName": "Derek",
+        "lastName": "Glover",
+        "email": "derek@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 1000,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 3600000
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 75
+            },
+            {
+                "value": 150
+            },
+            {
+                "value": 100
+            }
+        ],
+        "billing": {
+            "contractType": "standard",
+            "bills": [
+                {
+                    "amount": 10
+                },
+                {
+                    "amount": 13
+                },
+                {
+                    "amount": 14
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc035",
+        "firstName": "Stephanie",
+        "lastName": "Hanson",
+        "email": "steph@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 1500,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 540000
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 75
+            },
+            {
+                "value": 110
+            },
+            {
+                "value": 90
+            },
+            {
+                "value": 45
+            }
+        ],
+        "billing": {
+            "contractType": "standard",
+            "bills": [
+                {
+                    "amount": 10
+                },
+                {
+                    "amount": 13
+                },
+                {
+                    "amount": 14
+                },
+                {
+                    "amount": 12
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc036",
+        "firstName": "Jerry",
+        "lastName": "Wiliams",
+        "email": "jerry@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 300,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 90561
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 75
+            },
+            {
+                "value": 113
+            },
+            {
+                "value": 99
+            }
+        ],
+        "billing": {
+            "contractType": "premium",
+            "bills": [
+                {
+                    "amount": 20
+                },
+                {
+                    "amount": 23
+                },
+                {
+                    "amount": 24
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc037",
+        "firstName": "Maggie",
+        "lastName": "Johnson",
+        "email": "maggie@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 250,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 18561
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 75
+            },
+            {
+                "value": 13
+            },
+            {
+                "value": 118
+            }
+        ],
+        "billing": {
+            "contractType": "standard",
+            "bills": [
+                {
+                    "amount": 20
+                },
+                {
+                    "amount": 19
+                },
+                {
+                    "amount": 14
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc038",
+        "firstName": "Barry",
+        "lastName": "Dickens",
+        "email": "barry@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 2000,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 11111
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 75
+            }
+        ],
+        "billing": {
+            "contractType": "premium",
+            "bills": [
+                {
+                    "amount": 25
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc039",
+        "firstName": "Ryan",
+        "lastName": "Bolin",
+        "email": "ryan@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 300,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 33561
+            }
+        },
+        "electricityConsumptionLogs": [
+            {
+                "value": 75
+            },
+            {
+                "value": 60
+            }
+        ],
+        "billing": {
+            "contractType": "standard",
+            "bills": [
+                {
+                    "amount": 15
+                },
+                {
+                    "amount": 15
+                }
+            ]
+        }
+    },
+    {
+        "_id": "5c8a1d5b0190b214360dc040",
+        "firstName": "Sara",
+        "lastName": "Kensing",
+        "email": "sara@gmail.com",
+        "role": "user",
+        "password": "testtest",
+        "cwpoints": 0,
+        "stats": {
+            "seniority": {
+                "totalTimeSpentInCW": 1800
+            }
+        },
+        "billing": {
+            "contractType": "premium"
+        }
+    }
+]

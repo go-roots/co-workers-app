@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CO-workers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aguafina+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asul:400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
+    <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><a class="navbar-brand" href="#">
+<img src="assets/img/logo_medium.svg" alt="logo"/></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">My Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consumption.html">My Consumption</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social.html">Social</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cw-points.html">My CW Points</a></li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="btn btn-outline-success nav-login" href="login.html">LOGIN</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-success nav-login" href="register.html">REGISTER</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-7 col-xl-7" style="padding: 10px;">
+                    <div class="card-group">
+                        <div class="card vh-container" id="social-profile-inside"><img class="card-img-top w-100 d-block" src="assets/img/profile-image.png">
+                            <div id="profile-info">
+                                <p>Polar Bear</p>
+                                <p>polar.bear2020@gmail.com</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between align-items-baseline status-info">
+                                <p class="profile-status">Current status</p>
+                                <div class="dropdown current-status-dropdown"><button class="btn text-info d-flex flex-row-reverse align-items-center" data-toggle="dropdown" aria-expanded="false" type="button">Select your status</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Do not disturb</a><a class="dropdown-item" href="#">Invisible</a><a class="dropdown-item" href="#">Available</a></div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between align-items-baseline status-info">
+                                <p class="profile-status">Mood</p>
+                                <div class="dropdown current-status-dropdown"><button class="btn text-info d-flex flex-row-reverse align-items-center" data-toggle="dropdown" aria-expanded="false" type="button">Select your mood</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Prefer to stay alone</a><a class="dropdown-item" href="#">Feeling sociable</a><a class="dropdown-item" href="#">Willing to help others</a></div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between align-items-baseline status-info">
+                                <p class="profile-status">Stories</p><textarea placeholder="Tell to others what you are working on"></textarea></div>
+                            <div class="card-body">
+                                <h4 class="card-title">Bio</h4>
+                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus...</p><a class="btn text-info border rounded-0" role="button"
+                                    href="#" data-toggle="modal" data-target="#edit-profile-modal">Edit profile</a></div>
+                        </div>
+                        <div class="card vh-container">
+                            <div class="card-body">
+                                <h4 class="card-title">Notifications</h4>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex flex-column help-request-notif"><img class="notif-image" src="assets/img/notif-profile-picture.jpg">
+                                        <p class="notif-text-button">Jorgo sent you a help request.</p><button class="btn btn-warning btn-sm text-nowrap align-self-center notif-button" type="button">Help!</button></li>
+                                    <li class="list-group-item d-flex flex-column event-notif"><img class="notif-image" src="assets/img/notif-halloween-event.jpg">
+                                        <p class="notif-text-button">Halloween party !</p><button class="btn btn-warning btn-sm text-nowrap align-self-center notif-button" type="button">Go!</button></li>
+                                    <li class="list-group-item d-flex flex-column friend-request-notif"><img class="notif-image" src="assets/img/notif-profile-picture.jpg">
+                                        <p class="notif-text-button">Paul wants to be your friend.</p>
+                                        <div class="d-flex flex-row justify-content-around"><button class="btn btn-success btn-sm text-nowrap notif-button" type="button">Accept</button><button class="btn btn-danger btn-sm text-nowrap notif-button" type="button">Decline</button></div>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column friend-request-notif"><img class="notif-image" src="assets/img/notif-profile-picture.jpg">
+                                        <p class="notif-text-button">Ilya wants to be your friend.</p>
+                                        <div class="d-flex flex-row justify-content-around"><button class="btn btn-success btn-sm text-nowrap notif-button" type="button">Accept</button><button class="btn btn-danger btn-sm text-nowrap notif-button" type="button">Decline</button></div>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column friend-request-notif"><img class="notif-image" src="assets/img/notif-profile-picture.jpg">
+                                        <p class="notif-text-button">You asked Shradda for help. Feel free to leave a comment on her profile and recommend her skills !</p>
+                                        <div class="text-center"><button class="btn btn-info btn-sm notif-button" type="submit">Go to profile</button></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" role="dialog" tabindex="-1" id="edit-profile-modal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body" id="edit-profile-container"><small>* = required field</small>
+<form class="form">
+    <div class="form-group">
+        <select class="profile-inputs" name="activity-sector">
+            <option value="0">* Select your main activity-sector</option>
+            <option value="Accountancy, banking and finance">Accountancy, banking and finance</option>
+            <option value="Business, consulting and management">Business, consulting and management</option>
+            <option value="Charity and voluntary work">Charity and voluntary work</option>
+            <option value="Creative arts and design">Creative arts and design</option>
+            <option value="Student or Learning">Student or Learning</option>
+            <option value="Instructor or Teacher">Instructor or Teacher</option>
+            <option value="Energy and utilities">Energy and utilities</option>
+            <option value="Engineering and manufacturing">Engineering and manufacturing</option>
+            <option value="Environement and agriculture">Environement and agriculture</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Hospitality and events management">Hospitality and events management</option>
+            <option value="Information technologies">Information technologies</option>
+            <option value="Law">Law</option>
+            <option value="Leisure, sport and tourism">Leisure, sport and tourism</option>
+            <option value="Marketing, advertising and PR">Marketing, advertising and PR</option>
+            <option value="Media and internet">Media and internet</option>
+            <option value="Recruitement and retailement">Recruitement and retailement</option>
+            <option value="HR">HR</option>
+            <option value="Sales">Sales</option>
+            <option value="Science and pharmaceuticals">Science and pharmaceuticals</option>
+            <option value="Social care">Social care</option>
+            <option value="Transportation and logistics">Transportation and logistics</option>
+        </select>
+        <small class="form-text">Give us an idea of your field of work</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="file" onchange="handleFiles(files,preview);" name="userfile" id="photo"
+            size="20">
+        <small class="form-text">Select a photo from your local files</small>
+        <input class="profile-inputs" type="text" name="webPhoto" id="photo2" size="20"
+            placeholder="http://website.com/someImage.jpg">
+        <small class="form-text">Or from the web...</small>
+        <div>
+            <label for="photo">
+                <div id="preview"></div>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="* Company" name="company" />
+        <small class="form-text">Could be your own company or one you work for</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="Position" name="position" />
+        <small class="form-text">Your position in the above-mentioned company</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="Website" name="website" />
+        <small class="form-text">Could be your own or a company website</small>
+    </div>
+    <div class="form-group">
+        <input class="profile-inputs" type="text" placeholder="* Skills" name="skills" />
+        <small class="form-text">Please use comma separated values (eg.
+            advertisement,e-commerce,teaching,front-end-web-development)</small>
+    </div>
+    <div class="form-group">
+        <textarea placeholder="A short bio of yourself" rows="5" cols="50" name="bio"
+            style="margin-top: 10px;"></textarea>
+        <small class="form-text">Tell us a little about yourself</small>
+    </div>
+
+    <div id="social-networks-toggler">
+        <button type="button" class="btn btn-light">
+            Add Social Network Links
+        </button>
+        <span>Optional</span>
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-twitter fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Twitter URL" name="twitter" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-facebook fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Facebook URL" name="facebook" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-youtube fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="YouTube URL" name="youtube" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-linkedin fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Linkedin URL" name="linkedin" />
+    </div>
+
+    <div class="form-group social-input">
+        <i class="fab fa-instagram fa-2x"></i>
+        <input class="profile-inputs" type="text" placeholder="Instagram URL" name="instagram" />
+    </div>
+</form></div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Save</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-xl-5">
+                    <div class="container">
+                        <div class="row vh-container">
+                            <div class="col responsive-padding" style="margin-bottom: 20px;"><button class="btn btn-outline-primary btn-block btn-lg header-msg-friends" data-toggle="tooltip" data-bs-tooltip="" type="button" title="Messages"><i class="typcn typcn-messages" style="font-size: 30px;" title="Messages"></i></button>
+                                <div
+                                    class="border border-primary friends-msg-container">
+                                    <div class="d-flex flex-row justify-content-between msg-item border border-bottom">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <p class="msg-name">Paul</p>
+                                            <p class="msg-date">2 days ago</p>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center align-items-center msg-content">
+                                            <p class="lead">Hey, do you think we will need a video projector for the next meeting ?</p>
+                                            <div class="dropdown"><button class="btn btn-primary" data-toggle="dropdown" aria-expanded="false" type="button"><i class="icon-envelope-letter"></i></button>
+                                                <div class="dropdown-menu"><a class="dropdown-item answer-msg" href="#">Answer</a><a class="dropdown-item delete-msg bg-danger" href="#">Delete</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between msg-item border border-bottom">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <p class="msg-name">Jorgo</p>
+                                            <p class="msg-date">3 minutes ago</p>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center align-items-center msg-content">
+                                            <p class="lead">Are you up for a coffee-break ?</p>
+                                            <div class="dropdown"><button class="btn btn-primary" data-toggle="dropdown" aria-expanded="false" id="action-message-1" type="button"><i class="icon-envelope-letter"></i></button>
+                                                <div class="dropdown-menu"><a class="dropdown-item answer-msg" href="#">Answer</a><a class="dropdown-item delete-msg bg-danger" href="#">Delete</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 responsive-padding"><button class="btn btn-outline-info btn-block btn-lg header-msg-friends" data-toggle="tooltip" data-bs-tooltip="" type="button" title="Friends"><i class="icon-people" style="font-size: 30px;" title="Friends"></i></button>
+                            <div class="d-flex flex-column justify-content-start align-items-center border border-info friends-msg-container">
+                                <div class="dropdown"><button class="btn btn-lg friends-item" data-toggle="dropdown" aria-expanded="false" type="button">Jorgo&nbsp;</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">View profile</a><a class="dropdown-item" href="#">Send message</a><a class="dropdown-item" href="#">Locate</a><a class="dropdown-item" href="#">Delete friend</a></div>
+                                </div>
+                                <div class="dropdown"><button class="btn btn-lg friends-item" data-toggle="dropdown" aria-expanded="false" type="button">Nicolas&nbsp;</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">View profile</a><a class="dropdown-item" href="#">Send message</a><a class="dropdown-item" href="#">Locate</a><a class="dropdown-item" href="#">Delete friend</a></div>
+                                </div>
+                                <div class="dropdown"><button class="btn btn-lg friends-item" data-toggle="dropdown" aria-expanded="false" type="button">Daiqiao&nbsp;</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">View profile</a><a class="dropdown-item" href="#">Send message</a><a class="dropdown-item" href="#">Locate</a><a class="dropdown-item" href="#">Delete friend</a></div>
+                                </div>
+                                <div class="dropdown"><button class="btn btn-lg friends-item" data-toggle="dropdown" aria-expanded="false" type="button">Laurent&nbsp;</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">View profile</a><a class="dropdown-item" href="#">Send message</a><a class="dropdown-item" href="#">Locate</a><a class="dropdown-item" href="#">Delete friend</a></div>
+                                </div>
+                                <div class="dropdown"><button class="btn btn-lg friends-item" data-toggle="dropdown" aria-expanded="false" type="button">Shradda&nbsp;</button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">View profile</a><a class="dropdown-item" href="#">Send message</a><a class="dropdown-item" href="#">Locate</a><a class="dropdown-item" href="#">Delete friend</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">CO workers © 2020</p>
+        </footer>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="del-msg-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this message ?</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button">Delete</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="answer-msg-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Jorgo</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body d-flex flex-column"><em class="italic-small">Are you up for a coffee-break ?</em><textarea class="response-msg-modal" style="font-size: 1rem;"></textarea></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init-1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
+    <script src="assets/js/profile-photo-preview.js"></script>
+    <script src="assets/js/tooltips-triggers.js"></script>
+</body>
+
+</html>

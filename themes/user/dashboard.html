@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CO-workers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aguafina+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asul:400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
+    <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><a class="navbar-brand" href="#">
+<img src="assets/img/logo_medium.svg" alt="logo"/></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">My Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consumption.html">My Consumption</a></li>
+                    <li class="nav-item"><a class="nav-link" href="social.html">Social</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cw-points.html">My CW Points</a></li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="btn btn-outline-success nav-login" href="login.html">LOGIN</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-success nav-login" href="register.html">REGISTER</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="main container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-8 offset-sm-0 offset-md-0 offset-xl-0 text-center">
+                <div id="map-container"></div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3 col-xl-4 offset-xl-0 d-flex flex-column">
+                <div id="people-inner-container" class="responsive-margin">
+                    <div class="d-flex flex-row justify-content-between align-items-start filters-container" id="people-header">
+                        <div class="d-flex flex-column justify-content-center align-items-center" id="help-request"><i class="la la-lightbulb-o" data-toggle="tooltip" data-bs-tooltip="" style="color: rgb(255,255,0);font-size: 15px;padding-top: 5px;"></i><i class="fa fa-group" data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"
+                                style="padding: 0px;padding-right: 10px;padding-bottom: 5px;padding-left: 10px;"></i></div>
+                        <div class="dropdown social-dropdown"><button class="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button" data-toggle="dropdown" aria-expanded="false" type="button">I want to see...&nbsp;</button>
+                            <div class="dropdown-menu"><a class="dropdown-item" href="#">Available</a><a class="dropdown-item" href="#">Friends</a><a class="dropdown-item" href="#">Peers</a></div>
+                        </div>
+                        <div class="modal fade" role="dialog" tabindex="-1" id="help-request-modal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Help request</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                    <div class="modal-body">
+                                        <form class="modal-form" style="font-size: 1rem;">
+                                            <div class="form-group"><label>Send help request to ...</label>
+                                                <div class="dropdown social-dropdown"><button class="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button" data-toggle="dropdown" aria-expanded="false" type="button">I want to see...&nbsp;</button>
+                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Available</a><a class="dropdown-item" href="#">Friends</a><a class="dropdown-item" href="#">Peers</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group"><label>Explain your problem in a few words</label><textarea class="form-control"></textarea></div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-available" data-toggle="tooltip" data-bs-tooltip="" title="available"></i><a class="dashboard-name-link" href="profile.html">Nicolas Cage</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="fas fa-user-minus mood-status-icon" data-toggle="tooltip" data-bs-tooltip="" title="Prefer to stay alone"></i><i class="icon ion-help-buoy ask-help-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"></i>
+                            <i
+                                class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-available" data-toggle="tooltip" data-bs-tooltip="" title="Available"></i><a class="dashboard-name-link" href="profile.html">Laurent Perrussel</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="fas fa-user-plus mood-status-icon" data-toggle="tooltip" data-bs-tooltip="" title="Feeling social"></i><i class="icon ion-help-buoy ask-help-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"></i>
+                            <i
+                                class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-available" data-toggle="tooltip" data-bs-tooltip="" title="Available"></i><a class="dashboard-name-link" href="profile.html">Daiqiao</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="fas fa-user-plus mood-status-icon" data-toggle="tooltip" data-bs-tooltip="" title="Feeling social"></i><i class="icon ion-help-buoy ask-help-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"></i>
+                            <i
+                                class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-dnd" data-toggle="tooltip" data-bs-tooltip="" title="DND"></i><a class="dashboard-name-link" href="profile.html">Paul</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="fas fa-user-plus add-friend-icon" data-toggle="tooltip" data-bs-tooltip="" title="Feeling social"></i><i class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-available" data-toggle="tooltip" data-bs-tooltip="" title="Available"></i><a class="dashboard-name-link" href="profile.html">Shradda</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="material-icons mood-status-icon" data-toggle="tooltip" data-bs-tooltip="" title="Willing to help others">accessibility</i><i class="icon ion-help-buoy ask-help-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"></i>
+                            <i
+                                class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-available" data-toggle="tooltip" data-bs-tooltip="" title="DND"></i><a class="dashboard-name-link" href="profile.html">Jorgo</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="material-icons mood-status-icon" data-toggle="tooltip" data-bs-tooltip="" title="Willing to help others">accessibility</i><i class="icon ion-help-buoy ask-help-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"></i>
+                            <i
+                                class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-invisible" data-toggle="tooltip" data-bs-tooltip="" title="Invisible"></i><a class="dashboard-name-link" href="profile.html">Ilya</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="fas fa-user-minus mood-status-icon" data-toggle="tooltip" data-bs-tooltip="" title="Prefer to stay alone"></i><i class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-dnd" data-toggle="tooltip" data-bs-tooltip="" title="Available"></i><a class="dashboard-name-link" href="profile.html">Lonely Panda</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="fas fa-user-minus mood-status-icon" data-toggle="tooltip" data-bs-tooltip="" title="Prefer to stay alone"></i><i class="fa fa-comment-o comment-icon" data-toggle="tooltip" data-bs-tooltip="" title="Send a message"></i></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-baseline people-inner-element">
+                        <div class="d-flex flex-row justify-content-between align-items-center"><i class="fa fa-circle user-icon-available" data-toggle="tooltip" data-bs-tooltip="" title="Available"></i><a class="dashboard-name-link" href="profile.html">Cool Monkey</a></div>
+                        <div class="d-flex flex-row align-items-baseline"><i class="fas fa-user-plus add-friend-icon"></i><i class="icon ion-help-buoy ask-help-icon"></i><i class="fa fa-comment-o comment-icon"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container-fluid recommendation-room-container">
+                    <div class="row">
+                        <div class="col">
+                            <p>Recommended rooms&nbsp;<i class="fa fa-info-circle" data-toggle="modal" data-target="#recommendation-modal"></i></p>
+                            <div class="modal fade" role="dialog" tabindex="-1" id="recommendation-modal">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Rooms recommendation</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                        <div class="modal-body">
+                                            <p>This recommendations are not an obligation, but will help you reduce your energy consumption. you can follow them or not...</p>
+                                            <p>Rooms are recommended 2 parameters : your profile's mood and your activity sector</p>
+                                        </div>
+                                        <div class="modal-footer"><button class="btn btn-primary" type="button" data-dismiss="modal">Gotcha !</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row rooms-reco-inner-container">
+                        <div class="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div class="small-image-container" style="background: url(&quot;assets/img/office-space-1744805_640.jpg&quot;) center / cover no-repeat;"></div>
+                        </div>
+                        <div class="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div class="small-image-container" style="background: url(&quot;assets/img/small-office-4837892_640.jpg&quot;) center / cover no-repeat;"></div>
+                        </div>
+                        <div class="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div class="small-image-container" style="background: url(&quot;assets/img/office-space-1744803_640.jpg&quot;) center / cover no-repeat;"></div>
+                        </div>
+                        <div class="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div class="small-image-container" style="background: url(&quot;assets/img/woman-4780153_640.jpg&quot;) center / cover no-repeat;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid recommendation-room-container">
+                    <div class="row">
+                        <div class="col d-inline-flex align-items-baseline">
+                            <p id="search-rooms-facilities-text-1">Or search rooms with facilities&nbsp;</p>
+                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Choose a facility&nbsp;</button>
+                                <div class="dropdown-menu"><a class="dropdown-item" href="#">Whiteboard</a><a class="dropdown-item" href="#">Video-projector</a><a class="dropdown-item" href="#">TV screen</a><a class="dropdown-item" href="#">Conference</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row rooms-reco-inner-container">
+                        <div class="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div class="small-image-container" style="background: url(&quot;assets/img/conference-room.jpg&quot;) center / cover no-repeat;"></div>
+                        </div>
+                        <div class="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div class="small-image-container" style="background: url(&quot;assets/img/conference-room2.jpg&quot;) center / cover no-repeat;"></div>
+                        </div>
+                        <div class="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div class="small-image-container" style="background: url(&quot;assets/img/conference-room3.jpg&quot;) center / cover no-repeat;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">CO workers © 2020</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init-1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
+    <script src="assets/js/profile-photo-preview.js"></script>
+    <script src="assets/js/tooltips-triggers.js"></script>
+</body>
+
+</html>

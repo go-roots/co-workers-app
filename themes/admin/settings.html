@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blank Page - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/typicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-success p-0">
+            <div class="container-fluid d-flex flex-column p-1"><a class="navbar-brand align-self-start sidebar-brand m-0" href="#"><img src="assets/img/logo_small.svg"></a>
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt sidebar-icon"></i><span class="sidebar-menu-text">Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="rooms.html"><i class="fas fa-table sidebar-icon"></i><span class="sidebar-menu-text">Rooms</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="users.html"><i class="fas fa-user sidebar-icon"></i><span class="sidebar-menu-text">Users</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="settings.html"><i class="fas fa-window-maximize sidebar-icon"></i><span class="sidebar-menu-text">Settings</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">John Doe</span><i class="fa fa-user-circle-o" id="nav-user-icon"></i></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <header>
+                            <h2 class="text-center">Reedemable</h2>
+                        </header>
+                        <div class="d-flex flex-column justify-content-start align-items-center" id="redeemable-container">
+                            <div class="d-flex flex-row align-items-center reedemable-element"><a class="btn" role="button" data-toggle="modal" data-target="#modify-reedemable-image"><img src="assets/img/photo-icon.png" width="200" height="150"></a>
+                                <div class="reedemable-text">
+                                    <p class="d-flex flex-row align-items-center" contenteditable="true">Coffee cup 100 cwp</p>
+                                    <p contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae libero quis odio lobortis malesuada id sed erat.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center reedemable-element"><a class="btn" role="button" data-toggle="modal" data-target="#modify-reedemable-image"><img src="assets/img/photo-icon.png" width="200" height="150"></a>
+                                <div class="reedemable-text">
+                                    <p class="d-flex flex-row align-items-center" contenteditable="true">Metal straw 200 cwp</p>
+                                    <p contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae libero quis odio lobortis malesuada id sed erat.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center reedemable-element"><a class="btn" role="button" data-toggle="modal" data-target="#modify-reedemable-image"><img src="assets/img/photo-icon.png" width="200" height="150"></a>
+                                <div class="reedemable-text">
+                                    <p class="d-flex flex-row align-items-center" contenteditable="true">Tot bag 800 cwp</p>
+                                    <p contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae libero quis odio lobortis malesuada id sed erat.</p>
+                                </div>
+                            </div><i class="fas fa-plus-circle" id="add-redeemable-icon" data-toggle="modal" data-target="#add-redeemable-modal"></i></div>
+                        <div class="modal fade" role="dialog" tabindex="-1" id="modify-reedemable-image">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Change redeemable's image</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                    <div class="modal-body d-flex flex-column align-items-start"><img src="assets/img/photo-icon.png" width="180" height="150"><label>Enter the url or a file to submit</label><input type="file"><input type="text" style="margin-top: 10px;" placeholder="http://website.com/someImage.jpg"></div>
+                                    <div
+                                        class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" role="dialog" tabindex="-1" id="add-redeemable-modal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add a redeemable</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                <div class="modal-body d-flex flex-column">
+                                    <div class="d-flex flex-column"><input type="file" id="photo" onchange="handleFiles(files,preview)" size="20"><label for="photo">Select a photo from your local files</label><input type="text" id="photo2" placeholder="http://website.com/someImage.jpg"><label>...or from a web source</label>
+                                        <div>
+                                            <div id="preview"></div>
+                                        </div>
+                                    </div>
+                                    <div id="redeemable-modal-description-container" style="padding-top: 20px;">
+                                        <div class="form-group d-flex flex-column align-items-start"><textarea></textarea><label>Description</label><input type="text"><label>Price</label></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-xl-6">
+                    <header>
+                        <h2 class="text-center">Events</h2>
+                    </header>
+                    <div class="d-flex flex-row" id="events-cards">
+                        <div class="row no-gutters" id="events-cards-container">
+                            <div class="col-xl-6">
+                                <div class="events-cards-element">
+                                    <div class="d-flex flex-column align-items-center"><a class="btn" role="button" data-toggle="modal" data-target="#modify-event-image"><img src="assets/img/photo-icon.png" width="180" height="150"></a><strong contenteditable="true">Dev night</strong></div>
+                                    <p contenteditable="true">Mauris quis augue porta, vehicula justo non, luctus lorem. Etiam bibendum aliquet orci, pretium mollis libero finibus quis.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="events-cards-element">
+                                    <div class="d-flex flex-column align-items-center"><a class="btn" role="button" data-toggle="modal" data-target="#modify-event-image"><img src="assets/img/photo-icon.png" width="180" height="150"></a><strong contenteditable="true">Halloween party</strong></div>
+                                    <p contenteditable="true">Morbi eu mauris non tellus tristique laoreet sit amet ut sem. Mauris aliquam tellus in nibh molestie consequat sed at augue.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="events-cards-element">
+                                    <div class="d-flex flex-column align-items-center"><a class="btn" role="button" data-toggle="modal" data-target="#modify-event-image"><img src="assets/img/photo-icon.png" width="180" height="150"></a><strong contenteditable="true">Chinese class</strong></div>
+                                    <p contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sodales at ipsum non fermentum.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" role="dialog" tabindex="-1" id="modify-event-image">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Change event's image</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                    <div class="modal-body d-flex flex-column align-items-start"><img src="assets/img/photo-icon.png" width="180" height="150"><label>Enter the url or a file to submit</label><input type="file"><input type="text" style="margin-top: 10px;" placeholder="http://website.com/someImage.jpg"></div>
+                                    <div
+                                        class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © CO-workers 2020</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/profile-photo-preview.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

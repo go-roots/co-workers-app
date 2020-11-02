@@ -1,0 +1,37 @@
+[
+    {
+        "type": "event",
+        "text": "Halloween party !",
+        "everyone": true,
+        "trigger": "5d7a514b5d2c12c7449be042"
+    },
+    {
+        "type": "friend-request",
+        "text": "John wants to be your friend !",
+        "receiver": "5d7a514b5d2c12c7449be046",
+        "trigger": "5d7a514b5d2c12c7449be045"
+    },
+    {
+        "type": "help-request",
+        "text": "Sasha sent you a help request",
+        "receiver": "5c8a1d5b0190b214360dc031",
+        "trigger": "5c8a1d5b0190b214360dc032"
+    },
+    {
+        "type": "post-help-request",
+        "text": "You asked Derek for help. Feel free to leave a comment on her profile and recommend her skills !",
+        "receiver": "5c8a1d5b0190b214360dc033",
+        "trigger": "5c8a1d5b0190b214360dc034"
+    },
+    {
+        "type": "recommendation-comments",
+        "text": "Greg has left a comment on your profile !",
+        "receiver": "5c8a1d5b0190b214360dc033",
+        "trigger": "5c8a1d5b0190b214360dc034"
+    },
+    {
+        "type": "awards",
+        "text": "Events: has organized 3 events",
+        "receiver": "5c8a1d5b0190b214360dc035"
+    }
+]

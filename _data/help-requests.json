@@ -1,0 +1,42 @@
+[
+    {
+        "requester": "5c8a1d5b0190b214360dc032",
+        "targetedUsers": [
+            "5c8a1d5b0190b214360dc034",
+            "5c8a1d5b0190b214360dc033"
+        ],
+        "status": "ongoing",
+        "tags": "e-commerce, digital marketing"
+    },
+    {
+        "requester": "5d7a514b5d2c12c7449be045",
+        "targetedUsers": [
+            "5c8a1d5b0190b214360dc040",
+            "5c8a1d5b0190b214360dc033",
+            "5c8a1d5b0190b214360dc031",
+            "5c8a1d5b0190b214360dc034",
+            "5c8a1d5b0190b214360dc035",
+            "5c8a1d5b0190b214360dc037",
+            "5c8a1d5b0190b214360dc038",
+            "5c8a1d5b0190b214360dc039"
+        ],
+        "status": "resolved",
+        "tags": "cwpoints, redeeming"
+    },
+    {
+        "requester": "5d7a514b5d2c12c7449be040",
+        "targetedUsers": [
+            "5d7a514b5d2c12c7449be046"
+        ],
+        "status": "canceled",
+        "tags": "fluid mechanics"
+    },
+    {
+        "requester": "5c8a1d5b0190b214360dc032",
+        "targetedUsers": [
+            "5c8a1d5b0190b214360dc039"
+        ],
+        "status": "expired",
+        "tags": "fluid mechanics"
+    }
+]
