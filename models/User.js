@@ -75,7 +75,24 @@ const UserSchema = new mongoose.Schema({
             text: String
         }
     ],
-    cwpoints: Number,
+    cwpoints: {
+        current: Number,
+        history: [
+            {
+                date: {
+                    type: Date,
+                    default: Date.now
+                },
+                value: Number,
+                description: String
+            }
+        ]
+    },
+    rfid: {
+        type: String,
+        unique: true,
+        sparse: true
+    },
     stats: {
         seniority: {
             lastEnteredAt: Date,
