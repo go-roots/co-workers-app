@@ -7,13 +7,15 @@ const HelpRequestSchema = new mongoose.Schema({
         ref: 'user',
         required: [true, 'Who is the initiator of the help request huh ?']
     },
-    targetedUsers: [
-        {
-            type: mongoose.Schema.ObjectId,
-            ref: 'user',
-            required: [true, 'A request must target at least one user']
-        },
-    ],
+    targetedUsers: {
+        type: [
+            {
+                type: mongoose.Schema.ObjectId,
+                ref: 'user'
+            }
+        ],
+        required: [true, 'A request must target at least one user']
+    },
     status: {
         type: String,
         enum: ['ongoing', 'resolved', 'canceled', 'expired'],

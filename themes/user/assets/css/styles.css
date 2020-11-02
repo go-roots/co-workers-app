@@ -280,8 +280,7 @@ html {
   padding-bottom: 30px;
 }
 
-#people-inner-container {
-  overflow: scroll;
+#people-container {
   height: 50vh;
   border-radius: 20px;
   border-style: dotted;
@@ -294,8 +293,19 @@ html {
 }
 
 @media (min-width: 992px) {
-  #people-inner-container {
+  #people-container {
     height: 70vh !important;
+  }
+}
+
+#people-body {
+  overflow: scroll !important;
+  height: 35vh;
+}
+
+@media (min-width: 992px) {
+  #people-body {
+    height: 55vh;
   }
 }
 

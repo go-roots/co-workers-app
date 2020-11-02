@@ -1,9 +1,11 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
+const asyncHandler = require('./async');
+
 
 //Protect routes
-exports.protect = async (req, res, next) => {
+exports.protect = asyncHandler(async (req, res, next) => {
     let token;
 
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
@@ -17,10 +19,10 @@ exports.protect = async (req, res, next) => {
     //verify token
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = await User.findById(decoded.id); //Currently logged in user
+        req.user = await User.findById(decoded.id);
         next();
     } catch (error) {
         return next(new ErrorResponse('Bad credentials', 401));
     }
 
-};
+});
