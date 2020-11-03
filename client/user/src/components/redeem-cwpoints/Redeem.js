@@ -7,9 +7,13 @@ import Products from './Products'
 const Redeem = () => {
   return (
     <Fragment>
-      <Points />
-      <History />
+    <section class="container main">
+      <div className="row">
+        <Points />
+        <History />
+      </div>
       <Products />
+    </section>
     </Fragment>
   )
 }

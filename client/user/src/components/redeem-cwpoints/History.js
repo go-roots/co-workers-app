@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {IoIosArrowDown} from 'react-icons/io'
 
 const History = () => {
   return (
@@ -11,7 +12,8 @@ const History = () => {
         <li className="list-group-item"><span>200 cwp : 3 months green behaviour streak&nbsp; !</span></li>
         <li className="list-group-item">
           <button className="btn btn-primary btn-block text-white arrow-button" type="button">
-            <i className="icon ion-ios-arrow-down"></i></button>
+            <IoIosArrowDown />
+          </button>
         </li>
       </ul>
     </div>
