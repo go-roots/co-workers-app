@@ -9,11 +9,13 @@ import Skills from './Skills'
 const Profile = () => {
     return (
         <Fragment>
+            <section className="main container">
             <Presentation />
             <Skills />
             <Recommend />
             <Awards />
             <Comments />
+            </section>
         </Fragment>
     )
 }
