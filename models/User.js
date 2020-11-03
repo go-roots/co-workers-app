@@ -60,7 +60,9 @@ const UserSchema = new mongoose.Schema({
             createdAt: {
                 type: Date,
                 default: Date.now
-            }
+            },
+            firstName: String,
+            lastName: String
         }
     ],
     messages: [
@@ -73,7 +75,9 @@ const UserSchema = new mongoose.Schema({
                 type: Date,
                 default: Date.now
             },
-            text: String
+            text: String,
+            firstName: String,
+            lastName: String
         }
     ],
     cwpoints: {

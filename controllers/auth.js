@@ -1,7 +1,5 @@
 const User = require('../models/User');
-const axios = require('axios');
 const qs = require('querystring');
-
 const fetch = require('node-fetch');
 const asyncHandler = require('../middlewares/async');
 const ErrorResponse = require('../utils/errorResponse');
@@ -112,10 +110,13 @@ exports.linkedinAuth = asyncHandler(async (req, res, next) => {
 
     if (user) {
         user = User.findOneAndUpdate({ linkedin: id }, {
-            firstName,
-            lastName,
-            email: emailAddress
-        })
+            $set: {
+                firstName,
+                lastName,
+                email: emailAddress
+            }
+        },
+            { new: true });
         sendTokenResponse(user, 200, res, linkedinToken);
     } else {
         user = await User.create({

@@ -12,11 +12,19 @@
         "firstName": "John",
         "lastName": "Doe",
         "email": "john@gmail.com",
-        "role": "user",
+        "friends": [
+            {
+                "user": "5d7a514b5d2c12c7449be046",
+                "lastName": "Kevin",
+                "firstName": "Smith"
+            },
+            {
+                "user": "5c8a1d5b0190b214360dc032",
+                "lastName": "Sasha",
+                "firstName": "Ryan"
+            }
+        ],
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 50,
-=======
         "rfid": "12345",
         "cwpoints": {
             "current": 50,
@@ -27,7 +35,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 36000
@@ -54,9 +61,6 @@
         "email": "kevin@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 500,
-=======
         "rfid": "123456",
         "cwpoints": {
             "current": 500,
@@ -67,7 +71,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 360000
@@ -100,9 +103,6 @@
         "email": "mary@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 1000,
-=======
         "rfid": "1234567",
         "cwpoints": {
             "current": 1000,
@@ -121,7 +121,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 7200000
@@ -157,9 +156,6 @@
         "email": "sasha@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 100,
-=======
         "rfid": "12345678",
         "cwpoints": {
             "current": 900,
@@ -182,7 +178,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 10000
@@ -199,9 +194,6 @@
         "email": "greg@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 200,
-=======
         "cwpoints": {
             "current": 200,
             "history": [
@@ -227,7 +219,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 720000
@@ -254,9 +245,6 @@
         "email": "derek@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 1000,
-=======
         "rfid": "23456789",
         "cwpoints": {
             "current": 1000,
@@ -283,7 +271,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 3600000
@@ -322,9 +309,6 @@
         "email": "steph@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 1500,
-=======
         "cwpoints": {
             "current": 1500,
             "history": [
@@ -350,7 +334,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 540000
@@ -395,9 +378,6 @@
         "email": "jerry@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 300,
-=======
         "cwpoints": {
             "current": 300,
             "history": [
@@ -423,7 +403,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 90561
@@ -462,9 +441,6 @@
         "email": "maggie@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 250,
-=======
         "rfid": "84567801",
         "cwpoints": {
             "current": 250,
@@ -491,7 +467,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 18561
@@ -530,9 +505,6 @@
         "email": "barry@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 2000,
-=======
         "rfid": "24517801",
         "cwpoints": {
             "current": 2000,
@@ -559,7 +531,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 11111
@@ -586,9 +557,6 @@
         "email": "ryan@gmail.com",
         "role": "user",
         "password": "testtest",
-<<<<<<< HEAD
-        "cwpoints": 300,
-=======
         "cwpoints": {
             "current": 300,
             "history": [
@@ -614,7 +582,6 @@
                 }
             ]
         },
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "stats": {
             "seniority": {
                 "totalTimeSpentInCW": 33561
@@ -655,16 +622,14 @@
         },
         "billing": {
             "contractType": "premium"
-<<<<<<< HEAD
-        }
-=======
         },
         "messages": [
             {
                 "from": "5c8a1d5b0190b214360dc039",
+                "firstName": "Ryan",
+                "lastName": "Bolin",
                 "text": "Hello world"
             }
         ]
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     }
 ]

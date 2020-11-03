@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Loading = () => {
 
-    const [state, setstate] = useState();
+    const [data, setData] = useState();
     const code = window.location.search.split('&')[0].split('=')[1];
 
     const connect = useCallback(async () => {
@@ -18,14 +18,17 @@ const Loading = () => {
         const body = JSON.stringify({ code: code });
 
         const res = await axios.post('https://co-workers.herokuapp.com/api/cw-api/auth/linkedinAuth', body, config);
-        setstate(res);
+        setData(res);
+        console.log(res)
     }, []);
+
+    console.log(data);
 
     useEffect(() => {
         connect();
     }, []);
 
-    if (state) {
+    if (data) {
         return <Redirect to="/dashboard" />
     }
 

@@ -1,11 +1,7 @@
 [
     {
         "user": "5d7a514b5d2c12c7449be045",
-<<<<<<< HEAD
-        "mainActivitySector": "Student or Learning",
-=======
         "activitySector": "Student or Learning",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2020/10/22/10/15/chipmunk-5675631_960_720.jpg",
         "company": "UT1",
         "position": "Student",
@@ -14,7 +10,7 @@
             "public law"
         ],
         "bio": "Hello this is a test bio.",
-        "status": "Available",
+        "status": "Unavailable",
         "mood": "Willing to help others",
         "story": "Currently debating on the role of the judge in a conciliation procedure",
         "social": {
@@ -42,11 +38,7 @@
     },
     {
         "user": "5d7a514b5d2c12c7449be046",
-<<<<<<< HEAD
-        "mainActivitySector": "Instructor or teacher",
-=======
         "activitySector": "Instructor or teacher",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_960_720.jpg",
         "company": "Lycée Pierre de Fermat",
         "position": "High-school teacher",
@@ -67,11 +59,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc031",
-<<<<<<< HEAD
-        "mainActivitySector": "Charity and voluntary work",
-=======
         "activitySector": "Charity and voluntary work",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Pets savers of Toulouse",
         "position": "Manager",
@@ -100,11 +88,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc040",
-<<<<<<< HEAD
-        "mainActivitySector": "Creative arts and design",
-=======
         "activitySector": "Creative arts and design",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Beaux-arts",
         "position": "Designer",
@@ -115,7 +99,7 @@
             "artistical designing"
         ],
         "bio": "Hello this is a test bio.",
-        "status": "Available",
+        "status": "Unavailable",
         "mood": "Feeling sociable",
         "story": "Working on a commercial cartoon",
         "social": {
@@ -136,11 +120,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc032",
-<<<<<<< HEAD
-        "mainActivitySector": "Law",
-=======
         "activitySector": "Law",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Pearson & Pearson",
         "position": "Business Lawyer",
@@ -165,11 +145,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc033",
-<<<<<<< HEAD
-        "mainActivitySector": "Media and internet",
-=======
         "activitySector": "Media and internet",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Google",
         "position": "In charge of commercials in Europe",
@@ -194,11 +170,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc034",
-<<<<<<< HEAD
-        "mainActivitySector": "Media and internet",
-=======
         "activitySector": "Media and internet",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Self-employed",
         "position": "travel vlogger",
@@ -225,11 +197,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc035",
-<<<<<<< HEAD
-        "mainActivitySector": "Engineering and manufacturing",
-=======
         "activitySector": "Engineering and manufacturing",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
         "company": "Retired",
         "position": "Retired",
@@ -248,11 +216,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc036",
-<<<<<<< HEAD
-        "mainActivitySector": "Information technologies",
-=======
         "activitySector": "Information technologies",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "Facebook",
         "position": "Freelancer",
@@ -275,11 +239,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc037",
-<<<<<<< HEAD
-        "mainActivitySector": "Accountancy, banking and finance",
-=======
         "activitySector": "Accountancy, banking and finance",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "BNP Paribas",
         "position": "Accountant",
@@ -302,11 +262,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc038",
-<<<<<<< HEAD
-        "mainActivitySector": "Creative arts and design",
-=======
         "activitySector": "Creative arts and design",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "Arts",
         "position": "Designer",
@@ -333,11 +289,7 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc039",
-<<<<<<< HEAD
-        "mainActivitySector": "Student or learning",
-=======
         "activitySector": "Student or learning",
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
         "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
         "company": "Paul Sabatier",
         "position": "Physics students",

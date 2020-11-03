@@ -1,12 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { getUser, getUsers, deleteAccountAdmin } = require('../controllers/users');
+const { getUserLight, getUserExtended, getUsersLight, getUsersExtended, deleteAccountAdmin } = require('../controllers/users');
 const { protect, authorize } = require('../middlewares/auth');
 
+//Bring advancedResults middleware and required models
+const User = require('../models/User');
+const advancedResults = require('../middlewares/advancedResults');
 
-router.route("/:userId").get(protect, getUser);
+
+router.route("/light/:userId").get(protect, advancedResults(User, null, 'single'), getUserLight);
+router.route("/extended/:userId").get(protect, advancedResults(User, ['room', 'profile'], 'single'), getUserExtended);
+
+router.route('/light').get(protect, advancedResults(User, null), getUsersLight);
+router.route('/extended').get(protect, advancedResults(User, ['room', 'profile']), getUsersExtended);
+
 router.route('/:userId').delete(protect, authorize('admin'), deleteAccountAdmin);
-router.route('/').get(protect, getUsers);
 
 
 module.exports = router

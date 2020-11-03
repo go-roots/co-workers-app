@@ -1,4 +1,3 @@
-const path = require('path');
 const User = require('../models/User');
 const Profile = require('../models/Profile');
 const ErrorResponse = require('../utils/errorResponse');
@@ -7,24 +6,32 @@ const { validationResult } = require('express-validator');
 
 
 
-// @desc        Get single user
-// @route       GET api/cw-api/users/:userId
+// @desc        Get single user light version
+// @route       GET api/cw-api/users/light/:userId
 // @access      Private
-exports.getUser = asyncHandler(async (req, res, next) => {
-    const id = req.params.userId;
-    const user = await User.findById(id);
-    res.status(200).json({ success: true, data: user })
+exports.getUserLight = asyncHandler(async (req, res, next) => {
+    res.status(200).json(res.advancedResults);
 });
 
-// @desc        Get all profiles
-// @route       GET api/cw-api/users
+// @desc        Get single user extended with room and profile
+// @route       GET api/cw-api/users/extended/:userId
 // @access      Private
-exports.getUsers = asyncHandler(async (req, res, next) => {
+exports.getUserExtended = asyncHandler(async (req, res, next) => {
+    res.status(200).json(res.advancedResults);
+});
 
-    const queryStr = { ...req.query };
-    const users = await User.find(queryStr).populate('room').populate('profile');
+// @desc        Get all users light version
+// @route       GET api/cw-api/users/light
+// @access      Private
+exports.getUsersLight = asyncHandler(async (req, res, next) => {
+    res.status(200).json(res.advancedResults);
+});
 
-    res.status(200).json({ success: true, count: users.length, data: users })
+// @desc        Get all users extended with rooms and profiles
+// @route       GET api/cw-api/users/extended
+// @access      Private
+exports.getUsersExtended = asyncHandler(async (req, res, next) => {
+    res.status(200).json(res.advancedResults);
 });
 
 

@@ -65,7 +65,7 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
         profileFields.skills = skills.split(',').map(skill => skill.trim());
     }
     if (activitySector) profileFields.activitySector = activitySector;
-    if (photo) profileFields.photo = photo;
+    if (photo && !req.user.linkedin) profileFields.photo = photo;
 
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;
@@ -96,7 +96,7 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
     //Images :
 
     //Check if there's a file uploaded
-    if (req.files) {
+    if (req.files && !req.user.linkedin) {
         const file = req.files.file;
 
         //Make sure the image is a photo
