@@ -7,16 +7,6 @@ import { FaCircle, FaUserMinus, FaRegComment, FaUserPlus } from 'react-icons/fa'
 import { ImLifebuoy, ImAccessibility } from 'react-icons/im';
 
 const UsersTable = () => {
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-
-    function closeModal() {
-        setIsOpen(false);
-    }
 
     return (
         <Fragment>
@@ -24,7 +14,7 @@ const UsersTable = () => {
             <div class="col-sm-12 col-md-4 col-lg-3 col-xl-4 offset-xl-0 d-flex flex-column">
                 <div id="people-inner-container" class="responsive-margin">
                     <div class="d-flex flex-row justify-content-between align-items-start filters-container" id="people-header">
-                        <div data-tip="Send a help request" class="d-flex flex-column justify-content-center align-items-center" id="help-request" onClick={openModal}>
+                        <div data-tip="Send a help request" class="d-flex flex-column justify-content-center align-items-center" id="help-request" data-toggle="modal" data-target="#help-request-modal">
                             <HiOutlineLightBulb style={{ color: "rgb(255,255,0)", paddingTop: "2px", marginBottom: "-5px" }} />
                             <HiUserGroup data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"
                                 style={{ padding: "0px", paddingRight: "10px", paddingBottom: "5px", paddingLeft: "10px", width: "46px", height: "30px" }} />
@@ -32,30 +22,39 @@ const UsersTable = () => {
                         <div class="dropdown social-dropdown"><button class="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button" data-toggle="dropdown" aria-expanded="false" type="button">I want to see...&nbsp;</button>
                             <div class="dropdown-menu"><a class="dropdown-item" href="#">Available</a><a class="dropdown-item" href="#">Friends</a><a class="dropdown-item" href="#">Peers</a></div>
                         </div>
-                        <Modal
-                            isOpen={modalIsOpen}
-                            onRequestClose={closeModal}
-                            id="help-request-modal"
-                            role="dialog"
-                        >
+                        
+                        <div class="modal fade" role="dialog" tabindex="-1" id="help-request-modal">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Help request</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                        <h4 class="modal-title">Help request</h4><button type="button" class="close"
+                                            data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">×</span></button>
+                                    </div>
                                     <div class="modal-body">
-                                        <form class="modal-form" style={{ fontSize: "1rem" }}>
+                                        <form class="modal-form" style={{fontSize: "1rem"}}>
                                             <div class="form-group"><label>Send help request to ...</label>
-                                                <div class="dropdown social-dropdown"><button class="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button" data-toggle="dropdown" aria-expanded="false" type="button">I want to see...&nbsp;</button>
-                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Available</a><a class="dropdown-item" href="#">Friends</a><a class="dropdown-item" href="#">Peers</a></div>
+                                                <div class="dropdown show social-dropdown"><button
+                                                        class="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button"
+                                                        data-toggle="dropdown" aria-expanded="true" type="button">I want
+                                                        to see...&nbsp;</button>
+                                                    <div class="dropdown-menu show"><a class="dropdown-item"
+                                                            href="#">Available</a><a class="dropdown-item"
+                                                            href="#">Friends</a><a class="dropdown-item"
+                                                            href="#">Peers</a></div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"><label>Explain your problem in a few words</label><textarea class="form-control"></textarea></div>
+                                            <div class="form-group"><label>Explain your problem in a few
+                                                    words</label><textarea class="form-control"></textarea></div>
                                         </form>
                                     </div>
-                                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                                    <div class="modal-footer"><button class="btn btn-light" type="button"
+                                            data-dismiss="modal">Close</button><button class="btn btn-primary"
+                                            type="button">Save</button></div>
                                 </div>
                             </div>
-                        </Modal>
+                        </div>
+                        
 
                     </div>
                     {/* Start of displaying the users */}
