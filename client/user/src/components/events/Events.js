@@ -6,47 +6,6 @@ import he from '../../assets/img/halloween-event.svg';
 
 const Events = () => {
     return (
-        /*{ 
-        <Fragment>
-            <nav className='navbar navbar-light navbar-expand-md'>
-                <div className = 'container-fluid'>
-                    <a className='navbar-brand' href = '#'>
-                        <img alt='logo' src={logoMedium}/>
-                    </a>
-                    <button 
-                        data-toggle='collapse' 
-                        className='navbar-toggler'
-                        data-target='#navcol-1' >
-                        <span className='sr-only'> Toggle navigation</span>
-                        <span className='navbar-toggler-icon'></span>
-                    </button>
-                <div className='collapse navbar-collapse' id='navcol-1'>
-                <ul className='nav navbar-nav mr-auto'>
-                    <li className='nav-item'>
-                        <Link className='nav-link active' to='/dashboard'>My Dashboard</Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link className='nav-link' to='/consumption'>My Consumption</Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link className='nav-link' to='/events'>Events</Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link className='nav-link' to='/cw-points'>My CW Points</Link>
-                    </li>
-                </ul>
-                <ul className='nav navbar-nav ml-auto'>
-                    <li className='nav-item'>
-                        <Link className='btn btn-outline-success nav-login' to='/login'>LOGIN</Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link className='btn btn-outline-success nav-login' to='/register'>LOGIN</Link>
-                    </li>
-                </ul>
-                </div>
-            </div>
-            </nav>
-}*/
         <section className="container main">
             <div className="row">
                 <div className="col-md-4 col-lg-4 col-xl-4 offset-xl-1 vh-container-small">

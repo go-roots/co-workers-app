@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
 
+import profile from '../../assets/img/profile-image.png'
+
 const Profile = () => {
     return (
         <Fragment>

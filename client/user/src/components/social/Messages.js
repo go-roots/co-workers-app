@@ -1,15 +1,21 @@
 import React, { Fragment } from 'react'
 
+import {TiMessages} from 'react-icons/ti'
+import {FaEnvelopeOpenText} from 'react-icons/fa'
+
+import ReactTooltip from 'react-tooltip';
+//import '../../assets/js/tooltips-triggers'
+
 const Messages = () => {
     return (
         <Fragment>
+        <ReactTooltip place="bottom" type="dark" effect="solid" />
         <div className="col responsive-padding" style={{marginBottom: 20}}>
                 <button className="btn btn-outline-primary btn-block btn-lg header-msg-friends"
-                        data-toggle="tooltip"
-                        data-bs-tooltip="" type="button" title="Messages"><i
-                    className="typcn typcn-messages"
-                    style={{fontSize: 30}}
-                    title="Messages"></i></button>
+                        data-tip="Messages" type="button" title="Messages">
+                <TiMessages className="typcn typcn-messages"
+                    size={30} />
+                </button>
                 <div
                     className="border border-primary friends-msg-container">
                     <div
@@ -24,11 +30,12 @@ const Messages = () => {
                                 next meeting ?</p>
                             <div className="dropdown">
                                 <button className="btn btn-primary" data-toggle="dropdown"
-                                        aria-expanded="false" type="button"><i
-                                    className="icon-envelope-letter"></i></button>
+                                        aria-expanded="false" type="button">
+                                            <FaEnvelopeOpenText className="icon-envelope-letter" />
+                                </button>
                                 <div className="dropdown-menu"><a className="dropdown-item answer-msg"
-                                                                  href="#">Answer</a><a
-                                    className="dropdown-item delete-msg bg-danger" href="#">Delete</a>
+                                                                  href="#" data-toggle="modal" data-target="#answer-msg-modal">Answer</a><a
+                                    className="dropdown-item delete-msg bg-danger" data-toggle="modal" data-target="#del-msg-modal" href="#">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -45,10 +52,10 @@ const Messages = () => {
                             <div className="dropdown">
                                 <button className="btn btn-primary" data-toggle="dropdown"
                                         aria-expanded="false" id="action-message-1"
-                                        type="button"><i className="icon-envelope-letter"></i></button>
-                                <div className="dropdown-menu"><a className="dropdown-item answer-msg"
-                                                                  href="#">Answer</a><a
-                                    className="dropdown-item delete-msg bg-danger" href="#">Delete</a>
+                                        type="button"><FaEnvelopeOpenText className="icon-envelope-letter" /></button>
+                                <div className="dropdown-menu">
+                                    <a className="dropdown-item answer-msg" href="#" data-toggle="modal" data-target="#answer-msg-modal">Answer</a><a
+                                    className="dropdown-item delete-msg bg-danger" data-toggle="modal" data-target="#del-msg-modal" href="#">Delete</a>
                                 </div>
                             </div>
                         </div>

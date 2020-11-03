@@ -1,5 +1,8 @@
 import React from 'react'
 
+import notifProfile from '../../assets/img/notif-profile-picture.jpg'
+import halloween from '../../assets/img/notif-halloween-event.jpg'
+
 const Notifications = props => {
     return (
         <div className="card vh-container">

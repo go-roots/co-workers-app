@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
+import {FaUserFriends} from 'react-icons/fa';
+
+import ReactTooltip from 'react-tooltip';
 
 const Friends = props => {
     return (
         <div className="col-xl-4 responsive-padding">
+            <ReactTooltip place="bottom" type="dark" effect="solid" />
             <button className="btn btn-outline-info btn-block btn-lg header-msg-friends"
-                    data-toggle="tooltip"
-                    data-bs-tooltip="" type="button" title="Friends">
-                <i className="icon-people"
-                   style={{fontSize: 30}}
-                   title="Friends"></i>
+                    data-tip="Friends">
+                <FaUserFriends className="icon-people" size={30}/>
             </button>
             <div
                 className="d-flex flex-column justify-content-start align-items-center border border-info friends-msg-container">
