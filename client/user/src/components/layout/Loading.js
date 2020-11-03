@@ -26,7 +26,7 @@ const Loading = () => {
     }, []);
 
     if (state) {
-        <Redirect to="/dashboard" />
+        return <Redirect to="/dashboard" />
     }
 
     return (
