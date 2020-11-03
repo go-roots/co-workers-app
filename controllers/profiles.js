@@ -6,7 +6,6 @@ const asyncHandler = require('../middlewares/async');
 const { validationResult } = require('express-validator');
 
 
-//Securité? notamment pour l'update ?
 
 // @desc        Get current profile
 // @route       GET api/cw-api/profiles/me

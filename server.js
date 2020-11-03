@@ -18,6 +18,7 @@ connectDB();
 //import routes
 const auth = require('./routes/auth');
 const profiles = require('./routes/profiles');
+const users = require('./routes/users');
 const Room = require('./models/Room'); //This is just for populating user
 
 //Initialize express
@@ -43,6 +44,7 @@ app.use(cors());
 //Mount routers
 app.use('/api/cw-api/auth', auth);
 app.use('/api/cw-api/profiles', profiles);
+app.use('/api/cw-api/users', users);
 
 //Error handling middleware
 app.use(errorHandler);

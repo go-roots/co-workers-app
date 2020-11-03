@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const Map = () => {
-    return (
-        <div>
-            Map
-        </div>
-=======
 import React, { Fragment } from 'react'
 
 const Map = () => {
@@ -16,7 +7,6 @@ const Map = () => {
                 <div id="map-container"></div>
             </div>
         </Fragment>
->>>>>>> 64e53ac196bd3f05354201bed6411319cbef99b4
     )
 }
 
