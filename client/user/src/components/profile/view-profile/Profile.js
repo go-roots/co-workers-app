@@ -10,12 +10,15 @@ const Profile = () => {
     return (
         <Fragment>
             <section className="main container">
-            <Presentation />
-            <Skills />
-            <Recommend />
-            <Awards />
-            <Comments />
-            </section>
+                <Presentation />
+                <div class="row" style={{marginBottom: "15px"}}>
+                    <Skills />
+                    <Recommend />
+                </div>
+                
+                <Awards />
+                <Comments />
+                </section>
         </Fragment>
     )
 }

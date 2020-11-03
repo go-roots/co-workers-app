@@ -13,7 +13,7 @@ const Presentation = () => {
                 <div id="round-profile-image"></div>
                 <div className="d-flex flex-column align-items-center" id="profile-main-content">
                     <div className="d-flex flex-row justify-content-center align-items-center" id="trophys-container">
-                        <GrTrophy className="icon-trophy"  style={{fontSize: "40px", color: "rgb(20,255,0)"}} data-tip="CoWorkers IoT championship winner"/>
+                        <GrTrophy className="icon-trophy"  style={{fontSize: "40px", color: "rgb(20,255,0)", margin:"5px"}} data-tip="CoWorkers IoT championship winner"/>
                         <ImTrophy className="la la-trophy" style={{fontSize: "50px",color: "rgb(255,15,0)"}} data-tip="Events: has organized 3 events" />
                         <FaMedal className="fas fa-medal" style={{fontSize: "40px", color: "rgb(233,254,0)"}} data-tip="Hero: helped 10 different persons"/>
                     </div>
