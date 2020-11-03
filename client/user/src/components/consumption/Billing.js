@@ -4,8 +4,6 @@ const Billing = () => {
     return (
         <div className="row">
             <div className="col">
-                <p className="lead text-center" id="consumption-graph-label">You use less electricity than 80% of the
-                    members.</p>
                 <h3 className="text-center consumption-title">Billing</h3>
                 <p>Standard formula : 10€ + c * electricity consumption</p>
                 <p>monthly subscription</p>

@@ -6,8 +6,10 @@ import Billing from './Billing'
 const Consumption = () => {
     return (
         <Fragment>
-            <Graph />
-            <Billing />
+            <section className="container main">
+                <Graph />
+                <Billing />
+            </section>
         </Fragment>
     )
 }
