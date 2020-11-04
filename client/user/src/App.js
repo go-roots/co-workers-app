@@ -14,6 +14,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 
 import authReducer from './store/reducers/auth';
+import profilesReducer from './store/reducers/profiles';
 import globalVarsReducer from './store/reducers/globalVars';
 import { loadUser } from './store/actions/auth';
 
@@ -34,7 +35,8 @@ if (Cookies.get('token')) {
 //Initialize redux store
 const rootReducer = combineReducers({
   auth: authReducer,
-  globalVars: globalVarsReducer
+  globalVars: globalVarsReducer,
+  profiles: profilesReducer
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));

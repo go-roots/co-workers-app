@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
+import {useSelector, useDispatch} from 'react-redux';
+import {getProfileById} from '../../../store/actions/profiles';
 import Awards from './Awards'
 import Comments from './Comments'
 import Presentation from './Presentation'
@@ -15,7 +17,6 @@ const Profile = () => {
                     <Skills />
                     <Recommend />
                 </div>
-                
                 <Awards />
                 <Comments />
                 </section>

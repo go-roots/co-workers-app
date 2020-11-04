@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
+import { PROFILE_ERROR } from './profiles';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
@@ -8,6 +9,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
+export const CLEAR_PROFILE = 'CLEAR_PROFILE'; //when we logout we clear auth state but also profile logically
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const LINKEDIN_SUCCESS = 'LINKEDIN_SUCCESS';
 export const LINKEDIN_FAIL = 'LINKEDIN_FAIL';
@@ -102,6 +104,7 @@ export const linkedinConnect = code => {
 export const logout = () => {
     return dispatch => {
         dispatch({ type: LOGOUT });
+        dispatch({ type: CLEAR_PROFILE });
     };
 }
 
@@ -111,9 +114,15 @@ export const deleteAccount = id => {
         if (window.confirm('Are you sure ? This can NOT be undone.')) {
             try {
                 await axios.delete(getState().globalVars.currentDomain + '/profile');
-                dispatch({ type: ACCOUNT_DELETED })
+                dispatch({ type: ACCOUNT_DELETED });
+                dispatch({ type: CLEAR_PROFILE });
             } catch (err) {
-                console.log(err);
+                dispatch({
+                    type: PROFILE_ERROR, error: {
+                        msg: err.response.statusText,
+                        status: err.response.status
+                    }
+                });
             }
         }
     }

@@ -1,13 +1,13 @@
 const path = require('path');
 const express = require('express');
 const router = express.Router();
-const { getMe, getProfile, getProfiles, modifyProfile, deleteAccount } = require('../controllers/profiles');
+const { getMe, getProfileById, getProfiles, modifyProfile, deleteAccount } = require('../controllers/profiles');
 const { protect } = require('../middlewares/auth');
 const { check } = require('express-validator');
 
 
 router.route('/me').get(protect, getMe);
-router.route('/:profileId').get(protect, getProfile);
+router.route('/user/:userId').get(protect, getProfileById);
 router.route('/').post([protect, [
     check('activitySector', 'Activity sector is required').not().isEmpty(),
     check('skills', 'Skills is required').not().isEmpty(),
