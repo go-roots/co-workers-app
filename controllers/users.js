@@ -34,6 +34,15 @@ exports.getUsersExtended = asyncHandler(async (req, res, next) => {
     res.status(200).json(res.advancedResults);
 });
 
+//update
+//Some fields must be updated only by the admin (rfid, billing)
+//Some fields must be updated only by a user that doesn't connect with linkedin (email, fName, lName)
+//Some fields must be updated by the user or the admin (cwpoints, friends, messages, stats, electricityConsumptionLogs)
+//Some fields are not updated, here at least (password, linkedin, role)
+exports.updateUser = asyncHandler(async (req, res, next) => {
+
+});
+
 
 // @desc        Delete account admin feature
 // @route       DELETE api/cw-api/users/:userId

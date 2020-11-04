@@ -109,14 +109,11 @@ exports.linkedinAuth = asyncHandler(async (req, res, next) => {
     let user = await User.findOne({ linkedin: id });
 
     if (user) {
-        user = User.findOneAndUpdate({ linkedin: id }, {
-            $set: {
-                firstName,
-                lastName,
-                email: emailAddress
-            }
-        },
-            { new: true });
+        user = await User.findOne({ linkedin: id });
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.email = emailAddress;
+        await user.save();
         sendTokenResponse(user, 200, res, linkedinToken);
     } else {
         user = await User.create({

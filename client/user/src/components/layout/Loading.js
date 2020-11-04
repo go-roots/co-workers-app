@@ -1,35 +1,36 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import Spinner from '../UI/Spinner';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux'
+import { linkedinConnect } from '../../store/actions/auth';
 
 
 const Loading = () => {
 
-    const [data, setData] = useState();
+    const [dispatched, setDispatched] = useState(false);
     const code = window.location.search.split('&')[0].split('=')[1];
 
+    const checkState = useSelector(state => state.globalVars.linkedinAuthState);
+    const state = window.location.search.split('&')[1].split('=')[1];
+
+    const dispatch = useDispatch();
+
     const connect = useCallback(async () => {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-        const body = JSON.stringify({ code: code });
-
-        const res = await axios.post('https://co-workers.herokuapp.com/api/cw-api/auth/linkedinAuth', body, config);
-        setData(res);
-        console.log(res)
-    }, []);
-
-    console.log(data);
+        await dispatch(linkedinConnect(code));
+        setDispatched(true);
+    }, [code, dispatch]);
 
     useEffect(() => {
         connect();
-    }, []);
+    }, [connect]);
 
-    if (data) {
+    if (dispatched) {
         return <Redirect to="/dashboard" />
+    }
+
+    if (state != checkState) {
+        //dispatch an alert here eventually
+        return <Redirect to='/login' />
     }
 
     return (

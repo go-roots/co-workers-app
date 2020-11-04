@@ -7,7 +7,7 @@ const Navbar = props => {
     return (
         <nav className="navbar navbar-light navbar-expand-md">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/landing">
+                <Link className="navbar-brand" to="/">
                     <img src={logoMedium} alt="logo" />
                 </Link>
                 <button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1">

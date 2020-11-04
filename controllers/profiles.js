@@ -125,6 +125,9 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
 });
 
 
+//Update status, mood, stories, comments, awards ?
+
+
 // @desc        Delete account feature
 // @route       DELETE api/cw-api/profiles
 // @access      Private

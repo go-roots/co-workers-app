@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+
+import { logout } from '../../store/actions/auth';
 import logoMedium from '../../assets/img/logo_medium.svg';
 import { FaSearchLocation } from 'react-icons/fa';
 import { BsChevronCompactDown } from 'react-icons/bs';
@@ -9,6 +12,8 @@ const Landing = () => {
 
     const [search, setSearch] = useState("");
     const [className, setClassName] = useState("");
+    const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
     return (
         <Fragment>
@@ -20,12 +25,24 @@ const Landing = () => {
                                 className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle
                             navigation</span><span className="navbar-toggler-icon"></span></button>
                             <div className="collapse navbar-collapse" id="navcol-1">
-                                <ul className="nav navbar-nav ml-auto">
-                                    <li className="nav-item">
-                                        <Link className="btn btn-outline-success nav-login" to="/login">LOGIN</Link></li>
-                                    <li className="nav-item">
-                                        <Link className="btn btn-outline-success nav-login" to="/register">REGISTER</Link></li>
-                                </ul>
+                                {!auth.isAuthenticated && !auth.isLoading ? (
+                                    <ul className="nav navbar-nav ml-auto">
+                                        <li className="nav-item">
+                                            <Link className="btn btn-outline-success nav-login" to="/login">LOGIN</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="btn btn-outline-success nav-login" to="/register">REGISTER</Link>
+                                        </li>
+                                    </ul>) : (
+                                        <ul className="nav navbar-nav ml-auto">
+                                            <li className="nav-item">
+                                                <Link className="btn btn-outline-success nav-login" to="/dashboard">GO TO DASHBOARD</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <button className="btn btn-outline-success nav-login" onClick={e => dispatch(logout())} >LOGOUT</button>
+                                            </li>
+                                        </ul>
+                                    )}
                             </div>
                         </div>
                     </nav>
