@@ -11,7 +11,7 @@ const Profile = () => {
         <Fragment>
             <section className="main container">
                 <Presentation />
-                <div class="row" style={{marginBottom: "15px"}}>
+                <div className="row" style={{marginBottom: "15px"}}>
                     <Skills />
                     <Recommend />
                 </div>

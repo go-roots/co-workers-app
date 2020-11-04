@@ -15,13 +15,8 @@
     <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
     <link rel="stylesheet"
         href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
@@ -65,18 +60,41 @@
                                 class="fa fa-group" data-toggle="tooltip" data-bs-tooltip="" title="Send a help request"
                                 style="padding: 0px;padding-right: 10px;padding-bottom: 5px;padding-left: 10px;"></i>
                         </div>
-                        <div class="dropdown social-dropdown"><button
+                        <div class="dropdown show social-dropdown"><button
                                 class="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button"
-                                data-toggle="dropdown" aria-expanded="false" type="button">I want to
+                                data-toggle="dropdown" aria-expanded="true" type="button">I want to
                                 see...&nbsp;</button>
-                            <div class="dropdown-menu"><a class="dropdown-item" href="#">Available</a><a
-                                    class="dropdown-item" href="#">Friends</a>
+                            <div class="dropdown-menu show">
+                                <div class="dropleft" id="status-sector-dropleft"><button class="btn dropdown-toggle"
+                                        data-toggle="dropdown" aria-expanded="false" type="button">Status</button>
+                                    <div class="dropdown-menu" id="status-sector-menu"><a class="dropdown-item"
+                                            href="#">Available</a><a class="dropdown-item" href="#">Do not disturb</a><a
+                                            class="dropdown-item" href="#">Unavailable</a></div>
+                                </div><a class="dropdown-item" href="#">Friends</a>
                                 <div class="dropleft show" id="activity-sector-dropleft"><button
                                         class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
                                         type="button">Activity Sector</button>
                                     <div class="dropdown-menu show" id="activity-sector-menu"><a class="dropdown-item"
-                                            href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a
-                                            class="dropdown-item" href="#">Third Item</a></div>
+                                            href="#">Accountancy, banking and finance</a><a class="dropdown-item"
+                                            href="#">Business, consulting and management</a><a class="dropdown-item"
+                                            href="#">Charity and voluntary work</a><a class="dropdown-item"
+                                            href="#">Creative arts and design</a><a class="dropdown-item"
+                                            href="#">Student or Learning</a><a class="dropdown-item" href="#">Instructor
+                                            or Teacher</a><a class="dropdown-item" href="#">Energy and utilities</a>
+                                        <a class="dropdown-item" href="#">Engineering and manufacturing</a><a
+                                            class="dropdown-item" href="#">Environement and agriculture</a><a
+                                            class="dropdown-item" href="#">Healthcare</a><a class="dropdown-item"
+                                            href="#">Hospitality and events management</a>
+                                        <a class="dropdown-item" href="#">Information technologies</a><a
+                                            class="dropdown-item" href="#">Law</a><a class="dropdown-item"
+                                            href="#">Leisure, sport and tourism</a><a class="dropdown-item"
+                                            href="#">Marketing, advertising and PR</a><a class="dropdown-item"
+                                            href="#">Media and internet</a><a class="dropdown-item"
+                                            href="#">Recruitement and retailement</a><a class="dropdown-item"
+                                            href="#">HR</a><a class="dropdown-item" href="#">Sales</a><a
+                                            class="dropdown-item" href="#">Science and pharmaceuticals</a><a
+                                            class="dropdown-item" href="#">Social care</a><a class="dropdown-item"
+                                            href="#">Transportation and logistics</a></div>
                                 </div>
                             </div>
                         </div>
@@ -91,14 +109,52 @@
                                     <div class="modal-body">
                                         <form class="modal-form" style="font-size: 1rem;">
                                             <div class="form-group"><label>Send help request to ...</label>
-                                                <div class="dropdown show social-dropdown"><button
+                                                <div class="dropdown social-dropdown"><button
                                                         class="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button"
-                                                        data-toggle="dropdown" aria-expanded="true" type="button">I want
-                                                        to see...&nbsp;</button>
-                                                    <div class="dropdown-menu show"><a class="dropdown-item"
+                                                        data-toggle="dropdown" aria-expanded="false" type="button">I
+                                                        want to see...&nbsp;</button>
+                                                    <div class="dropdown-menu"><a class="dropdown-item"
                                                             href="#">Available</a><a class="dropdown-item"
-                                                            href="#">Friends</a><a class="dropdown-item"
-                                                            href="#">Peers</a></div>
+                                                            href="#">Friends</a>
+                                                        <div class="dropleft" id="activity-sector-dropleft-modal">
+                                                            <button class="btn dropdown-toggle" data-toggle="dropdown"
+                                                                aria-expanded="false" type="button">Activity
+                                                                Sector</button>
+                                                            <div class="dropdown-menu" id="activity-sector-menu-modal">
+                                                                <a class="dropdown-item" href="#">Accountancy, banking
+                                                                    and finance</a><a class="dropdown-item"
+                                                                    href="#">Business, consulting and management</a><a
+                                                                    class="dropdown-item" href="#">Charity and voluntary
+                                                                    work</a>
+                                                                <a class="dropdown-item" href="#">Creative arts and
+                                                                    design</a><a class="dropdown-item" href="#">Student
+                                                                    or Learning</a><a class="dropdown-item"
+                                                                    href="#">Instructor or Teacher</a><a
+                                                                    class="dropdown-item" href="#">Energy and
+                                                                    utilities</a>
+                                                                <a class="dropdown-item" href="#">Engineering and
+                                                                    manufacturing</a><a class="dropdown-item"
+                                                                    href="#">Environement and agriculture</a><a
+                                                                    class="dropdown-item" href="#">Healthcare</a><a
+                                                                    class="dropdown-item" href="#">Hospitality and
+                                                                    events management</a>
+                                                                <a class="dropdown-item" href="#">Information
+                                                                    technologies</a><a class="dropdown-item"
+                                                                    href="#">Law</a><a class="dropdown-item"
+                                                                    href="#">Leisure, sport and tourism</a><a
+                                                                    class="dropdown-item" href="#">Marketing,
+                                                                    advertising and PR</a>
+                                                                <a class="dropdown-item" href="#">Media and
+                                                                    internet</a><a class="dropdown-item"
+                                                                    href="#">Recruitement and retailement</a><a
+                                                                    class="dropdown-item" href="#">HR</a><a
+                                                                    class="dropdown-item" href="#">Sales</a><a
+                                                                    class="dropdown-item" href="#">Science and
+                                                                    pharmaceuticals</a><a class="dropdown-item"
+                                                                    href="#">Social care</a><a class="dropdown-item"
+                                                                    href="#">Transportation and logistics</a></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group"><label>Explain your problem in a few
@@ -319,7 +375,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init-1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/dashboard-social-dropdown.js"></script>
     <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>

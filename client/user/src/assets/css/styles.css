@@ -47,22 +47,22 @@ html {
   overflow: scroll;
 }
 
-#not-found { 
-  text-align: center; 
-  margin-top: 50px; 
+#not-found {
+  text-align: center;
+  margin-top: 50px;
   margin-bottom: 200px;
 }
 
 #loading-screen {
   width: 200px;
   height: 200px;
-  
+
   position: absolute;
-  top:0;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-    
+
   margin: auto;
 }
 
@@ -82,11 +82,11 @@ html {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgb(5,88,14);
+  color: rgb(5, 88, 14);
 }
 
 .navbar-light .navbar-toggler {
-  color: rgba(0,0,0,0);
+  color: rgba(0, 0, 0, 0);
   background: #ffffff;
 }
 
@@ -116,7 +116,7 @@ html {
 #overlay {
   width: 100%;
   height: 100vh;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 #content {
@@ -138,11 +138,10 @@ html {
   color: white;
   min-width: 50px;
   border-radius: 25px;
-  font-size: 20px;
 }
 
 .input-icons:hover {
-  color: rgb(82,255,0)
+  color: rgb(82, 255, 0);
 }
 
 #video {
@@ -301,7 +300,7 @@ html {
   border-radius: 50%;
   box-shadow: 1px 1px 5px 1px;
   border-style: solid;
-  border-color: rgba(245,221,8,0.56);
+  border-color: rgba(245, 221, 8, 0.56);
   margin-top: 10px;
 }
 
@@ -310,8 +309,7 @@ html {
   padding-bottom: 30px;
 }
 
-#people-inner-container {
-  overflow: scroll;
+#people-container {
   height: 50vh;
   border-radius: 20px;
   border-style: dotted;
@@ -324,8 +322,19 @@ html {
 }
 
 @media (min-width: 992px) {
-  #people-inner-container {
+  #people-container {
     height: 70vh !important;
+  }
+}
+
+#people-body {
+  overflow: scroll !important;
+  height: 35vh;
+}
+
+@media (min-width: 992px) {
+  #people-body {
+    height: 55vh;
   }
 }
 
@@ -357,12 +366,12 @@ html {
 }
 
 #help-request {
-  color: rgba(11,118,225,0.82);
+  color: rgba(11, 118, 225, 0.82);
   background: #f6f6f6;
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px;
   text-shadow: 0px 0px;
-  border: 1px solid rgb(0,0,0);
+  border: 1px solid rgb(0, 0, 0);
 }
 
 .social-dropdown-button {
@@ -372,6 +381,23 @@ html {
 #help-request:active {
   transform: translateY(4px);
 }
+
+#activity-sector-menu {
+  height: 350px;
+  overflow: scroll;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+}
+
+#activity-sector-menu-modal {
+  height: 300px;
+  overflow: scroll;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+}
+
 
 /* Social */
 
@@ -417,7 +443,7 @@ html {
 
 .friends-item:hover {
   cursor: pointer;
-  background: rgba(185,216,247,0.82);
+  background: rgba(185, 216, 247, 0.82);
 }
 
 .msg-item {
@@ -442,7 +468,7 @@ html {
 .italic-small {
   font-size: 13px;
   font-family: Asul, sans-serif;
-  color: rgb(128,128,128);
+  color: rgb(128, 128, 128);
 }
 
 .response-msg-modal {
@@ -452,6 +478,10 @@ html {
 .current-status-dropdown {
   border-width: 1px;
   border-style: dotted;
+}
+
+#edit-profile-container {
+  text-align: center;
 }
 
 /* Create/edit profile */
@@ -495,7 +525,7 @@ html {
 }
 
 #profile-content-position {
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
   font-size: 22px;
   font-family: Asul, sans-serif;
   padding-bottom: 30px;
@@ -511,11 +541,11 @@ html {
 }
 
 .awards-item {
-  background: rgba(228,228,73,0.65);
+  background: rgba(228, 228, 73, 0.65);
 }
 
 .awards-item:hover {
-  background: rgb(255,255,0);
+  background: rgb(255, 255, 0);
 }
 
 .awards-container {
@@ -604,4 +634,3 @@ html {
 #social-profile-inside {
   padding: 7px;
 }
-
