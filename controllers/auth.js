@@ -4,6 +4,8 @@ const fetch = require('node-fetch');
 const asyncHandler = require('../middlewares/async');
 const ErrorResponse = require('../utils/errorResponse');
 const sendTokenResponse = require('../utils/sendTokenResponse');
+const { validationResult } = require('express-validator');
+
 
 // Controller for managing authorization related routes (login/register/getMe...),
 // whether it's social oAuth with linkedin or not
@@ -13,6 +15,12 @@ const sendTokenResponse = require('../utils/sendTokenResponse');
 // @route       POST api/cw-api/auth/register
 // @access      Public
 exports.register = asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+
     const { firstName, lastName, email, password } = req.body;
 
     const user = await User.create({
@@ -31,17 +39,15 @@ exports.register = asyncHandler(async (req, res, next) => {
 // @route       POST api/cw-api/auth/login
 // @access      Public
 exports.login = asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+
     const { email, password } = req.body;
 
-    if (!email || !password) {
-        return next(new ErrorResponse('Please provide an email and a password', 404));
-    }
-
     const user = await User.findOne({ email }).select('+password');
-
-    if (!user || !user.password) {
-        return next(new ErrorResponse('Invalid credentials', 400));
-    }
 
     if (!await user.matchPasswords(password, user.password)) {
         return next(new ErrorResponse('Invalid credentials', 400));
@@ -108,13 +114,16 @@ exports.linkedinAuth = asyncHandler(async (req, res, next) => {
     //Check if the user exists in our db
     let user = await User.findOne({ linkedin: id });
 
+    let status;
+
     if (user) {
         user = await User.findOne({ linkedin: id });
         user.firstName = firstName;
         user.lastName = lastName;
         user.email = emailAddress;
         await user.save();
-        sendTokenResponse(user, 200, res, linkedinToken);
+        status = 'connect';
+        sendTokenResponse(user, 200, res, linkedinToken, status);
     } else {
         user = await User.create({
             linkedin: id,
@@ -123,7 +132,8 @@ exports.linkedinAuth = asyncHandler(async (req, res, next) => {
             email: emailAddress
         });
 
-        sendTokenResponse(user, 200, res, linkedinToken);
+        status = 'register';
+        sendTokenResponse(user, 200, res, linkedinToken, status);
     }
 });
 

@@ -19,7 +19,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 // @route       GET api/cw-api/profiles/user/:userId
 // @access      Private
 exports.getProfileById = asyncHandler(async (req, res, next) => {
-    const profile = await Profile.findOne({user: req.params.userId});
+    const profile = await Profile.findOne({ user: req.params.userId });
     res.status(200).json({ success: true, data: profile })
 });
 

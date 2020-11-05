@@ -10,12 +10,14 @@ import Redeem from '../redeem-cwpoints/Redeem'
 import Consumption from '../consumption/Consumption'
 import NotFound from '../layout/NotFound'
 import PrivateRoute from './PrivateRoute'
-    ;
+import Alert from '../../components/layout/Alert'
+
 
 const Routes = () => {
     return (
         <Fragment>
             <Navbar />
+            <Alert />
             <Switch>
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
                 <PrivateRoute exact path='/social' component={Social} />
@@ -24,7 +26,7 @@ const Routes = () => {
                 <PrivateRoute exact path='/events' component={Events} />
                 <PrivateRoute exact path='/cw-points' component={Redeem} />
                 <PrivateRoute exact path='/consumption' component={Consumption} />
-                <PrivateRoute component={NotFound} />
+                <Route component={NotFound} />
             </Switch>
         </Fragment>
     )

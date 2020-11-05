@@ -2,10 +2,13 @@ import React, { Fragment, useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { removeAllAlerts } from '../../store/actions/alerts';
 import { loginUser } from '../../store/actions/auth';
 import { setLinkedinState } from '../../store/actions/globalVars';
+
 import logoSVG from '../../assets/img/logo_large.svg'
 import connectLinkedin from '../../assets/img/connect-linkedin.jpg'
+import Alert from '../../components/layout/Alert';
 
 
 const Login = props => {
@@ -20,8 +23,9 @@ const Login = props => {
     const isAuth = useSelector(state => state.auth.isAuthenticated);
     const dispatch = useDispatch();
 
-    const onSubmitHandler = e => {
+    const onSubmitHandler = async e => {
         e.preventDefault();
+        await dispatch(removeAllAlerts());
         dispatch(loginUser(formData.email, formData.password));
     }
 
@@ -31,6 +35,7 @@ const Login = props => {
 
     return (
         <Fragment style={{ background: "rgb(115,173,58)" }}>
+            <Alert />
             <div className="login-clean">
                 <form onSubmit={e => onSubmitHandler(e)}>
                     <h2 className="sr-only">Login Form</h2>

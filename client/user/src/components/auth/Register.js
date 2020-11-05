@@ -2,11 +2,13 @@ import React, { Fragment, useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { removeAllAlerts } from '../../store/actions/alerts';
 import { registerUser } from '../../store/actions/auth';
 import { setLinkedinState } from '../../store/actions/globalVars';
 
 import logoSVG from '../../assets/img/logo_large.svg'
 import linkedin from '../../assets/img/linkedin.png'
+import Alert from '../../components/layout/Alert';
 
 
 const Register = () => {
@@ -23,8 +25,9 @@ const Register = () => {
     const isAuth = useSelector(state => state.auth.isAuthenticated);
     const dispatch = useDispatch();
 
-    const onSubmitHandler = e => {
+    const onSubmitHandler = async e => {
         e.preventDefault();
+        await dispatch(removeAllAlerts());
         dispatch(registerUser(formData.firstName, formData.lastName, formData.email, formData.password));
     }
 
@@ -34,6 +37,7 @@ const Register = () => {
 
     return (
         <Fragment style={{ background: "rgb(115,173,58)" }}>
+            <Alert />
             <div className="login-clean">
                 <form onSubmit={e => onSubmitHandler(e)}>
                     <h2 className="sr-only">Login Form</h2>
@@ -75,7 +79,7 @@ const Register = () => {
                             type="email"
                             name="email"
                             placeholder="Email"
-                            onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+                            onChange={e => setFormData({ ...formData, email: e.target.value })}
                         />
                     </div>
                     <div className="form-group">

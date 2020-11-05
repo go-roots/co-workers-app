@@ -1,4 +1,4 @@
-const sendTokenResponse = (user, statusCode, res, linkedinToken = null) => {
+const sendTokenResponse = (user, statusCode, res, linkedinToken = null, status = null) => {
     const token = user.getSignedJwtToken();
 
     const options = {
@@ -10,7 +10,7 @@ const sendTokenResponse = (user, statusCode, res, linkedinToken = null) => {
         options.secure = true;
     }
 
-    res.status(statusCode).cookie('token', token, options).json({ success: true, token, linkedinToken })
+    res.status(statusCode).cookie('token', token, options).json({ success: true, token, linkedinToken, status })
 };
 
 

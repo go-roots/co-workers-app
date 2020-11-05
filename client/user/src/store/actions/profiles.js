@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { CLEAR_PROFILE } from './auth' //clear_profile is used in auth actions after account deletion
+import { setAlert } from './alerts';
 
 export const SET_PROFILE = 'SET_PROFILE';
 export const SET_OWN_PROFILE = 'SET_OWN_PROFILE';
@@ -76,7 +77,14 @@ export const editOrCreateProfile = data => {
             };
             const res = await axios.post(getState().globalVars.currentDomain + '/profiles', data, config);
             dispatch({ type: SET_PROFILE, profile: res.data.data });
+            dispatch(setAlert('success', 'Profile successfully updated !'));
         } catch (err) {
+            const errors = err.response.data.errors;
+
+            if (errors) {
+                errors.forEach(error => dispatch(setAlert('danger', error.msg)));
+            }
+
             dispatch({
                 type: PROFILE_ERROR, error: {
                     msg: err.response.statusText,

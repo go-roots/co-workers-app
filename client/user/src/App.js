@@ -16,6 +16,7 @@ import AOS from 'aos';
 import authReducer from './store/reducers/auth';
 import profilesReducer from './store/reducers/profiles';
 import globalVarsReducer from './store/reducers/globalVars';
+import alertsReducer from './store/reducers/alerts';
 import { loadUser } from './store/actions/auth';
 
 import Routes from './components/routing/Routes';
@@ -36,7 +37,8 @@ if (Cookies.get('token')) {
 const rootReducer = combineReducers({
   auth: authReducer,
   globalVars: globalVarsReducer,
-  profiles: profilesReducer
+  profiles: profilesReducer,
+  alerts: alertsReducer
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));

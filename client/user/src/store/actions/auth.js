@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
+import { setAlert } from './alerts';
 import { PROFILE_ERROR } from './profiles';
+
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
@@ -14,7 +15,6 @@ export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const LINKEDIN_SUCCESS = 'LINKEDIN_SUCCESS';
 export const LINKEDIN_FAIL = 'LINKEDIN_FAIL';
 
-//For now we don't care about the profile and alerts
 
 export const loadUser = () => {
     return async (dispatch, getState) => {
@@ -50,9 +50,15 @@ export const registerUser = (firstName, lastName, email, password) => {
             const res = await axios.post(getState().globalVars.currentDomain + '/auth/register', body, config);
 
             dispatch({ type: REGISTER_SUCCESS, token: res.data.token });
+            dispatch(setAlert('success', 'Welcome to CO-workers !'));
             dispatch(loadUser());
         } catch (err) {
-            console.log(err);
+            const errors = err.response.data.errors;
+
+            if (errors) {
+                errors.forEach(error => dispatch(setAlert('danger', error.msg)));
+            }
+
             dispatch({ type: REGISTER_FAIL });
         }
     }
@@ -74,7 +80,12 @@ export const loginUser = (email, password) => {
             dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
             dispatch(loadUser());
         } catch (err) {
-            console.log(err);
+            const errors = err.response.data.errors;
+
+            if (errors) {
+                errors.forEach(error => dispatch(setAlert('danger', error.msg)));
+            }
+
             dispatch({ type: LOGIN_FAIL });
         }
     }
@@ -93,9 +104,9 @@ export const linkedinConnect = code => {
         try {
             const res = await axios.post(getState().globalVars.currentDomain + '/auth/linkedinAuth', body, config);
             dispatch({ type: LINKEDIN_SUCCESS, token: res.data.token, linkedinToken: res.data.linkedinToken });
+            dispatch(setAlert('success', res.data.status === 'register' && 'Welcome to CO-workers !'))
             dispatch(loadUser());
         } catch (err) {
-            console.log(err);
             dispatch({ type: LINKEDIN_FAIL });
         }
     }
@@ -116,6 +127,7 @@ export const deleteAccount = id => {
                 await axios.delete(getState().globalVars.currentDomain + '/profile');
                 dispatch({ type: ACCOUNT_DELETED });
                 dispatch({ type: CLEAR_PROFILE });
+                dispatch(setAlert('success', 'Account deleted.'))
             } catch (err) {
                 dispatch({
                     type: PROFILE_ERROR, error: {

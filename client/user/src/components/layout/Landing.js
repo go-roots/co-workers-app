@@ -6,6 +6,7 @@ import { logout } from '../../store/actions/auth';
 import logoMedium from '../../assets/img/logo_medium.svg';
 import { FaSearchLocation } from 'react-icons/fa';
 import { BsChevronCompactDown } from 'react-icons/bs';
+import Alert from '../../components/layout/Alert';
 
 
 const Landing = () => {
@@ -46,6 +47,7 @@ const Landing = () => {
                             </div>
                         </div>
                     </nav>
+                    <Alert />
                     <div className="d-flex flex-column justify-content-between align-items-center" id="content">
                         <div className="form-group row input-field">
                             <div className="col-xl-12 offset-xl-0 d-flex">
