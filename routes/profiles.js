@@ -1,7 +1,8 @@
 const path = require('path');
 const express = require('express');
 const router = express.Router();
-const { getMe, getProfileById, getProfiles, modifyProfile, deleteAccount } = require('../controllers/profiles');
+const { getMe, getProfileById, getProfiles, modifyProfile,
+    deleteAccount, updateSocial, updateDistinctions } = require('../controllers/profiles');
 const { protect } = require('../middlewares/auth');
 const { check } = require('express-validator');
 
@@ -34,6 +35,10 @@ router.route('/').post([protect, [
 ]], modifyProfile);
 router.route('/').get(protect, getProfiles);
 router.route('/').delete(protect, deleteAccount);
+router.route('/:userId').put([protect, [
+    check('comment', 'A comment cannot be empty').not().isEmpty()
+]], updateDistinctions);
+router.route('/').put(protect, updateSocial);
 
 
 

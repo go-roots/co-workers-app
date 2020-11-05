@@ -5,6 +5,8 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const { validationResult } = require('express-validator');
 
+//Update of awards must be done implicitely, we shouldn't have a route for modifying it directly
+//Unless you are an admin of course.
 
 
 // @desc        Get current profile
@@ -120,11 +122,90 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
         });
     }
 
-    return res.json(profile);
+    return res.status(200).json(profile);
 });
 
 
-//Update status, mood, stories, comments, awards ?
+// @desc        Update profile mood, status or stories
+// @route       PUT api/cw-api/profiles
+// @access      Private
+exports.updateSocial = asyncHandler(async (req, res, next) => {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    if (!profile) {
+        return next(new ErrorResponse('No profile found', 400));
+    }
+
+    const { mood, status, story, comment, award } = req.body;
+    let profileFields = {};
+
+    if (mood) profileFields.mood = mood;
+    if (status) profileFields.status = status;
+    if (story) profileFields.story = story;
+
+    const newProfile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: profileFields },
+        { new: true }
+    );
+
+    return res.status(200).json({ success: true, newProfile });
+});
+
+
+// @desc        Update profile comments, awards
+// @route       PUT api/cw-api/profiles/:userId
+// @access      Private
+exports.updateDistinctions = asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+
+    const profile = await Profile.findOne({ user: req.params.userId });
+
+    if (!profile) {
+        return next(new ErrorResponse(`No profile found with the user of id ${userId}`, 400));
+    }
+
+    const { comment, award } = req.body;
+
+    if (comment && award) {
+        return next(new ErrorResponse("Unable to update comments and awards concurrently", 404));
+    }
+
+    let profileFields = {};
+
+    if (comment) {
+        if (req.params.id === req.user.id) {
+            return next(new ErrorResponse("Forbidden", 403)); //Can't update own comments
+        }
+        const newComment = {
+            author: req.user.id,
+            text: comment
+        };
+        profileFields.comments = [...profile.comments];
+        profileFields.comments.unshift(newComment); //To put new comment in the beginning of the array, makes more sense
+    }
+
+    if (award) {
+        if (req.user.role == 'admin') {
+            profileFields.awards = [...profile.awards];
+            profileFields.awards.unshift(award);
+        } else {
+            return next(new ErrorResponse("Forbidden", 403));
+        }
+    }
+
+    const newProfile = await Profile.findOneAndUpdate(
+        { user: req.params.userId },
+        { $set: profileFields },
+        { new: true }
+    );
+
+    return res.status(200).json({ success: true, newProfile });
+});
 
 
 // @desc        Delete account feature
@@ -133,5 +214,5 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
 exports.deleteAccount = asyncHandler(async (req, res, next) => {
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
-    res.status(200).json('User deleted');
+    res.status(204).json('User deleted');
 });

@@ -1,23 +1,27 @@
 [
     {
+        "_id": "5fa3d9ca5a11f63af4ed58c2",
         "name": "Coffee",
         "description": "Coffee cup to start the day.",
         "photo": "go-roots/api/img/coffee.jpg",
         "price": "100"
     },
     {
+        "_id": "5fa3d9ca5a11f63af4ed58c3",
         "name": "Steel cup",
         "description": "A cup to bring everywhere !",
         "photo": "go-roots/api/img/steel-cup.jpg",
         "price": "200"
     },
     {
+        "_id": "5fa3d9ca5a11f63af4ed58c4",
         "name": "Steel straw",
         "description": "A straw that keeps the cold of your drink !",
         "photo": "go-roots/api/img/steel-straw.jpg",
         "price": "100"
     },
     {
+        "_id": "5fa3d9ca5a11f63af4ed58c5",
         "name": "Tot bag",
         "description": "A renewable bag for you shopping.",
         "photo": "go-roots/api/img/tot-bag.jpg",

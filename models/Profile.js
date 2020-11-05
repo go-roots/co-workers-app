@@ -49,9 +49,7 @@ const ProfileSchema = new mongoose.Schema({
         enum: ['Prefer to stay alone', 'Feeling sociable', 'Willing to help others'],
         default: 'Feeling sociable'
     },
-    story: {
-        type: [String]
-    },
+    story: String,
     awards: [
         {
             award: {

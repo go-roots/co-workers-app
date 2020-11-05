@@ -16,10 +16,12 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 //import routes
+const Room = require('./models/Room'); //This is just for populating users
+const Redeemable = require('./models/Redeemable'); //This is just for populating transactions
 const auth = require('./routes/auth');
 const profiles = require('./routes/profiles');
 const users = require('./routes/users');
-const Room = require('./models/Room'); //This is just for populating user
+const transactions = require('./routes/transactions');
 
 //Initialize express
 const app = express();
@@ -45,6 +47,7 @@ app.use(cors());
 app.use('/api/cw-api/auth', auth);
 app.use('/api/cw-api/profiles', profiles);
 app.use('/api/cw-api/users', users);
+app.use('/api/cw-api/transactions', transactions);
 
 //Error handling middleware
 app.use(errorHandler);
@@ -52,8 +55,7 @@ app.use(errorHandler);
 //Set static folder (accessible in the url through localhost:port/public/...)
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-//Serve static assets in production
+//Serve static assets in production (client)
 if (process.env.NODE_ENV === 'production') {
     //set static folder
     app.use(express.static('client/user/build'))

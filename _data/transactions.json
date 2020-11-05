@@ -1,0 +1,14 @@
+[
+    {
+        "redeemable": "5fa3d9ca5a11f63af4ed58c2",
+        "status": "ongoing"
+    },
+    {
+        "redeemable": "5fa4151b9207aa43187f82b1",
+        "status": "cancelled"
+    },
+    {
+        "redeemable": "5fa3d9ca5a11f63af4ed58c3",
+        "status": "fulfilled"
+    }
+]

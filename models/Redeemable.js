@@ -24,4 +24,4 @@ const RedeemableSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Redeemable', RedeemableSchema);
+module.exports = mongoose.model('redeemable', RedeemableSchema);
