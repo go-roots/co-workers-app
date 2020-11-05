@@ -76,9 +76,9 @@ const Landing = () => {
                             </div>
                         ) : (
                                 <div id="headerContainer">
-                                    <h1 class="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-once="true" id="COworking">CO workers</h1>
-                                    <h2 class="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-delay="1000" data-aos-once="true" id="COworking-1">Be social,&nbsp;</h2>
-                                    <h2 class="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-delay="2000" data-aos-once="true" id="COworking-2" style={{ fontSize: "44px" }}>be green.</h2>
+                                    <h1 className="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-once="true" id="COworking">CO workers</h1>
+                                    <h2 className="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-delay="1000" data-aos-once="true" id="COworking-1">Be social,&nbsp;</h2>
+                                    <h2 className="text-center" data-aos="flip-down" data-aos-duration="500" data-aos-delay="2000" data-aos-once="true" id="COworking-2" style={{ fontSize: "44px" }}>be green.</h2>
                                 </div>
                             )}
                         <a href="#video">
@@ -100,7 +100,7 @@ const Landing = () => {
                 </div>
             </section>
             <section className="d-flex flex-column justify-content-center align-items-center" id="video">
-                <iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/mm6vO9Os7vs" id="videoPlayer" width="560" height="315"></iframe>
+                <iframe allowFullScreen="" frameBorder="0" src="https://www.youtube.com/embed/mm6vO9Os7vs" id="videoPlayer" width="560" height="315"></iframe>
                 <Link id="join-now-button" className="btn btn-lg btn-outline-success" to="/register">Join now !</Link>
             </section>
         </Fragment>

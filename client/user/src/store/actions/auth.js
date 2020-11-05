@@ -28,7 +28,7 @@ export const loadUser = () => {
         try {
             //The server will verify the token, and then get the user
             const res = await axios.get(getState().globalVars.currentDomain + '/auth/me');
-            dispatch({ type: USER_LOADED, user: res.data });
+            dispatch({ type: USER_LOADED, user: res.data.data });
         } catch (err) {
             dispatch({ type: AUTH_ERROR });
         }

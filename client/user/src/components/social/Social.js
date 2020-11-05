@@ -1,20 +1,32 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getCurrentProfile } from '../../store/actions/profiles';
+import { getCurrentProfile } from '../../store/actions/profiles'
 import Friends from './Friends'
 import Messages from './Messages'
 import Notifications from './Notifications'
 import Profile from './Profile'
+import Spinner from '../UI/Spinner'
 
 
 const Social = () => {
 
-    const profile = useSelector(state => state.profiles.myProfile)
+    const profile = useSelector(state => state.profiles.myProfile);
+    const user = useSelector(state => state.auth.user);
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
 
+    const fetchProfile = useCallback(async () => {
+        await dispatch(getCurrentProfile()); //dispatch needs to be awaited for consistency
+        setLoading(false);
+    }, [dispatch]);
+
     useEffect(() => {
-        dispatch(getCurrentProfile());
-    }, [dispatch])
+        fetchProfile();
+    }, [dispatch, fetchProfile]);
+
+    if (loading) {
+        return <Spinner />
+    }
 
     return (
         <Fragment>
@@ -23,7 +35,7 @@ const Social = () => {
                     <div className="row">
                         <div className="col-md-12 col-lg-7 col-xl-7" style={{ padding: 10 }}>
                             <div className="card-group">
-                                <Profile />
+                                <Profile data={{ profile, user }} />
                                 <Notifications />
                             </div>
                         </div>

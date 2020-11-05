@@ -12,7 +12,8 @@ export const getCurrentProfile = () => {
     return async (dispatch, getState) => {
         try {
             const res = await axios.get(getState().globalVars.currentDomain + '/profiles/me');
-            dispatch({ type: SET_OWN_PROFILE, profile: res.data });
+            console.log(res.data.data);
+            dispatch({ type: SET_OWN_PROFILE, profile: res.data.data });
         } catch (err) {
             dispatch({
                 type: PROFILE_ERROR, error: {
@@ -36,7 +37,7 @@ export const fetchProfiles = (activitySector, status) => {
         }
         try {
             const res = await axios.get(domain + query);
-            dispatch({ type: SET_PROFILES, profiles: res.data });
+            dispatch({ type: SET_PROFILES, profiles: res.data.data });
         } catch (err) {
             dispatch({
                 type: PROFILE_ERROR, error: {
@@ -53,7 +54,7 @@ export const getProfileById = userId => {
         dispatch({ type: CLEAR_PROFILE });
         try {
             const res = await axios.get(getState().globalVars.currentDomain + '/profiles/user/' + userId);
-            dispatch({ type: SET_PROFILE, profile: res.data });
+            dispatch({ type: SET_PROFILE, profile: res.data.data });
         } catch (err) {
             dispatch({
                 type: PROFILE_ERROR, error: {
@@ -74,7 +75,7 @@ export const editOrCreateProfile = data => {
                 }
             };
             const res = await axios.post(getState().globalVars.currentDomain + '/profiles', data, config);
-            dispatch({ type: SET_PROFILE, profile: res.data });
+            dispatch({ type: SET_PROFILE, profile: res.data.data });
         } catch (err) {
             dispatch({
                 type: PROFILE_ERROR, error: {
