@@ -15,18 +15,32 @@
         "firstName": "John",
         "lastName": "Doe",
         "email": "john@gmail.com",
-        "friends": [
-            {
-                "user": "5d7a514b5d2c12c7449be046",
-                "lastName": "Kevin",
-                "firstName": "Smith"
-            },
-            {
-                "user": "5c8a1d5b0190b214360dc032",
-                "lastName": "Sasha",
-                "firstName": "Ryan"
-            }
-        ],
+        "friends": {
+            "friends": [
+                {
+                    "user": "5d7a514b5d2c12c7449be046",
+                    "lastName": "Kevin",
+                    "firstName": "Smith"
+                },
+                {
+                    "user": "5c8a1d5b0190b214360dc032",
+                    "lastName": "Sasha",
+                    "firstName": "Ryan"
+                }
+            ],
+            "friendRequests": [
+                {
+                    "user": "5c8a1d5b0190b214360dc031",
+                    "firstName": "Williams",
+                    "lastName": "Mary"
+                },
+                {
+                    "user": "5c8a1d5b0190b214360dc033",
+                    "firstName": "Greg",
+                    "lastName": "Harris"
+                }
+            ]
+        },
         "password": "testtest",
         "rfid": "12345",
         "cwpoints": {

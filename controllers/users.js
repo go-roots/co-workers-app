@@ -1,57 +1,193 @@
 const User = require('../models/User');
-const Profile = require('../models/Profile');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const { validationResult } = require('express-validator');
 
 
+// Some fields are not updated at all (password, linkedin, role)
 
-// @desc        Get single user light version
+
+// @desc        Get single/all user(s) light/extended version
 // @route       GET api/cw-api/users/light/:userId
-// @access      Private
-exports.getUserLight = asyncHandler(async (req, res, next) => {
-    res.status(200).json(res.advancedResults);
-});
-
-// @desc        Get single user extended with room and profile
 // @route       GET api/cw-api/users/extended/:userId
-// @access      Private
-exports.getUserExtended = asyncHandler(async (req, res, next) => {
-    res.status(200).json(res.advancedResults);
-});
-
-// @desc        Get all users light version
 // @route       GET api/cw-api/users/light
-// @access      Private
-exports.getUsersLight = asyncHandler(async (req, res, next) => {
-    res.status(200).json(res.advancedResults);
-});
-
-// @desc        Get all users extended with rooms and profiles
 // @route       GET api/cw-api/users/extended
 // @access      Private
-exports.getUsersExtended = asyncHandler(async (req, res, next) => {
+exports.getFilteredUsers = asyncHandler(async (req, res, next) => {
     res.status(200).json(res.advancedResults);
 });
 
-// //update important infos
-// //Some fields must be updated only by the admin (rfid, billing)
-// //Some fields must be updated only by a user that doesn't connect with linkedin (email, fName, lName)
-// //Some fields must be updated by the user or the admin (cwpoints, friends, messages, stats, electricityConsumptionLogs)
-// //Some fields are not updated, here at least (password, linkedin, role)
-// exports.updateUser = asyncHandler(async (req, res, next) => {
-
-// });
-
-// exports.registerRfid = asyncHandler(async (req, res, next) => {
-
-// });
-
-// @desc        Delete account admin feature
-// @route       DELETE api/cw-api/users/:userId
+// @desc        Updated only by the admin (rfid, billing)
+// @route       PUT api/cw-api/users/admin/:userId
 // @access      Private
-exports.deleteAccountAdmin = asyncHandler(async (req, res, next) => {
-    await Profile.findOneAndRemove({ user: req.params.userId });
-    await User.findOneAndRemove({ _id: req.params.userId });
-    res.status(200).json('User deleted');
+exports.registerRfidOrBilling = asyncHandler(async (req, res, next) => {
+    const { rfid, bill, contractType } = req.body;
+    const { userId } = req.params;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        return next(new ErrorResponse(`No user found with the id${userId}`, 404));
+    }
+
+    if (!(rfid || bill || contractType)) {
+        return next(new ErrorResponse('Please specify a field to modify', 404));
+    }
+
+    let updatedUser = user;
+
+    if (rfid) updatedUser.rfid = rfid;
+    if (bill) updatedUser.billing.bill.unshift(bill);
+    if (contractType) updatedUser.billing.contractType = contractType;
+
+    const newUser = await User.findByIdAndUpdate(
+        userId,
+        { $set: updatedUser },
+        { new: true }
+    );
+
+    res.status(200).json({ success: true, data: newUser });
+});
+
+// @desc        Updated only by a user that doesn't connect with linkedin (email, fName, lName)
+// @route       PUT api/cw-api/users/nolinkedin
+// @access      Private
+exports.updateForNolinkedinUser = asyncHandler(async (req, res, next) => {
+    if (req.user.linkedin) {
+        return next(new ErrorResponse('Forbidden', 403));
+    }
+
+    const { email, firstName, lastName } = req.body;
+    let updatedUser = {};
+
+    if (email) updatedUser.email = email;
+    if (firstName) updatedUser.firstName = firstName;
+    if (lastName) updatedUser.lastName = lastName;
+
+    const user = await User.findByIdAndUpdate(
+        req.user.id,
+        { $set: updatedUser },
+        { new: true }
+    );
+
+    res.status(200).json({ success: true, data: user });
+});
+
+// Some fields must be updated by the user or the admin (friends, messages, stats, electricityConsumptionLogs)
+// stats, electricityConsumptionLogs is ignored for now
+
+// @desc        Update messages
+// @route       POST api/cw-api/users/message/:userId
+// @access      Private
+exports.updateMessages = asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+
+    const { userId } = req.params;
+
+    if (req.user.id == userId) {
+        return next(new ErrorResponse('Forbidden', 403));
+    }
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        return next(new ErrorResponse(`User not found with the id ${userId}`, 404));
+    }
+
+    const newMessage = {
+        from: req.user.id,
+        text: req.body.message,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName
+    };
+
+    user.messages.unshift(newMessage);
+    await user.save();
+
+    res.sendStatus(204);
+});
+
+// @desc        Add friend request
+// @route       PUT api/cw-api/users/friendReq/:userId
+// @access      Private
+exports.updateFriendReq = asyncHandler(async (req, res, next) => {
+    const { userId } = req.params;
+
+    if (req.user.id == userId) {
+        return next(new ErrorResponse('Forbidden', 403));
+    }
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        return next(new ErrorResponse(`User not found with the id ${userId}`, 404));
+    }
+
+    for (const fRequest of user.friends.friendRequests) {
+        if (fRequest.user == req.user.id) {
+            return next(new ErrorResponse(`A friend request is already registered for the user with id ${userId}`, 403));
+        }
+    }
+
+    for (const friend of user.friends.friends) {
+        if (friend.friend == req.user.id) {
+            return next(new ErrorResponse(`The user with the ${userId} is already your friend`, 403));
+        }
+    }
+
+    const newFriendRequest = {
+        user: req.user.id,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName
+    };
+
+    user.friends.friendRequests.unshift(newFriendRequest);
+    await user.save();
+
+    res.sendStatus(204);
+});
+
+// @desc        Accept friend request
+// @route       PUT api/cw-api/users/friendReq/accept/:userId
+// @access      Private
+exports.acceptFriendReq = asyncHandler(async (req, res, next) => {
+    const { userId } = req.params;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        return next(new ErrorResponse(`No friends request found for the user with id ${userId}`, 404));
+    }
+
+    const me = await User.findById(req.user.id);
+
+    let updatedUser = me;
+
+    //Find the friend request
+    const friendRequest = me.friends.friendRequests.filter(fRequest => fRequest.user == userId);
+
+    //Delete it from the user's requests
+    me.friends.friendRequests = me.friends.friendRequests.filter(fRequest => fRequest.user != userId);
+    await user.save();
+
+    //Transform the request into friendship
+    const newFriend = {
+        friend: friendRequest[0].user,
+        firstName: friendRequest[0].firstName,
+        lastName: friendRequest[0].lastName
+    };
+
+    updatedUser.friends.friends.unshift(newFriend);
+
+    const newUser = await User.findByIdAndUpdate(
+        req.user.id,
+        { $set: updatedUser },
+        { new: true }
+    );
+
+    res.status(200).json({ success: true, data: newUser });
 });

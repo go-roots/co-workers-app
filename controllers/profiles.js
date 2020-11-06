@@ -33,8 +33,9 @@ exports.getProfiles = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, count: profiles.length, data: profiles })
 });
 
-// @desc        Create or update a profile
+// @desc        Create/update a profile
 // @route       POST api/cw-api/profiles
+// @route       PUT api/cw-api/profiles
 // @access      Private
 exports.modifyProfile = asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
@@ -127,7 +128,7 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
 
 
 // @desc        Update profile mood, status or stories
-// @route       PUT api/cw-api/profiles
+// @route       PUT api/cw-api/profiles/social
 // @access      Private
 exports.updateSocial = asyncHandler(async (req, res, next) => {
     const profile = await Profile.findOne({ user: req.user.id });
@@ -154,7 +155,7 @@ exports.updateSocial = asyncHandler(async (req, res, next) => {
 
 
 // @desc        Update profile comments, awards
-// @route       PUT api/cw-api/profiles/:userId
+// @route       PUT api/cw-api/profiles/distinctions/:userId
 // @access      Private
 exports.updateDistinctions = asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
@@ -209,10 +210,17 @@ exports.updateDistinctions = asyncHandler(async (req, res, next) => {
 
 
 // @desc        Delete account feature
-// @route       DELETE api/cw-api/profiles
+// @route       DELETE api/cw-api/profiles/:userId (optional)
 // @access      Private
 exports.deleteAccount = asyncHandler(async (req, res, next) => {
-    await Profile.findOneAndRemove({ user: req.user.id });
-    await User.findOneAndRemove({ _id: req.user.id });
+    if (req.user.role == 'user') {
+        await Profile.findOneAndRemove({ user: req.user.id });
+        await User.findOneAndRemove({ _id: req.user.id });
+    }
+    if (req.user.role == 'admin') {
+        await Profile.findOneAndRemove({ user: req.params.userId });
+        await User.findOneAndRemove({ _id: req.params.userId });
+    }
+
     res.status(204).json('User deleted');
 });

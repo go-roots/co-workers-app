@@ -51,33 +51,49 @@ const UserSchema = new mongoose.Schema({
         minlength: 6,
         select: false //We disable by default the ability to get the password from db
     },
-    friends: [
-        {
-            user: {
-                type: mongoose.Schema.ObjectId,
-                ref: 'user'
-            },
-            createdAt: {
-                type: Date,
-                default: Date.now
-            },
-            firstName: String,
-            lastName: String
+    friends: {
+        friends: {
+            type: [{
+                friend: {
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'user'
+                },
+                createdAt: {
+                    type: Date,
+                    default: Date.now
+                },
+                firstName: String,
+                lastName: String
+            }]
+        },
+        friendRequests: {
+            type: [{
+                user: {
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'user'
+                },
+                firstName: String,
+                lastName: String,
+                createdAt: {
+                    type: Date,
+                    default: Date.now
+                }
+            }]
         }
-    ],
+    },
     messages: [
         {
             from: {
                 type: mongoose.Schema.ObjectId,
                 ref: 'user'
             },
+            text: String,
+            firstName: String,
+            lastName: String,
             createdAt: {
                 type: Date,
                 default: Date.now
-            },
-            text: String,
-            firstName: String,
-            lastName: String
+            }
         }
     ],
     cwpoints: {
