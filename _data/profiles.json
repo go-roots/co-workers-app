@@ -2,7 +2,7 @@
     {
         "user": "5d7a514b5d2c12c7449be045",
         "activitySector": "Student or Learning",
-        "photo": "https://cdn.pixabay.com/photo/2020/10/22/10/15/chipmunk-5675631_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg",
         "company": "UT1",
         "position": "Student",
         "skills": [
@@ -39,7 +39,7 @@
     {
         "user": "5d7a514b5d2c12c7449be046",
         "activitySector": "Instructor or teacher",
-        "photo": "https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg",
         "company": "Lycée Pierre de Fermat",
         "position": "High-school teacher",
         "skills": [
@@ -60,7 +60,7 @@
     {
         "user": "5c8a1d5b0190b214360dc031",
         "activitySector": "Charity and voluntary work",
-        "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Joe_Biden_2013.jpg/330px-Joe_Biden_2013.jpg",
         "company": "Pets savers of Toulouse",
         "position": "Manager",
         "skills": [
@@ -89,7 +89,7 @@
     {
         "user": "5c8a1d5b0190b214360dc040",
         "activitySector": "Creative arts and design",
-        "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg/330px-Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg",
         "company": "Beaux-arts",
         "position": "Designer",
         "skills": [
@@ -121,7 +121,7 @@
     {
         "user": "5c8a1d5b0190b214360dc032",
         "activitySector": "Law",
-        "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/42/Fran%C3%A7ois_Hollande_-_2017_%2827869823159%29_%28cropped_2%29.jpg",
         "company": "Pearson & Pearson",
         "position": "Business Lawyer",
         "skills": [
@@ -146,7 +146,7 @@
     {
         "user": "5c8a1d5b0190b214360dc033",
         "activitySector": "Media and internet",
-        "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Emmanuel_Macron_in_2019.jpg",
         "company": "Google",
         "position": "In charge of commercials in Europe",
         "skills": [
@@ -171,7 +171,7 @@
     {
         "user": "5c8a1d5b0190b214360dc034",
         "activitySector": "Media and internet",
-        "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Vladimir_Putin_%282020-02-20%29.jpg/330px-Vladimir_Putin_%282020-02-20%29.jpg",
         "company": "Self-employed",
         "position": "travel vlogger",
         "skills": [
@@ -198,7 +198,7 @@
     {
         "user": "5c8a1d5b0190b214360dc035",
         "activitySector": "Engineering and manufacturing",
-        "photo": "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Leonardo_Dicaprio_Cannes_2019.jpg/375px-Leonardo_Dicaprio_Cannes_2019.jpg",
         "company": "Retired",
         "position": "Retired",
         "skills": [
@@ -217,7 +217,7 @@
     {
         "user": "5c8a1d5b0190b214360dc036",
         "activitySector": "Information technologies",
-        "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Emilia_Clarke_Cannes_2018.jpg/375px-Emilia_Clarke_Cannes_2018.jpg",
         "company": "Facebook",
         "position": "Freelancer",
         "website": "https://oporctunite.envt.fr",
@@ -240,7 +240,7 @@
     {
         "user": "5c8a1d5b0190b214360dc037",
         "activitySector": "Accountancy, banking and finance",
-        "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Henry_Cavill_by_Gage_Skidmore_2.jpg/375px-Henry_Cavill_by_Gage_Skidmore_2.jpg",
         "company": "BNP Paribas",
         "position": "Accountant",
         "website": "https://mabanque.bnpparibas.com",
@@ -263,7 +263,7 @@
     {
         "user": "5c8a1d5b0190b214360dc038",
         "activitySector": "Creative arts and design",
-        "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
+        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQGnpmzKzjqDpg/profile-displayphoto-shrink_400_400/0?e=1609977600&v=beta&t=yAfI-cxH68VqizQ5vnwgVnDKzGgEhJUoOOsgFWssGtI",
         "company": "Arts",
         "position": "Designer",
         "skills": [
@@ -290,7 +290,7 @@
     {
         "user": "5c8a1d5b0190b214360dc039",
         "activitySector": "Student or learning",
-        "photo": "https://cdn.pixabay.com/photo/2013/11/01/11/13/dolphin-203875_960_720.jpg",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Christophe_Lambert_et_Jean_Dujardin_%28Cropped%29.jpg/330px-Christophe_Lambert_et_Jean_Dujardin_%28Cropped%29.jpg",
         "company": "Paul Sabatier",
         "position": "Physics students",
         "skills": [
