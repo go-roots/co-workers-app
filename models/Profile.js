@@ -41,7 +41,7 @@ const ProfileSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['Available', 'Do not disturb', 'Invisible', 'Unavailable'],
+        enum: ['Available', 'Do not disturb', 'Unavailable'],
         default: 'Unavailable'
     },
     mood: {

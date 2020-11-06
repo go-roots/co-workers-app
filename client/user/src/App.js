@@ -52,7 +52,7 @@ const App = () => {
 
   //Tries to get the user if there's a token (auto-connect)
   useEffect(() => {
-    store.dispatch(loadUser());
+    store.dispatch(loadUser())
   }, []);
 
   return (

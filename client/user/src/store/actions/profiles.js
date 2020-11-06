@@ -13,7 +13,6 @@ export const getCurrentProfile = () => {
     return async (dispatch, getState) => {
         try {
             const res = await axios.get(getState().globalVars.currentDomain + '/profiles/me');
-            console.log(res.data.data);
             dispatch({ type: SET_OWN_PROFILE, profile: res.data.data });
         } catch (err) {
             dispatch({
@@ -26,21 +25,24 @@ export const getCurrentProfile = () => {
     }
 }
 
-export const fetchProfiles = (activitySector, status) => {
+export const fetchProfiles = (activitySector, status, friends) => {
     return async (dispatch, getState) => {
-        dispatch({ type: CLEAR_PROFILE });
+
         const domain = getState().globalVars.currentDomain;
-        let query = '/users/extended?select=firstName,lastName';
-        if (activitySector || status) {
-            query += '?';
+        let query = '/users/extended?select=firstName,lastName,role,friends';
+
+        if (activitySector || status || friends) {
             if (activitySector) query += `&activitySector=${activitySector}`;
             if (status) query += `&status=${status}`;
+            if (friends) query += '&friends=true';
         }
+
         try {
             const res = await axios.get(domain + query);
-            dispatch({ type: SET_PROFILES, profiles: res.data.data });
+            await dispatch({ type: CLEAR_PROFILE });
+            return dispatch({ type: SET_PROFILES, profiles: res.data.data });
         } catch (err) {
-            dispatch({
+            return dispatch({
                 type: PROFILE_ERROR, error: {
                     msg: err.response.statusText,
                     status: err.response.status

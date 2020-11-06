@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -26,7 +26,7 @@ const Login = props => {
     const onSubmitHandler = async e => {
         e.preventDefault();
         await dispatch(removeAllAlerts());
-        dispatch(loginUser(formData.email, formData.password));
+        return dispatch(loginUser(formData.email, formData.password));
     }
 
     if (isAuth) {
@@ -34,7 +34,7 @@ const Login = props => {
     }
 
     return (
-        <Fragment style={{ background: "rgb(115,173,58)" }}>
+        <div style={{ background: "rgb(115,173,58)" }}>
             <Alert />
             <div className="login-clean">
                 <form onSubmit={e => onSubmitHandler(e)}>
@@ -78,7 +78,7 @@ const Login = props => {
                     <a className="forgot" href="#">Forgot your email or password?</a>
                 </form>
             </div>
-        </Fragment>
+        </div>
     )
 }
 

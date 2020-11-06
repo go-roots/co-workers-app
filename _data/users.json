@@ -18,12 +18,12 @@
         "friends": {
             "friends": [
                 {
-                    "user": "5d7a514b5d2c12c7449be046",
+                    "friend": "5d7a514b5d2c12c7449be046",
                     "lastName": "Kevin",
                     "firstName": "Smith"
                 },
                 {
-                    "user": "5c8a1d5b0190b214360dc032",
+                    "friend": "5c8a1d5b0190b214360dc032",
                     "lastName": "Sasha",
                     "firstName": "Ryan"
                 }
@@ -79,6 +79,18 @@
         "role": "user",
         "password": "testtest",
         "rfid": "123456",
+        "friends": {
+            "friends": [
+                {
+                    "friend": "5d7a514b5d2c12c7449be045",
+                    "firstName": "John",
+                    "lastName": "Doe"
+                }
+            ],
+            "friendRequests": [
+                {}
+            ]
+        },
         "cwpoints": {
             "current": 500,
             "history": [
@@ -174,6 +186,16 @@
         "role": "user",
         "password": "testtest",
         "rfid": "12345678",
+        "friends": {
+            "friends": [
+                {
+                    "friend": "5d7a514b5d2c12c7449be045",
+                    "firstName": "John",
+                    "lastName": "Doe"
+                }
+            ],
+            "friendRequests": []
+        },
         "cwpoints": {
             "current": 900,
             "history": [

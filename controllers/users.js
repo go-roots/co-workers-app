@@ -157,37 +157,48 @@ exports.updateFriendReq = asyncHandler(async (req, res, next) => {
 exports.acceptFriendReq = asyncHandler(async (req, res, next) => {
     const { userId } = req.params;
 
-    const user = await User.findById(userId);
+    const friend = await User.findById(userId);
 
-    if (!user) {
+    if (!friend) {
         return next(new ErrorResponse(`No friends request found for the user with id ${userId}`, 404));
     }
 
+    //Update me
     const me = await User.findById(req.user.id);
 
-    let updatedUser = me;
+    let updatedMe = me;
 
     //Find the friend request
     const friendRequest = me.friends.friendRequests.filter(fRequest => fRequest.user == userId);
 
-    //Delete it from the user's requests
+    //Delete it from the my requests
     me.friends.friendRequests = me.friends.friendRequests.filter(fRequest => fRequest.user != userId);
-    await user.save();
+    await me.save();
 
     //Transform the request into friendship
-    const newFriend = {
+    let newFriend = {
         friend: friendRequest[0].user,
         firstName: friendRequest[0].firstName,
         lastName: friendRequest[0].lastName
     };
 
-    updatedUser.friends.friends.unshift(newFriend);
+    updatedMe.friends.friends.unshift(newFriend);
 
-    const newUser = await User.findByIdAndUpdate(
+    const newMe = await User.findByIdAndUpdate(
         req.user.id,
-        { $set: updatedUser },
+        { $set: updatedMe },
         { new: true }
     );
 
-    res.status(200).json({ success: true, data: newUser });
+    //Update the friend
+    newFriend = {
+        friend: req.user.id,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName
+    };
+
+    friend.friends.friends.unshift(newFriend);
+    await friend.save();
+
+    res.status(200).json({ success: true, data: newMe });
 });

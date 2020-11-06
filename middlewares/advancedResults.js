@@ -7,7 +7,7 @@ const advancedResults = (model, populate, type = 'all') => async (req, res, next
     let reqQuery = { ...req.query };
 
     //Fields to exclude
-    const removeFields = ['status', 'activitySector', 'select', 'sort', 'page', 'limit'];
+    const removeFields = ['status', 'activitySector', 'friends', 'select', 'sort', 'page', 'limit'];
 
     //Loop through excluded params and remove them from reqQuery
     //Reminder : objectName.propertyName or objectName["propertyName"]
@@ -67,18 +67,23 @@ const advancedResults = (model, populate, type = 'all') => async (req, res, next
     let total;
 
     //Define the number of docs, clearly not optimal...
-    if (req.query.status || req.query.activitySector) {
+    if (req.query.status || req.query.activitySector || req.query.friends) {
         //Executing the query :
         results = await query;
 
-        //Filter on the status attr in User.profile
+        //Filter on the status attr in User -> profile
         if (req.query.status) {
             results = results.filter(user => user.profile && user.profile.status === req.query.status);
         }
 
-        //Filter on the activitySector attr in User.profile
+        //Filter on the activitySector attr in User -> profile
         if (req.query.activitySector) {
             results = results.filter(user => user.profile && user.profile.activitySector === req.query.activitySector);
+        }
+
+        //Filter on the friends attr in User
+        if (req.query.friends) {
+            results = results.filter(user => user.friends.friends.some(f => f.friend == req.user.id));
         }
 
         total = results.length;

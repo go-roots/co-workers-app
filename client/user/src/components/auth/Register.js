@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -28,7 +28,7 @@ const Register = () => {
     const onSubmitHandler = async e => {
         e.preventDefault();
         await dispatch(removeAllAlerts());
-        dispatch(registerUser(formData.firstName, formData.lastName, formData.email, formData.password));
+        return dispatch(registerUser(formData.firstName, formData.lastName, formData.email, formData.password));
     }
 
     if (isAuth) {
@@ -36,7 +36,7 @@ const Register = () => {
     }
 
     return (
-        <Fragment style={{ background: "rgb(115,173,58)" }}>
+        <div style={{ background: "rgb(115,173,58)" }}>
             <Alert />
             <div className="login-clean">
                 <form onSubmit={e => onSubmitHandler(e)}>
@@ -97,7 +97,7 @@ const Register = () => {
                     <Link id="sign-in" className="forgot" to="/login">Already have an account ? Sign in.</Link>
                 </form>
             </div>
-        </Fragment>
+        </div>
     )
 }
 
