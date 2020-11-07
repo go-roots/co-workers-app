@@ -60,8 +60,8 @@ const UsersTable = ({ data: profiles }) => {
                 updatedActiveElements.includes(child) && updatedActiveElements.splice(child);
             }
             setActiveElements(updatedActiveElements);
-            if (activity) await dispatchFilter({ type: 'SET_ACTIVITY', name: activity });
-            if (status) await dispatchFilter({ type: 'SET_STATUS', name: status });
+            if (activity) await dispatchFilter({ type: 'SET_ACTIVITY', name: !e.target.classList.contains('checked-element') ? activity : null });
+            if (status) await dispatchFilter({ type: 'SET_STATUS', name: !e.target.classList.contains('checked-element') ? status : null });
         }
         //All members needs to reset all other filters
         if (e.target.id === 'allMembers') {
