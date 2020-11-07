@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://use.fontawesome.com/releases/v5.12.0/css/all.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css");
+
+
+/* General */
+.main {
+  width: 100%;
+  background: #ffffff;
+  margin-bottom: 20px;
+}
+
+.responsive-padding {
+  padding-top: 20px !important;
+}
+
+@media (min-width: 992px) {
+  .responsive-padding {
+    padding-top: 0px !important;
+  }
+}
+
+.responsive-margin {
+  margin-top: 20px !important;
+}
+
+@media (min-width: 768px) {
+  .responsive-margin {
+    margin-top: 0px !important;
+  }
+}
+
+#not-found {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
+
+/* Sidebar */
+
+.sidebar .nav-item .nav-link span {
+  font-size: 1rem;
+}
+
+#accordionSidebar {
+  margin-top: 40px;
+}
+
+.sidebar-icon {
+  font-size: 25px !important;
+}
+
+.sidebar-menu-text {
+  padding-left: 5px;
+}
+
+.sidebar {
+  width: 8rem;
+  min-height: 100vh;
+}
+
+
+/* Dashboard */
+
+#nav-user-icon {
+  font-size: 30px;
+}
+
+#graph-select-icon {
+  font-size: 20px;
+}
+
+.system-log-events-container {
+  overflow: scroll;
+  height: 200px;
+}
+
+/* User table */
+
+#table-filter-separator {
+  margin-left: 10px;
+}
+
+#table-filter-icon {
+  font-size: 20px;
+}
+
+/* rooms */
+
+#display-map {
+  transform: rotate(90deg);
+}
+
+#map-container {
+  height: 50vh;
+  background: url("../../assets/img/map2.jpeg") center / contain no-repeat;
+  box-shadow: 1px 1px 5px 2px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+  #map-container {
+    height: 70vh !important;
+    background: url("../../assets/img/map2.jpeg") center / contain no-repeat;
+    box-shadow: 1px 1px 5px 2px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 10px;
+  }
+}
+
+.mood-status-icon {
+  font-size: 17px;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.user-icon-available {
+  font-size: 13px;
+  color: #61fe00;
+}
+
+.user-icon-invisible {
+  font-size: 13px;
+  color: #f6F6F6;
+}
+
+.user-icon-dnd {
+  font-size: 13px;
+  color: #fe0000;
+}
+
+.comment-icon {
+  font-size: 20px;
+  color: blue;
+  padding-left: 3px;
+}
+
+.filter-icon {
+  padding-right: 10px;
+}
+
+.filters-container {
+  padding-bottom: 25px;
+}
+
+.small-image-container {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 1px;
+  border-style: solid;
+  border-color: rgba(245,221,8,0.56);
+  margin-top: 10px;
+}
+
+#people-inner-container {
+  overflow: scroll;
+  height: 50vh;
+  border-radius: 20px;
+  border-style: dotted;
+  border-top-width: 3px;
+  border-right-width: 3px;
+  border-bottom-width: 3px;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+@media (min-width: 992px) {
+  #people-inner-container {
+    height: 70vh !important;
+  }
+}
+
+.people-inner-element {
+  font-size: 1rem;
+  padding-bottom: 12px;
+}
+
+.dashboard-name-link {
+  padding-left: 10px;
+  color: initial;
+}
+
+.dashboard-name-link:hover {
+  color: initial;
+  text-decoration: initial;
+}
+
+#social-links-container {
+}
+
+.reedemable-element {
+  margin-bottom: 30px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+#redeemable-container {
+  margin-top: 30px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.reedemable-text {
+  padding-left: 20px;
+}
+
+#add-redeemable-icon {
+  font-size: 100px;
+  cursor: pointer;
+}
+
+.events-cards-element {
+  border-width: 1px;
+  border-style: solid;
+  margin-left: 15px;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#events-cards-container {
+  padding: 15px;
+}
+

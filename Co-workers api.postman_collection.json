@@ -39,46 +39,6 @@
 					"response": []
 				},
 				{
-					"name": "CREATE transaction",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"redeemableId\": \"5fa3d9ca5a11f63af4ed58c4\"\n}"
-						},
-						"url": {
-							"raw": "{{URL}}/api/cw-api/transactions",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"cw-api",
-								"transactions"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Validate a transaction",
 					"request": {
 						"auth": {
@@ -118,27 +78,9 @@
 						}
 					},
 					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "profiles",
-			"item": [
+				},
 				{
-					"name": "CREATE  profile",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "47ef1297-abff-4cad-85c4-59b14485bb9b",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
+					"name": "CREATE transaction",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -161,106 +103,28 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"activitySector\": \"random\",\n    \"skills\": \"random\",\n    \"company\": \"random\",\n    \"photo\": \"https://wp-fr.oberlo.com/wp-content/uploads/sites/4/2019/09/banque-images.jpg\"\n}",
-							"options": {
-								"raw": {}
-							}
+							"raw": "{\n    \"redeemableId\": \"5fa3d9ca5a11f63af4ed58c4\"\n}"
 						},
 						"url": {
-							"raw": "{{URL}}/api/cw-api/profiles",
+							"raw": "{{URL}}/api/cw-api/transactions",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"cw-api",
-								"profiles"
+								"transactions"
 							]
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "UPDATE profile",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"website\": \"http://www.somesites.com\"\n}",
-							"options": {
-								"raw": {}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/cw-api/profiles",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"cw-api",
-								"profiles"
-							]
-						},
-						"description": "Same function as create profile but with different checks on fields"
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE account (admin or own)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/cw-api/profiles/5d7a514b5d2c12c7449be046",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"cw-api",
-								"profiles",
-								"5d7a514b5d2c12c7449be046"
-							]
-						}
-					},
-					"response": []
-				},
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "profiles",
+			"item": [
 				{
 					"name": "GET all profiles",
 					"request": {
@@ -364,6 +228,142 @@
 					"response": []
 				},
 				{
+					"name": "CREATE  profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47ef1297-abff-4cad-85c4-59b14485bb9b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activitySector\": \"random\",\n    \"skills\": \"random\",\n    \"company\": \"random\",\n    \"photo\": \"https://wp-fr.oberlo.com/wp-content/uploads/sites/4/2019/09/banque-images.jpg\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/cw-api/profiles",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE account (admin or own)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/cw-api/profiles/5d7a514b5d2c12c7449be046",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"profiles",
+								"5d7a514b5d2c12c7449be046"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"website\": \"http://www.somesites.com\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/cw-api/profiles",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"profiles"
+							]
+						},
+						"description": "Same function as create profile but with different checks on fields"
+					},
+					"response": []
+				},
+				{
 					"name": "ADD comments to a user",
 					"request": {
 						"auth": {
@@ -411,95 +411,6 @@
 		{
 			"name": "auth",
 			"item": [
-				{
-					"name": "login",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "2acfe559-8553-4365-b91c-a9e6c9fa70f0",
-								"exec": [
-									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"ryan@gmail.com\",\n    \"password\": \"testtest\"\n}",
-							"options": {
-								"raw": {}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/cw-api/auth/login",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"cw-api",
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "register",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "ce8291d3-b168-49fe-aca8-21a1c3b110b3",
-								"exec": [
-									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"ilya\",\n    \"lastName\": \"Stepanov\",\n    \"email\": \"ilya@gmail.com\",\n    \"password\": \"testtest\"\n}"
-						},
-						"url": {
-							"raw": "{{URL}}/api/cw-api/auth/register",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"cw-api",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "GET current user",
 					"request": {
@@ -602,6 +513,95 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2acfe559-8553-4365-b91c-a9e6c9fa70f0",
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@gmail.com\",\n    \"password\": \"testtest\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/cw-api/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce8291d3-b168-49fe-aca8-21a1c3b110b3",
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"ilya\",\n    \"lastName\": \"Stepanov\",\n    \"email\": \"ilya@gmail.com\",\n    \"password\": \"testtest\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/cw-api/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -609,37 +609,6 @@
 		{
 			"name": "users",
 			"item": [
-				{
-					"name": "GET single user extended",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/cw-api/users/extended/5d7a514b5d2c12c7449be045",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"cw-api",
-								"users",
-								"extended",
-								"5d7a514b5d2c12c7449be045"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "GET single user light",
 					"request": {
@@ -678,7 +647,7 @@
 					"response": []
 				},
 				{
-					"name": "GET all users light",
+					"name": "GET single user extended",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -693,7 +662,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/cw-api/users/light?sort=-firstName&page=3&limit=3",
+							"raw": "{{URL}}/api/cw-api/users/extended/5d7a514b5d2c12c7449be045",
 							"host": [
 								"{{URL}}"
 							],
@@ -701,23 +670,43 @@
 								"api",
 								"cw-api",
 								"users",
-								"light"
-							],
-							"query": [
-								{
-									"key": "sort",
-									"value": "-firstName"
-								},
-								{
-									"key": "page",
-									"value": "3"
-								},
-								{
-									"key": "limit",
-									"value": "3"
-								}
+								"extended",
+								"5d7a514b5d2c12c7449be045"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD friend",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/cw-api/users/friendReq/accept/5d7a514b5d2c12c7449be045",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"users",
+								"friendReq",
+								"accept",
+								"5d7a514b5d2c12c7449be045"
+							]
+						},
+						"description": "Accept the friend request thus deleting the friend request and adding a friend"
 					},
 					"response": []
 				},
@@ -778,7 +767,7 @@
 					"response": []
 				},
 				{
-					"name": "UPDATE rfid and billing (admin)",
+					"name": "GET all users light",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -790,21 +779,10 @@
 								}
 							]
 						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"contractType\": \"premium\"\n}"
-						},
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/cw-api/users/admin/5c8a1d5b0190b214360dc039",
+							"raw": "{{URL}}/api/cw-api/users/light?sort=-firstName&friends=true&page=3&limit=3",
 							"host": [
 								"{{URL}}"
 							],
@@ -812,8 +790,25 @@
 								"api",
 								"cw-api",
 								"users",
-								"admin",
-								"5c8a1d5b0190b214360dc039"
+								"light"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-firstName"
+								},
+								{
+									"key": "friends",
+									"value": "true"
+								},
+								{
+									"key": "page",
+									"value": "3"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
 							]
 						}
 					},
@@ -948,7 +943,7 @@
 					"response": []
 				},
 				{
-					"name": "ADD friend",
+					"name": "UPDATE rfid and billing (admin)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -961,9 +956,20 @@
 							]
 						},
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contractType\": \"premium\"\n}"
+						},
 						"url": {
-							"raw": "{{URL}}/api/cw-api/users/friendReq/accept/5d7a514b5d2c12c7449be045",
+							"raw": "{{URL}}/api/cw-api/users/admin/5c8a1d5b0190b214360dc039",
 							"host": [
 								"{{URL}}"
 							],
@@ -971,12 +977,10 @@
 								"api",
 								"cw-api",
 								"users",
-								"friendReq",
-								"accept",
-								"5d7a514b5d2c12c7449be045"
+								"admin",
+								"5c8a1d5b0190b214360dc039"
 							]
-						},
-						"description": "Accept the friend request thus deleting the friend request and adding a friend"
+						}
 					},
 					"response": []
 				}
