@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { createRef, Fragment, useState } from 'react';
+import React, { Fragment, useState, useReducer, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchProfiles } from '../../store/actions/profiles';
@@ -7,23 +7,92 @@ import { fetchProfiles } from '../../store/actions/profiles';
 import { HiOutlineLightBulb, HiUserGroup } from 'react-icons/hi';
 import { FaCircle, FaUserMinus, FaRegComment, FaUserPlus } from 'react-icons/fa';
 import { ImLifebuoy, ImAccessibility } from 'react-icons/im';
-import { BiCheckboxChecked } from 'react-icons/bi';
 import Tooltip from '@material-ui/core/Tooltip';
 
 
+const initialState = {
+    allMembers: true,
+    friends: false,
+    activity: null,
+    status: null,
+};
+
+const FiltersReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'SET_FRIENDS':
+            return {
+                ...state,
+                friends: !state.friends
+            };
+        case 'SET_ACTIVITY':
+            return {
+                ...state,
+                activity: action.name
+            };
+        case 'SET_STATUS':
+            return {
+                ...state,
+                status: action.name
+            };
+        case 'SET_ALL_MEMBERS':
+            return initialState;
+        default:
+            return state
+    }
+};
+
 const UsersTable = ({ data: profiles }) => {
 
+    const [activeElements, setActiveElements] = useState([]);
     const [socialDD, setSocialDD] = useState("dropdown-menu");
     const [activityDD, setActivityDD] = useState("dropdown-menu");
     const [activityDDModal, setActivityDDModal] = useState("dropdown-menu");
 
     const dispatch = useDispatch();
 
-    const filtersHandler = (activity, status, friends) => {
-        dispatch(fetchProfiles(activity, status, friends));
+    const [appliedFilters, dispatchFilter] = useReducer(FiltersReducer, initialState);
+
+    const filtersHandler = async (e, activity, status, friends) => {
+        if (e.target.parentElement.id === 'status-sector-menu' || e.target.parentElement.id === 'activity-sector-menu') {
+            let updatedActiveElements = [...activeElements];
+            for (let child of e.target.parentElement.children) {
+                child != e.target && child.classList.remove('checked-element');
+                updatedActiveElements.includes(child) && updatedActiveElements.splice(child);
+            }
+            setActiveElements(updatedActiveElements);
+            if (activity) await dispatchFilter({ type: 'SET_ACTIVITY', name: activity });
+            if (status) await dispatchFilter({ type: 'SET_STATUS', name: status });
+        }
+        //All members needs to reset all other filters
+        if (e.target.id === 'allMembers') {
+            for (let elem of activeElements) {
+                elem.classList.remove('checked-element');
+            }
+            setActiveElements([]);
+
+            await dispatchFilter({ type: 'SET_ALL_MEMBERS' });
+            return dispatch(fetchProfiles(null, null, null));
+        }
+
+        if (!e.target.classList.contains('checked-element')) {
+            setActiveElements([...activeElements, e.target]);
+        } else {
+            let updatedActiveElements = [...activeElements];
+            updatedActiveElements.splice(e.target);
+            setActiveElements(updatedActiveElements);
+        }
+
+        e.target.classList.toggle('checked-element');
+
+        if (friends) {
+            return dispatchFilter({ type: 'SET_FRIENDS' });
+        }
     };
 
-    //console.log(profiles);
+    useEffect(() => {
+        dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
+    }, [appliedFilters]);
+
 
     return (
         <Fragment>
@@ -55,9 +124,10 @@ const UsersTable = ({ data: profiles }) => {
                             <div className="dropdown-menu">
                                 {/* {All users - no filter} */}
                                 <button
+                                    id="allMembers"
                                     className="dropdown-item"
                                     type='button'
-                                    onClick={() => filtersHandler(null, null, null)}
+                                    onClick={e => filtersHandler(e, null, null, null)}
                                 >
                                     All members
                                 </button>
@@ -78,21 +148,21 @@ const UsersTable = ({ data: profiles }) => {
                                         <button
                                             className="dropdown-item"
                                             type="button"
-                                            onClick={e => filtersHandler(null, 'Available', null)}
+                                            onClick={e => filtersHandler(e, null, 'Available', null)}
                                         >
                                             Available
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type="button"
-                                            onClick={() => filtersHandler(null, 'Do not disturb', null)}
+                                            onClick={e => filtersHandler(e, null, 'Do not disturb', null)}
                                         >
                                             Do not disturb
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type="button"
-                                            onClick={() => filtersHandler(null, 'Unavailable', null)}
+                                            onClick={e => filtersHandler(e, null, 'Unavailable', null)}
                                         >
                                             Unavailable
                                         </button>
@@ -102,7 +172,7 @@ const UsersTable = ({ data: profiles }) => {
                                 <button
                                     className="dropdown-item"
                                     type='button'
-                                    onClick={() => filtersHandler(null, null, true)}
+                                    onClick={e => filtersHandler(e, null, null, true)}
                                 >
                                     Friends
                                 </button>
@@ -124,153 +194,153 @@ const UsersTable = ({ data: profiles }) => {
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Accountancy, banking and finance', null, null)}
+                                            onClick={e => filtersHandler(e, 'Accountancy, banking and finance', null, null)}
                                         >
                                             Accountancy, banking and finance
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Business, consulting and management', null, null)}
+                                            onClick={e => filtersHandler(e, 'Business, consulting and management', null, null)}
                                         >
                                             Business, consulting and management
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Charity and voluntary work', null, null)}
+                                            onClick={e => filtersHandler(e, 'Charity and voluntary work', null, null)}
                                         >
                                             Charity and voluntary work
                                         </button><button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Creative arts and design', null, null)}
+                                            onClick={e => filtersHandler(e, 'Creative arts and design', null, null)}
                                         >
                                             Creative arts and design
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Student or Learning', null, null)}
+                                            onClick={e => filtersHandler(e, 'Student or Learning', null, null)}
                                         >
                                             Student or Learning
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Instructor or Teacher', null, null)}
+                                            onClick={e => filtersHandler(e, 'Instructor or Teacher', null, null)}
                                         >
                                             Instructor or Teacher
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Energy and utilities', null, null)}
+                                            onClick={e => filtersHandler(e, 'Energy and utilities', null, null)}
                                         >
                                             Energy and utilities
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Engineering and manufacturing', null, null)}
+                                            onClick={e => filtersHandler(e, 'Engineering and manufacturing', null, null)}
                                         >
                                             Engineering and manufacturing
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Environement and agriculture', null, null)}
+                                            onClick={e => filtersHandler(e, 'Environement and agriculture', null, null)}
                                         >
                                             Environement and agriculture
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Healthcare', null, null)}
+                                            onClick={e => filtersHandler(e, 'Healthcare', null, null)}
                                         >
                                             Healthcare
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Hospitality and events management', null, null)}
+                                            onClick={e => filtersHandler(e, 'Hospitality and events management', null, null)}
                                         >
                                             Hospitality and events management
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Information technologies', null, null)}
+                                            onClick={e => filtersHandler(e, 'Information technologies', null, null)}
                                         >
                                             Information technologies
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Law', null, null)}
+                                            onClick={e => filtersHandler(e, 'Law', null, null)}
                                         >
                                             Law
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Leisure, sport and tourism', null, null)}
+                                            onClick={e => filtersHandler(e, 'Leisure, sport and tourism', null, null)}
                                         >
                                             Leisure, sport and tourism
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Marketing, advertising and PR', null, null)}
+                                            onClick={e => filtersHandler(e, 'Marketing, advertising and PR', null, null)}
                                         >
                                             Marketing, advertising and PR
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Media and internet', null, null)}
+                                            onClick={e => filtersHandler(e, 'Media and internet', null, null)}
                                         >
                                             Media and internet
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Recruitement and retailement', null, null)}
+                                            onClick={e => filtersHandler(e, 'Recruitement and retailement', null, null)}
                                         >
                                             Recruitement and retailement
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('HR', null, null)}
+                                            onClick={e => filtersHandler(e, 'HR', null, null)}
                                         >
                                             HR
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Sales', null, null)}
+                                            onClick={e => filtersHandler(e, 'Sales', null, null)}
                                         >
                                             Sales
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Science and pharmaceuticals', null, null)}
+                                            onClick={e => filtersHandler(e, 'Science and pharmaceuticals', null, null)}
                                         >
                                             Science and pharmaceuticals
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Social care', null, null)}
+                                            onClick={e => filtersHandler(e, 'Social care', null, null)}
                                         >
                                             Social care
                                         </button>
                                         <button
                                             className="dropdown-item"
                                             type='button'
-                                            onClick={() => filtersHandler('Transportation and logistics', null, null)}
+                                            onClick={e => filtersHandler(e, 'Transportation and logistics', null, null)}
                                         >
                                             Transportation and logistics
                                         </button>

@@ -66,6 +66,11 @@ html {
   margin: auto;
 }
 
+.checked-element {
+  background-color: burlywood;
+  border: 1px solid chocolate;
+}
+
 /* Navbar */
 
 .navbar-light .navbar-brand {
