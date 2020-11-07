@@ -22,6 +22,7 @@ const auth = require('./routes/auth');
 const profiles = require('./routes/profiles');
 const users = require('./routes/users');
 const transactions = require('./routes/transactions');
+const rooms = require('./routes/rooms');
 
 //Initialize express
 const app = express();
@@ -48,6 +49,7 @@ app.use('/api/cw-api/auth', auth);
 app.use('/api/cw-api/profiles', profiles);
 app.use('/api/cw-api/users', users);
 app.use('/api/cw-api/transactions', transactions);
+app.use('/api/cw-api/rooms', rooms)
 
 //Error handling middleware
 app.use(errorHandler);
