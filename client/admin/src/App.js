@@ -95,7 +95,7 @@ const App = () => {
           <div id="content">
             <NavBar />
             <Switch>
-              <Route exact path='/admin' component={Dashboard} />
+              <Route exact path='/admin/dashboard' component={Dashboard} />
               <Route exact path='/admin/rooms' component={RoomsDashboard} />
               <Route exact path='/admin/profile/:userId' component={Profile} />
               <Route exact path='/admin/settings' component={Settings} />

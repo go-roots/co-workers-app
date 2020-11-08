@@ -1,14 +1,16 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Redeemables from './Redeemables'
 import Events from './Events'
 
 
 const Settings = () => {
     return (
-        <Fragment>
-            <Redeemables />
-            <Events />
-        </Fragment>
+        <div class="container-fluid">
+            <div className="row">
+                <Redeemables />
+                <Events />
+            </div>
+        </div>
     )
 }
 
