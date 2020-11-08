@@ -540,7 +540,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"john@gmail.com\",\n    \"password\": \"testtest\"\n}",
+							"raw": "{\n    \"email\": \"sasha@gmail.com\",\n    \"password\": \"testtest\"\n}",
 							"options": {
 								"raw": {}
 							}
@@ -979,6 +979,222 @@
 								"users",
 								"admin",
 								"5c8a1d5b0190b214360dc039"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "help-requests",
+			"item": [
+				{
+					"name": "GET help requests by status (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/cw-api/help-requests/cancelled",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"help-requests",
+								"cancelled"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET help-requests sent by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/cw-api/help-requests/sent/5c8a1d5b0190b214360dc032",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"help-requests",
+								"sent",
+								"5c8a1d5b0190b214360dc032"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET help requests received by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/cw-api/help-requests/received/5c8a1d5b0190b214360dc040",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"help-requests",
+								"received",
+								"5c8a1d5b0190b214360dc040"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a help-request + notif",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"users\": [\"5d7a514b5d2c12c7449be045\", \"5c8a1d5b0190b214360dc039\"],\n    \"tags\": \"ISM, Lean startup\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/cw-api/help-requests",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"help-requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE help request ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"accepted\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/cw-api/help-requests/5fa81d8ae33ccdb2771ecb44",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"help-requests",
+								"5fa81d8ae33ccdb2771ecb44"
+							]
+						},
+						"description": "The creator of the request, or the admin can cancel it, another user can accept it."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "notifications",
+			"item": [
+				{
+					"name": "GET user's notifications",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/cw-api/notifications/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"notifications",
+								"me"
 							]
 						}
 					},

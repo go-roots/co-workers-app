@@ -35,7 +35,7 @@ exports.initateTransaction = asyncHandler(async (req, res, next) => {
     timer = setTimeout(async () => {
         transaction.status = 'cancelled';
         await transaction.save();
-    }, 1000 * 1 * 60);
+    }, 1000 * 5 * 60);
 
     res.status(201).json({ success: true, data: { transaction: transaction._id } });
 });

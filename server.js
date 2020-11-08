@@ -16,13 +16,14 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 //import routes
-const Room = require('./models/Room'); //This is just for populating users
 const Redeemable = require('./models/Redeemable'); //This is just for populating transactions
 const auth = require('./routes/auth');
 const profiles = require('./routes/profiles');
 const users = require('./routes/users');
 const transactions = require('./routes/transactions');
 const rooms = require('./routes/rooms');
+const helpRequests = require('./routes/help-requests');
+const notifications = require('./routes/notifications');
 
 //Initialize express
 const app = express();
@@ -49,7 +50,9 @@ app.use('/api/cw-api/auth', auth);
 app.use('/api/cw-api/profiles', profiles);
 app.use('/api/cw-api/users', users);
 app.use('/api/cw-api/transactions', transactions);
-app.use('/api/cw-api/rooms', rooms)
+app.use('/api/cw-api/rooms', rooms);
+app.use('/api/cw-api/help-requests', helpRequests);
+app.use('/api/cw-api/notifications', notifications);
 
 //Error handling middleware
 app.use(errorHandler);
@@ -60,11 +63,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Serve static assets in production (client)
 if (process.env.NODE_ENV === 'production') {
     //set static folders
-    app.use(express.static('client/admin/build'))
-    app.use(express.static('client/user/build'))
+    app.use(express.static('client/user/build'));
+    app.use(express.static('client/admin/build'));
     //Serve index.html build files
     app.get('/admin', (req, res) => res.sendFile(path.resolve(__dirname, 'client/admin', 'build', 'index.html')))
     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client/user', 'build', 'index.html')))
+
 }
 
 // By default NODE_ENV is set to development

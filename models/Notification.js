@@ -19,6 +19,10 @@ const NotificationSchema = new mongoose.Schema({
     },
     everyone: {
         type: Boolean
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 })
 

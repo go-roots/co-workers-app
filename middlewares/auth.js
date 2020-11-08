@@ -19,7 +19,7 @@ exports.protect = asyncHandler(async (req, res, next) => {
     //verify token
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = await User.findById(decoded.id);
+        req.user = await User.findById(decoded.id).populate('room');
         next();
     } catch (error) {
         return next(new ErrorResponse('Bad credentials', 401));
