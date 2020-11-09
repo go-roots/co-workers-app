@@ -1,10 +1,21 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import map2 from '../../assets/img/map2.jpeg'
 import Spinner from '../../components/UI/Spinner'
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
 
-const Map = () => {
+const Map = ({ data: profiles }) => {
 
+    const rooms = useSelector(state => state.rooms.rooms);
+    const initialState = {
+        room1: false,
+        room2: false,
+        room3: false
+    }
+    const [open, setOpen] = useState(initialState);
     const size = useRef(null);
     //size.current.offsetWidth, size.current.offsetHeight
 
@@ -25,7 +36,6 @@ const Map = () => {
             top: '0px',
             height: '17%',
             width: '25.92%',
-            backgroundColor: 'red',
             color: 'white'
         },
         room2: {
@@ -34,7 +44,6 @@ const Map = () => {
             top: '0px',
             height: '17%',
             width: '21.66%',
-            backgroundColor: 'red',
             color: 'white'
         },
         room3: {
@@ -43,8 +52,21 @@ const Map = () => {
             top: '0px',
             height: '17%',
             width: '22%',
-            backgroundColor: 'red',
             color: 'white'
+        },
+        title: {
+            marginBottom: '10px',
+            textAlign: 'center'
+        },
+        item: {
+            display: 'inline-flex',
+            borderBottom: '1px solid grey',
+            paddingTop: '10px',
+            textAlign: 'center'
+        },
+        name: {
+            paddingTop: '5px',
+            marginLeft: '10px'
         }
     }
 
@@ -52,18 +74,61 @@ const Map = () => {
         return <Spinner />
     }
 
+    const HtmlTooltip = withStyles((theme) => ({
+        tooltip: {
+            backgroundColor: '#f5f5f9',
+            color: 'rgba(0, 0, 0, 0.87)',
+            maxWidth: 200,
+            fontSize: theme.typography.pxToRem(12),
+            border: '1px solid #dadde9',
+        },
+    }))(Tooltip);
+
+
+    const handleTooltipOpen = (e, room) => {
+        setOpen({ ...initialState, [room]: !open[room] })
+    }
+
+
     return (
         <div className="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-8 offset-sm-0 offset-md-0 offset-xl-0 text-center">
             <div ref={size} id="map-container">
-                <div style={roomStyles.room1}>
-                    Room 1
-                </div>
-                <div style={roomStyles.room2}>
-                    Room 2
-                </div>
-                <div style={roomStyles.room3}>
-                    Room 3
-                </div>
+                {rooms.map(room => {
+                    const modifiedName = room.name.replace(' ', '').toLowerCase();
+                    return (<HtmlTooltip
+                        key={room.name}
+                        open={open[modifiedName]}
+                        title={
+                            <div>
+                                <Typography style={roomStyles.title} color="inherit">{room.name.charAt(0).toUpperCase() + room.name.slice(1)}</Typography>
+                                {profiles.map(profile => profile?.room?.name === room.name && (
+                                    <div
+                                        key={profile.id}
+                                        style={roomStyles.item}
+                                        className='col'
+                                    >
+                                        {profile?.profile?.photo &&
+                                            <img className='rounded-circle'
+                                                src={profile.profile.photo}
+                                                alt=''
+                                                width='25'
+                                                height='25'
+                                            ></img>
+                                        }
+                                        <p style={roomStyles.name}>{profile.firstName} {profile.lastName}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        }
+                    >
+                        <div
+                            onClick={e => handleTooltipOpen(e, modifiedName)}
+                            onMouseEnter={e => handleTooltipOpen(e, modifiedName)}
+                            onMouseLeave={e => handleTooltipOpen(e, modifiedName)}
+                            style={roomStyles[modifiedName]}
+                        ></div>
+                    </HtmlTooltip>)
+                })}
                 <img src={map2} alt='' />
             </div>
         </div>

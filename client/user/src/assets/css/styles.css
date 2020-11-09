@@ -80,7 +80,7 @@ html {
   height: 165px;
 }
 
-#navcol-1 + #navcol-2 {
+#navcol-1, #navcol-2 {
   font-size: 20px;
   font-family: Asul, sans-serif;
   text-transform: uppercase;
