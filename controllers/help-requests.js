@@ -42,14 +42,14 @@ exports.countHelpReq = asyncHandler(async (req, res, next) => {
 // @route       POST api/cw-api/help-requests
 // @access      Private + restricted
 exports.createHelpReq = asyncHandler(async (req, res, next) => {
-    const { users, tags } = req.body;
+    const { users, question } = req.body;
 
     //Create the help-request
     const helpRequest = await HelpRequest.create({
         requester: req.user.id,
         targetedUsers: users,
         status: 'ongoing',
-        tags: tags.split(',')
+        question
     });
 
     //Send a notification to concerned users

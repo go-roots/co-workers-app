@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, useState, useReducer, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfiles } from '../../store/actions/profiles';
+import { setAlert } from '../../store/actions/alerts'
 //Icons
 import { HiOutlineLightBulb, HiUserGroup } from 'react-icons/hi';
 import { FaCircle, FaUserMinus, FaRegComment, FaUserPlus } from 'react-icons/fa';
@@ -43,10 +45,34 @@ const FiltersReducer = (state = initialState, action) => {
 
 const UsersTable = ({ data: profiles }) => {
 
+    const baseUrl = useSelector(state => state.globalVars.currentDomain);
     const [activeElements, setActiveElements] = useState([]);
     const [socialDD, setSocialDD] = useState("dropdown-menu");
     const [activityDD, setActivityDD] = useState("dropdown-menu");
-    const [activityDDModal, setActivityDDModal] = useState("dropdown-menu");
+    const [question, setQuestion] = useState("");
+    const activitySectors = ["Accountancy", "banking and finance",
+        "Business", "consulting and management",
+        "Charity and voluntary work",
+        "Creative arts and design",
+        "Student or Learning",
+        "Instructor or Teacher",
+        "Energy and utilities",
+        "Engineering and manufacturing",
+        "Environement and agriculture",
+        "Healthcare",
+        "Hospitality and events management",
+        "Information technologies",
+        "Law",
+        "Leisure, sport and tourism",
+        "Marketing", "advertising and PR",
+        "Media and internet",
+        "Recruitement and retailement",
+        "HR",
+        "Sales",
+        "Science and pharmaceuticals",
+        "Social care",
+        "Transportation and logistics"
+    ];
 
     const dispatch = useDispatch();
 
@@ -191,159 +217,16 @@ const UsersTable = ({ data: profiles }) => {
                                         Activity Sector
                                     </button>
                                     <div className={activityDD} id="activity-sector-menu">
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Accountancy, banking and finance', null, null)}
-                                        >
-                                            Accountancy, banking and finance
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Business, consulting and management', null, null)}
-                                        >
-                                            Business, consulting and management
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Charity and voluntary work', null, null)}
-                                        >
-                                            Charity and voluntary work
-                                        </button><button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Creative arts and design', null, null)}
-                                        >
-                                            Creative arts and design
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Student or Learning', null, null)}
-                                        >
-                                            Student or Learning
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Instructor or Teacher', null, null)}
-                                        >
-                                            Instructor or Teacher
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Energy and utilities', null, null)}
-                                        >
-                                            Energy and utilities
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Engineering and manufacturing', null, null)}
-                                        >
-                                            Engineering and manufacturing
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Environement and agriculture', null, null)}
-                                        >
-                                            Environement and agriculture
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Healthcare', null, null)}
-                                        >
-                                            Healthcare
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Hospitality and events management', null, null)}
-                                        >
-                                            Hospitality and events management
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Information technologies', null, null)}
-                                        >
-                                            Information technologies
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Law', null, null)}
-                                        >
-                                            Law
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Leisure, sport and tourism', null, null)}
-                                        >
-                                            Leisure, sport and tourism
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Marketing, advertising and PR', null, null)}
-                                        >
-                                            Marketing, advertising and PR
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Media and internet', null, null)}
-                                        >
-                                            Media and internet
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Recruitement and retailement', null, null)}
-                                        >
-                                            Recruitement and retailement
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'HR', null, null)}
-                                        >
-                                            HR
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Sales', null, null)}
-                                        >
-                                            Sales
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Science and pharmaceuticals', null, null)}
-                                        >
-                                            Science and pharmaceuticals
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Social care', null, null)}
-                                        >
-                                            Social care
-                                        </button>
-                                        <button
-                                            className="dropdown-item"
-                                            type='button'
-                                            onClick={e => filtersHandler(e, 'Transportation and logistics', null, null)}
-                                        >
-                                            Transportation and logistics
-                                        </button>
+                                        {activitySectors.map(sector => (
+                                            <button
+                                                key={sector}
+                                                className="dropdown-item"
+                                                type='button'
+                                                onClick={e => filtersHandler(e, { sector }, null, null)}
+                                            >
+                                                {sector}
+                                            </button>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -360,81 +243,59 @@ const UsersTable = ({ data: profiles }) => {
                                     </div>
                                     <div className="modal-body">
                                         <form className="modal-form" style={{ fontSize: "1rem" }}>
-                                            <div className="form-group">
-                                                <label>Send help request to ...</label>
-                                                <div className="dropdown social-dropdown">
-                                                    <button
-                                                        className="btn btn-outline-success btn-sm dropdown-toggle text-body social-dropdown-button"
-                                                        data-toggle="dropdown"
-                                                        aria-expanded="false"
-                                                        type="button"
-                                                    >
-                                                        I want to see...&nbsp;
-                                                    </button>
-                                                    <div className="dropdown-menu">
-                                                        <button
-                                                            className="dropdown-item"
-                                                            type='button'
-                                                        >
-                                                            Available
-                                                        </button>
-                                                        <button
-                                                            className="dropdown-item"
-                                                            type='button'
-                                                        >
-                                                            Friends
-                                                        </button>
-                                                        <div className="dropleft" id="activity-sector-dropleft-modal"
-                                                            onMouseEnter={e => setActivityDDModal("dropdown-menu show")}
-                                                            onMouseLeave={e => setActivityDDModal("dropdown-menu")}
-                                                        >
-                                                            <button className="btn dropdown-toggle" data-toggle="dropdown"
-                                                                aria-expanded="false" type="button">Activity
-                                                                Sector</button>
-                                                            <div className={activityDDModal} id="activity-sector-menu-modal">
-                                                                <a className="dropdown-item" href="#">Accountancy, banking
-                                                                    and finance</a><a className="dropdown-item" href="#">Business,
-                                                                    consulting and management</a><a className="dropdown-item"
-                                                                    href="#">Charity and voluntary
-                                                                    work</a>
-                                                                <a className="dropdown-item" href="#">Creative arts and
-                                                                    design</a><a className="dropdown-item" href="#">Student
-                                                                    or Learning</a><a className="dropdown-item" href="#">Instructor
-                                                                    or Teacher</a><a className="dropdown-item" href="#">Energy and
-                                                                    utilities</a>
-                                                                <a className="dropdown-item" href="#">Engineering and
-                                                                    manufacturing</a><a className="dropdown-item"
-                                                                    href="#">Environement and agriculture</a><a
-                                                                        className="dropdown-item" href="#">Healthcare</a><a
-                                                                            className="dropdown-item" href="#">Hospitality and
-                                                                    events management</a>
-                                                                <a className="dropdown-item" href="#">Information
-                                                                    technologies</a><a className="dropdown-item" href="#">Law</a><a
-                                                                    className="dropdown-item" href="#">Leisure, sport and
-                                                                    tourism</a><a className="dropdown-item" href="#">Marketing,
-                                                                    advertising and PR</a>
-                                                                <a className="dropdown-item" href="#">Media and
-                                                                    internet</a><a className="dropdown-item" href="#">Recruitement
-                                                                    and retailement</a><a className="dropdown-item"
-                                                                    href="#">HR</a><a className="dropdown-item" href="#">Sales</a><a
-                                                                        className="dropdown-item" href="#">Science and
-                                                                    pharmaceuticals</a><a className="dropdown-item" href="#">Social
-                                                                    care</a><a className="dropdown-item" href="#">Transportation and
-                                                                    logistics</a>
-                                                            </div>
-                                                        </div>
+                                            The help request will be sent to :
+                                            <div
+                                                style={{ marginTop: '20px', marginBottom: '25px' }}
+                                                className="row"
+                                            >
+                                                {profiles.map(profile => (
+                                                    <div style={{ marginLeft: '20px' }} className='d-flex flex-column align-items-center'>
+                                                        {profile?.profile?.photo &&
+                                                            <img className='rounded-circle'
+                                                                src={profile.profile.photo}
+                                                                alt=''
+                                                                width='50'
+                                                                height='50'
+                                                            ></img>
+                                                        }
+                                                        <em>{profile.firstName}</em>
                                                     </div>
-                                                </div>
+                                                ))}
                                             </div>
                                             <div className="form-group">
                                                 <label>Explain your problem in a few words</label>
-                                                <textarea className="form-control"></textarea>
+                                                <textarea
+                                                    className="form-control"
+                                                    onChange={e => setQuestion(e.target.value)}
+                                                    value={question}
+                                                >
+                                                </textarea>
                                             </div>
                                         </form>
                                     </div>
                                     <div className="modal-footer">
-                                        <button className="btn btn-light" type="button" data-dismiss="modal">Close</button>
-                                        <button className="btn btn-primary" type="button">Save</button>
+                                        <button
+                                            className="btn btn-light"
+                                            type="button"
+                                            data-dismiss="modal"
+                                            onClick={e => setQuestion("")}
+                                        >Close</button>
+                                        <button
+                                            className="btn btn-primary"
+                                            type="button"
+                                            data-dismiss="modal"
+                                            onClick={async () => {
+                                                const users = profiles.map(profile => profile.id);
+                                                axios.post(baseUrl + '/help-requests', {
+                                                    users,
+                                                    question
+                                                }).then(() => {
+                                                    setQuestion("");
+                                                    dispatch(setAlert('success', 'Your question has been successfully sumbitted !'));
+                                                });
+                                            }}>
+                                            Save
+                                        </button>
                                     </div>
                                 </div>
                             </div>

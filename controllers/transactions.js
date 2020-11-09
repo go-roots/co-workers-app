@@ -37,14 +37,14 @@ exports.initateTransaction = asyncHandler(async (req, res, next) => {
         await transaction.save();
     }, 1000 * 5 * 60);
 
-    res.status(201).json({ success: true, data: { transaction: transaction._id } });
+    res.status(201).json({ success: true, data: { transaction: transaction._id, redeemable: redeemable.name } });
 });
 
 // @description     Terminate a transaction
 // @route           POST /api/cw-api/transactions/validate
 // @access          Private
 exports.fulfillTransaction = asyncHandler(async (req, res, next) => {
-    const { transactionId, rfid } = req.body;
+    const { transactionId, rfid, redeemable } = req.body;
 
     //Find and validate transaction
     const transaction = await Transaction.findById(transactionId).populate('redeemable');
@@ -64,8 +64,6 @@ exports.fulfillTransaction = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(`No user found with the rfid ${rfid}`, 404));
     }
 
-    console.log(user.cwpoints.current, transaction.redeemable.price);
-
     if (user.cwpoints.current < transaction.redeemable.price) {
         transaction.status = 'cancelled';
         await transaction.save();
@@ -76,11 +74,14 @@ exports.fulfillTransaction = asyncHandler(async (req, res, next) => {
     clearTimeout(timer);
 
     user.cwpoints.current -= transaction.redeemable.price;
-    console.log(user.cwpoints.current);
+    user.cwpoints.history.unshift({
+        value: transaction.redeemable.price,
+        description: `Redeemed ${transaction.redeemable.price} of his points to get a ${redeemable}`
+    })
     await user.save();
 
     transaction.status = 'fulfilled';
     await transaction.save();
 
-    res.status(200).json({ success: true, data: { cwpoints: user.cwpoints } });
+    res.status(200).json({ success: true, data: { cwpoints: user.cwpoints.current } });
 });

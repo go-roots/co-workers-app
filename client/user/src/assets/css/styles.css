@@ -394,11 +394,32 @@ html {
 }
 
 #activity-sector-menu {
+  width: 200px;
+  font-size: 10px;
   height: 350px;
   overflow: scroll;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
+}
+
+#activity-sector-menu > .dropdown-item {
+  text-align: end;
+}
+
+@media (min-width : 500px) {
+  #activity-sector-menu {
+    width: auto !important;
+    font-size: inherit;
+    height: 350px;
+    overflow: scroll;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+  }
+  #activity-sector-menu > .dropdown-item {
+    text-align: inherit;
+  }
 }
 
 #activity-sector-menu-modal {

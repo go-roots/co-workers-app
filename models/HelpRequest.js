@@ -21,8 +21,8 @@ const HelpRequestSchema = new mongoose.Schema({
         enum: ['ongoing', 'accepted', 'cancelled', 'expired'],
         required: [true, 'Provide a state']
     },
-    tags: {
-        type: [String]
+    question: {
+        type: String
     },
     createdAt: {
         type: Date,

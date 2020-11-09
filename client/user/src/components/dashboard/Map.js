@@ -89,45 +89,51 @@ const Map = ({ data: profiles }) => {
         setOpen({ ...initialState, [room]: !open[room] })
     }
 
+    const handleTooltipClose = () => {
+        setOpen(initialState);
+    }
+
 
     return (
         <div className="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-8 offset-sm-0 offset-md-0 offset-xl-0 text-center">
             <div ref={size} id="map-container">
                 {rooms.map(room => {
                     const modifiedName = room.name.replace(' ', '').toLowerCase();
-                    return (<HtmlTooltip
-                        key={room.name}
-                        open={open[modifiedName]}
-                        title={
-                            <div>
-                                <Typography style={roomStyles.title} color="inherit">{room.name.charAt(0).toUpperCase() + room.name.slice(1)}</Typography>
-                                {profiles.map(profile => profile?.room?.name === room.name && (
-                                    <div
-                                        key={profile.id}
-                                        style={roomStyles.item}
-                                        className='col'
-                                    >
-                                        {profile?.profile?.photo &&
-                                            <img className='rounded-circle'
-                                                src={profile.profile.photo}
-                                                alt=''
-                                                width='25'
-                                                height='25'
-                                            ></img>
-                                        }
-                                        <p style={roomStyles.name}>{profile.firstName} {profile.lastName}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        }
-                    >
-                        <div
-                            onClick={e => handleTooltipOpen(e, modifiedName)}
-                            onMouseEnter={e => handleTooltipOpen(e, modifiedName)}
-                            onMouseLeave={e => handleTooltipOpen(e, modifiedName)}
-                            style={roomStyles[modifiedName]}
-                        ></div>
-                    </HtmlTooltip>)
+                    return (
+                        <HtmlTooltip
+                            key={room.id}
+                            open={open[modifiedName]}
+                            title={
+                                <div>
+                                    <Typography style={roomStyles.title} color="inherit">{room.name.charAt(0).toUpperCase() + room.name.slice(1)}</Typography>
+                                    {profiles.map(profile => profile?.room?.name === room.name && (
+                                        <div
+                                            key={profile.id}
+                                            style={roomStyles.item}
+                                            className='col'
+                                        >
+                                            {profile?.profile?.photo &&
+                                                <img className='rounded-circle'
+                                                    src={profile.profile.photo}
+                                                    alt=''
+                                                    width='25'
+                                                    height='25'
+                                                ></img>
+                                            }
+                                            <p style={roomStyles.name}>{profile.firstName} {profile.lastName}</p>
+                                            <i>{profile?.profile?.story && '"' + profile?.profile?.story + '"'}</i>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                        >
+                            <div
+                                onClick={e => handleTooltipOpen(e, modifiedName)}
+                                onMouseEnter={e => handleTooltipOpen(e, modifiedName)}
+                                onMouseLeave={e => handleTooltipClose()}
+                                style={roomStyles[modifiedName]}
+                            ></div>
+                        </HtmlTooltip>)
                 })}
                 <img src={map2} alt='' />
             </div>
