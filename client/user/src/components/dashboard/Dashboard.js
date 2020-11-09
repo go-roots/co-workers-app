@@ -5,8 +5,12 @@ import RoomsBrowser from './RoomsBrowser'
 import UsersTable from './UsersTable'
 import ReactTooltip from 'react-tooltip';
 import { fetchProfiles } from '../../store/actions/profiles';
+import { fetchRooms } from '../../store/actions/rooms'
+
 import { loadUser } from '../../store/actions/auth';
 import Spinner from '../UI/Spinner';
+
+
 
 
 const Dashboard = () => {
@@ -25,7 +29,7 @@ const Dashboard = () => {
     useEffect(() => {
         connect();
         dispatch(fetchProfiles(null, null));
-        //dispatch(fetchRooms()) (c'est pour toi Paul)
+        dispatch(fetchRooms())
         //dispatch(roomsRecommendations())?
     }, []);
 

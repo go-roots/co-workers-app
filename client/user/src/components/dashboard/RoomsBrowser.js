@@ -1,6 +1,36 @@
 import React, { Fragment } from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
 
+const initialState = {
+    allMembers: true,
+    friends: false,
+    activity: null,
+    status: null,
+};
+
+const FiltersReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'SET_FRIENDS':
+            return {
+                ...state,
+                friends: !state.friends
+            };
+        case 'SET_ACTIVITY':
+            return {
+                ...state,
+                activity: action.name
+            };
+        case 'SET_STATUS':
+            return {
+                ...state,
+                status: action.name
+            };
+        case 'SET_ALL_MEMBERS':
+            return initialState;
+        default:
+            return state
+    }
+};
 
 const RoomsBrowser = () => {
     
