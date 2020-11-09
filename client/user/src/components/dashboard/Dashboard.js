@@ -41,7 +41,7 @@ const Dashboard = () => {
             <ReactTooltip place="top" type="dark" effect="solid" />
             <section className="main container">
                 <div className="row">
-                    <Map />
+                    <Map data={profiles}/>
                     <UsersTable data={profiles} />
                     <RoomsBrowser />
                 </div>
