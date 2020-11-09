@@ -18,6 +18,7 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const profiles = useSelector(state => state.profiles.profiles);
     const me = useSelector(state => state.auth.user);
+    const rooms = useSelector(state => state.rooms);
     const dispatch = useDispatch();
 
     const connect = useCallback(async () => {
@@ -29,7 +30,7 @@ const Dashboard = () => {
     useEffect(() => {
         connect();
         dispatch(fetchProfiles(null, null));
-        dispatch(fetchRooms())
+        dispatch(fetchRooms());
         //dispatch(roomsRecommendations())?
     }, []);
 
@@ -47,7 +48,7 @@ const Dashboard = () => {
                 <div className="row">
                     <Map data={profiles}/>
                     <UsersTable data={profiles} />
-                    <RoomsBrowser />
+                    <RoomsBrowser data={rooms}/>
                 </div>
             </section>
         </Fragment>

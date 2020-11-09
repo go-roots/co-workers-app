@@ -1,39 +1,32 @@
-import React, { Fragment } from 'react'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { Fragment, useState, useReducer, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchRooms } from '../../store/actions/rooms';
+
+
 import { FaInfoCircle } from 'react-icons/fa'
 
 const initialState = {
-    allMembers: true,
-    friends: false,
-    activity: null,
-    status: null,
+    facility: null,
 };
 
 const FiltersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_FRIENDS':
+        case 'SET_FACILITY':
             return {
-                ...state,
-                friends: !state.friends
+                facility: action.name
             };
-        case 'SET_ACTIVITY':
-            return {
-                ...state,
-                activity: action.name
-            };
-        case 'SET_STATUS':
-            return {
-                ...state,
-                status: action.name
-            };
-        case 'SET_ALL_MEMBERS':
-            return initialState;
         default:
             return state
     }
 };
 
 const RoomsBrowser = () => {
-    
+
+    const dispatch = useDispatch();
+
+    const [appliedFilters, dispatchFilter] = useReducer(FiltersReducer, initialState);
     return (
         <Fragment>
             <div className="col">
