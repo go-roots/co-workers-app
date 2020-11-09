@@ -6,6 +6,7 @@ import {
 
 const initialState = {
     rooms: [],
+    filteredRooms: [],
     recommendedRooms: [],
     loading: true,
     errors: {},
@@ -17,6 +18,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 rooms: action.rooms,
+                filteredRooms: action.rooms,
             };
         case ROOMS_ERROR:
             return {

@@ -4,31 +4,36 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchRooms } from '../../store/actions/rooms';
 
+import Tooltip from '@material-ui/core/Tooltip';
+import {
+    createMuiTheme,
+    MuiThemeProvider,
+    withStyles
+  } from "@material-ui/core/styles";
 
 import { FaInfoCircle } from 'react-icons/fa'
+import rooms from '../../store/reducers/rooms';
 
-const initialState = {
-    facility: null,
-};
 
-const FiltersReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'SET_FACILITY':
-            return {
-                facility: action.name
-            };
-        default:
-            return state
-    }
-};
 
-const RoomsBrowser = () => {
+const RoomsBrowser = ({ data: rooms }) => {
 
-    const dispatch = useDispatch();
+    const [filter, setFilter] = useState("none");
 
-    const [appliedFilters, dispatchFilter] = useReducer(FiltersReducer, initialState);
+    const theme = createMuiTheme({
+        overrides: {
+          MuiTooltip: {
+            tooltip: {
+              fontSize: "1em",
+              color: "white",
+              backgroundColor: "black"
+            }
+          }
+        }
+      });
+      console.log(filter)
     return (
-        <Fragment>
+        <Fragment>                
             <div className="col">
                 <div className="container-fluid recommendation-room-container">
                     <div className="row">
@@ -75,20 +80,28 @@ const RoomsBrowser = () => {
                         <div className="col d-inline-flex align-items-baseline">
                             <p id="search-rooms-facilities-text-1">Or search rooms with facilities&nbsp;</p>
                             <div className="dropdown"><button className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Choose a facility&nbsp;</button>
-                                <div className="dropdown-menu"><a className="dropdown-item" href="#">Whiteboard</a><a className="dropdown-item" href="#">Video-projector</a><a className="dropdown-item" href="#">TV screen</a><a className="dropdown-item" href="#">Conference</a></div>
+                                <div className="dropdown-menu"><a className="dropdown-item" onClick={()=> setFilter("whiteboard")}>Whiteboard</a><a className="dropdown-item" onClick={()=> setFilter("video-projector")}>Video-projector</a><a className="dropdown-item" onClick={()=> setFilter("TV screen")}>TV screen</a><a className="dropdown-item" onClick={()=> setFilter("conference room")}>Conference Room</a></div>
                             </div>
                         </div>
                     </div>
                     <div className="row rooms-reco-inner-container">
+                   {rooms.filteredRooms.map(room => (room.facilities.includes(filter) || filter === "none") && (
                         <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                            <div data-tip="I AM THE INFO OF THE ROOMS" className="small-image-container" style={{ background: "url(&quot;assets/img/conference-room.jpg&quot;) center / cover no-repeat" }}></div>
+                            <MuiThemeProvider theme={theme}>
+                            <Tooltip title={<Fragment>
+                                {room.name} <br/>
+                                Capacity : {room.capacity} <br/>
+                                Facilities: <br/>
+                                {room.facilities.map(facility => 
+                                    <Fragment>{facility} <br /></Fragment>
+                                    )}
+                            </Fragment>}>
+                                <div className="small-image-container" style={{ background: `url(${room.image}) center / cover no-repeat` }}></div>
+                            </Tooltip>
+                            </MuiThemeProvider>
                         </div>
-                        <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                            <div data-tip="I AM THE INFO OF THE ROOMS" className="small-image-container" style={{ background: "url(&quot;assets/img/conference-room2.jpg&quot;) center / cover no-repeat" }}></div>
-                        </div>
-                        <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                            <div data-tip="I AM THE INFO OF THE ROOMS" className="small-image-container" style={{ background: "url(&quot;assets/img/conference-room3.jpg&quot;) center / cover no-repeat" }}></div>
-                        </div>
+                        )
+                   )}
                     </div>
                 </div>
             </div>

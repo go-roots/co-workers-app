@@ -2,6 +2,7 @@
     {
         "name": "room 1",
         "capacity": 10,
+        "image" : "https://images.pexels.com/photos/3767170/pexels-photo-3767170.jpeg",
         "users": [
             {
                 "user": "5c8a1d5b0190b214360dc032"
@@ -23,6 +24,7 @@
     {
         "name": "room 2",
         "capacity": 20,
+        "image": "https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg",
         "users": [
             {
                 "user": "5c8a1d5b0190b214360dc038"
@@ -46,6 +48,7 @@
     {
         "name": "room 3",
         "capacity": 15,
+        "image" : "https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg",
         "users": [
             {
                 "user": "5c8a1d5b0190b214360dc037"
