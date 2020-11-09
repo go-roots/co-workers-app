@@ -11,7 +11,8 @@ const Navbar = props => {
                     <img src={logoMedium} alt="logo" />
                 </Link>
                 <button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1">
-                    <span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span>
+                    <span className="sr-only">Toggle navigation</span>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navcol-1">
                     <ul className="nav navbar-nav mr-auto">

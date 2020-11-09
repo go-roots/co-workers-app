@@ -21,11 +21,15 @@ const Landing = () => {
             <section className="d-flex align-items-center" id="section">
                 <div id="overlay">
                     <nav className="navbar navbar-light navbar-expand-md">
-                        <div className="container-fluid"><a className="navbar-brand" href="#">
-                            <img src={logoMedium} alt="logo" /></a><button data-toggle="collapse"
-                                className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle
-                            navigation</span><span className="navbar-toggler-icon"></span></button>
-                            <div className="collapse navbar-collapse" id="navcol-1">
+                        <div className="container-fluid">
+                            <a className="navbar-brand" href="#">
+                                <img src={logoMedium} alt="logo" />
+                            </a>
+                            <button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-2">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navcol-2">
                                 {!auth.isAuthenticated && !auth.isLoading ? (
                                     <ul className="nav navbar-nav ml-auto">
                                         <li className="nav-item">
