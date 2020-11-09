@@ -237,24 +237,30 @@ html {
 
 #map-container {
   height: 50vh;
-  background: url("../../assets/img/map2.jpeg") center / contain no-repeat;
+  position: relative;
   box-shadow: 1px 1px 5px 2px;
   border-radius: 10px;
   border-width: 1px;
   border-style: solid;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
 @media (min-width: 992px) {
   #map-container {
     height: 70vh !important;
-    background: url("../../assets/img/map2.jpeg") center / contain no-repeat;
+    position: relative;
     box-shadow: 1px 1px 5px 2px;
     border-radius: 10px;
     border-width: 1px;
     border-style: solid;
     margin-bottom: 10px;
   }
+}
+
+#map-container img {
+  width: 100%;
+  height: 100%;
 }
 
 .mood-status-icon {
