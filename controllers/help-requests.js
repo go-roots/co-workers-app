@@ -7,18 +7,35 @@ const asyncHandler = require('../middlewares/async')
 let timer;
 
 // @desc        Get (and count) help-requests sent by user
-// @route       GET api/cw-api/help-requests/sent/:userId
+// @route       GET api/cw-api/help-requests/sent/:userId/:status
 // @access      Private
 exports.getSentHelpReq = asyncHandler(async (req, res, next) => {
-    const helpReqs = await HelpRequest.find({ requester: req.params.userId });
+    const { status, userId } = req.params;
+    let helpReqs;
+
+    if (status) {
+        helpReqs = await HelpRequest.find({ requester: userId, status })
+    } else {
+        helpReqs = await HelpRequest.find({ requester: userId })
+    }
+
     res.status(200).json({ success: true, count: helpReqs.length, data: helpReqs });
 });
 
 // @desc        Get help requests received by user
-// @route       GET api/cw-api/help-requests/received/:userId
+// @route       GET api/cw-api/help-requests/received/:userId/:status
 // @access      Private
 exports.getReceivedHelpReq = asyncHandler(async (req, res, next) => {
-    const helpReqs = await (await HelpRequest.find()).filter(request => request.targetedUsers.includes(req.params.userId));
+    const { status, userId } = req.params;
+    let helpReqs;
+
+    if (status) {
+        helpReqs = await HelpRequest.find({ status }).filter(request => request.targetedUsers.includes(userId));
+    } else {
+        helpReqs = await HelpRequest.find();
+        helpReqs.filter(request => request.targetedUsers.includes(userId));
+    }
+
     res.status(200).json({ success: true, count: helpReqs.length, data: helpReqs });
 });
 

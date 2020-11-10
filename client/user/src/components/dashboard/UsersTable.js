@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfiles } from '../../store/actions/profiles';
 import { setAlert } from '../../store/actions/alerts'
+import Tooltip from '@material-ui/core/Tooltip';
 //Icons
 import { HiOutlineLightBulb, HiUserGroup } from 'react-icons/hi';
 import { FaCircle, FaUserMinus, FaRegComment, FaUserPlus } from 'react-icons/fa';
 import { ImLifebuoy, ImAccessibility } from 'react-icons/im';
-import Tooltip from '@material-ui/core/Tooltip';
+import { AiOutlineUserAdd, AiOutlineUserDelete } from 'react-icons/ai';
 
 
 const initialState = {
@@ -43,12 +44,14 @@ const FiltersReducer = (state = initialState, action) => {
     }
 };
 
-const UsersTable = ({ data: profiles }) => {
+const UsersTable = ({ data: { profiles, me } }) => {
 
     const baseUrl = useSelector(state => state.globalVars.currentDomain);
+    const [selectedProfile, setSelectedProfile] = useState({});
     const [activeElements, setActiveElements] = useState([]);
     const [socialDD, setSocialDD] = useState("dropdown-menu");
     const [activityDD, setActivityDD] = useState("dropdown-menu");
+    const [message, setMessage] = useState("");
     const [question, setQuestion] = useState("");
     const activitySectors = ["Accountancy", "banking and finance",
         "Business", "consulting and management",
@@ -249,7 +252,11 @@ const UsersTable = ({ data: profiles }) => {
                                                 className="row"
                                             >
                                                 {profiles.map(profile => (
-                                                    <div style={{ marginLeft: '20px' }} className='d-flex flex-column align-items-center'>
+                                                    <div
+                                                        style={{ marginLeft: '20px' }}
+                                                        className='d-flex flex-column align-items-center'
+                                                        key={profile.id}
+                                                    >
                                                         {profile?.profile?.photo &&
                                                             <img className='rounded-circle'
                                                                 src={profile.profile.photo}
@@ -279,7 +286,9 @@ const UsersTable = ({ data: profiles }) => {
                                             type="button"
                                             data-dismiss="modal"
                                             onClick={e => setQuestion("")}
-                                        >Close</button>
+                                        >
+                                            Close
+                                        </button>
                                         <button
                                             className="btn btn-primary"
                                             type="button"
@@ -292,6 +301,9 @@ const UsersTable = ({ data: profiles }) => {
                                                 }).then(() => {
                                                     setQuestion("");
                                                     dispatch(setAlert('success', 'Your question has been successfully sumbitted !'));
+                                                }).catch(() => {
+                                                    setQuestion("");
+                                                    dispatch(setAlert('danger', "Your message couldn't been send, try later"));
                                                 });
                                             }}>
                                             Save
@@ -341,7 +353,7 @@ const UsersTable = ({ data: profiles }) => {
                                         </Tooltip>
                                     )}
 
-                                    {profile?.profile?.status !== 'Unavailable' && (
+                                    {profile?.profile?.status === 'Available' && profile.id != me.id && (
                                         <Tooltip title="Send a help request">
                                             <div>
                                                 <ImLifebuoy className="ask-help-icon" size={25} />
@@ -349,16 +361,110 @@ const UsersTable = ({ data: profiles }) => {
                                         </Tooltip>
                                     )}
 
-                                    {profile?.profile?.status !== 'Unavailable' && (
+                                    {profile?.profile?.status === 'Available' && profile.id != me.id && (
                                         <Tooltip title="Send a message">
                                             <div>
-                                                <FaRegComment className="comment-icon" size={25} />
+                                                <FaRegComment
+                                                    data-toggle='modal'
+                                                    data-target='#messaging-modal'
+                                                    className="comment-icon"
+                                                    size={25}
+                                                    onClick={e => {
+                                                        setSelectedProfile(profile);
+                                                        setMessage("");
+                                                    }}
+                                                />
                                             </div>
                                         </Tooltip>
                                     )}
                                 </div>
                             </div>
                         ))}
+                        <div id="messaging-modal" role="dialog" tabindex="-1" className="modal fade">
+                            <div className="modal-dialog" role="document">
+                                <div className="modal-content">
+                                    <div className="modal-header align-items-center">
+                                        <img className='rounded-circle' alt='' src={selectedProfile?.profile?.photo} width='50' height='50' />
+                                        <h4 style={{ marginLeft: '10px' }} className="modal-title">{`${selectedProfile?.firstName} ${selectedProfile?.lastName}`}</h4>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body">
+                                        <form>
+                                            <div className="form-group">
+                                                <textarea
+                                                    className="form-control"
+                                                    placeholder="Type your message"
+                                                    value={message}
+                                                    onChange={e => setMessage(e.target.value)}
+                                                ></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div className="modal-footer">
+                                        {selectedProfile?.friends?.friendRequests.some(user => user.user == me.id) ? (<button
+                                            className="btn btn-danger d-flex flex-row align-items-center mr-auto"
+                                            type="button"
+                                            onClick={async () => {
+                                                try {
+                                                    const res = await axios.delete(baseUrl + '/users/friendReq/' + selectedProfile.id);
+                                                    await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
+                                                    setSelectedProfile(res.data.data);
+                                                    dispatch(setAlert('success', 'The friend request has been canceled!'));
+                                                } catch (err) {
+                                                    dispatch(setAlert('danger', err.response.data.error));
+                                                }
+                                            }}
+                                        >
+                                            Cancel friend request
+                                            <AiOutlineUserDelete
+                                                style={{ marginLeft: '5px' }}
+                                                size='25'
+                                            />
+                                        </button>) : (
+                                                <button
+                                                    className="btn btn-primary d-flex flex-row align-items-center mr-auto"
+                                                    type="button"
+                                                    onClick={async () => {
+                                                        try {
+                                                            const res = await axios.put(baseUrl + '/users/friendReq/' + selectedProfile.id);
+                                                            await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
+                                                            setSelectedProfile(res.data.data);
+                                                            dispatch(setAlert('success', `The friend request has been sent to ${selectedProfile?.firstName} ${selectedProfile?.lastName}!`));
+                                                        } catch (err) {
+                                                            dispatch(setAlert('danger', err.response.data.error));
+                                                        }
+                                                    }}
+                                                >
+                                                    Add friend
+                                                    <AiOutlineUserAdd
+                                                        style={{ marginLeft: '5px' }}
+                                                        size='25'
+                                                    />
+                                                </button>
+                                            )
+                                        }
+                                        <button className="btn btn-light" type="button" data-dismiss="modal">Close</button>
+                                        <button
+                                            data-dismiss="modal"
+                                            className="btn btn-primary"
+                                            type="button"
+                                            onClick={async () => {
+                                                try {
+                                                    await axios.post(baseUrl + '/users/message/' + selectedProfile.id, { message });
+                                                    dispatch(setAlert('success', `Your message has been sent to ${selectedProfile?.firstName} ${selectedProfile?.lastName}!`));
+                                                } catch (err) {
+                                                    dispatch(setAlert('danger', err.response.data.error));
+                                                }
+                                            }}
+                                        >
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

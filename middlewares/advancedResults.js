@@ -4,7 +4,7 @@ const advancedResults = (model, populate, type = 'all') => async (req, res, next
     //Contains filtering and sorting via the query string
     //ex : ?select=firstName,lastName&sort=-cwpoints
     let query;
-    let reqQuery = { ...req.query };
+    let reqQuery = { ...req.query, role: { $ne: 'admin' } };
 
     //Fields to exclude
     const removeFields = ['status', 'activitySector', 'friends', 'select', 'sort', 'page', 'limit'];

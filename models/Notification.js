@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+//Add an identifier to the notification
+//Add realtime server to notifications
+//Display an alert in react on notification push
 
 const NotificationSchema = new mongoose.Schema({
     type: {

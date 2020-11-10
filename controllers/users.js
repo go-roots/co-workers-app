@@ -114,14 +114,14 @@ exports.updateMessages = asyncHandler(async (req, res, next) => {
 // @desc        Add friend request
 // @route       PUT api/cw-api/users/friendReq/:userId
 // @access      Private
-exports.updateFriendReq = asyncHandler(async (req, res, next) => {
+exports.addFriendReq = asyncHandler(async (req, res, next) => {
     const { userId } = req.params;
 
     if (req.user.id == userId) {
         return next(new ErrorResponse('Forbidden', 403));
     }
 
-    const user = await User.findById(userId);
+    let user = await User.findById(userId);
 
     if (!user) {
         return next(new ErrorResponse(`User not found with the id ${userId}`, 404));
@@ -147,8 +147,34 @@ exports.updateFriendReq = asyncHandler(async (req, res, next) => {
 
     user.friends.friendRequests.unshift(newFriendRequest);
     await user.save();
+    user = await User.findById(userId).populate(['room', 'profile']);
 
-    res.sendStatus(204);
+    res.status(200).json({ success: true, data: user });
+});
+
+// @desc        Delete friend request
+// @route       DELETE api/cw-api/users/friendReq/:userId
+// @access      Private
+exports.deleteFriendReq = asyncHandler(async (req, res, next) => {
+    const { userId } = req.params;
+
+    if (req.user.id == userId) {
+        return next(new ErrorResponse('Forbidden', 403));
+    }
+
+    let user = await User.findById(userId);
+
+    if (!user) {
+        return next(new ErrorResponse(`User not found with the id ${userId}`, 404));
+    }
+
+    let updatedUser = user;
+
+    updatedUser.friends.friendRequests = updatedUser.friends.friendRequests.filter(fReq => fReq.user != req.user.id)
+
+    user = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).populate(['room', 'profile']);
+
+    res.status(200).json({ success: true, data: user });
 });
 
 // @desc        Accept friend request

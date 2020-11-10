@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { getFilteredUsers, registerRfidOrBilling, acceptFriendReq,
-    updateFriendReq, updateMessages, updateForNolinkedinUser } = require('../controllers/users');
+    addFriendReq, deleteFriendReq, updateMessages, updateForNolinkedinUser } = require('../controllers/users');
 const { protect, authorize } = require('../middlewares/auth');
 const { check } = require('express-validator');
 
@@ -22,8 +22,10 @@ router.route('/message/:userId').post([protect, [
 
 router.route('/admin/:userId').put(protect, authorize('admin'), registerRfidOrBilling);
 router.route('/nolinkedin').put(protect, updateForNolinkedinUser);
-router.route('/friendReq/:userId').put(protect, updateFriendReq);
+router.route('/friendReq/:userId').put(protect, addFriendReq);
 router.route('/friendReq/accept/:userId').put(protect, acceptFriendReq);
+
+router.route('/friendReq/:userId').delete(protect, deleteFriendReq);
 
 
 module.exports = router

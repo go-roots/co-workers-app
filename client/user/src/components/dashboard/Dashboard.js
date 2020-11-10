@@ -49,9 +49,9 @@ const Dashboard = () => {
             <ReactTooltip place="top" type="dark" effect="solid" />
             <section className="main container">
                 <div className="row">
-                    <Map data={profiles}/>
-                    <UsersTable data={profiles} />
-                    <RoomsBrowser data={rooms}/>
+                    <Map data={profiles} />
+                    <UsersTable data={{ profiles, me }} />
+                    <RoomsBrowser data={rooms} />
                 </div>
             </section>
         </Fragment>

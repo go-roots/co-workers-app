@@ -4,7 +4,7 @@ import {
     SET_PROFILES,
     PROFILE_ERROR,
     UPDATE_PROFILE,
-    SET_OWN_PROFILE,
+    SET_OWN_PROFILE
 } from '../actions/profiles';
 import {
     CLEAR_PROFILE
