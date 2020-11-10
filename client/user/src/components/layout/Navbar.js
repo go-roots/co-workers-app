@@ -28,4 +28,6 @@ const Navbar = props => {
     );
 };
 
+// Notifications : <span *ngIf="ordersCount!=0" class="badge badge-pill badge-danger">{{ ordersCount }}</span>
+
 export default Navbar;

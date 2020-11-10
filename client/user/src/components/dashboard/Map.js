@@ -137,7 +137,9 @@ const Map = ({ data: profiles }) => {
                                 onMouseEnter={e => handleTooltipOpen(e, modifiedName)}
                                 onMouseLeave={e => handleTooltipClose()}
                                 style={roomStyles[modifiedName]}
-                            ></div>
+                            >
+                                <span style={{ cursor: 'pointer' }} className="badge badge-pill badge-info">{room.users.length}</span>
+                            </div>
                         </HtmlTooltip>)
                 })}
                 <img onLoad={e => setImageLoaded(true)} src={map2} alt='' />

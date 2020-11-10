@@ -17,6 +17,8 @@ const RoomsBrowser = ({ data: rooms }) => {
     const [browseLoaded, setBrowseLoaded] = useState(0);
     const [recoLoaded, setRecoLoaded] = useState(0);
 
+    console.log(rooms.rooms.length, browseLoaded);
+
     const theme = createMuiTheme({
         overrides: {
             MuiTooltip: {
@@ -109,9 +111,10 @@ const RoomsBrowser = ({ data: rooms }) => {
                                     aria-expanded="false"
                                     type="button"
                                 >
-                                    Choose a facility&nbsp;
+                                    {filter !== 'none' ? filter : 'Choose a facility '}
                                 </button>
                                 <div className="dropdown-menu">
+                                    {filter !== 'none' && <a className="dropdown-item" onClick={() => setFilter("none")}>All rooms</a>}
                                     <a className="dropdown-item" onClick={() => setFilter("whiteboard")}>Whiteboard</a>
                                     <a className="dropdown-item" onClick={() => setFilter("video-projector")}>Video-projector</a>
                                     <a className="dropdown-item" onClick={() => setFilter("TV screen")}>TV screen</a>
@@ -139,7 +142,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                                                 style={{
                                                     width: '100%',
                                                     height: '100%',
-                                                    display: browseLoaded === rooms.rooms.length ? 'block' : 'none'
+                                                    display: browseLoaded >= rooms.rooms.length ? 'block' : 'none'
                                                 }}
                                                 src={room.image}
                                                 className='rounded-circle'
@@ -149,7 +152,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                                                 style={{
                                                     width: '100%',
                                                     height: '100%',
-                                                    display: browseLoaded === rooms.rooms.length ? 'none' : 'block'
+                                                    display: browseLoaded >= rooms.rooms.length ? 'none' : 'block'
                                                 }}
                                                 src={spinner}
                                                 className='rounded-circle'
