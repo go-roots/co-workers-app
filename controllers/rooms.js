@@ -1,6 +1,9 @@
 const Room = require('../models/Room');
+const User = require('../models/User');
+const Profile = require('../models/Profile');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
+const { response } = require('express');
 
 
 exports.getAllRooms = asyncHandler(async (req, res, next) => {
@@ -60,4 +63,66 @@ exports.createRoom = asyncHandler(async (req, res, next) => {
 exports.deleteRoom = asyncHandler(async (req, res, next) => {
     const remove = await Room.findByIdAndDelete(req.params.roomId)
     res.status(200).json({ success: true, data: remove });
+});
+
+exports.getRecomendedRooms = asyncHandler(async (req, res, next) => {
+    //Setup the answer
+    var response = {success : true,
+                rooms : []
+            };
+    
+    //Prepare the data from db
+    const me = await User.findById(req.params.userId);
+    const meProfile = await Profile.findOne({user: req.params.userId});
+    const friends = me.friends;
+    const rooms = await Room.find();
+
+    //Fetch the user friendlist
+    var friendList = []
+    for (let i = 0; i < friends.friends.length; i++) {
+        friendList.push(toString(friends.friends[i].friend))
+    }
+
+    //Variable for the recommendation
+    var lenFr = 0;
+    var inRoom = [];
+    var lessOccupiedRoom = {};
+    var lessOccupiedRoomNb = Infinity;
+    var mostOccupiedRoom = {};
+    var mostOccupiedRoomNb = 0;
+
+    //Loop on all the user in all the rooms to feth infos
+    for (let i = 0; i < rooms.length; i++) {
+        for (let j = 0; j < rooms[i].users.length; j++) {
+            inRoom.push(toString(rooms[i].users[j].user))
+        }
+        //Handle the most and least occupied room
+        if(inRoom.length < lessOccupiedRoomNb){
+            lessOccupiedRoom = rooms[i];
+            lessOccupiedRoomNb = inRoom.length;
+        }
+        if(inRoom.length > mostOccupiedRoomNb){
+            mostOccupiedRoom = rooms[i];
+            mostOccupiedRoomNb = inRoom.length;
+        }
+        //Do the intersection of room user and friendlist
+        var friendsIn = friendList.filter(user => inRoom.includes(user))
+        if (friendsIn.length > lenFr){
+            response.rooms[0] = rooms[i]
+        lenFr = friendsIn.length
+        }
+        inRoom = []
+    }
+    switch (meProfile.mood){
+        case "Prefer to stay alone":
+            response.rooms.push(lessOccupiedRoom)
+            break;
+        case "Willing to help others":
+            response.rooms.push(mostOccupiedRoom)
+            break;
+        case "Feeling sociable":
+            response.rooms.push(mostOccupiedRoom)
+            break;
+    }
+    res.status(200).json(response);
 });

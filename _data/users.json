@@ -78,7 +78,7 @@
         "email": "kevin@gmail.com",
         "role": "user",
         "password": "testtest",
-        "rfid": "123456",
+        "rfid": "5C009D41A222",
         "friends": {
             "friends": [
                 {

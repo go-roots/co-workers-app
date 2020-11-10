@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { getAllRooms, getOneRoom, findUserRoom, updateRoomUser,
-    moveUsersInRoom, updateRoom, createRoom, deleteRoom } = require('../controllers/rooms')
+    moveUsersInRoom, updateRoom, createRoom, deleteRoom, getRecomendedRooms } = require('../controllers/rooms')
 
 const { protect } = require('../middlewares/auth');
 
@@ -11,6 +11,8 @@ router.route('/').get(protect, getAllRooms);
 router.route('/:roomId').get(protect, getOneRoom);
 //Return the room where the User is
 router.route('/userWhere/:userId').get(protect, findUserRoom);
+//Return the recommended rooms of an user
+router.route('/recommended/:userId').get(protect, getRecomendedRooms);
 
 //Update
 router.route('/:roomId').put(protect, updateRoom);

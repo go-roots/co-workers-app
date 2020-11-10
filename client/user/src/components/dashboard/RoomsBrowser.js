@@ -11,7 +11,7 @@ import {
     withStyles
   } from "@material-ui/core/styles";
 
-import { FaInfoCircle } from 'react-icons/fa'
+import { FaDizzy, FaInfoCircle } from 'react-icons/fa'
 import rooms from '../../store/reducers/rooms';
 
 
@@ -31,7 +31,7 @@ const RoomsBrowser = ({ data: rooms }) => {
           }
         }
       });
-      console.log(filter)
+
     return (
         <Fragment>                
             <div className="col">
@@ -61,18 +61,22 @@ const RoomsBrowser = ({ data: rooms }) => {
                         </div>
                     </div>
                     <div className="row rooms-reco-inner-container">
-                        <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                            <div data-tip="I AM THE INFO OF THE ROOMS" className="small-image-container" style={{ background: "url(&quot;assets/img/office-space-1744805_640.jpg&quot;) center / cover no-repeat" }}></div>
-                        </div>
-                        <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                            <div data-tip="I AM THE INFO OF THE ROOMS" className="small-image-container" style={{ background: "url(&quot;assets/img/small-office-4837892_640.jpg&quot;) center / cover no-repeat" }}></div>
-                        </div>
-                        <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                            <div data-tip="I AM THE INFO OF THE ROOMS" className="small-image-container" style={{ background: "url(&quot;assets/img/office-space-1744803_640.jpg&quot;) center / cover no-repeat" }}></div>
-                        </div>
-                        <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                            <div data-tip="I AM THE INFO OF THE ROOMS" className="small-image-container" style={{ background: "url(&quot;assets/img/woman-4780153_640.jpg&quot;) center / cover no-repeat" }}></div>
-                        </div>
+                        {rooms.recommendedRooms.map(room => 
+                            <div className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <MuiThemeProvider theme={theme}>
+                            <Tooltip title={<Fragment>
+                                {room.name} <br/>
+                                Capacity : {room.capacity} <br/>
+                                Facilities: <br/>
+                                {room.facilities.map(facility => 
+                                    <Fragment>{facility} <br /></Fragment>
+                                    )}
+                            </Fragment>}>
+                            <div className="small-image-container" style={{ background: `url(${room.image}) center / cover no-repeat` }}></div>
+                            </Tooltip>
+                            </MuiThemeProvider>
+                            </div>     
+                        )}
                     </div>
                 </div>
                 <div className="container-fluid recommendation-room-container">
