@@ -258,7 +258,8 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                         key={profile.id}
                                                     >
                                                         {profile?.profile?.photo &&
-                                                            <img className='rounded-circle'
+                                                            <img
+                                                                className='rounded-circle'
                                                                 src={profile.profile.photo}
                                                                 alt=''
                                                                 width='50'
@@ -380,7 +381,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                 </div>
                             </div>
                         ))}
-                        <div id="messaging-modal" role="dialog" tabindex="-1" className="modal fade">
+                        <div id="messaging-modal" role="dialog" tabIndex="-1" className="modal fade">
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">
                                     <div className="modal-header align-items-center">

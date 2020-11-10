@@ -11,8 +11,6 @@ import { loadUser } from '../../store/actions/auth';
 import Spinner from '../UI/Spinner';
 
 
-
-
 const Dashboard = () => {
 
     const [loading, setLoading] = useState(true);
@@ -20,7 +18,7 @@ const Dashboard = () => {
     const me = useSelector(state => state.auth.user);
     const rooms = useSelector(state => state.rooms);
     const dispatch = useDispatch();
-    
+
     const connect = useCallback(async () => {
         await dispatch(loadUser());
         setLoading(false);
@@ -31,11 +29,13 @@ const Dashboard = () => {
         connect();
         dispatch(fetchProfiles(null, null));
         dispatch(fetchRooms());
-        if(me.id){
+    }, []);
+
+    useEffect(() => {
+        if (me?.id) {
             dispatch(fetchRecomendedRooms(me.id));
         }
-        
-    }, []);
+    }, [loading]);
 
 
     if (loading) {
