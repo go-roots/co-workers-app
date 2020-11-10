@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { getMe, getProfileById, getProfiles, modifyProfile,
-    deleteAccount, updateSocial, updateDistinctions } = require('../controllers/profiles');
-const { protect } = require('../middlewares/auth');
+    deleteAccount, updateSocial, updateDistinctions, updateStatus } = require('../controllers/profiles');
+const { protect, authorize } = require('../middlewares/auth');
 const { check } = require('express-validator');
 
 
@@ -63,6 +63,8 @@ router.route('/distinctions/:userId').put([protect, [
 router.route('/social').put(protect, updateSocial);
 
 router.route('/:userId').delete(protect, deleteAccount);
+
+router.route('/status/:userId').put(protect, authorize('admin'), updateStatus)
 
 
 module.exports = router

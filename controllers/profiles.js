@@ -4,6 +4,7 @@ const Profile = require('../models/Profile');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const { validationResult } = require('express-validator');
+const { findOneAndUpdate } = require('../models/User');
 
 //Update of awards must be done implicitely, we shouldn't have a route for modifying it directly
 //Unless you are an admin of course.
@@ -223,4 +224,9 @@ exports.deleteAccount = asyncHandler(async (req, res, next) => {
     }
 
     res.status(204).json('User deleted');
+});
+
+exports.updateStatus = asyncHandler(async (req, res, next) => {
+    const ans = await Profile.findOneAndUpdate({user : req.params.userId}, {status: req.body.status})
+    return res.status(200).json({ success: true, ans});
 });

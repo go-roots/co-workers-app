@@ -21,18 +21,24 @@ const Dashboard = () => {
 
     const connect = useCallback(async () => {
         await dispatch(loadUser());
+        
         setLoading(false);
     }, []);
 
+    
     //Tries to get the user if there's a token (auto-connect)
     useEffect(() => {
         connect();
         dispatch(fetchProfiles(null, null));
         dispatch(fetchRooms());
+<<<<<<< HEAD
     }, []);
 
     useEffect(() => {
         if (me?.id) {
+=======
+        if(me){
+>>>>>>> b3a99ff... Added a route for the flask webservice
             dispatch(fetchRecomendedRooms(me.id));
         }
     }, [loading]);
