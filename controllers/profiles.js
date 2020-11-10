@@ -227,6 +227,7 @@ exports.deleteAccount = asyncHandler(async (req, res, next) => {
 });
 
 exports.updateStatus = asyncHandler(async (req, res, next) => {
-    const ans = await Profile.findOneAndUpdate({user : req.params.userId}, {status: req.body.status})
-    return res.status(200).json({ success: true, ans});
+    console.log(req.body)
+    const data = await Profile.findOneAndUpdate({user : req.params.userId}, {status: req.body.status})
+    return res.status(200).json({ success: true, data});
 });
