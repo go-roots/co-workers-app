@@ -115,13 +115,19 @@ exports.getRecomendedRooms = asyncHandler(async (req, res, next) => {
     }
     switch (meProfile.mood){
         case "Prefer to stay alone":
-            response.rooms.push(lessOccupiedRoom)
+            if(!response.rooms.includes(lessOccupiedRoom)){
+                response.rooms.push(lessOccupiedRoom)
+            }       
             break;
         case "Willing to help others":
-            response.rooms.push(mostOccupiedRoom)
+            if(!response.rooms.includes(mostOccupiedRoom)){
+                response.rooms.push(mostOccupiedRoom)
+            }
             break;
         case "Feeling sociable":
-            response.rooms.push(mostOccupiedRoom)
+            if(!response.rooms.includes(mostOccupiedRoom)){
+                response.rooms.push(mostOccupiedRoom)
+            }
             break;
     }
     res.status(200).json(response);
