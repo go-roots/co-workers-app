@@ -17,8 +17,6 @@ const RoomsBrowser = ({ data: rooms }) => {
     const [browseLoaded, setBrowseLoaded] = useState(0);
     const [recoLoaded, setRecoLoaded] = useState(0);
 
-    console.log(rooms.rooms.length, browseLoaded);
-
     const theme = createMuiTheme({
         overrides: {
             MuiTooltip: {

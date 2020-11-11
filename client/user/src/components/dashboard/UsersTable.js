@@ -3,7 +3,7 @@ import React, { Fragment, useState, useReducer, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProfiles } from '../../store/actions/profiles';
+import { fetchProfiles, setIndividualProfile } from '../../store/actions/profiles';
 import { setAlert } from '../../store/actions/alerts'
 import Tooltip from '@material-ui/core/Tooltip';
 //Icons
@@ -47,7 +47,8 @@ const FiltersReducer = (state = initialState, action) => {
 const UsersTable = ({ data: { profiles, me } }) => {
 
     const baseUrl = useSelector(state => state.globalVars.currentDomain);
-    const [selectedProfile, setSelectedProfile] = useState({});
+    const selectedProfile = useSelector(state => state.profiles.profile);
+    const [individualHelpR, setIndividualHelpR] = useState(false);
     const [activeElements, setActiveElements] = useState([]);
     const [socialDD, setSocialDD] = useState("dropdown-menu");
     const [activityDD, setActivityDD] = useState("dropdown-menu");
@@ -134,6 +135,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                             id="help-request"
                             data-toggle="modal"
                             data-target="#help-request-modal"
+                            onClick={() => setIndividualHelpR(false)}
                         >
                             <HiOutlineLightBulb style={{ color: "rgb(255,255,0)", paddingTop: "2px", marginBottom: "-5px" }} />
                             <HiUserGroup
@@ -225,7 +227,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 key={sector}
                                                 className="dropdown-item"
                                                 type='button'
-                                                onClick={e => filtersHandler(e, { sector }, null, null)}
+                                                onClick={e => filtersHandler(e, sector, null, null)}
                                             >
                                                 {sector}
                                             </button>
@@ -234,86 +236,6 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="modal fade" role="dialog" tabIndex="-1" id="help-request-modal">
-                            <div className="modal-dialog" role="document">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h4 className="modal-title">Help request</h4>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div className="modal-body">
-                                        <form className="modal-form" style={{ fontSize: "1rem" }}>
-                                            The help request will be sent to :
-                                            <div
-                                                style={{ marginTop: '20px', marginBottom: '25px' }}
-                                                className="row"
-                                            >
-                                                {profiles.map(profile => (
-                                                    <div
-                                                        style={{ marginLeft: '20px' }}
-                                                        className='d-flex flex-column align-items-center'
-                                                        key={profile.id}
-                                                    >
-                                                        {profile?.profile?.photo &&
-                                                            <img
-                                                                className='rounded-circle'
-                                                                src={profile.profile.photo}
-                                                                alt=''
-                                                                width='50'
-                                                                height='50'
-                                                            ></img>
-                                                        }
-                                                        <em>{profile.firstName}</em>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Explain your problem in a few words</label>
-                                                <textarea
-                                                    className="form-control"
-                                                    onChange={e => setQuestion(e.target.value)}
-                                                    value={question}
-                                                >
-                                                </textarea>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button
-                                            className="btn btn-light"
-                                            type="button"
-                                            data-dismiss="modal"
-                                            onClick={e => setQuestion("")}
-                                        >
-                                            Close
-                                        </button>
-                                        <button
-                                            className="btn btn-primary"
-                                            type="button"
-                                            data-dismiss="modal"
-                                            onClick={async () => {
-                                                const users = profiles.map(profile => profile.id);
-                                                axios.post(baseUrl + '/help-requests', {
-                                                    users,
-                                                    question
-                                                }).then(() => {
-                                                    setQuestion("");
-                                                    dispatch(setAlert('success', 'Your question has been successfully sumbitted !'));
-                                                }).catch(() => {
-                                                    setQuestion("");
-                                                    dispatch(setAlert('danger', "Your message couldn't been send, try later"));
-                                                });
-                                            }}>
-                                            Save
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                     {/* Start of displaying the users */}
                     <div id="people-body">
@@ -329,7 +251,13 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                             />
                                         </div>
                                     </Tooltip>
-                                    <Link className="dashboard-name-link" to={`profile/${profile.id}`}>{`${profile.firstName} ${profile.lastName}`}</Link>
+                                    <Link
+                                        onClick={async () => await dispatch(setIndividualProfile(profile))}
+                                        className="dashboard-name-link"
+                                        to={'/profile'}
+                                    >
+                                        {`${profile.firstName} ${profile.lastName}`}
+                                    </Link>
                                 </div>
                                 <div className="d-flex flex-row align-items-baseline">
                                     {profile?.profile?.mood === 'Prefer to stay alone' && (
@@ -357,7 +285,16 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                     {profile?.profile?.status === 'Available' && profile.id != me.id && (
                                         <Tooltip title="Send a help request">
                                             <div>
-                                                <ImLifebuoy className="ask-help-icon" size={25} />
+                                                <ImLifebuoy
+                                                    data-toggle="modal"
+                                                    data-target="#help-request-modal"
+                                                    className="ask-help-icon"
+                                                    onClick={async () => {
+                                                        await dispatch(setIndividualProfile(profile))
+                                                        setIndividualHelpR(true);
+                                                    }}
+                                                    size={25}
+                                                />
                                             </div>
                                         </Tooltip>
                                     )}
@@ -370,10 +307,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                     data-target='#messaging-modal'
                                                     className="comment-icon"
                                                     size={25}
-                                                    onClick={e => {
-                                                        setSelectedProfile(profile);
-                                                        setMessage("");
-                                                    }}
+                                                    onClick={async () => await dispatch(setIndividualProfile(profile))}
                                                 />
                                             </div>
                                         </Tooltip>
@@ -411,7 +345,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 try {
                                                     const res = await axios.delete(baseUrl + '/users/friendReq/' + selectedProfile.id);
                                                     await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
-                                                    setSelectedProfile(res.data.data);
+                                                    await dispatch(setIndividualProfile(res.data.data));
                                                     dispatch(setAlert('success', 'The friend request has been canceled!'));
                                                 } catch (err) {
                                                     dispatch(setAlert('danger', err.response.data.error));
@@ -431,7 +365,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                         try {
                                                             const res = await axios.put(baseUrl + '/users/friendReq/' + selectedProfile.id);
                                                             await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
-                                                            setSelectedProfile(res.data.data);
+                                                            await dispatch(setIndividualProfile(res.data.data));
                                                             dispatch(setAlert('success', `The friend request has been sent to ${selectedProfile?.firstName} ${selectedProfile?.lastName}!`));
                                                         } catch (err) {
                                                             dispatch(setAlert('danger', err.response.data.error));
@@ -466,6 +400,103 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="modal fade" role="dialog" tabIndex="-1" id="help-request-modal">
+                            <div className="modal-dialog" role="document">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h4 className="modal-title">Help request</h4>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body">
+                                        <form className="modal-form" style={{ fontSize: "1rem" }}>
+                                            The help request will be sent to :
+                                            <div
+                                                style={{ marginTop: '20px', marginBottom: '25px' }}
+                                                className="row"
+                                            >
+                                                {!individualHelpR ? profiles.map(profile => (
+                                                    <div
+                                                        style={{ marginLeft: '20px' }}
+                                                        className='d-flex flex-column align-items-center'
+                                                        key={profile.id}
+                                                    >
+                                                        {profile?.profile?.photo &&
+                                                            <img
+                                                                className='rounded-circle'
+                                                                src={profile.profile.photo}
+                                                                alt=''
+                                                                width='50'
+                                                                height='50'
+                                                            ></img>
+                                                        }
+                                                        <em>{profile.firstName}</em>
+                                                    </div>
+                                                )) : (
+                                                        <div
+                                                            style={{ marginLeft: '20px' }}
+                                                            className='d-flex flex-column align-items-center'
+                                                            key={selectedProfile?.id}
+                                                        >
+                                                            {selectedProfile?.profile?.photo &&
+                                                                <img
+                                                                    className='rounded-circle'
+                                                                    src={selectedProfile.profile.photo}
+                                                                    alt=''
+                                                                    width='50'
+                                                                    height='50'
+                                                                ></img>
+                                                            }
+                                                            <em>{selectedProfile?.firstName}</em>
+                                                        </div>
+                                                    )}
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Explain your problem in a few words</label>
+                                                <textarea
+                                                    className="form-control"
+                                                    onChange={e => setQuestion(e.target.value)}
+                                                    value={question}
+                                                >
+                                                </textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button
+                                            className="btn btn-light"
+                                            type="button"
+                                            data-dismiss="modal"
+                                            onClick={() => setQuestion("")}
+                                        >
+                                            Close
+                                        </button>
+                                        <button
+                                            className="btn btn-primary"
+                                            type="button"
+                                            data-dismiss="modal"
+                                            onClick={async () => {
+                                                const users = !individualHelpR ? profiles.map(profile => profile.id) : [selectedProfile.id];
+                                                axios.post(baseUrl + '/help-requests', {
+                                                    users,
+                                                    question
+                                                }).then(() => {
+                                                    setQuestion("");
+                                                    dispatch(setAlert('success', 'Your question has been successfully sumbitted !'));
+                                                }).catch(() => {
+                                                    setQuestion("");
+                                                    dispatch(setAlert('danger', "Your message couldn't been send, try later"));
+                                                });
+                                            }}>
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

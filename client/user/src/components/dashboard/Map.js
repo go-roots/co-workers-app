@@ -138,7 +138,7 @@ const Map = ({ data: profiles }) => {
                                 onMouseLeave={e => handleTooltipClose()}
                                 style={roomStyles[modifiedName]}
                             >
-                                <span style={{ cursor: 'pointer' }} className="badge badge-pill badge-info">{room.users.length}</span>
+                                <span style={{ cursor: 'pointer' }} className="badge badge-pill badge-info">{room.users.length}/{room.capacity}</span>
                             </div>
                         </HtmlTooltip>)
                 })}

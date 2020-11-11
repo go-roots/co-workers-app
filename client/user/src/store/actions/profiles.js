@@ -52,21 +52,8 @@ export const fetchProfiles = (activitySector, status, friends) => {
     }
 }
 
-export const getProfileById = userId => {
-    return async (dispatch, getState) => {
-        dispatch({ type: CLEAR_PROFILE });
-        try {
-            const res = await axios.get(getState().globalVars.currentDomain + '/profiles/user/' + userId);
-            dispatch({ type: SET_PROFILE, profile: res.data.data });
-        } catch (err) {
-            dispatch({
-                type: PROFILE_ERROR, error: {
-                    msg: err.response.statusText,
-                    status: err.response.status
-                }
-            });
-        }
-    }
+export const setIndividualProfile = profile => {
+    return { type: SET_PROFILE, profile };
 }
 
 export const editOrCreateProfile = data => {
