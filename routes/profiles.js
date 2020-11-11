@@ -64,6 +64,7 @@ router.route('/social').put(protect, updateSocial);
 
 router.route('/:userId').delete(protect, deleteAccount);
 
+//Route used by the face recognition web service / can only be used with an admin token
 router.route('/status/:userId').put(protect, authorize('admin'), updateStatus)
 
 

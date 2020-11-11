@@ -24,6 +24,7 @@ const transactions = require('./routes/transactions');
 const rooms = require('./routes/rooms');
 const helpRequests = require('./routes/help-requests');
 const notifications = require('./routes/notifications');
+const redeemables = require('./routes/redeemables')
 
 //Initialize express
 const app = express();
@@ -53,6 +54,7 @@ app.use('/api/cw-api/transactions', transactions);
 app.use('/api/cw-api/rooms', rooms);
 app.use('/api/cw-api/help-requests', helpRequests);
 app.use('/api/cw-api/notifications', notifications);
+app.use('/api/cw-api/redeemables',redeemables);
 
 //Error handling middleware
 app.use(errorHandler);

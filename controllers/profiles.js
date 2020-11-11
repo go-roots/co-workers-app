@@ -226,6 +226,7 @@ exports.deleteAccount = asyncHandler(async (req, res, next) => {
     res.status(204).json('User deleted');
 });
 
+//Controller used by the face recognition webService to update the availability of user
 exports.updateStatus = asyncHandler(async (req, res, next) => {
     console.log(req.body)
     const data = await Profile.findOneAndUpdate({user : req.params.userId}, {status: req.body.status})
