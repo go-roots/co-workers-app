@@ -348,6 +348,7 @@
         "email": "steph@gmail.com",
         "role": "user",
         "password": "testtest",
+        "rfid": "1234",
         "cwpoints": {
             "current": 1500,
             "history": [
@@ -539,12 +540,12 @@
     },
     {
         "_id": "5c8a1d5b0190b214360dc038",
-        "firstName": "Barry",
-        "lastName": "Dickens",
+        "firstName": "Paul",
+        "lastName": "Amblard",
         "email": "barry@gmail.com",
         "role": "user",
         "password": "testtest",
-        "rfid": "24517801",
+        "rfid": "5C009D8D93DF",
         "cwpoints": {
             "current": 2000,
             "history": [
