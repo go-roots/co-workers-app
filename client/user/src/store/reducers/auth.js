@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import {
     REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED,
     AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT,
@@ -6,8 +5,8 @@ import {
 } from '../actions/auth';
 
 const initialState = {
-    token: Cookies.get('token'),
-    linkedinToken: Cookies.get('linkedinToken'),
+    token: localStorage.getItem('token'),
+    linkedinToken: localStorage.getItem('linkedinToken'),
     isAuthenticated: null,
     loading: true,
     user: null
@@ -18,7 +17,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
-            Cookies.set('token', action.token);
+            localStorage.setItem('token', action.token);
             return {
                 ...state,
                 token: action.token,
@@ -26,8 +25,8 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case LINKEDIN_SUCCESS:
-            Cookies.set('token', action.token);
-            Cookies.set('linkedinToken', action.linkedinToken);
+            localStorage.setItem('token', action.token);
+            localStorage.setItem('linkedinToken', action.linkedinToken);
             return {
                 ...state,
                 token: action.token,
@@ -41,8 +40,8 @@ export default (state = initialState, action) => {
         case AUTH_ERROR:
         case LOGOUT:
         case ACCOUNT_DELETED:
-            Cookies.remove('token');
-            Cookies.remove('linkedinToken'); //if it exists...
+            localStorage.removeItem('token');
+            localStorage.removeItem('linkedinToken'); //if it exists...
             return {
                 ...state,
                 token: null,

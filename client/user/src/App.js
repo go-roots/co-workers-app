@@ -3,7 +3,6 @@ import './assets/css/Login-Form-Clean.css';
 import './assets/fonts/fontawesome5-overrides.min.css';
 
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux'
@@ -28,8 +27,8 @@ import Loading from './components/layout/Loading';
 
 
 //Setting token as a header for all requests
-if (Cookies.get('token')) {
-  axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('token');
+if (localStorage.token) {
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
 } else {
   delete axios.defaults.headers.common['Authorization'];
 }

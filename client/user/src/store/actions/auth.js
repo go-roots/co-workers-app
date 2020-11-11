@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { setAlert } from './alerts';
 import { PROFILE_ERROR } from './profiles';
 
@@ -19,8 +18,8 @@ export const LINKEDIN_FAIL = 'LINKEDIN_FAIL';
 export const loadUser = () => {
     return async (dispatch, getState) => {
         //Setting token as a header for all requests
-        if (Cookies.get('token')) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('token');
+        if (localStorage.token) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
         } else {
             delete axios.defaults.headers.common['Authorization'];
         }
@@ -38,7 +37,6 @@ export const loadUser = () => {
 //login and register are without linkedin here...
 export const registerUser = (firstName, lastName, email, password) => {
     return async (dispatch, getState) => {
-
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -93,7 +91,6 @@ export const loginUser = (email, password) => {
 
 export const linkedinConnect = code => {
     return async (dispatch, getState) => {
-
         const config = {
             headers: {
                 'Content-Type': 'application/json'
