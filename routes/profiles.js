@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { getMe, getProfileById, getProfiles, modifyProfile,
-    deleteAccount, updateSocial, updateDistinctions, updateStatus } = require('../controllers/profiles');
+    deleteAccount, updateSocial, updateDistinctions,
+    updateStatus, doIHaveAProfile } = require('../controllers/profiles');
 const { protect, authorize } = require('../middlewares/auth');
 const { check } = require('express-validator');
 
 
-router.route('/me').get(protect, getMe);
+router.route('/hasAProfile').get(protect, doIHaveAProfile);
+router.route('/me').get(protect, getMe).post(protect, getMe);
 router.route('/user/:userId').get(protect, getProfileById);
 router.route('/').get(protect, getProfiles);
 
@@ -15,8 +17,9 @@ router.route('/').post([protect, [
     check('skills', 'Skills is required').not().isEmpty(),
     check('company', 'Company is required').not().isEmpty(),
     check('photo', 'Supported formats for images are jpeg, jpg, png, gif').custom((value, { req }) => {
-        if (req.body.photo !== undefined) {
+        if (req.body.photo) {
             let extension = req.body.photo.split('.').pop();
+            console.log(extension);
             switch (extension) {
                 case 'jpg':
                     return true;
@@ -37,7 +40,7 @@ router.route('/').post([protect, [
 
 router.route('/').put([protect, [
     check('photo', 'Supported formats for images are jpeg, jpg, png, gif').custom((value, { req }) => {
-        if (req.body.photo !== undefined) {
+        if (req.body.photo) {
             let extension = req.body.photo.split('.').pop();
             switch (extension) {
                 case 'jpg':

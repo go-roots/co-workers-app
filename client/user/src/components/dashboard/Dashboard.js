@@ -21,10 +21,8 @@ const Dashboard = () => {
 
     const connect = useCallback(async () => {
         await dispatch(loadUser());
-
         setLoading(false);
     }, []);
-
 
     //Tries to get the user if there's a token (auto-connect)
     useEffect(() => {

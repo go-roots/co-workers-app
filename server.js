@@ -59,7 +59,7 @@ app.use('/api/cw-api/redeemables',redeemables);
 //Error handling middleware
 app.use(errorHandler);
 
-//Set static folder (accessible in the url through localhost:port/public/...)
+//Set static folder (accessible in the url through localhost:port/img...)
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Serve static assets in production (client)

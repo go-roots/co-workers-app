@@ -1,20 +1,55 @@
+const fetch = require('node-fetch');
 const path = require('path');
 const User = require('../models/User');
 const Profile = require('../models/Profile');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const { validationResult } = require('express-validator');
-const { findOneAndUpdate } = require('../models/User');
 
 //Update of awards must be done implicitely, we shouldn't have a route for modifying it directly
 //Unless you are an admin of course.
 
 
+// @desc        Tells if the current user has a profile
+// @route       GET api/cw-api/profiles/hasAProfile
+// @access      Private
+exports.doIHaveAProfile = asyncHandler(async (req, res, next) => {
+    const profile = await Profile.findOne({ user: req.user.id });
+    res.status(200).json({ success: true, hasAProfile: profile ? true : false });
+});
+
 // @desc        Get current profile
 // @route       GET api/cw-api/profiles/me
+// @route       POST api/cw-api/profiles/me
 // @access      Private
 exports.getMe = asyncHandler(async (req, res, next) => {
-    const profile = await Profile.findOne({ user: req.user.id });
+    let profile;
+
+    if (req.user.linkedin) {
+        const { linkedinToken } = req.body;
+        const res = await fetch('https://api.linkedin.com/v2/me?projection=(profilePicture(displayImage~:playableStreams))', {
+            method: 'get',
+            headers: {
+                'Authorization': `Bearer ${linkedinToken}`
+            }
+        });
+        console.log(res);
+
+        const photo = (res.identifiers[0] && res.identifiers[0].identifier) ? res.identifiers[0].identifier : null;
+
+        if (photo) {
+            profile = await Profile.findOneAndUpdate(
+                { user: req.user.id },
+                { $set: { photo } },
+                { new: true }
+            );
+
+            console.log(profile);
+            return res.status(200).json({ success: true, data: profile });
+        }
+    }
+
+    profile = await Profile.findOne({ user: req.user.id });
     res.status(200).json({ success: true, data: profile });
 });
 
@@ -48,6 +83,7 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
     const {
         activitySector,
         company,
+        position,
         website,
         photo,
         bio,
@@ -61,6 +97,7 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
 
     const profileFields = {};
     profileFields.user = req.user.id;
+    if (position) profileFields.position = position;
     if (company) profileFields.company = company;
     if (website) profileFields.website = website;
     if (bio) profileFields.bio = bio;
@@ -83,24 +120,22 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
 
     if (profile) {
         //update
-        const newProfile = await Profile.findOneAndUpdate(
+        profile = await Profile.findOneAndUpdate(
             { user: req.user.id },
             { $set: profileFields },
             { new: true }
         );
-
-        return res.json(newProfile);
+    } else {
+        //else create one
+        profile = new Profile(profileFields);
+        await profile.save();
     }
-
-    //else create one
-    profile = new Profile(profileFields);
-    await profile.save();
 
     //Images :
 
     //Check if there's a file uploaded
     if (req.files && !req.user.linkedin) {
-        const file = req.files.file;
+        const file = req.files.image;
 
         //Make sure the image is a photo
         if (!file.mimetype.startsWith('image')) {
@@ -112,19 +147,31 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
             return next(new ErrorResponse(`Please upload an image less than ${process.env.MAX_FILE_UPLOAD} MB`, 400));
         }
 
-        //Create custom file name
         file.name = profile._id + path.parse(file.name).ext;
 
         file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
             if (err) {
-                console.err(error);
+                console.log(err);
                 return next(new ErrorResponse(`Problem with the uploads`, 500));
             }
-            await Profile.findByIdAndUpdate(profile._id, { photo: file.name });
         });
+
+        let photoDbName;
+
+        if (process.env.NODE_ENV === 'production') {
+            photoDbName = process.env.DOMAIN + 'img/' + profile._id + path.parse(file.name).ext;
+        } else {
+            photoDbName = `http://localhost:${process.env.PORT}/img/` + profile._id + path.parse(file.name).ext;
+        }
+
+        profile = await Profile.findByIdAndUpdate(
+            profile._id,
+            { $set: { photo: photoDbName } },
+            { new: true }
+        );
     }
 
-    return res.status(200).json(profile);
+    res.status(200).json({ data: profile });
 });
 
 
@@ -228,7 +275,10 @@ exports.deleteAccount = asyncHandler(async (req, res, next) => {
 
 //Controller used by the face recognition webService to update the availability of user
 exports.updateStatus = asyncHandler(async (req, res, next) => {
-    console.log(req.body)
-    const data = await Profile.findOneAndUpdate({user : req.params.userId}, {status: req.body.status})
-    return res.status(200).json({ success: true, data});
+    const data = await Profile.findOneAndUpdate(
+        { user: req.params.userId },
+        { status: req.body.status },
+        { new: true }
+    );
+    return res.status(200).json({ success: true, data });
 });

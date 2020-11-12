@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alerts';
-import { PROFILE_ERROR } from './profiles';
+import { PROFILE_ERROR, TOGGLE_MODAL } from './profiles';
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
@@ -27,7 +27,10 @@ export const loadUser = () => {
         try {
             //The server will verify the token, and then get the user
             const res = await axios.get(getState().globalVars.currentDomain + '/auth/me');
-            return dispatch({ type: USER_LOADED, user: res.data.data });
+            dispatch({ type: USER_LOADED, user: res.data.data });
+
+            const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/profiles/hasAProfile');
+            return dispatch({ type: TOGGLE_MODAL, state: !doIHaveAProfile.data.hasAProfile, kind: 'create' });
         } catch (err) {
             return dispatch({ type: AUTH_ERROR });
         }
@@ -78,10 +81,10 @@ export const loginUser = (email, password) => {
             dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
             dispatch(loadUser());
         } catch (err) {
-            const errors = err.response.data.errors;
+            const error = err.response.data.error;
 
-            if (errors) {
-                errors.forEach(error => dispatch(setAlert('danger', error.msg)));
+            if (error) {
+                dispatch(setAlert('danger', error));
             }
 
             dispatch({ type: LOGIN_FAIL });

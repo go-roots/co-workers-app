@@ -4,7 +4,8 @@ import {
     SET_PROFILES,
     PROFILE_ERROR,
     UPDATE_PROFILE,
-    SET_OWN_PROFILE
+    SET_OWN_PROFILE,
+    TOGGLE_MODAL
 } from '../actions/profiles';
 import {
     CLEAR_PROFILE
@@ -14,6 +15,7 @@ import {
 //only one screen (dashboard), but it's just to have the whole data in one place.
 
 const initialState = {
+    modalOpened: { state: false, kind: null },
     myProfile: null, //used in social, rooms recommendations, ...
     profile: null, //Current profile being viewed (.../profile/:profileId)
     profiles: [], //List of extended profiles used in the dashboard, vary regarding the applied filters
@@ -23,6 +25,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case TOGGLE_MODAL:
+            return {
+                ...state,
+                modalOpened: {
+                    state: action.state,
+                    kind: action.kind
+                }
+            }
         case SET_OWN_PROFILE:
         case UPDATE_PROFILE:
             return {
@@ -50,7 +60,10 @@ export default (state = initialState, action) => {
                 profile: null,
             };
         case CLEAR_PROFILE:
-            return initialState;
+            return {
+                ...initialState,
+                modalOpened: state.modalOpened
+            };
         default:
             return state;
     }

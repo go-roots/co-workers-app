@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -35,8 +35,8 @@ const Login = props => {
 
     return (
         <div style={{ background: "rgb(115,173,58)" }}>
-            <Alert />
             <div className="login-clean">
+                <Alert />
                 <form onSubmit={e => onSubmitHandler(e)}>
                     <h2 className="sr-only">Login Form</h2>
                     <div className="illustration">

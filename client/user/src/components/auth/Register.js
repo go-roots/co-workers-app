@@ -37,8 +37,8 @@ const Register = () => {
 
     return (
         <div style={{ background: "rgb(115,173,58)" }}>
-            <Alert />
             <div className="login-clean">
+                <Alert />
                 <form onSubmit={e => onSubmitHandler(e)}>
                     <h2 className="sr-only">Login Form</h2>
                     <div className="illustration">

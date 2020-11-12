@@ -526,9 +526,16 @@ html {
 
 #social-networks-toggler {
   margin-top: 50px;
+  margin-bottom: 20px;
 }
 
-#preview {
+#social-networks-container {
+  border-top: 1px solid #808080 ;
+  width: 80%;
+  margin: auto;
+}
+
+.preview {
   width: 200px;
   margin-top: 10px;
 }

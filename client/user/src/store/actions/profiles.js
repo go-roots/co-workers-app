@@ -1,4 +1,5 @@
 import axios from 'axios';
+import fetch from 'node-fetch';
 import { CLEAR_PROFILE } from './auth' //clear_profile is used in auth actions after account deletion
 import { setAlert } from './alerts';
 
@@ -7,6 +8,13 @@ export const SET_OWN_PROFILE = 'SET_OWN_PROFILE';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const SET_PROFILES = 'SET_PROFILES';
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+
+
+
+export const modalHandler = (state, kind) => {
+    return { type: TOGGLE_MODAL, state, kind }
+}
 
 
 export const getCurrentProfile = () => {
@@ -56,16 +64,31 @@ export const setIndividualProfile = profile => {
     return { type: SET_PROFILE, profile };
 }
 
-export const editOrCreateProfile = data => {
+export const editOrCreateProfile = (data, kind) => {
     return async (dispatch, getState) => {
         try {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json'
+            let formData = new FormData();
+
+            for (const field in data) {
+                if (data[field]) {
+                    formData.append(field, data[field]);
                 }
             };
-            const res = await axios.post(getState().globalVars.currentDomain + '/profiles', data, config);
-            dispatch({ type: SET_PROFILE, profile: res.data.data });
+
+            let res;
+
+            res = await fetch(getState().globalVars.currentDomain + '/profiles', {
+                method: kind === 'edit' ? 'PUT' : 'POST',
+                body: formData,
+                headers: {
+                    'authorization': 'Bearer ' + getState().auth.token
+                }
+            });
+
+            const newProfile = await res.json();
+
+            dispatch({ type: SET_OWN_PROFILE, profile: newProfile.data });
+            dispatch({ type: TOGGLE_MODAL, state: false, kind: 'edit' });
             dispatch(setAlert('success', 'Profile successfully updated !'));
         } catch (err) {
             const errors = err.response.data.errors;

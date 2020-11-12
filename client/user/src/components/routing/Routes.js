@@ -1,4 +1,7 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useCallback } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { modalHandler } from '../../store/actions/profiles'
+import fetch from 'node-fetch'
 import { Route, Switch } from 'react-router-dom'
 import Navbar from '../layout/Navbar'
 import Dashboard from '../dashboard/Dashboard'
@@ -10,6 +13,7 @@ import Consumption from '../consumption/Consumption'
 import NotFound from '../layout/NotFound'
 import PrivateRoute from './PrivateRoute'
 import Alert from '../../components/layout/Alert'
+import EditProfile from '../profile/edit-profile/EditProfile'
 
 
 const Routes = () => {
@@ -17,6 +21,7 @@ const Routes = () => {
         <Fragment>
             <Navbar />
             <Alert />
+            <EditProfile />
             <Switch>
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
                 <PrivateRoute exact path='/social' component={Social} />

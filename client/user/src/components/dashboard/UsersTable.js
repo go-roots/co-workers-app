@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfiles, setIndividualProfile } from '../../store/actions/profiles';
 import { setAlert } from '../../store/actions/alerts'
+import activitySectors from '../../utils/activitySectors'
 import Tooltip from '@material-ui/core/Tooltip';
 //Icons
 import { HiOutlineLightBulb, HiUserGroup } from 'react-icons/hi';
@@ -54,29 +55,6 @@ const UsersTable = ({ data: { profiles, me } }) => {
     const [activityDD, setActivityDD] = useState("dropdown-menu");
     const [message, setMessage] = useState("");
     const [question, setQuestion] = useState("");
-    const activitySectors = ["Accountancy", "banking and finance",
-        "Business", "consulting and management",
-        "Charity and voluntary work",
-        "Creative arts and design",
-        "Student or Learning",
-        "Instructor or Teacher",
-        "Energy and utilities",
-        "Engineering and manufacturing",
-        "Environement and agriculture",
-        "Healthcare",
-        "Hospitality and events management",
-        "Information technologies",
-        "Law",
-        "Leisure, sport and tourism",
-        "Marketing", "advertising and PR",
-        "Media and internet",
-        "Recruitement and retailement",
-        "HR",
-        "Sales",
-        "Science and pharmaceuticals",
-        "Social care",
-        "Transportation and logistics"
-    ];
 
     const dispatch = useDispatch();
 
