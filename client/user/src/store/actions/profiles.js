@@ -9,7 +9,8 @@ export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const SET_PROFILES = 'SET_PROFILES';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
-
+export const SET_MESSAGES = 'SET_MESSAGES';
+export const SET_FRIENDS = 'SET_FRIENDS';
 
 
 export const modalHandler = (state, kind) => {
@@ -60,6 +61,18 @@ export const fetchProfiles = (activitySector, status, friends) => {
     }
 }
 
+export const fetchMessages = () => {
+    return (dispatch, getState) => {
+
+    }
+}
+
+export const fetchFriends = () => {
+    return (dispatch, getState) => {
+
+    }
+}
+
 export const setIndividualProfile = profile => {
     return { type: SET_PROFILE, profile };
 }
@@ -97,6 +110,29 @@ export const editOrCreateProfile = (data, kind) => {
                 errors.forEach(error => dispatch(setAlert('danger', error.msg)));
             }
 
+            dispatch({
+                type: PROFILE_ERROR, error: {
+                    msg: err.response.statusText,
+                    status: err.response.status
+                }
+            });
+        }
+    }
+}
+
+export const updateSocialInfos = (field, value) => {
+    return async (dispatch, getState) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        const body = JSON.stringify({ [field]: value });
+
+        try {
+            const profile = await axios.put(getState().globalVars.currentDomain + '/profiles/social', body, config);
+            dispatch({ type: SET_OWN_PROFILE, profile: profile.data.newProfile });
+        } catch (err) {
             dispatch({
                 type: PROFILE_ERROR, error: {
                     msg: err.response.statusText,

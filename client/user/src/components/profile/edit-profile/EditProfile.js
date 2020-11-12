@@ -7,7 +7,7 @@ import Fade from '@material-ui/core/Fade';
 import { useSelector, useDispatch } from 'react-redux'
 import { editOrCreateProfile, modalHandler } from '../../../store/actions/profiles'
 import { removeAllAlerts } from '../../../store/actions/alerts'
-import activitySectors from '../../../utils/activitySectors'
+import { activitySectors } from '../../../utils/constants'
 import { GrFacebook } from 'react-icons/gr'
 import { FaTwitter } from 'react-icons/fa'
 import { AiFillLinkedin } from 'react-icons/ai'
@@ -37,6 +37,7 @@ const EditProfile = () => {
 
     const classes = useStyles();
     const modal = useSelector(state => state.profiles.modalOpened);
+    const linkedin = useSelector(state => state.auth.linkedinToken);
 
     const profile = useSelector(state => state.profiles.myProfile);
     const [social, setSocial] = useState(false);
@@ -132,7 +133,7 @@ const EditProfile = () => {
                                         </select>
                                         <small className="form-text">Give us an idea of your field of work</small>
                                     </div>
-                                    {profile && !profile?.linkedin && (
+                                    {!linkedin && (
                                         <div className="form-group">
                                             <input
                                                 className="profile-inputs"

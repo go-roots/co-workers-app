@@ -15,10 +15,12 @@ import {
 //only one screen (dashboard), but it's just to have the whole data in one place.
 
 const initialState = {
-    modalOpened: { state: false, kind: null },
+    modalOpened: { state: false, kind: null }, //edit/create profile modal state
     myProfile: null, //used in social, rooms recommendations, ...
     profile: null, //Current profile being viewed (.../profile/:profileId)
     profiles: [], //List of extended profiles used in the dashboard, vary regarding the applied filters
+    messages: [],
+    friends: [],
     loading: true,
     errors: {},
 };

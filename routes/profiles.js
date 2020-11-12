@@ -60,9 +60,7 @@ router.route('/').put([protect, [
     })
 ]], modifyProfile);
 
-router.route('/distinctions/:userId').put([protect, [
-    check('comment', 'A comment cannot be empty').not().isEmpty()
-]], updateDistinctions);
+router.route('/distinctions/:userId').put(protect, authorize('admin'), updateDistinctions);
 router.route('/social').put(protect, updateSocial);
 
 router.route('/:userId').delete(protect, deleteAccount);

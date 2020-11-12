@@ -1,4 +1,4 @@
-const activitySectors = [
+export const activitySectors = [
     "Accountancy",
     "banking and finance",
     "Business",
@@ -25,4 +25,14 @@ const activitySectors = [
     "Transportation and logistics"
 ];
 
-export default activitySectors;
+export const moods = [
+    "Prefer to stay alone",
+    "Feeling sociable",
+    "Willing to help others"
+]
+
+export const status = [
+    "Available",
+    "Invisible",
+    "Do not disturb"
+]

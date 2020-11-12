@@ -159,7 +159,7 @@ exports.modifyProfile = asyncHandler(async (req, res, next) => {
         let photoDbName;
 
         if (process.env.NODE_ENV === 'production') {
-            photoDbName = process.env.DOMAIN + 'img/' + profile._id + path.parse(file.name).ext;
+            photoDbName = process.env.DOMAIN + '/img/' + profile._id + path.parse(file.name).ext;
         } else {
             photoDbName = `http://localhost:${process.env.PORT}/img/` + profile._id + path.parse(file.name).ext;
         }
@@ -185,7 +185,7 @@ exports.updateSocial = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse('No profile found', 400));
     }
 
-    const { mood, status, story, comment, award } = req.body;
+    const { mood, status, story } = req.body;
     let profileFields = {};
 
     if (mood) profileFields.mood = mood;

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfiles, setIndividualProfile } from '../../store/actions/profiles';
 import { setAlert } from '../../store/actions/alerts'
-import activitySectors from '../../utils/activitySectors'
+import { activitySectors } from '../../utils/constants'
 import Tooltip from '@material-ui/core/Tooltip';
 //Icons
 import { HiOutlineLightBulb, HiUserGroup } from 'react-icons/hi';

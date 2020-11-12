@@ -1,5 +1,4 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { AccordionActions } from '@material-ui/core';
 import {
     SET_ROOMS,
     ROOMS_ERROR,
