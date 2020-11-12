@@ -132,7 +132,7 @@ const EditProfile = () => {
                                         </select>
                                         <small className="form-text">Give us an idea of your field of work</small>
                                     </div>
-                                    {!profile?.linkedin && (
+                                    {profile && !profile?.linkedin && (
                                         <div className="form-group">
                                             <input
                                                 className="profile-inputs"

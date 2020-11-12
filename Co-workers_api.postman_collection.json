@@ -62,7 +62,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"transactionId\": \"5fa95ca1bc2b74d111beba2e\",\n    \"redeemable\": \"Steel straw\",\n    \"rfid\": \"123456\"\n}"
+							"raw": "{\n    \"transactionId\": \"5fa95ca1bc2b74d111beba2e\",\n    \"redeemable\": \"Steel straw\",\n    \"rfid\": \"123456\"\n}",
+							"options": {
+								"raw": {}
+							}
 						},
 						"url": {
 							"raw": "{{URL}}/api/cw-api/transactions/validate",
@@ -404,6 +407,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Do I have a profile ?",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/cw-api/profiles/hasAProfile",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"cw-api",
+								"profiles",
+								"hasAProfile"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -540,7 +573,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"testtest\"\n}",
+							"raw": "{\n    \"email\": \"blabla@gmail.com\",\n    \"password\": \"blabla\"\n}",
 							"options": {
 								"raw": {}
 							}

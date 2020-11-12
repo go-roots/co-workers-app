@@ -12,7 +12,7 @@ const Profile = ({ data: { profile, user } }) => {
     return (
         <Fragment>
             <div className="card vh-container" id="social-profile-inside">
-                <img className="card-img-top w-100 d-block" alt='' src={profile?.photo + "?" + new Date().getTime() ?? noimage} />
+                <img className="card-img-top w-100 d-block" alt='' src={profile && profile?.photo ? (profile?.photo + "?" + new Date().getTime()) : noimage} />
                 <div id="profile-info">
                     <p>{user?.firstName} {user?.lastName}{profile?.position && `, ${profile.position}`}</p>
                     <p>{user?.email}</p>

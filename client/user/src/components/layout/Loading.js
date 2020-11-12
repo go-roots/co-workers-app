@@ -28,10 +28,10 @@ const Loading = () => {
         return <Redirect to="/dashboard" />
     }
 
-    if (state != checkState) {
-        //dispatch an alert here eventually
-        return <Redirect to='/login' />
-    }
+    // if (state !== checkState) {
+    //     console.log(state, checkState);
+    //     return <Redirect to='/login' />
+    // }
 
     return (
         <div id="loading-screen">
