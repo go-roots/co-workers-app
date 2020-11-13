@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import {FaCheck} from 'react-icons/fa';
 
-const Skills = () => {
+const Skills = ({data : profile}) => {
+    console.log(profile.profile.skills)
     return (
         <Fragment>
             <div className="col d-flex flex-column justify-content-center align-items-center profile-skill-bio-container">
@@ -9,9 +10,12 @@ const Skills = () => {
                     <p className="profile-big-text profile-skill-bio-title text-info">Skill Set</p>
                 </header>
                 <p className="profile-skill-bio-content">
-                    <FaCheck className="fas fa-check"/>&nbsp;Manufacturing of electrical devices&nbsp;
+                    {profile.profile.skills.map(skill =>
+                    <Fragment>
+                        <FaCheck className="fas fa-check"/>&nbsp;{skill}&nbsp;
                     <br />
-                    <FaCheck className="fas fa-check"/>&nbsp;IoT-raspberryPi&nbsp;
+                    </Fragment>
+                    )}
                 </p>      
             </div>
         </Fragment>

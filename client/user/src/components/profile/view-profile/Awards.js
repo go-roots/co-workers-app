@@ -5,7 +5,7 @@ import awd3 from '../../../assets/img/award3.svg';
 import awd4 from '../../../assets/img/award4.svg';
 
 
-const Awards = () => {
+const Awards = ({awards}) => {
     return (
         <div className="row" style={{marginBottom: "15px"}}>
             <div className="col d-flex flex-column profile-skill-bio-container">

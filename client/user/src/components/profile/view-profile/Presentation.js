@@ -4,13 +4,13 @@ import {GrTrophy} from 'react-icons/gr';
 import {ImTrophy} from 'react-icons/im';
 import {FaMedal} from 'react-icons/fa'
 
-const Presentation = () => {
+const Presentation = ({data : profile}) => {
     return (
         <Fragment>
         <ReactTooltip place="top" type="dark" effect="solid" />
         <div className="row" style={{marginBottom: "15px"}}>
             <div className="col d-flex flex-column justify-content-center align-items-center profile-main-container" style={{background: "#00a3ff"}}>
-                <div id="round-profile-image"></div>
+                <div id="round-profile-image" style={{background:`url(${profile.profile.photo}) center / cover no-repeat`}}></div>
                 <div className="d-flex flex-column align-items-center" id="profile-main-content">
                     <div className="d-flex flex-row justify-content-center align-items-center" id="trophys-container">
                         <GrTrophy className="icon-trophy"  style={{fontSize: "40px", color: "rgb(20,255,0)", margin:"5px"}} data-tip="CoWorkers IoT championship winner"/>
@@ -18,10 +18,9 @@ const Presentation = () => {
                         <FaMedal className="fas fa-medal" style={{fontSize: "40px", color: "rgb(233,254,0)"}} data-tip="Hero: helped 10 different persons"/>
                     </div>
                     <p className="profile-big-text"
-                        style={{color:"white"}}>Bob</p>
-                    <p className="text-center" id="profile-content-position">Electrical engineer at Airbus, Toulouse</p>
-                    <p className="text-center profile-skill-bio-content">I am an electrical engineer with 20+ years experience. Due to to current situation (Covid), I have to now work part-time. As I have more free-time I want to find a place where I can exchange with workers from different fields and maybe
-                        teach/learn something new, start new thrilling projects.</p>
+                        style={{color:"white"}}>{profile.firstName}</p>
+                    <p className="text-center" id="profile-content-position">{profile.profile.position} at {profile.profile.company}</p>
+                    <p className="text-center profile-skill-bio-content">{profile.profile.bio}</p>
                 </div>
             </div>
         </div>

@@ -9,16 +9,17 @@ import Skills from './Skills'
 
 
 const Profile = () => {
+    const profile = useSelector(state => state.profiles.profile)
     return (
         <Fragment>
             <section className="main container">
-                <Presentation />
+                <Presentation data={profile}/>
                 <div className="row" style={{marginBottom: "15px"}}>
-                    <Skills />
-                    <Recommend />
+                    <Skills data={profile}/>
+                    <Recommend data={profile}/>
                 </div>
-                <Awards />
-                <Comments />
+                <Awards awards={profile.profile.awards}/>
+                <Comments comments={profile.profile.comments}/>
                 </section>
         </Fragment>
     )
