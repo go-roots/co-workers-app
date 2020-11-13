@@ -1,20 +1,22 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import History from './History'
 import Points from './Points'
 import Products from './Products'
 
 
 const Redeem = () => {
+
+  const cwpoints = useSelector(state => state.auth.user.cwpoints);
+
   return (
-    <Fragment>
     <section className="container main">
       <div className="row">
-        <Points />
-        <History />
+        <Points cwpoints={cwpoints.current} />
+        <History history={cwpoints.history} />
       </div>
       <Products />
     </section>
-    </Fragment>
   )
 }
 
