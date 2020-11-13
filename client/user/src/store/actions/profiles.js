@@ -1,6 +1,5 @@
 import axios from 'axios';
 import fetch from 'node-fetch';
-import { CLEAR_PROFILE } from './auth' //clear_profile is used in auth actions after account deletion
 import { setAlert } from './alerts';
 
 export const SET_PROFILE = 'SET_PROFILE';
@@ -48,7 +47,6 @@ export const fetchProfiles = (activitySector, status, friends) => {
 
         try {
             const res = await axios.get(domain + query);
-            await dispatch({ type: CLEAR_PROFILE });
             return dispatch({ type: SET_PROFILES, profiles: res.data.data });
         } catch (err) {
             return dispatch({
@@ -58,18 +56,6 @@ export const fetchProfiles = (activitySector, status, friends) => {
                 }
             });
         }
-    }
-}
-
-export const fetchMessages = () => {
-    return (dispatch, getState) => {
-
-    }
-}
-
-export const fetchFriends = () => {
-    return (dispatch, getState) => {
-
     }
 }
 

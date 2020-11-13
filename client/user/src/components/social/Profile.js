@@ -10,10 +10,17 @@ import { status, moods } from '../../utils/constants';
 const Profile = ({ data: { profile, user } }) => {
 
     const dispatch = useDispatch();
+    const [imageError, setImageError] = useState(false);
 
     return (
         <div className="card vh-container" id="social-profile-inside">
-            <img className="card-img-top w-100 d-block" alt='' src={profile && profile?.photo ? (profile?.photo + "?" + new Date().getTime()) : noimage} />
+            <img
+                className="card-img-top w-100 d-block"
+                alt=''
+                onError={() => setImageError(true)}
+                // date is for force reredenring an image update
+                src={!imageError ? profile?.photo + "?" + new Date().getTime() : noimage}
+            />
             <div id="profile-info">
                 <p>{user?.firstName} {user?.lastName}{profile?.position && `, ${profile.position}`}</p>
                 <p>{user?.email}</p>

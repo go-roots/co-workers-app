@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getCurrentProfile } from '../../store/actions/profiles'
+import { getCurrentProfile, fetchProfiles } from '../../store/actions/profiles'
 import Friends from './Friends'
 import Messages from './Messages'
 import Notifications from './Notifications'
@@ -11,12 +11,14 @@ import Spinner from '../UI/Spinner'
 const Social = () => {
 
     const profile = useSelector(state => state.profiles.myProfile);
+    const profiles = useSelector(state => state.profiles.profiles);
     const user = useSelector(state => state.auth.user);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
 
     const fetchProfile = useCallback(async () => {
         await dispatch(getCurrentProfile()); //dispatch needs to be awaited for consistency
+        await dispatch(fetchProfiles(null, null));
         setLoading(false);
     }, [dispatch]);
 
@@ -42,8 +44,8 @@ const Social = () => {
                         <div className="col-lg-5 col-xl-5">
                             <div className="container">
                                 <div className="row vh-container">
-                                    <Messages />
-                                    <Friends />
+                                    <Messages data={{ profiles, user }} />
+                                    <Friends data={{ profiles, user }} />
                                 </div>
                             </div>
                         </div>
