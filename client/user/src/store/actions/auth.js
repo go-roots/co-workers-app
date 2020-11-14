@@ -5,6 +5,7 @@ import { PROFILE_ERROR, TOGGLE_MODAL } from './profiles';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
@@ -35,6 +36,10 @@ export const loadUser = () => {
             return dispatch({ type: AUTH_ERROR });
         }
     }
+}
+
+export const setCurrentUser = data => {
+    return { type: SET_CURRENT_USER, user: data }
 }
 
 //login and register are without linkedin here...

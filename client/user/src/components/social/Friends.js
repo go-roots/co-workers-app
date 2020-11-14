@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { setIndividualProfile } from '../../store/actions/profiles'
+import { setCurrentUser } from '../../store/actions/auth'
 import { FaUserFriends } from 'react-icons/fa';
 import ReactTooltip from 'react-tooltip';
 import { setAlert } from '../../store/actions/alerts'
@@ -57,7 +58,7 @@ const Friends = ({ data: { user, profiles } }) => {
             <div
                 className="d-flex flex-column justify-content-start align-items-center border border-info friends-msg-container">
                 {user?.friends?.friends.map(friend => (
-                    <div className="dropdown">
+                    <div key={friend.friend} className="dropdown">
                         <button
                             className="btn btn-lg friends-item"
                             data-toggle="dropdown"
@@ -100,7 +101,17 @@ const Friends = ({ data: { user, profiles } }) => {
                             >
                                 Locate
                             </button>
-                            <button className="dropdown-item" type='button'>Delete friend</button>
+                            <button
+                                className="dropdown-item"
+                                type='button'
+                                onMouseDown={async () => {
+                                    const profile = profiles.filter(profile => profile.id === friend.friend)[0]
+                                    await dispatch(setIndividualProfile(profile))
+                                    setDeleteFriendModal(true)
+                                }}
+                            >
+                                Delete friend
+                            </button>
                         </div>
                     </div>
                 ))}
@@ -222,6 +233,50 @@ const Friends = ({ data: { user, profiles } }) => {
                                     <b>{selectedProfile?.lastName} {selectedProfile?.firstName} is unavailable</b>
                                 )}
                         </p>
+                    </div>
+                </Fade>
+            </Modal>
+
+            <Modal
+                className={classes.modal}
+                open={deleteFriendModal}
+                onClose={() => setDeleteFriendModal(false)}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={deleteFriendModal}>
+                    <div className={classes.paper}>
+                        <div style={{ margin: '30px auto' }} >
+                            Delete {selectedProfile?.lastName} {selectedProfile?.firstName} from your friends ?
+                    </div>
+                        <div className='d-flex flex-row align-items-center justify-content-end'>
+                            <button
+                                className='btn btn-primary'
+                                style={{ marginRight: '5px' }}
+                                onClick={() => setDeleteFriendModal(false)}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className='btn btn-danger'
+                                style={{ marginRight: '15px' }}
+                                onClick={async () => {
+                                    try {
+                                        const newMe = await axios.delete(baseUrl + '/users/friend/' + selectedProfile.id);
+                                        await dispatch(setCurrentUser(newMe.data.data));
+                                        await dispatch(setAlert('success', 'Your friend list has been updated'))
+                                        setDeleteFriendModal(false);
+                                    } catch (err) {
+                                        dispatch(setAlert('danger', err.response.data.error));
+                                    }
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </Fade>
             </Modal>

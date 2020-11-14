@@ -177,6 +177,34 @@ exports.deleteFriendReq = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: user });
 });
 
+// @desc        Delete friend
+// @route       DELETE api/cw-api/users/friend/:userId
+// @access      Private
+exports.deleteFriend = asyncHandler(async (req, res, next) => {
+    const { userId } = req.params;
+
+    if (req.user.id == userId) {
+        return next(new ErrorResponse('Forbidden', 403));
+    }
+
+    let updatedFriend = await User.findById(userId);
+
+    if (!updatedFriend) {
+        return next(new ErrorResponse(`User not found with the id ${userId}`, 404));
+    }
+
+    updatedFriend.friends.friends = updatedFriend.friends.friends.filter(f => f.friend != req.user.id);
+    await updatedFriend.save();
+
+    let currentUser = await User.findById(req.user.id);
+    currentUser.friends.friends = currentUser.friends.friends.filter(f => f.friend != userId);
+    await currentUser.save();
+
+    user = await User.findById(req.user.id).populate(['room', 'profile']);
+
+    res.status(200).json({ success: true, data: user });
+});
+
 // @desc        Accept friend request
 // @route       PUT api/cw-api/users/friendReq/accept/:userId
 // @access      Private

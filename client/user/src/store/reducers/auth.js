@@ -1,7 +1,8 @@
 import {
     REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED,
     AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT,
-    ACCOUNT_DELETED, LINKEDIN_SUCCESS, LINKEDIN_FAIL
+    ACCOUNT_DELETED, LINKEDIN_SUCCESS, LINKEDIN_FAIL,
+    SET_CURRENT_USER
 } from '../actions/auth';
 
 const initialState = {
@@ -51,6 +52,7 @@ export default (state = initialState, action) => {
                 user: null
             };
         case USER_LOADED:
+        case SET_CURRENT_USER:
             return {
                 ...state,
                 isAuthenticated: true,

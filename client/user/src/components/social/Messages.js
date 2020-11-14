@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
-import {TiMessages} from 'react-icons/ti'
-import {FaEnvelopeOpenText} from 'react-icons/fa'
+import { TiMessages } from 'react-icons/ti'
+import { FaEnvelopeOpenText } from 'react-icons/fa'
 
 import ReactTooltip from 'react-tooltip';
 //import '../../assets/js/tooltips-triggers'
@@ -9,12 +9,12 @@ import ReactTooltip from 'react-tooltip';
 const Messages = () => {
     return (
         <Fragment>
-        <ReactTooltip place="bottom" type="dark" effect="solid" />
-        <div className="col responsive-padding" style={{marginBottom: 20}}>
+            <ReactTooltip place="bottom" type="dark" effect="solid" />
+            <div className="col responsive-padding" style={{ marginBottom: 20 }}>
                 <button className="btn btn-outline-primary btn-block btn-lg header-msg-friends"
-                        data-tip="Messages" type="button" title="Messages">
-                <TiMessages className="typcn typcn-messages"
-                    size={30} />
+                    data-tip="Messages" type="button" title="Messages">
+                    <TiMessages className="typcn typcn-messages"
+                        size={30} />
                 </button>
                 <div
                     className="border border-primary friends-msg-container">
@@ -30,12 +30,12 @@ const Messages = () => {
                                 next meeting ?</p>
                             <div className="dropdown">
                                 <button className="btn btn-primary" data-toggle="dropdown"
-                                        aria-expanded="false" type="button">
-                                            <FaEnvelopeOpenText className="icon-envelope-letter" />
+                                    aria-expanded="false" type="button">
+                                    <FaEnvelopeOpenText className="icon-envelope-letter" />
                                 </button>
                                 <div className="dropdown-menu"><a className="dropdown-item answer-msg"
-                                                                  href="#" data-toggle="modal" data-target="#answer-msg-modal">Answer</a><a
-                                    className="dropdown-item delete-msg bg-danger" data-toggle="modal" data-target="#del-msg-modal" href="#">Delete</a>
+                                    href="#" data-toggle="modal" data-target="#answer-msg-modal">Answer</a><a
+                                        className="dropdown-item delete-msg bg-danger" data-toggle="modal" data-target="#del-msg-modal" href="#">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -51,11 +51,11 @@ const Messages = () => {
                             <p className="lead">Are you up for a coffee-break ?</p>
                             <div className="dropdown">
                                 <button className="btn btn-primary" data-toggle="dropdown"
-                                        aria-expanded="false" id="action-message-1"
-                                        type="button"><FaEnvelopeOpenText className="icon-envelope-letter" /></button>
+                                    aria-expanded="false" id="action-message-1"
+                                    type="button"><FaEnvelopeOpenText className="icon-envelope-letter" /></button>
                                 <div className="dropdown-menu">
                                     <a className="dropdown-item answer-msg" href="#" data-toggle="modal" data-target="#answer-msg-modal">Answer</a><a
-                                    className="dropdown-item delete-msg bg-danger" data-toggle="modal" data-target="#del-msg-modal" href="#">Delete</a>
+                                        className="dropdown-item delete-msg bg-danger" data-toggle="modal" data-target="#del-msg-modal" href="#">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@ const Messages = () => {
                         </div>
                         <div className="modal-body d-flex flex-column"><em className="italic-small">Are you up for a
                             coffee-break ?</em><textarea
-                            className="response-msg-modal" style={{fontSize: '1rem'}}></textarea></div>
+                                className="response-msg-modal" style={{ fontSize: '1rem' }}></textarea></div>
                         <div className="modal-footer">
                             <button className="btn btn-light" type="button" data-dismiss="modal">Close</button>
                             <button className="btn btn-primary" type="button">Save</button>
