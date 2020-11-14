@@ -20,7 +20,7 @@ export const modalHandler = (state, kind) => {
 export const getCurrentProfile = () => {
     return async (dispatch, getState) => {
         try {
-            const res = await axios.get(getState().globalVars.currentDomain + '/profiles/me');
+            const res = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/profiles/me');
             dispatch({ type: SET_OWN_PROFILE, profile: res.data.data });
         } catch (err) {
             dispatch({
@@ -36,7 +36,7 @@ export const getCurrentProfile = () => {
 export const fetchProfiles = (activitySector, status, friends) => {
     return async (dispatch, getState) => {
 
-        const domain = getState().globalVars.currentDomain;
+        const domain = getState().globalVars.currentDomain + '/api/cw-api';
         let query = '/users/extended?select=firstName,lastName,role,friends';
 
         if (activitySector || status || friends) {
@@ -76,7 +76,7 @@ export const editOrCreateProfile = (data, kind) => {
 
             let res;
 
-            res = await fetch(getState().globalVars.currentDomain + '/profiles', {
+            res = await fetch(getState().globalVars.currentDomain + '/api/cw-api/profiles', {
                 method: kind === 'edit' ? 'PUT' : 'POST',
                 body: formData,
                 headers: {
@@ -116,7 +116,7 @@ export const updateSocialInfos = (field, value) => {
         const body = JSON.stringify({ [field]: value });
 
         try {
-            const profile = await axios.put(getState().globalVars.currentDomain + '/profiles/social', body, config);
+            const profile = await axios.put(getState().globalVars.currentDomain + '/api/cw-api/profiles/social', body, config);
             dispatch({ type: SET_OWN_PROFILE, profile: profile.data.newProfile });
         } catch (err) {
             dispatch({

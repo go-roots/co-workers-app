@@ -26,10 +26,10 @@ export const loadUser = () => {
 
         try {
             //The server will verify the token, and then get the user
-            const res = await axios.get(getState().globalVars.currentDomain + '/auth/me');
+            const res = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/auth/me');
             dispatch({ type: USER_LOADED, user: res.data.data });
 
-            const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/profiles/hasAProfile');
+            const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/profiles/hasAProfile');
             return dispatch({ type: TOGGLE_MODAL, state: !doIHaveAProfile.data.hasAProfile, kind: 'create' });
         } catch (err) {
             return dispatch({ type: AUTH_ERROR });
@@ -48,7 +48,7 @@ export const registerUser = (firstName, lastName, email, password) => {
         const body = JSON.stringify({ firstName, lastName, email, password });
 
         try {
-            const res = await axios.post(getState().globalVars.currentDomain + '/auth/register', body, config);
+            const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/register', body, config);
 
             dispatch({ type: REGISTER_SUCCESS, token: res.data.token });
             dispatch(setAlert('success', 'Welcome to CO-workers !'));
@@ -76,7 +76,7 @@ export const loginUser = (email, password) => {
         const body = JSON.stringify({ email, password });
 
         try {
-            const res = await axios.post(getState().globalVars.currentDomain + '/auth/login', body, config);
+            const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/login', body, config);
 
             dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
             dispatch(loadUser());
@@ -102,7 +102,7 @@ export const linkedinConnect = code => {
         const body = JSON.stringify({ code });
 
         try {
-            const res = await axios.post(getState().globalVars.currentDomain + '/auth/linkedinAuth', body, config);
+            const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/linkedinAuth', body, config);
             dispatch({ type: LINKEDIN_SUCCESS, token: res.data.token, linkedinToken: res.data.linkedinToken });
             dispatch(setAlert('success', res.data.status === 'register' && 'Welcome to CO-workers !'))
             dispatch(loadUser());
@@ -124,7 +124,7 @@ export const deleteAccount = id => {
     return async (dispatch, getState) => {
         if (window.confirm('Are you sure ? This can NOT be undone.')) {
             try {
-                await axios.delete(getState().globalVars.currentDomain + '/profile');
+                await axios.delete(getState().globalVars.currentDomain + '/api/cw-api/profile');
                 dispatch({ type: ACCOUNT_DELETED });
                 dispatch({ type: CLEAR_PROFILE });
                 dispatch(setAlert('success', 'Account deleted.'))

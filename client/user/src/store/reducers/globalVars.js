@@ -1,9 +1,9 @@
 import { SET_LINKEDIN_STATE } from '../actions/globalVars';
 
 const initialState = {
-    devDomain: 'http://localhost:5000/api/cw-api',
-    prodDomain: 'https://co-workers.herokuapp.com/api/cw-api',
-    currentDomain: 'http://localhost:5000/api/cw-api',
+    devDomain: 'http://localhost:5000',
+    prodDomain: 'https://co-workers.herokuapp.com',
+    currentDomain: 'http://localhost:5000',
     linkedinAuthState: null
 }
 

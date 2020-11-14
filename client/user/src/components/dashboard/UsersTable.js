@@ -47,7 +47,7 @@ const FiltersReducer = (state = initialState, action) => {
 
 const UsersTable = ({ data: { profiles, me } }) => {
 
-    const baseUrl = useSelector(state => state.globalVars.currentDomain);
+    const baseUrl = useSelector(state => state.globalVars.currentDomain + '/api/cw-api');
     const selectedProfile = useSelector(state => state.profiles.profile);
     const [individualHelpR, setIndividualHelpR] = useState(false);
     const [activeElements, setActiveElements] = useState([]);

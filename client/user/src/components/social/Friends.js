@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const Friends = ({ data: { user, profiles } }) => {
 
     const selectedProfile = useSelector(state => state.profiles.profile);
-    const baseUrl = useSelector(state => state.globalVars.currentDomain);
+    const baseUrl = useSelector(state => state.globalVars.currentDomain + '/api/cw-api');
 
     const [messageModal, setMessageModal] = useState(false);
     const [message, setMessage] = useState("");
