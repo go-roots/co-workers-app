@@ -19,7 +19,6 @@ router.route('/').post([protect, [
     check('photo', 'Supported formats for images are jpeg, jpg, png, gif').custom((value, { req }) => {
         if (req.body.photo) {
             let extension = req.body.photo.split('.').pop();
-            console.log(extension);
             switch (extension) {
                 case 'jpg':
                     return true;

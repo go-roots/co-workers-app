@@ -41,6 +41,26 @@
                 }
             ]
         },
+        "messages": [
+            {
+                "from": "5c8a1d5b0190b214360dc032",
+                "firstName": "Ryan",
+                "lastName": "Sasha",
+                "text": "This is a test message"
+            },
+            {
+                "from": "5c8a1d5b0190b214360dc032",
+                "firstName": "Ryan",
+                "lastName": "Sasha",
+                "text": "And here is another one"
+            },
+            {
+                "from": "5d7a514b5d2c12c7449be046",
+                "firstName": "Kevin",
+                "lastName": "Smith",
+                "text": "Another one"
+            }
+        ],
         "password": "testtest",
         "rfid": "12345",
         "cwpoints": {

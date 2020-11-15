@@ -76,10 +76,10 @@ exports.updateForNolinkedinUser = asyncHandler(async (req, res, next) => {
 // Some fields must be updated by the user or the admin (friends, messages, stats, electricityConsumptionLogs)
 // stats, electricityConsumptionLogs is ignored for now
 
-// @desc        Update messages
+// @desc        Send a message
 // @route       POST api/cw-api/users/message/:userId
 // @access      Private
-exports.updateMessages = asyncHandler(async (req, res, next) => {
+exports.sendMessage = asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -109,6 +109,22 @@ exports.updateMessages = asyncHandler(async (req, res, next) => {
     await user.save();
 
     res.sendStatus(204);
+});
+
+// @desc        deletes a message
+// @route       DELETE api/cw-api/users/message/:msgId
+// @access      Private
+exports.deleteMessage = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+    const messages = user.messages.filter(msg => msg._id != req.params.msgId);
+
+    const updatedUser = await User.findByIdAndUpdate(
+        req.user.id,
+        { $set: { messages: messages } },
+        { new: true }
+    );
+
+    res.status(200).json({ success: true, data: updatedUser });
 });
 
 // @desc        Add friend request
