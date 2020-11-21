@@ -1,5 +1,4 @@
 import axios from 'axios';
-import fetch from 'node-fetch';
 import { setAlert } from './alerts';
 
 export const SET_PROFILE = 'SET_PROFILE';

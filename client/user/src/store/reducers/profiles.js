@@ -21,7 +21,7 @@ const initialState = {
     profiles: [], //List of extended profiles used in the dashboard, vary regarding the applied filters
     messages: [],
     friends: [],
-    loading: true,
+    loading: { myProfile: true, profiles: true },
     errors: {},
 };
 
@@ -40,25 +40,24 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 myProfile: action.profile,
-                loading: false,
+                loading: { ...state.loading, myProfile: false },
             };
         case SET_PROFILE:
             return {
                 ...state,
-                profile: action.profile,
-                loading: false,
+                profile: action.profile
             };
         case SET_PROFILES:
             return {
                 ...state,
                 profiles: action.profiles,
-                loading: false,
+                loading: { ...state.loading, profiles: false },
             };
         case PROFILE_ERROR:
             return {
                 ...state,
                 error: action.error,
-                loading: false,
+                loading: { ...state.loading, profiles: false, myProfile: false },
                 profile: null,
             };
         case CLEAR_PROFILE:

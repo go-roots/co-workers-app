@@ -2,13 +2,15 @@ import {
     REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED,
     AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT,
     ACCOUNT_DELETED, LINKEDIN_SUCCESS, LINKEDIN_FAIL,
-    SET_CURRENT_USER
+    SET_CURRENT_USER, PLUG_SOCKET, UNPLUG_SOCKET, SOCKET_ERROR
 } from '../actions/auth';
 
 const initialState = {
     token: localStorage.getItem('token'),
     linkedinToken: localStorage.getItem('linkedinToken'),
     isAuthenticated: null,
+    socket: null,
+    error: null,
     loading: true,
     user: null
 }
@@ -58,6 +60,22 @@ export default (state = initialState, action) => {
                 isAuthenticated: true,
                 loading: false,
                 user: action.user
+            }
+        case PLUG_SOCKET:
+            return {
+                ...state,
+                socket: action.socket
+            }
+        case UNPLUG_SOCKET:
+            return {
+                ...state,
+                socket: null
+            }
+        case SOCKET_ERROR:
+            return {
+                ...state,
+                socket: null,
+                error: action.error
             }
         default:
             return state;

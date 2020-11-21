@@ -18,10 +18,10 @@ const Products = ({ data: redeemables }) => {
                     <div className="carousel-inner">
                         {redeemables.map((r, index) => (
                             index === 0
-                                ? (<div key={index} className="carousel-item active">
+                                ? (<div key={r._id} className="carousel-item active">
                                     <img className="w-100 d-block carroussel-image" src={`${baseUrl}/redeemables/${r.photo}`} alt="" />
                                 </div>)
-                                : <div key={index} className="carousel-item">
+                                : <div key={r._id} className="carousel-item">
                                     <img className="w-100 d-block carroussel-image" src={`${baseUrl}/redeemables/${r.photo}`} alt="" />
                                 </div>
                         ))}
@@ -39,8 +39,8 @@ const Products = ({ data: redeemables }) => {
                     <ol className="carousel-indicators">
                         {redeemables.map((r, index) => (
                             index === 0
-                                ? (<li key={index} data-target="#carousel-1" className="active" data-slide-to="1"></li>)
-                                : (<li key={index} data-target="#carousel-1" data-slide-to="1"></li>)
+                                ? (<li key={r._id} data-target="#carousel-1" className="active" data-slide-to="1"></li>)
+                                : (<li key={r._id} data-target="#carousel-1" data-slide-to="1"></li>)
                         ))}
                     </ol>
                 </div>

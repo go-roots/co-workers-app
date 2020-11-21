@@ -1,7 +1,4 @@
-import React, { Fragment, useEffect, useCallback } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { modalHandler } from '../../store/actions/profiles'
-import fetch from 'node-fetch'
+import React, { Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Navbar from '../layout/Navbar'
 import Dashboard from '../dashboard/Dashboard'

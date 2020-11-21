@@ -26,6 +26,8 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Loading from './components/layout/Loading';
 
+// import WebSocket from 'ws';
+
 
 //Setting token as a header for all requests
 if (localStorage.token) {
@@ -55,7 +57,7 @@ const App = () => {
 
   //Tries to get the user if there's a token (auto-connect)
   useEffect(() => {
-    store.dispatch(loadUser())
+    store.dispatch(loadUser());
   }, []);
 
   return (

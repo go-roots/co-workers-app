@@ -8,9 +8,11 @@ const History = ({ history }) => {
       <ul className="list-group">
         {history.map((h, index) => (
           index < 5
-            ? (<li key={index} className="list-group-item">
-              <span>{h.value} cwp : {h.description}</span>
-            </li>)
+            ? (
+              <li key={h._id} className="list-group-item">
+                <span>{h.value} cwp : {h.description}</span>
+              </li>
+            )
             : ("")
         ))}
       </ul>

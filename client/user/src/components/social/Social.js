@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useCallback } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCurrentProfile, fetchProfiles } from '../../store/actions/profiles'
 import Friends from './Friends'
@@ -10,23 +10,19 @@ import Spinner from '../UI/Spinner'
 
 const Social = () => {
 
-    const profile = useSelector(state => state.profiles.myProfile);
-    const profiles = useSelector(state => state.profiles.profiles);
-    const user = useSelector(state => state.auth.user);
-    const [loading, setLoading] = useState(true);
+    const { myProfile: profile, profiles, loading: { myProfile: loadingMyProfile, profiles: loadingProfiles } } = useSelector(state => state.profiles);
+    const { user, loading: loadingUser } = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
-    const fetchProfile = useCallback(async () => {
-        await dispatch(getCurrentProfile()); //dispatch needs to be awaited for consistency
-        await dispatch(fetchProfiles(null, null));
-        setLoading(false);
-    }, [dispatch]);
-
     useEffect(() => {
-        fetchProfile();
-    }, [dispatch, fetchProfile]);
+        if (!loadingUser) {
+            dispatch(getCurrentProfile());
+            dispatch(fetchProfiles(null, null));
+        }
+    }, [loadingUser]);
 
-    if (loading) {
+
+    if (loadingMyProfile || loadingProfiles || loadingUser) {
         return <Spinner />
     }
 

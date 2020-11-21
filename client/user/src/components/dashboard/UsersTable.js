@@ -230,7 +230,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                         </div>
                                     </Tooltip>
                                     <Link
-                                        onClick={async () => await dispatch(setIndividualProfile(profile))}
+                                        onClick={() => dispatch(setIndividualProfile(profile))}
                                         className="dashboard-name-link"
                                         to={'/profile'}
                                     >
@@ -285,7 +285,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                     data-target='#messaging-modal'
                                                     className="comment-icon"
                                                     size={25}
-                                                    onClick={async () => await dispatch(setIndividualProfile(profile))}
+                                                    onClick={() => dispatch(setIndividualProfile(profile))}
                                                 />
                                             </div>
                                         </Tooltip>

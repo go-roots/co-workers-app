@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { setAlert } from './alerts';
 import { PROFILE_ERROR, TOGGLE_MODAL } from './profiles';
+import { SET_ROOMS } from './rooms'
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
+export const PLUG_SOCKET = 'PLUG_SOCKET';
+export const UNPLUG_SOCKET = 'UNPLUG_SOCKET';
+export const SOCKET_ERROR = 'SOCKET_ERROR';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -15,6 +19,47 @@ export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const LINKEDIN_SUCCESS = 'LINKEDIN_SUCCESS';
 export const LINKEDIN_FAIL = 'LINKEDIN_FAIL';
 
+
+export const connectWSS = () => {
+    return (dispatch, getState) => {
+        if (!getState().auth.socket) {
+            const token = getState().auth.token;
+            const ws = new WebSocket(getState().globalVars.currentDomain.replace('http', 'ws'));
+
+            ws.addEventListener('open', () => {
+                ws.send(JSON.stringify({ event: 'authorization', token: `Bearer ${token}` }));
+            });
+
+            ws.addEventListener('error', err => {
+                dispatch(setAlert('danger', err));
+                return dispatch({ type: SOCKET_ERROR, error: err });
+            });
+
+            ws.addEventListener('message', message => {
+                if (message.isTrusted) {
+
+                    const msg = JSON.parse(message.data);
+
+                    if (msg.event === 'rooms') {
+                        if (JSON.stringify(getState().rooms.rooms) !== JSON.stringify(msg.payload)) {
+                            dispatch({ type: SET_ROOMS, rooms: msg.payload });
+                        }
+                    }
+                }
+            });
+
+            ws.addEventListener('close', () => {
+                return dispatch({ type: UNPLUG_SOCKET });
+            });
+
+            return dispatch({ type: PLUG_SOCKET, socket: ws });
+        }
+    }
+};
+
+export const setCurrentUser = data => {
+    return { type: SET_CURRENT_USER, user: data }
+}
 
 export const loadUser = () => {
     return async (dispatch, getState) => {
@@ -36,10 +81,6 @@ export const loadUser = () => {
             return dispatch({ type: AUTH_ERROR });
         }
     }
-}
-
-export const setCurrentUser = data => {
-    return { type: SET_CURRENT_USER, user: data }
 }
 
 //login and register are without linkedin here...

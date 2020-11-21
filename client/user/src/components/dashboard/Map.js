@@ -106,7 +106,7 @@ const Map = ({ data: profiles }) => {
                     const modifiedName = room.name.replace(' ', '').toLowerCase();
                     return (
                         <HtmlTooltip
-                            key={room.id}
+                            key={room._id}
                             open={open[modifiedName]}
                             title={
                                 <div>
@@ -140,7 +140,8 @@ const Map = ({ data: profiles }) => {
                             >
                                 <span style={{ cursor: 'pointer' }} className="badge badge-pill badge-info">{room.users.length}/{room.capacity}</span>
                             </div>
-                        </HtmlTooltip>)
+                        </HtmlTooltip>
+                    )
                 })}
                 <img onLoad={e => setImageLoaded(true)} src={map2} alt='' />
             </div>

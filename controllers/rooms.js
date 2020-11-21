@@ -35,13 +35,13 @@ exports.moveUsersInRoom = asyncHandler(async (req, res, next) => {
     const users = bod.users
 
     for (i = 0; i < users.length; i++) {
-        var room = await Room.findOne({ "users.user": users[i].user });
+        let room = await Room.findOne({ "users.user": users[i].user });
         if (room.name !== req.params.roomId) {
             //Remove User from his old room
             room.users = room.users.filter(user => user.user != users[i].user);
             await room.save()
             //Add User to his new room
-            var newRoom = await Room.findOne({ name: req.params.roomId });
+            let newRoom = await Room.findOne({ name: req.params.roomId });
             newRoom.users.push({ user: users[i].user });
             await newRoom.save()
         }
@@ -67,29 +67,30 @@ exports.deleteRoom = asyncHandler(async (req, res, next) => {
 
 exports.getRecomendedRooms = asyncHandler(async (req, res, next) => {
     //Setup the answer
-    var response = {success : true,
-                rooms : []
-            };
-    
+    let response = {
+        success: true,
+        rooms: []
+    };
+
     //Prepare the data from db
     const me = await User.findById(req.params.userId);
-    const meProfile = await Profile.findOne({user: req.params.userId});
+    const meProfile = await Profile.findOne({ user: req.params.userId });
     const friends = me.friends;
     const rooms = await Room.find();
 
     //Fetch the user friendlist
-    var friendList = []
+    let friendList = []
     for (let i = 0; i < friends.friends.length; i++) {
         friendList.push(toString(friends.friends[i].friend))
     }
 
     //Variable for the recommendation
-    var lenFr = 0;
-    var inRoom = [];
-    var lessOccupiedRoom = {};
-    var lessOccupiedRoomNb = Infinity;
-    var mostOccupiedRoom = {};
-    var mostOccupiedRoomNb = 0;
+    let lenFr = 0;
+    let inRoom = [];
+    let lessOccupiedRoom = {};
+    let lessOccupiedRoomNb = Infinity;
+    let mostOccupiedRoom = {};
+    let mostOccupiedRoomNb = 0;
 
     //Loop on all the user in all the rooms to feth infos
     for (let i = 0; i < rooms.length; i++) {
@@ -97,35 +98,35 @@ exports.getRecomendedRooms = asyncHandler(async (req, res, next) => {
             inRoom.push(toString(rooms[i].users[j].user))
         }
         //Handle the most and least occupied room
-        if(inRoom.length < lessOccupiedRoomNb){
+        if (inRoom.length < lessOccupiedRoomNb) {
             lessOccupiedRoom = rooms[i];
             lessOccupiedRoomNb = inRoom.length;
         }
-        if(inRoom.length > mostOccupiedRoomNb){
+        if (inRoom.length > mostOccupiedRoomNb) {
             mostOccupiedRoom = rooms[i];
             mostOccupiedRoomNb = inRoom.length;
         }
         //Do the intersection of room user and friendlist
-        var friendsIn = friendList.filter(user => inRoom.includes(user))
-        if (friendsIn.length > lenFr){
+        let friendsIn = friendList.filter(user => inRoom.includes(user))
+        if (friendsIn.length > lenFr) {
             response.rooms[0] = rooms[i]
-        lenFr = friendsIn.length
+            lenFr = friendsIn.length
         }
         inRoom = []
     }
-    switch (meProfile.mood){
+    switch (meProfile.mood) {
         case "Prefer to stay alone":
-            if(!response.rooms.includes(lessOccupiedRoom)){
+            if (!response.rooms.includes(lessOccupiedRoom)) {
                 response.rooms.push(lessOccupiedRoom)
-            }       
+            }
             break;
         case "Willing to help others":
-            if(!response.rooms.includes(mostOccupiedRoom)){
+            if (!response.rooms.includes(mostOccupiedRoom)) {
                 response.rooms.push(mostOccupiedRoom)
             }
             break;
         case "Feeling sociable":
-            if(!response.rooms.includes(mostOccupiedRoom)){
+            if (!response.rooms.includes(mostOccupiedRoom)) {
                 response.rooms.push(mostOccupiedRoom)
             }
             break;

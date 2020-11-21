@@ -59,16 +59,20 @@ const RoomsBrowser = ({ data: rooms }) => {
                     </div>
                     <div className="row rooms-reco-inner-container">
                         {rooms.recommendedRooms.map(room =>
-                            <div key={room.id} className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div key={room._id} className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <MuiThemeProvider theme={theme}>
-                                    <Tooltip title={<Fragment>
-                                        {room.name} <br />
-                                        Capacity : {room.capacity} <br />
-                                        Facilities: <br />
-                                        {room.facilities.map((facility, index) =>
-                                            <Fragment key={index}>{facility} <br /></Fragment>
-                                        )}
-                                    </Fragment>}>
+                                    <Tooltip
+                                        title={
+                                            <Fragment>
+                                                {room.name} <br />
+                                                Capacity : {room.capacity} <br />
+                                                Facilities: <br />
+                                                {room.facilities.map(facility =>
+                                                    <Fragment key={facility}>{facility} <br /></Fragment>
+                                                )}
+                                            </Fragment>
+                                        }
+                                    >
                                         <div className="small-image-container">
                                             <img
                                                 onLoad={() => setRecoLoaded(recoLoaded + 1)}
@@ -123,16 +127,20 @@ const RoomsBrowser = ({ data: rooms }) => {
                     </div>
                     <div className="row rooms-reco-inner-container">
                         {rooms.filteredRooms.map(room => (room.facilities.includes(filter) || filter === "none") && (
-                            <div key={room.id} className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
+                            <div key={room._id} className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <MuiThemeProvider theme={theme}>
-                                    <Tooltip title={<Fragment>
-                                        {room.name} <br />
-                                        Capacity : {room.capacity} <br />
-                                        Facilities: <br />
-                                        {room.facilities.map((facility, index) =>
-                                            <Fragment key={index}>{facility} <br /></Fragment>
-                                        )}
-                                    </Fragment>}>
+                                    <Tooltip
+                                        title={
+                                            <Fragment>
+                                                {room.name} <br />
+                                                Capacity : {room.capacity} <br />
+                                                Facilities: <br />
+                                                {room.facilities.map(facility =>
+                                                    <Fragment key={facility}>{facility} <br /></Fragment>
+                                                )}
+                                            </Fragment>
+                                        }
+                                    >
                                         <div className="small-image-container">
                                             <img
                                                 onLoad={() => setBrowseLoaded(browseLoaded + 1)}

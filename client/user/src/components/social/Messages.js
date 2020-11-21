@@ -33,7 +33,7 @@ const Messages = ({ data: { profiles, user: me } }) => {
                 </button>
                 <div className="border border-primary friends-msg-container">
                     {me.messages.map(msg => (
-                        <div className="d-flex flex-row justify-content-between msg-item border border-bottom">
+                        <div key={msg._id} className="d-flex flex-row justify-content-between msg-item border border-bottom">
                             <div className="d-flex flex-column justify-content-center">
                                 <p className="msg-name">{msg?.lastName} {msg?.firstName}</p>
                                 <p className="msg-date">

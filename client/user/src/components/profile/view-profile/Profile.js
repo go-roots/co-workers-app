@@ -1,7 +1,6 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux';
-import { getProfileById } from '../../../store/actions/profiles';
+import { useSelector } from 'react-redux';
 import Awards from './Awards'
 import Comments from './Comments'
 import Presentation from './Presentation'

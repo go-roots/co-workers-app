@@ -65,7 +65,7 @@ const Friends = ({ data: { user, profiles } }) => {
                             aria-expanded="false"
                             type="button">
                             {profiles.filter(profile => profile.id === friend.friend).map(f => (
-                                f.lastName + " " + f.firstName
+                                <div key={f._id} >{f.lastName + " " + f.firstName}</div>
                             ))}
                         </button>
                         <div className="dropdown-menu">
