@@ -262,16 +262,16 @@
     },
     {
         "user": "5c8a1d5b0190b214360dc038",
-        "activitySector": "Creative arts and design",
+        "activitySector": "Student or Learning",
         "photo": "https://media-exp1.licdn.com/dms/image/C5603AQGnpmzKzjqDpg/profile-displayphoto-shrink_400_400/0?e=1609977600&v=beta&t=yAfI-cxH68VqizQ5vnwgVnDKzGgEhJUoOOsgFWssGtI",
-        "company": "Arts",
-        "position": "Designer",
+        "company": "UT1",
+        "position": "Student M2 2IS",
         "skills": [
-            "drawing",
-            "photograhy",
-            "painting"
+            "IoT",
+            "Web Dev",
+            "Machine Learning"
         ],
-        "bio": "Hello this is a test bio.",
+        "bio": "I'm a student passioned about IT and new technologies.",
         "status": "Available",
         "mood": "Feeling sociable",
         "social": {
@@ -283,7 +283,7 @@
         "comments": [
             {
                 "author": "5c8a1d5b0190b214360dc031",
-                "text": "Don't hesitate to ask help to Derek, he probably knows the answer !"
+                "text": "Paul is very helpful !"
             }
         ]
     },
