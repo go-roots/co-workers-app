@@ -59,7 +59,7 @@ router.route('/').put([protect, [
     })
 ]], modifyProfile);
 
-router.route('/distinctions/:userId').put(protect, authorize('admin'), updateDistinctions);
+router.route('/distinctions/:userId').put(protect, updateDistinctions);
 router.route('/social').put(protect, updateSocial);
 
 router.route('/:userId').delete(protect, deleteAccount);

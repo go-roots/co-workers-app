@@ -1,10 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 
 const Products = ({ data: redeemables }) => {
-
-    const baseUrl = useSelector(state => state.globalVars.currentDomain);
 
     return (
         <div className="row d-flex flex-column justify-content-between align-items-center" id="redeem-items-container">
@@ -19,10 +16,10 @@ const Products = ({ data: redeemables }) => {
                         {redeemables.map((r, index) => (
                             index === 0
                                 ? (<div key={r._id} className="carousel-item active">
-                                    <img className="w-100 d-block carroussel-image" src={`${baseUrl}/redeemables/${r.photo}`} alt="" />
+                                    <img className="w-100 d-block carroussel-image" src={r.photo} alt="" />
                                 </div>)
                                 : <div key={r._id} className="carousel-item">
-                                    <img className="w-100 d-block carroussel-image" src={`${baseUrl}/redeemables/${r.photo}`} alt="" />
+                                    <img className="w-100 d-block carroussel-image" src={r.photo} alt="" />
                                 </div>
                         ))}
                     </div>

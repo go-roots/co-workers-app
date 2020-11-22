@@ -10,7 +10,13 @@ const RedeemableSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    photo: String,
+    photo: {
+        type: String,
+        match: [
+            /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+            'Please add a valid photo url'
+        ]
+    },
     price: {
         type: Number,
         required: [true, 'Please, provide a price to the redeemable']

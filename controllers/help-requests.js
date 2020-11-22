@@ -75,7 +75,8 @@ exports.createHelpReq = asyncHandler(async (req, res, next) => {
             type: 'help-request',
             text: `${req.user.lastName} sent you a help request !`,
             receiver: user,
-            trigger: req.user.id
+            trigger: req.user.id,
+            identifier: helpRequest._id
         });
     };
 
@@ -83,7 +84,7 @@ exports.createHelpReq = asyncHandler(async (req, res, next) => {
     timer = setTimeout(async () => {
         helpRequest.status = 'expired';
         await helpRequest.save();
-    }, 1000 * 60 * 60 * 12); //12 hours
+    }, 1000 * 60 * 60 * 3); //3 hours
 
     res.sendStatus(204);
 
@@ -108,7 +109,7 @@ exports.updateHelpReq = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse('Allowed actions: accept and cancel the request', 403));
     }
 
-    if (helpRequest.requester == req.user.id) {
+    if (helpRequest.requester == req.user.id && req.body.status != 'cancelled') {
         return next(new ErrorResponse('Allowed actions: cancel the request', 403));
     }
 
@@ -117,17 +118,29 @@ exports.updateHelpReq = asyncHandler(async (req, res, next) => {
             return next(new ErrorResponse('Allowed actions: accept the request', 403));
         }
         await Notification.create({
-            type: 'help-request',
-            text: `${req.user.lastName} has accepted your help request (${req.user.room.name})`,
+            type: 'accept-help-request',
+            text: `${req.user.lastName} ${req.user.firstName} has accepted your help request (${req.user.room.name})`,
             receiver: helpRequest.requester,
-            trigger: req.user.id
+            trigger: req.user.id,
+            identifier: helpRequest._id
         });
+        setTimeout(async () => {
+            await Notification.create({
+                type: "post-help-request",
+                title: "You asked Derek for help. Feel free to leave a comment on his/her profile !",
+                receiver: helpRequest.requester,
+                trigger: req.user.id,
+                identifier: helpRequest._id
+            });
+        }, 1000 * 60 * 30); //30min
     }
 
     await HelpRequest.findByIdAndUpdate(
         req.params.reqId,
         { $set: { status: req.body.status } }
     );
+
+    await Notification.deleteMany({ identifier: helpRequest._id });
 
     res.sendStatus(204);
 });

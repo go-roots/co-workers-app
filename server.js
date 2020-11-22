@@ -28,7 +28,8 @@ const transactions = require('./routes/transactions');
 const rooms = require('./routes/rooms');
 const helpRequests = require('./routes/help-requests');
 const notifications = require('./routes/notifications');
-const redeemables = require('./routes/redeemables')
+const redeemables = require('./routes/redeemables');
+const events = require('./routes/events');
 
 //Initialize express + socket server
 const app = express();
@@ -39,7 +40,6 @@ const wss = new WebSocket.Server({ server: server });
 wss.on('connection', socket => {
 
     socket.on('message', message => {
-
         const msg = JSON.parse(message);
 
         if (msg.event === 'authorization') {
@@ -88,6 +88,7 @@ app.use('/api/cw-api/rooms', rooms);
 app.use('/api/cw-api/help-requests', helpRequests);
 app.use('/api/cw-api/notifications', notifications);
 app.use('/api/cw-api/redeemables', redeemables);
+app.use('/api/cw-api/events', events);
 
 //Error handling middleware
 app.use(errorHandler);

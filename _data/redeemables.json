@@ -3,28 +3,28 @@
         "_id": "5fa3d9ca5a11f63af4ed58c2",
         "name": "Coffee",
         "description": "Coffee cup to start the day.",
-        "photo": "coffee.jpg",
+        "photo": "https://cdn.pixabay.com/photo/2015/06/24/01/15/morning-819362_960_720.jpg",
         "price": "100"
     },
     {
         "_id": "5fa3d9ca5a11f63af4ed58c3",
         "name": "Steel cup",
         "description": "A cup to bring everywhere !",
-        "photo": "steel-cup.png",
+        "photo": "https://cdn.pixabay.com/photo/2018/03/22/16/37/mug-3251017_960_720.png",
         "price": "200"
     },
     {
         "_id": "5fa3d9ca5a11f63af4ed58c4",
         "name": "Steel straw",
         "description": "A straw that keeps the cold of your drink !",
-        "photo": "steel-straw.jpg",
+        "photo": "https://cdn.pixabay.com/photo/2019/10/01/18/52/glass-4519112_960_720.jpg",
         "price": "100"
     },
     {
         "_id": "5fa3d9ca5a11f63af4ed58c5",
         "name": "Tot bag",
         "description": "A renewable bag for you shopping.",
-        "photo": "tot-bag.png",
+        "photo": "https://cdn.pixabay.com/photo/2014/08/19/12/47/bag-421457_960_720.png",
         "price": "200"
     }
 ]

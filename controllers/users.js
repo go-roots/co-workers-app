@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Notification = require('../models/Notification');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const { validationResult } = require('express-validator');
@@ -162,9 +163,16 @@ exports.addFriendReq = asyncHandler(async (req, res, next) => {
     };
 
     user.friends.friendRequests.unshift(newFriendRequest);
-    await user.save();
-    user = await User.findById(userId).populate(['room', 'profile']);
 
+    await user.save();
+    await Notification.create({
+        type: "friend-request",
+        title: `${req.user.lastName} ${req.user.firstName} wants to be your friend !`,
+        receiver: userId,
+        trigger: req.user.id
+    });
+
+    user = await User.findById(userId).populate(['room', 'profile']).select('-messages -cwpoints -rfid -stats -electricityConsumptionLogs -billing');
     res.status(200).json({ success: true, data: user });
 });
 
@@ -188,9 +196,79 @@ exports.deleteFriendReq = asyncHandler(async (req, res, next) => {
 
     updatedUser.friends.friendRequests = updatedUser.friends.friendRequests.filter(fReq => fReq.user != req.user.id)
 
-    user = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).populate(['room', 'profile']);
+    user = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).populate(['room', 'profile']).select('-messages -cwpoints -rfid -stats -electricityConsumptionLogs -billing');
+
+    await Notification.findOneAndRemove({
+        receiver: userId,
+        trigger: req.user.id
+    });
 
     res.status(200).json({ success: true, data: user });
+});
+
+// @desc        Accept/refuse friend request
+// @route       PUT api/cw-api/users/friendReq/res/:userId
+// @access      Private
+exports.acceptFriendReq = asyncHandler(async (req, res, next) => {
+    const { userId } = req.params;
+    const { action } = req.body;
+
+    const friend = await User.findById(userId);
+
+    if (!friend) {
+        return next(new ErrorResponse(`No friends request found for the user with id ${userId}`, 404));
+    }
+
+    //Update me
+    let updatedMe = req.user;
+
+    //Find the friend request
+    const friendRequest = updatedMe.friends.friendRequests.filter(fRequest => fRequest.user == userId);
+
+    //Delete the friend request
+    updatedMe.friends.friendRequests = updatedMe.friends.friendRequests.filter(fRequest => fRequest.user != userId);
+
+    if (action === 'accept') {
+        //Transform the request into friendship
+        let newFriend = {
+            friend: friendRequest[0].user,
+            firstName: friendRequest[0].firstName,
+            lastName: friendRequest[0].lastName
+        };
+
+        updatedMe.friends.friends.unshift(newFriend);
+
+        //Update the friend
+        newFriend = {
+            friend: req.user.id,
+            firstName: req.user.firstName,
+            lastName: req.user.lastName
+        };
+
+        friend.friends.friends.unshift(newFriend);
+
+        await friend.save();
+
+        await Notification.create({
+            type: "accept-friend",
+            title: `${friend.lastName} ${friend.firstName} is now your friend !`,
+            receiver: friend.id,
+            trigger: req.user.id
+        });
+    }
+
+    const newMe = await User.findByIdAndUpdate(
+        req.user.id,
+        { $set: updatedMe },
+        { new: true }
+    );
+
+    await Notification.findOneAndRemove({
+        receiver: req.user.id,
+        trigger: userId
+    });
+
+    res.status(200).json({ success: true, data: newMe });
 });
 
 // @desc        Delete friend
@@ -219,56 +297,4 @@ exports.deleteFriend = asyncHandler(async (req, res, next) => {
     user = await User.findById(req.user.id).populate(['room', 'profile']);
 
     res.status(200).json({ success: true, data: user });
-});
-
-// @desc        Accept friend request
-// @route       PUT api/cw-api/users/friendReq/accept/:userId
-// @access      Private
-exports.acceptFriendReq = asyncHandler(async (req, res, next) => {
-    const { userId } = req.params;
-
-    const friend = await User.findById(userId);
-
-    if (!friend) {
-        return next(new ErrorResponse(`No friends request found for the user with id ${userId}`, 404));
-    }
-
-    //Update me
-    const me = await User.findById(req.user.id);
-
-    let updatedMe = me;
-
-    //Find the friend request
-    const friendRequest = me.friends.friendRequests.filter(fRequest => fRequest.user == userId);
-
-    //Delete it from the my requests
-    me.friends.friendRequests = me.friends.friendRequests.filter(fRequest => fRequest.user != userId);
-    await me.save();
-
-    //Transform the request into friendship
-    let newFriend = {
-        friend: friendRequest[0].user,
-        firstName: friendRequest[0].firstName,
-        lastName: friendRequest[0].lastName
-    };
-
-    updatedMe.friends.friends.unshift(newFriend);
-
-    const newMe = await User.findByIdAndUpdate(
-        req.user.id,
-        { $set: updatedMe },
-        { new: true }
-    );
-
-    //Update the friend
-    newFriend = {
-        friend: req.user.id,
-        firstName: req.user.firstName,
-        lastName: req.user.lastName
-    };
-
-    friend.friends.friends.unshift(newFriend);
-    await friend.save();
-
-    res.status(200).json({ success: true, data: newMe });
 });

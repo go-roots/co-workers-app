@@ -1,18 +1,17 @@
 const express = require('express');
 const router = express.Router();
-
-const { getRedeemables, getRedeemable, createRedeemable } = require('../controllers/redeemables');
 const { protect, authorize } = require('../middlewares/auth');
+const { getEvents, getEvent, createEvent, attendEvent } = require('../controllers/events');
 const { check } = require('express-validator');
 
 
-router.route('/').get(protect, getRedeemables).post([protect, authorize('admin'), [
-    check('name', 'Name is required').not().isEmpty(),
+router.route('/').get(protect, getEvents).post([protect, authorize('admin'), [
+    check('title', 'Title is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
-    check('price', 'Price is required').not().isEmpty(),
-    check('photo', 'Supported formats for images are jpeg, jpg, png, gif').custom((value, { req }) => {
-        if (req.body.photo) {
-            let extension = req.body.photo.split('.').pop();
+    check('capacity', 'Capacity is required').not().isEmpty(),
+    check('image', 'Supported formats for images are jpeg, jpg, png, gif').custom((value, { req }) => {
+        if (req.body.image) {
+            let extension = req.body.image.split('.').pop();
             switch (extension) {
                 case 'jpg':
                     return true;
@@ -29,8 +28,8 @@ router.route('/').get(protect, getRedeemables).post([protect, authorize('admin')
             return true;
         }
     })
-]], createRedeemable);
-router.route('/:redeemableId').get(protect, getRedeemable);
+]], createEvent);
+router.route('/:eventId').get(protect, getEvent).put(protect, attendEvent);
 
 
-module.exports = router
+module.exports = router;

@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const path = require('path');
 const User = require('../models/User');
 const Profile = require('../models/Profile');
+const Notification = require('../models/Notification');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 const { validationResult } = require('express-validator');
@@ -206,23 +207,14 @@ exports.updateSocial = asyncHandler(async (req, res, next) => {
 // @route       PUT api/cw-api/profiles/distinctions/:userId
 // @access      Private
 exports.updateDistinctions = asyncHandler(async (req, res, next) => {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-
-    const profile = await Profile.findOne({ user: req.params.userId });
+    const { userId } = req.params
+    const profile = await Profile.findOne({ user: userId });
 
     if (!profile) {
         return next(new ErrorResponse(`No profile found with the user of id ${userId}`, 400));
     }
 
     const { comment, award } = req.body;
-
-    if (comment && award) {
-        return next(new ErrorResponse("Unable to update comments and awards concurrently", 404));
-    }
 
     let profileFields = {};
 
@@ -248,10 +240,17 @@ exports.updateDistinctions = asyncHandler(async (req, res, next) => {
     }
 
     const newProfile = await Profile.findOneAndUpdate(
-        { user: req.params.userId },
+        { user: userId },
         { $set: profileFields },
         { new: true }
     );
+
+    await Notification.create({
+        type: "recommendation-comments",
+        title: `${req.user.lastName} ${req.user.firstName} has left a comment on your profile !`,
+        receiver: userId,
+        trigger: req.user.id
+    });
 
     return res.status(200).json({ success: true, newProfile });
 });

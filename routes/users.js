@@ -23,10 +23,11 @@ router.route('/message/:userId').post([protect, [
 
 router.route('/admin/:userId').put(protect, authorize('admin'), registerRfidOrBilling);
 router.route('/nolinkedin').put(protect, updateForNolinkedinUser);
-router.route('/friendReq/:userId').put(protect, addFriendReq);
-router.route('/friendReq/accept/:userId').put(protect, acceptFriendReq);
 
+router.route('/friendReq/:userId').put(protect, addFriendReq);
 router.route('/friendReq/:userId').delete(protect, deleteFriendReq);
+router.route('/friendReq/res/:userId').put(protect, acceptFriendReq);
+
 router.route('/friend/:userId').delete(protect, deleteFriend);
 router.route('/message/:msgId').delete(protect, deleteMessage);
 

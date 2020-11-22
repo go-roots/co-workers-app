@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
-//Add an identifier to the notification
-//Add realtime server to notifications
-//Display an alert in react on notification push
+//the identifier can be anything that links to the event that triggered the notif
+//awards notif are left aside by now.
 
 const NotificationSchema = new mongoose.Schema({
     type: {
         type: String,
-        enum: ["event", "friend-request", "help-request", "post-help-request", "recommendation-comments", "awards"]
+        enum: ["event", "friend-request", "accept-friend", "help-request", "accept-help-request", "post-help-request", "recommendation-comments", "awards"]
     },
-    text: {
+    title: {
         type: String
     },
     receiver: {
@@ -20,9 +19,8 @@ const NotificationSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'user'
     },
-    everyone: {
-        type: Boolean
-    },
+    identifier: mongoose.Schema.ObjectId,
+    broadcast: Boolean,
     createdAt: {
         type: Date,
         default: Date.now

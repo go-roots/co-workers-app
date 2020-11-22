@@ -9,7 +9,7 @@ const EventSchema = new mongoose.Schema({
     organizer: {
         type: mongoose.Schema.ObjectId,
         ref: 'user',
-        required: [true, 'Who is the organizer huh ?']
+        default: mongoose.Types.ObjectId("5d7a514b5d2c12c7449be042")
     },
     image: {
         type: String,
@@ -20,10 +20,6 @@ const EventSchema = new mongoose.Schema({
     },
     description: {
         type: String
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     },
     capacity: {
         type: Number
@@ -39,7 +35,11 @@ const EventSchema = new mongoose.Schema({
                 default: Date.now
             }
         }
-    ]
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 

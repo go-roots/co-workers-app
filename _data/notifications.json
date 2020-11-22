@@ -1,37 +1,55 @@
 [
     {
         "type": "event",
-        "text": "Halloween party !",
-        "everyone": true,
-        "trigger": "5d7a514b5d2c12c7449be042"
+        "title": "Halloween party",
+        "trigger": "5d7a514b5d2c12c7449be042",
+        "identifier": "5fb062d8c6dda57973fa3586",
+        "broadcast": true
     },
     {
         "type": "friend-request",
-        "text": "John wants to be your friend !",
+        "title": "John wants to be your friend !",
         "receiver": "5d7a514b5d2c12c7449be046",
         "trigger": "5d7a514b5d2c12c7449be045"
     },
     {
+        "type": "accept-friend",
+        "title": "Kevin Smith is now your friend !",
+        "receiver": "5d7a514b5d2c12c7449be045",
+        "trigger": "5d7a514b5d2c12c7449be046"
+    },
+    {
         "type": "help-request",
-        "text": "Sasha sent you a help request",
-        "receiver": "5c8a1d5b0190b214360dc031",
-        "trigger": "5c8a1d5b0190b214360dc032"
+        "title": "Sasha sent you a help request",
+        "receiver": "5c8a1d5b0190b214360dc039",
+        "trigger": "5c8a1d5b0190b214360dc032",
+        "identifier": "5fb062d8c6dda57973fa35a7"
+    },
+    {
+        "type": "accept-help-request",
+        "title": "Ryan Bolin has accepted your help request (room 2)",
+        "receiver": "5c8a1d5b0190b214360dc032",
+        "trigger": "5c8a1d5b0190b214360dc039",
+        "identifier": "5fb062d8c6dda57973fa35a7"
     },
     {
         "type": "post-help-request",
-        "text": "You asked Derek for help. Feel free to leave a comment on her profile and recommend her skills !",
+        "title": "You asked Derek for help. Feel free to leave a comment on his/her profile !",
         "receiver": "5c8a1d5b0190b214360dc033",
-        "trigger": "5c8a1d5b0190b214360dc034"
+        "trigger": "5c8a1d5b0190b214360dc034",
+        "identifier": "5fb062d8c6dda57973fa35a4"
     },
     {
         "type": "recommendation-comments",
-        "text": "Greg has left a comment on your profile !",
-        "receiver": "5c8a1d5b0190b214360dc033",
-        "trigger": "5c8a1d5b0190b214360dc034"
+        "title": "Greg Harris has left a comment on your profile !",
+        "receiver": "5c8a1d5b0190b214360dc034",
+        "trigger": "5c8a1d5b0190b214360dc033"
     },
     {
         "type": "awards",
-        "text": "Events: has organized 3 events",
-        "receiver": "5c8a1d5b0190b214360dc035"
+        "title": "Events master",
+        "receiver": "5c8a1d5b0190b214360dc035",
+        "trigger": "5d7a514b5d2c12c7449be042",
+        "identifier": "5f9bde4c0e66374ed61cfcbf"
     }
 ]
