@@ -2,6 +2,14 @@ import React, {Fragment, useEffect, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchEvents} from '../../store/actions/events'
 
+import {HiUsers} from 'react-icons/hi';
+
+import Tooltip from '@material-ui/core/Tooltip';
+import {
+    createMuiTheme,
+    MuiThemeProvider
+} from "@material-ui/core/styles";
+
 
 const Events = () => {
 
@@ -17,7 +25,19 @@ const Events = () => {
         fetchData();
     }, []);
 
-    const [currenEvent, setEvent] = useState()
+    const [currenEvent, setEvent] = useState();
+
+    const theme = createMuiTheme({
+        overrides: {
+            MuiTooltip: {
+                tooltip: {
+                    fontSize: "1em",
+                    color: "white",
+                    backgroundColor: "black"
+                }
+            }
+        }
+    });
 
     return (
         <section className="container main">
@@ -25,7 +45,7 @@ const Events = () => {
                 <div className="col-md-4 col-lg-4 col-xl-4 offset-xl-1 vh-container-small">
                     <ul className="list-group">
                         {events.events.map(event => 
-                            <li className="list-group-item">
+                            <li className="list-group-item" onClick={() => setEvent(event)} style={{ backgroundColor: (event == currenEvent) ? "#99FF99" : "white" }}>
                                 <div className="d-flex flex-row justify-content-between align-items-start">
                                     <p id="halloween-party-header" style={{ fontFamily: 'Alatsi, sans-serif' }} >{event.title}</p></div>
                                     <p className="text-center" id="halloween-event-text">{event.description}</p>
@@ -34,7 +54,30 @@ const Events = () => {
                         
                     </ul>
                 </div>
-                <div className="col-md-8 col-lg-8 col-xl-7 align-self-center responsive-margin"><img className="img-fluid" src={""} alt="pic" /></div>
+                {currenEvent && 
+                    <div className="col-md-8 col-lg-8 col-xl-7 align-self-center responsive-margin">
+                       
+                        
+                        <MuiThemeProvider theme={theme}>
+
+                                <Tooltip
+                                    title={
+                                        <Fragment>
+                                            {currenEvent.attending.map(user =>
+                                                <Fragment>{user.user} <br /> </Fragment>
+                                            )}
+                                        </Fragment>
+                                    }
+                                >
+                                    <p className="text-center">Capacity: {currenEvent.attending.length} / {currenEvent.capacity}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <HiUsers></HiUsers> Attending Users
+                                    </p>
+                                </Tooltip>
+                                </MuiThemeProvider>
+                        <img className="img-fluid" src={currenEvent.image} alt="pic" />
+                    </div>
+                    }
+                
             </div>
         </section>
 
