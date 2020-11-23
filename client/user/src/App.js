@@ -18,6 +18,7 @@ import globalVarsReducer from './store/reducers/globalVars';
 import alertsReducer from './store/reducers/alerts';
 import roomsReducer from './store/reducers/rooms';
 import redeemableReducer from './store/reducers/redeemables';
+import eventsReducer from './store/reducers/events';
 import { loadUser } from './store/actions/auth';
 
 import Routes from './components/routing/Routes';
@@ -43,7 +44,8 @@ const rootReducer = combineReducers({
   profiles: profilesReducer,
   alerts: alertsReducer,
   rooms: roomsReducer,
-  redeemables: redeemableReducer
+  redeemables: redeemableReducer,
+  events: eventsReducer
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));

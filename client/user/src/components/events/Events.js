@@ -1,7 +1,23 @@
-import React from 'react'
+import React, {Fragment, useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchEvents} from '../../store/actions/events'
 
 
 const Events = () => {
+
+    const events = useSelector(state => state.events);
+
+    const dispatch = useDispatch();
+
+    const fetchData = useCallback(async () => {
+        dispatch(fetchEvents());
+    }, []);
+    
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+
     return (
         <section className="container main">
             <div className="row">
