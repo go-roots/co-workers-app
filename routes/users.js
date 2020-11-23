@@ -12,10 +12,10 @@ const User = require('../models/User');
 const advancedResults = require('../middlewares/advancedResults');
 
 router.route("/light/:userId").get(protect, advancedResults(User, null, 'single'), getFilteredUsers);
-router.route("/extended/:userId").get(protect, advancedResults(User, ['room', 'profile'], 'single'), getFilteredUsers);
+router.route("/extended/:userId").get(protect, advancedResults(User, 'profile', 'single'), getFilteredUsers);
 
 router.route('/light').get(protect, advancedResults(User, null), getFilteredUsers);
-router.route('/extended').get(protect, advancedResults(User, ['room', 'profile']), getFilteredUsers);
+router.route('/extended').get(protect, advancedResults(User, 'profile'), getFilteredUsers);
 
 router.route('/message/:userId').post([protect, [
     check('message', "The comment body can't be empty").not().isEmpty()

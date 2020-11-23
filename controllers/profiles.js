@@ -34,7 +34,6 @@ exports.getMe = asyncHandler(async (req, res, next) => {
                 'Authorization': `Bearer ${linkedinToken}`
             }
         });
-        console.log(res);
 
         const photo = (res.identifiers[0] && res.identifiers[0].identifier) ? res.identifiers[0].identifier : null;
 
@@ -45,7 +44,6 @@ exports.getMe = asyncHandler(async (req, res, next) => {
                 { new: true }
             );
 
-            console.log(profile);
             return res.status(200).json({ success: true, data: profile });
         }
     }

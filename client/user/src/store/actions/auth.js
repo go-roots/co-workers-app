@@ -41,9 +41,7 @@ export const connectWSS = () => {
                     const msg = JSON.parse(message.data);
 
                     if (msg.event === 'rooms') {
-                        if (JSON.stringify(getState().rooms.rooms) !== JSON.stringify(msg.payload)) {
-                            dispatch({ type: SET_ROOMS, rooms: msg.payload });
-                        }
+                        dispatch({ type: SET_ROOMS, rooms: msg.payload });
                     }
                 }
             });

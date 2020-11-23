@@ -172,7 +172,7 @@ exports.addFriendReq = asyncHandler(async (req, res, next) => {
         trigger: req.user.id
     });
 
-    user = await User.findById(userId).populate(['room', 'profile']).select('-messages -cwpoints -rfid -stats -electricityConsumptionLogs -billing');
+    user = await User.findById(userId).populate(['room', 'profile']);
     res.status(200).json({ success: true, data: user });
 });
 
@@ -196,7 +196,7 @@ exports.deleteFriendReq = asyncHandler(async (req, res, next) => {
 
     updatedUser.friends.friendRequests = updatedUser.friends.friendRequests.filter(fReq => fReq.user != req.user.id)
 
-    user = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).populate(['room', 'profile']).select('-messages -cwpoints -rfid -stats -electricityConsumptionLogs -billing');
+    user = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).populate(['room', 'profile']);
 
     await Notification.findOneAndRemove({
         receiver: userId,
@@ -223,7 +223,7 @@ exports.acceptFriendReq = asyncHandler(async (req, res, next) => {
     let updatedMe = req.user;
 
     //Find the friend request
-    const friendRequest = updatedMe.friends.friendRequests.filter(fRequest => fRequest.user == userId);
+    const friendRequest = updatedMe.friends.friendRequests.find(fRequest => fRequest.user == userId);
 
     //Delete the friend request
     updatedMe.friends.friendRequests = updatedMe.friends.friendRequests.filter(fRequest => fRequest.user != userId);
@@ -231,9 +231,9 @@ exports.acceptFriendReq = asyncHandler(async (req, res, next) => {
     if (action === 'accept') {
         //Transform the request into friendship
         let newFriend = {
-            friend: friendRequest[0].user,
-            firstName: friendRequest[0].firstName,
-            lastName: friendRequest[0].lastName
+            friend: friendRequest.user,
+            firstName: friendRequest.firstName,
+            lastName: friendRequest.lastName
         };
 
         updatedMe.friends.friends.unshift(newFriend);

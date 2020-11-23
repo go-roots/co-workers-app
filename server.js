@@ -12,6 +12,9 @@ const cookieParser = require('cookie-parser');
 const fileupload = require('express-fileupload');
 const connectDB = require('./config/db');
 
+const User = require('./models/User');
+const Room = require('./models/Room');
+
 //load env vars
 dotenv.config({ path: './config/config.env' });
 
@@ -19,8 +22,6 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 //import routes
-const Room = require('./models/Room');
-const Redeemable = require('./models/Redeemable'); //This is just for populating transactions
 const auth = require('./routes/auth');
 const profiles = require('./routes/profiles');
 const users = require('./routes/users');
@@ -39,27 +40,37 @@ const wss = new WebSocket.Server({ server: server });
 
 wss.on('connection', socket => {
 
+    let roomState = [];
+    let user = {};
+
     socket.on('message', message => {
         const msg = JSON.parse(message);
 
         if (msg.event === 'authorization') {
             if (!msg.token) {
-                socket.terminate();
+                console.log('wss: no token'.red.bold);
+                return socket.terminate();
             }
 
             try {
-                jwt.verify(token, process.env.JWT_SECRET);
+                const token = msg.token.split(' ')[1];
+                const decoded = jwt.verify(token, process.env.JWT_SECRET);
+                user = User.findById(decoded.id);
             } catch (error) {
-                socket.terminate();
+                console.log('wss: authentication failed'.red.bold);
+                return socket.terminate();
             }
-            console.log('authenticated and connected');
+            console.log('wss: authenticated and connected'.blue.bold);
         }
     });
 
     setInterval(async () => {
         const rooms = await Room.find();
-        socket.send(JSON.stringify({ event: 'rooms', payload: rooms }));
-    }, 2000);
+        if (JSON.stringify(rooms) != JSON.stringify(roomState)) {
+            socket.send(JSON.stringify({ event: 'rooms', payload: rooms }));
+            roomState = [...rooms];
+        }
+    }, 3000);
 });
 
 //body parser middleware

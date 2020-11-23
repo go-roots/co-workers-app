@@ -3,7 +3,6 @@ const User = require('../models/User');
 const Profile = require('../models/Profile');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
-const { response } = require('express');
 
 
 exports.getAllRooms = asyncHandler(async (req, res, next) => {

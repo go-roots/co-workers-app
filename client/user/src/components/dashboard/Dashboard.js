@@ -41,7 +41,7 @@ const Dashboard = () => {
             <ReactTooltip place="top" type="dark" effect="solid" />
             <section className="main container">
                 <div className="row">
-                    <Map data={profiles} />
+                    <Map data={{ profiles, rooms: rooms.rooms }} />
                     <UsersTable data={{ profiles, me }} />
                     <RoomsBrowser data={rooms} />
                 </div>

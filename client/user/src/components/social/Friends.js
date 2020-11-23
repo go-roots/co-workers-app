@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Friends = ({ data: { user, profiles } }) => {
+const Friends = ({ data: { user, profiles, rooms } }) => {
 
     const selectedProfile = useSelector(state => state.profiles.profile);
     const baseUrl = useSelector(state => state.globalVars.currentDomain + '/api/cw-api');
@@ -227,7 +227,7 @@ const Friends = ({ data: { user, profiles } }) => {
                                         )}
                                     </div>
 
-                                    <b style={{ marginTop: '20px' }} >{selectedProfile?.lastName} {selectedProfile?.firstName}</b> is in {selectedProfile?.room?.name}
+                                    <b style={{ marginTop: '20px' }} >{selectedProfile?.lastName} {selectedProfile?.firstName}</b> is in {selectedProfile && rooms.find(room => room.users.some(user => user.user === selectedProfile._id)).name}
                                 </div>
                             ) : (
                                     <b>{selectedProfile?.lastName} {selectedProfile?.firstName} is unavailable</b>

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
 import map2 from '../../assets/img/map2.jpeg'
 import Spinner from '../../components/UI/Spinner'
 import Tooltip from '@material-ui/core/Tooltip';
@@ -7,9 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 
-const Map = ({ data: profiles }) => {
+const Map = ({ data: { profiles, rooms } }) => {
 
-    const rooms = useSelector(state => state.rooms.rooms);
     const [imageLoaded, setImageLoaded] = useState(false);
     const initialState = {
         room1: false,
@@ -111,24 +109,31 @@ const Map = ({ data: profiles }) => {
                             title={
                                 <div>
                                     <Typography style={roomStyles.title} color="inherit">{room.name.charAt(0).toUpperCase() + room.name.slice(1)}</Typography>
-                                    {profiles.map(profile => profile?.room?.name === room.name && (
-                                        <div
-                                            key={profile.id}
-                                            style={roomStyles.item}
-                                            className='col'
-                                        >
-                                            {profile?.profile?.photo &&
-                                                <img className='rounded-circle'
-                                                    src={profile.profile.photo}
-                                                    alt=''
-                                                    width='25'
-                                                    height='25'
-                                                ></img>
-                                            }
-                                            <p style={roomStyles.name}>{profile.firstName} {profile.lastName}</p>
-                                            <i>{profile?.profile?.story && '"' + profile?.profile?.story + '"'}</i>
-                                        </div>
-                                    ))}
+                                    {room.users.map(user => {
+                                        const profile = profiles.find(profile => profile._id === user.user);
+                                        if (profile) {
+                                            return (
+                                                <div
+                                                    key={user.user}
+                                                    style={roomStyles.item}
+                                                    className='col'
+                                                >
+                                                    {profile?.profile?.photo &&
+                                                        <img className='rounded-circle'
+                                                            src={profile.profile.photo}
+                                                            alt=''
+                                                            width='25'
+                                                            height='25'
+                                                        ></img>
+                                                    }
+                                                    <p style={roomStyles.name}>{profile.firstName} {profile.lastName}</p>
+                                                    <i>{profile?.profile?.story && '"' + profile?.profile?.story + '"'}</i>
+                                                </div>
+                                            )
+                                        } else {
+                                            return null
+                                        }
+                                    })}
                                 </div>
                             }
                         >
