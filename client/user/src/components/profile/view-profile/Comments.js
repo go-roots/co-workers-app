@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import moment from 'moment'
 import pp from '../../../assets/img/notif-profile-picture.jpg';
 
-const Comments = ({comments}) => {
+const Comments = ({comments, users}) => {
     console.log(comments)
     return (
         <div className="row">
@@ -13,7 +13,7 @@ const Comments = ({comments}) => {
                         {comments.map(comment => 
                             <Fragment>
                                 <div className="d-flex flex-row justify-content-between align-items-baseline"><img src={pp} />
-                                    <p>Jorgo - {moment(comment.date).format('YYYY-MM-DD')}</p>
+                                    <p>{users.find(usr => usr.id === comment.author).firstName} - {moment(comment.date).format('YYYY-MM-DD')}</p>
                                 </div>
                                 <p>{comment.text}</p>
                             </Fragment>
