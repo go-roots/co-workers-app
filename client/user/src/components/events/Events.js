@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {fetchEvents} from '../../store/actions/events'
+import {fetchEvents} from '../../store/actions/events';
+import { fetchProfiles } from '../../store/actions/profiles';
 
 import {HiUsers} from 'react-icons/hi';
 
@@ -14,11 +15,13 @@ import {
 const Events = () => {
 
     const events = useSelector(state => state.events);
+    const users = useSelector(state => state.profiles.profiles);
 
     const dispatch = useDispatch();
 
     const fetchData = useCallback(async () => {
         dispatch(fetchEvents());
+        dispatch(fetchProfiles());
     }, []);
     
     useEffect(() => {
@@ -26,6 +29,8 @@ const Events = () => {
     }, []);
 
     const [currenEvent, setEvent] = useState();
+
+    console.log(users)
 
     const theme = createMuiTheme({
         overrides: {
@@ -64,7 +69,7 @@ const Events = () => {
                                     title={
                                         <Fragment>
                                             {currenEvent.attending.map(user =>
-                                                <Fragment>{user.user} <br /> </Fragment>
+                                                <Fragment>{users.find(usr => usr.id == user.user).firstName} {users.find(usr => usr.id == user.user).lastName} <br /> </Fragment>
                                             )}
                                         </Fragment>
                                     }
