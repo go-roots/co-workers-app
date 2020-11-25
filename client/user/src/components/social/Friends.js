@@ -34,9 +34,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Friends = ({ data: { user, profiles, rooms } }) => {
+const Friends = ({ data: { user, profiles, rooms, selectedProfile } }) => {
 
-    const selectedProfile = useSelector(state => state.profiles.profile);
     const baseUrl = useSelector(state => state.globalVars.currentDomain + '/api/cw-api');
 
     const [messageModal, setMessageModal] = useState(false);
@@ -65,7 +64,7 @@ const Friends = ({ data: { user, profiles, rooms } }) => {
                             aria-expanded="false"
                             type="button">
                             {profiles.filter(profile => profile.id === friend.friend).map(f => (
-                                <div key={f._id} >{f.lastName + " " + f.firstName}</div>
+                                <div key={f._id}>{f.firstName + " " + f.lastName}</div>
                             ))}
                         </button>
                         <div className="dropdown-menu">
@@ -171,7 +170,7 @@ const Friends = ({ data: { user, profiles, rooms } }) => {
                                         }
                                     }}
                                 >
-                                    Save
+                                    Send
                                 </button>
                             </div>
                         </div>

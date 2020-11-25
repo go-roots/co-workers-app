@@ -1,12 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
     SET_EVENTS,
+    EVENTS_ERROR,
+    UPDATE_ONE_EVENT
 } from '../actions/events';
 
 const initialState = {
     events: [],
     loading: true,
-    errors: {},
+    error: {},
 };
 
 export default (state = initialState, action) => {
@@ -15,7 +17,21 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 events: action.events,
+                loading: false
             };
+        case UPDATE_ONE_EVENT:
+            let newEvents = state.events.filter(event => event._id != action.eventId);
+            newEvents.push(action.event);
+            return {
+                ...state,
+                events: newEvents
+            }
+        case EVENTS_ERROR:
+            return {
+                ...state,
+                error: action.error,
+                loading: false
+            }
         default:
             return state;
     }

@@ -248,13 +248,6 @@ exports.acceptFriendReq = asyncHandler(async (req, res, next) => {
         friend.friends.friends.unshift(newFriend);
 
         await friend.save();
-
-        await Notification.create({
-            type: "accept-friend",
-            title: `${friend.lastName} ${friend.firstName} is now your friend !`,
-            receiver: friend.id,
-            trigger: req.user.id
-        });
     }
 
     const newMe = await User.findByIdAndUpdate(

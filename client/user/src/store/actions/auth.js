@@ -71,7 +71,8 @@ export const loadUser = () => {
         try {
             //The server will verify the token, and then get the user
             const res = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/auth/me');
-            dispatch({ type: USER_LOADED, user: res.data.data });
+            await dispatch({ type: USER_LOADED, user: res.data.data });
+            await dispatch(connectWSS());
 
             const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/profiles/hasAProfile');
             return dispatch({ type: TOGGLE_MODAL, state: !doIHaveAProfile.data.hasAProfile, kind: 'create' });

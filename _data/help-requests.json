@@ -7,7 +7,7 @@
             "5c8a1d5b0190b214360dc032"
         ],
         "status": "ongoing",
-        "tags": "How to style elements in React using JSX ?"
+        "question": "How to style elements in React using JSX ?"
     },
     {
         "requester": "5d7a514b5d2c12c7449be045",
@@ -22,7 +22,7 @@
             "5c8a1d5b0190b214360dc039"
         ],
         "status": "accepted",
-        "tags": "How can I redeem my cwpoint :/ ?"
+        "question": "How can I redeem my cwpoint :/ ?"
     },
     {
         "requester": "5d7a514b5d2c12c7449be040",
@@ -30,7 +30,7 @@
             "5d7a514b5d2c12c7449be046"
         ],
         "status": "cancelled",
-        "tags": "What are the pros and cons of using raspberry in iot ?"
+        "question": "What are the pros and cons of using raspberry in iot ?"
     },
     {
         "_id": "5fb062d8c6dda57973fa35a7",
@@ -39,6 +39,6 @@
             "5c8a1d5b0190b214360dc039"
         ],
         "status": "expired",
-        "tags": "Any experts in fluid mechanics available for a few questions ?"
+        "question": "Any experts in fluid mechanics available for a few questions ?"
     }
 ]

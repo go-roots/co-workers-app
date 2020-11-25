@@ -6,11 +6,9 @@ const mongoose = require('mongoose');
 const NotificationSchema = new mongoose.Schema({
     type: {
         type: String,
-        enum: ["event", "friend-request", "accept-friend", "help-request", "accept-help-request", "post-help-request", "recommendation-comments", "awards"]
+        enum: ["event", "friend-request", "help-request", "accept-help-request", "post-help-request", "recommendation-comments", "awards"]
     },
-    title: {
-        type: String
-    },
+    title: String,
     receiver: {
         type: mongoose.Schema.ObjectId,
         ref: 'user'

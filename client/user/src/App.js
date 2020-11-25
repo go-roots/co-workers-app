@@ -19,6 +19,8 @@ import alertsReducer from './store/reducers/alerts';
 import roomsReducer from './store/reducers/rooms';
 import redeemableReducer from './store/reducers/redeemables';
 import eventsReducer from './store/reducers/events';
+import notificationsReducer from './store/reducers/notifications';
+import helpRReducer from './store/reducers/helpR';
 import { loadUser } from './store/actions/auth';
 
 import Routes from './components/routing/Routes';
@@ -26,8 +28,6 @@ import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Loading from './components/layout/Loading';
-
-// import WebSocket from 'ws';
 
 
 //Setting token as a header for all requests
@@ -45,7 +45,9 @@ const rootReducer = combineReducers({
   alerts: alertsReducer,
   rooms: roomsReducer,
   redeemables: redeemableReducer,
-  events: eventsReducer
+  events: eventsReducer,
+  notifications: notificationsReducer,
+  helpR: helpRReducer
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));

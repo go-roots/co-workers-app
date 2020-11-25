@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfiles, setIndividualProfile } from '../../store/actions/profiles';
+import { sendhelpR } from '../../store/actions/helpR';
 import { setAlert } from '../../store/actions/alerts'
 import { activitySectors } from '../../utils/constants'
 import Tooltip from '@material-ui/core/Tooltip';
@@ -335,28 +336,28 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 style={{ marginLeft: '5px' }}
                                                 size='25'
                                             />
-                                        </button>) : (
-                                                <button
-                                                    className="btn btn-primary d-flex flex-row align-items-center mr-auto"
-                                                    type="button"
-                                                    onClick={async () => {
-                                                        try {
-                                                            const res = await axios.put(baseUrl + '/users/friendReq/' + selectedProfile.id);
-                                                            await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
-                                                            await dispatch(setIndividualProfile(res.data.data));
-                                                            dispatch(setAlert('success', `The friend request has been sent to ${selectedProfile?.firstName} ${selectedProfile?.lastName}!`));
-                                                        } catch (err) {
-                                                            dispatch(setAlert('danger', err.response.data.error));
-                                                        }
-                                                    }}
-                                                >
-                                                    Add friend
-                                                    <AiOutlineUserAdd
-                                                        style={{ marginLeft: '5px' }}
-                                                        size='25'
-                                                    />
-                                                </button>
-                                            )
+                                        </button>) : (selectedProfile?.friends.friends.some(user => user.user == me.id) ? (
+                                            <button
+                                                className="btn btn-primary d-flex flex-row align-items-center mr-auto"
+                                                type="button"
+                                                onClick={async () => {
+                                                    try {
+                                                        const res = await axios.put(baseUrl + '/users/friendReq/' + selectedProfile.id);
+                                                        await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
+                                                        await dispatch(setIndividualProfile(res.data.data));
+                                                        dispatch(setAlert('success', `The friend request has been sent to ${selectedProfile?.firstName} ${selectedProfile?.lastName}!`));
+                                                    } catch (err) {
+                                                        dispatch(setAlert('danger', err.response.data.error));
+                                                    }
+                                                }}
+                                            >
+                                                Add friend
+                                                <AiOutlineUserAdd
+                                                    style={{ marginLeft: '5px' }}
+                                                    size='25'
+                                                />
+                                            </button>
+                                        ) : null)
                                         }
                                         <button className="btn btn-light" type="button" data-dismiss="modal">Close</button>
                                         <button
@@ -455,18 +456,10 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                             className="btn btn-primary"
                                             type="button"
                                             data-dismiss="modal"
-                                            onClick={async () => {
+                                            onClick={() => {
                                                 const users = !individualHelpR ? profiles.map(profile => profile.id) : [selectedProfile.id];
-                                                axios.post(baseUrl + '/help-requests', {
-                                                    users,
-                                                    question
-                                                }).then(() => {
-                                                    setQuestion("");
-                                                    dispatch(setAlert('success', 'Your question has been successfully sumbitted !'));
-                                                }).catch(() => {
-                                                    setQuestion("");
-                                                    dispatch(setAlert('danger', "Your message couldn't been send, try later"));
-                                                });
+                                                dispatch(sendhelpR(users, question));
+                                                setQuestion("");
                                             }}>
                                             Save
                                         </button>

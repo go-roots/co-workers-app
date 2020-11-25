@@ -2,7 +2,9 @@
 import { SET_REDEEMABLES } from '../actions/redeemables'
 
 const initialState = {
-    redeemables: []
+    redeemables: [],
+    error: {},
+    loading: false
 };
 
 
@@ -11,7 +13,8 @@ export default (state = initialState, action) => {
         case SET_REDEEMABLES:
             return {
                 ...state,
-                redeemables: action.redeemables
+                redeemables: action.redeemables,
+                loading: false
             }
         default:
             return state

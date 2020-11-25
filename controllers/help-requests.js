@@ -11,13 +11,11 @@ let timer;
 // @access      Private
 exports.getSentHelpReq = asyncHandler(async (req, res, next) => {
     const { status, userId } = req.params;
-    let helpReqs;
+    const query = status
+        ? { status, requester: { $in: userId } }
+        : { requester: { $in: userId } };
 
-    if (status) {
-        helpReqs = await HelpRequest.find({ requester: userId, status })
-    } else {
-        helpReqs = await HelpRequest.find({ requester: userId })
-    }
+    const helpReqs = await HelpRequest.find(query).select('-targetedUsers');
 
     res.status(200).json({ success: true, count: helpReqs.length, data: helpReqs });
 });
@@ -27,30 +25,25 @@ exports.getSentHelpReq = asyncHandler(async (req, res, next) => {
 // @access      Private
 exports.getReceivedHelpReq = asyncHandler(async (req, res, next) => {
     const { status, userId } = req.params;
-    let helpReqs;
+    const query = status
+        ? { status, targetedUsers: { $in: userId } }
+        : { targetedUsers: { $in: userId } };
 
-    if (status) {
-        helpReqs = await HelpRequest.find({ status }).filter(request => request.targetedUsers.includes(userId));
-    } else {
-        helpReqs = await HelpRequest.find();
-        helpReqs.filter(request => request.targetedUsers.includes(userId));
-    }
+    const helpReqs = await HelpRequest.find(query).select('-targetedUsers');
 
     res.status(200).json({ success: true, count: helpReqs.length, data: helpReqs });
 });
 
 
-// @desc        Count help-requests (filter by state)
+// @desc        Get help-requests for admin (filter by state)
 // @route       GET api/cw-api/help-requests/:status
 // @access      Private + restricted
-exports.countHelpReq = asyncHandler(async (req, res, next) => {
-    let helpReqs;
+exports.getHelpReq = asyncHandler(async (req, res, next) => {
+    const query = req.params.status
+        ? { status: req.params.status }
+        : null;
 
-    if (req.params.status != 'empty') {
-        helpReqs = await HelpRequest.find({ status: req.params.status });
-    } else {
-        helpReqs = await HelpRequest.find();
-    }
+    const helpReqs = await HelpRequest.find(query);
 
     res.status(200).json({ success: true, count: helpReqs.length, data: helpReqs });
 });
@@ -73,7 +66,7 @@ exports.createHelpReq = asyncHandler(async (req, res, next) => {
     for (const user of users) {
         await Notification.create({
             type: 'help-request',
-            text: `${req.user.lastName} sent you a help request !`,
+            title: `${req.user.firstName} ${req.user.lastName} sent you a help request !`,
             receiver: user,
             trigger: req.user.id,
             identifier: helpRequest._id
@@ -86,8 +79,8 @@ exports.createHelpReq = asyncHandler(async (req, res, next) => {
         await helpRequest.save();
     }, 1000 * 60 * 60 * 3); //3 hours
 
-    res.sendStatus(204);
 
+    res.status(200).send({ success: true, data: helpRequest });
 });
 
 // @desc        Update help-request status
@@ -113,10 +106,11 @@ exports.updateHelpReq = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse('Allowed actions: cancel the request', 403));
     }
 
-    if (helpRequest.targetedUsers.includes(req.user.id)) {
+    if (helpRequest.targetedUsers.find(user => user == req.user.id)) {
         if (req.body.status != 'accepted') {
             return next(new ErrorResponse('Allowed actions: accept the request', 403));
         }
+
         await Notification.create({
             type: 'accept-help-request',
             text: `${req.user.lastName} ${req.user.firstName} has accepted your help request (${req.user.room.name})`,
@@ -135,12 +129,11 @@ exports.updateHelpReq = asyncHandler(async (req, res, next) => {
         }, 1000 * 60 * 30); //30min
     }
 
-    await HelpRequest.findByIdAndUpdate(
+    const newHelpR = await HelpRequest.findByIdAndUpdate(
         req.params.reqId,
-        { $set: { status: req.body.status } }
+        { $set: { status: req.body.status } },
+        { new: true }
     );
 
-    await Notification.deleteMany({ identifier: helpRequest._id });
-
-    res.sendStatus(204);
+    res.status(200).send({ success: true, data: newHelpR });
 });

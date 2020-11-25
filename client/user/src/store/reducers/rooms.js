@@ -10,7 +10,7 @@ const initialState = {
     filteredRooms: [],
     recommendedRooms: [],
     loading: true,
-    errors: {},
+    error: {},
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +20,7 @@ export default (state = initialState, action) => {
                 ...state,
                 rooms: action.rooms,
                 filteredRooms: action.rooms,
+                loading: false
             };
         case SET_RECOM_ROOMS:
             return {

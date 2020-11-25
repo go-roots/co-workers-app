@@ -11,7 +11,7 @@ import { FaInfoCircle } from 'react-icons/fa'
 import spinner from '../../assets/img/spinner.gif';
 
 
-const RoomsBrowser = ({ data: rooms }) => {
+const RoomsBrowser = ({ data: { rooms, recommendedRooms, filteredRooms } }) => {
 
     const [filter, setFilter] = useState("none");
     const [browseLoaded, setBrowseLoaded] = useState(0);
@@ -58,7 +58,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                         </div>
                     </div>
                     <div className="row rooms-reco-inner-container">
-                        {rooms.recommendedRooms.map(room =>
+                        {recommendedRooms.map(room =>
                             <div key={room._id} className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <MuiThemeProvider theme={theme}>
                                     <Tooltip
@@ -80,7 +80,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                                                 style={{
                                                     width: '100%',
                                                     height: '100%',
-                                                    display: recoLoaded === rooms.recommendedRooms.length ? 'block' : 'none'
+                                                    display: recoLoaded === recommendedRooms.length ? 'block' : 'none'
                                                 }}
                                                 src={room.image}
                                                 className='rounded-circle'
@@ -90,7 +90,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                                                 style={{
                                                     width: '100%',
                                                     height: '100%',
-                                                    display: recoLoaded === rooms.recommendedRooms.length ? 'none' : 'block'
+                                                    display: recoLoaded === recommendedRooms.length ? 'none' : 'block'
                                                 }}
                                                 src={spinner}
                                                 className='rounded-circle'
@@ -126,7 +126,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                         </div>
                     </div>
                     <div className="row rooms-reco-inner-container">
-                        {rooms.filteredRooms.map(room => (room.facilities.includes(filter) || filter === "none") && (
+                        {filteredRooms.map(room => (room.facilities.includes(filter) || filter === "none") && (
                             <div key={room._id} className="col-auto col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <MuiThemeProvider theme={theme}>
                                     <Tooltip
@@ -148,7 +148,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                                                 style={{
                                                     width: '100%',
                                                     height: '100%',
-                                                    display: browseLoaded >= rooms.rooms.length ? 'block' : 'none'
+                                                    display: browseLoaded >= rooms.length ? 'block' : 'none'
                                                 }}
                                                 src={room.image}
                                                 className='rounded-circle'
@@ -158,7 +158,7 @@ const RoomsBrowser = ({ data: rooms }) => {
                                                 style={{
                                                     width: '100%',
                                                     height: '100%',
-                                                    display: browseLoaded >= rooms.rooms.length ? 'none' : 'block'
+                                                    display: browseLoaded >= rooms.length ? 'none' : 'block'
                                                 }}
                                                 src={spinner}
                                                 className='rounded-circle'

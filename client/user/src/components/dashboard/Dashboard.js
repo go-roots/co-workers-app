@@ -6,7 +6,7 @@ import UsersTable from './UsersTable'
 import ReactTooltip from 'react-tooltip';
 import { fetchProfiles } from '../../store/actions/profiles';
 import { fetchRooms, fetchRecomendedRooms } from '../../store/actions/rooms'
-import { loadUser, connectWSS } from '../../store/actions/auth';
+import { loadUser } from '../../store/actions/auth';
 import Spinner from '../UI/Spinner';
 
 
@@ -14,15 +14,14 @@ const Dashboard = () => {
 
     const { profiles, loading: { profiles: loadingProfiles } } = useSelector(state => state.profiles);
     const { user: me, loading: loadingUser } = useSelector(state => state.auth);
-    const rooms = useSelector(state => state.rooms);
+    const { loading: loadingRooms, rooms, recommendedRooms, filteredRooms } = useSelector(state => state.rooms);
     const dispatch = useDispatch();
 
     const fetchData = useCallback(async () => {
         await dispatch(loadUser()); //Tries to get the user if there's a token (auto-connect)
-        dispatch(connectWSS());
         dispatch(fetchProfiles(null, null));
+        await dispatch(fetchRecomendedRooms());
         dispatch(fetchRooms());
-        dispatch(fetchRecomendedRooms());
     }, []);
 
     useEffect(() => {
@@ -30,20 +29,21 @@ const Dashboard = () => {
     }, []);
 
 
-    if (loadingProfiles || loadingUser) {
+    if (loadingProfiles || loadingUser || loadingRooms) {
         return (<div id="loading-screen">
             <Spinner />
         </div>)
     }
+
 
     return (
         <Fragment>
             <ReactTooltip place="top" type="dark" effect="solid" />
             <section className="main container">
                 <div className="row">
-                    <Map data={{ profiles, rooms: rooms.rooms }} />
+                    <Map data={{ profiles, rooms }} />
                     <UsersTable data={{ profiles, me }} />
-                    <RoomsBrowser data={rooms} />
+                    <RoomsBrowser data={{ rooms, recommendedRooms, filteredRooms }} />
                 </div>
             </section>
         </Fragment>

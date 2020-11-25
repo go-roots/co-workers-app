@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { updateSocialInfos } from '../../store/actions/profiles'
-import { modalHandler } from '../../store/actions/profiles'
+import { modalHandler, setIndividualProfile } from '../../store/actions/profiles'
 import noimage from '../../assets/img/noimage.jpg'
 import { status, moods } from '../../utils/constants';
 
@@ -89,15 +90,23 @@ const Profile = ({ data: { profile, user } }) => {
             </div>
             <div className="card-body">
                 <h4 className="card-title">Bio</h4>
-                <i className="card-text">{profile?.bio ? profile.bio : 'Edit your profile to add a bio here'}</i>
-                <button
-                    className="btn text-info border rounded-0"
-                    type='button'
-                    onClick={() => dispatch(modalHandler(true, 'edit'))}
-                    style={{ marginTop: '20px' }}
-                >
-                    Edit profile
-                    </button>
+                <i className="card-text"><p>{profile?.bio ? profile.bio : 'Edit your profile to add a bio here'}</p></i>
+                <div className='d-flex flex-row justify-content-around' style={{ marginTop: '20px', paddingBottom: '15px' }}>
+                    <button
+                        className="btn text-info border rounded-0"
+                        type='button'
+                        onClick={() => dispatch(modalHandler(true, 'edit'))}
+                    >
+                        Edit profile
+                </button>
+                    <Link
+                        className="btn text-info border rounded-0"
+                        to={'/profile'}
+                        onClick={() => dispatch(setIndividualProfile({ ...user, profile: profile }))}
+                    >
+                        View profile
+                    </Link>
+                </div>
             </div>
         </div>
     )

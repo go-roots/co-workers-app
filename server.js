@@ -64,6 +64,11 @@ wss.on('connection', socket => {
         }
     });
 
+    socket.on('close', () => {
+        console.log('Connection closed'.red.bold);
+        socket.terminate();
+    });
+
     setInterval(async () => {
         const rooms = await Room.find();
         if (JSON.stringify(rooms) != JSON.stringify(roomState)) {

@@ -1,74 +1,53 @@
 import React from 'react'
+import Notification from '../../models/Notification';
 
-import notifProfile from '../../assets/img/notif-profile-picture.jpg'
-import halloween from '../../assets/img/notif-halloween-event.jpg'
 
-const Notifications = props => {
+const Notifications = ({ data: { notifications, profiles, profile, events, user, helpR } }) => {
+
+    console.log(helpR);
+
     return (
         <div className="card vh-container">
             <div className="card-body">
                 <h4 className="card-title">Notifications</h4>
                 <ul className="list-group">
-                    <li className="list-group-item d-flex flex-column help-request-notif">
-                        <img
-                            className="notif-image"
-                            src={notifProfile}/>
-                        <p className="notif-text-button">Jorgo sent you a help request.</p>
-                        <button
-                            className="btn btn-warning btn-sm text-nowrap align-self-center notif-button"
-                            type="button">
-                            Help!
-                        </button>
-                    </li>
-                    <li className="list-group-item d-flex flex-column event-notif">
-                        <img
-                            className="notif-image"
-                            src={halloween}/>
-                        <p className="notif-text-button">Halloween party !</p>
-                        <button
-                            className="btn btn-warning btn-sm text-nowrap align-self-center notif-button"
-                            type="button">Go!
-                        </button>
-                    </li>
-                    <li className="list-group-item d-flex flex-column friend-request-notif"><img
-                        className="notif-image"
-                        src={notifProfile}/>
-                        <p className="notif-text-button">Paul wants to be your friend.</p>
-                        <div className="d-flex flex-row justify-content-around">
-                            <button className="btn btn-success btn-sm text-nowrap notif-button"
-                                    type="button">Accept
-                            </button>
-                            <button className="btn btn-danger btn-sm text-nowrap notif-button"
-                                    type="button">Decline
-                            </button>
-                        </div>
-                    </li>
-                    <li className="list-group-item d-flex flex-column friend-request-notif"><img
-                        className="notif-image"
-                        src={notifProfile}/>
-                        <p className="notif-text-button">Ilya wants to be your friend.</p>
-                        <div className="d-flex flex-row justify-content-around">
-                            <button className="btn btn-success btn-sm text-nowrap notif-button"
-                                    type="button">Accept
-                            </button>
-                            <button className="btn btn-danger btn-sm text-nowrap notif-button"
-                                    type="button">Decline
-                            </button>
-                        </div>
-                    </li>
-                    <li className="list-group-item d-flex flex-column friend-request-notif"><img
-                        className="notif-image"
-                        src={notifProfile}/>
-                        <p className="notif-text-button">You asked Shradda for help. Feel free to leave
-                            a
-                            comment on her profile
-                            and recommend her skills !</p>
-                        <div className="text-center">
-                            <button className="btn btn-info btn-sm notif-button" type="submit">Go to
-                                profile
-                            </button>
-                        </div>
-                    </li>
+                    {notifications.map(notif => {
+                        let data = {};
+                        if (notif.type === 'event') {
+                            data = {
+                                notif,
+                                event: events.find(event => event._id == notif.identifier),
+                                user
+                            };
+                        };
+                        if (notif.type === 'friend-request') {
+                            data = {
+                                notif,
+                                user,
+                                profile: profiles.find(p => p._id == notif.trigger)
+                            };
+                        };
+                        if (notif.type === 'help-request' || notif.type === 'post-help-request' || notif.type === 'accept-help-request') {
+                            data = {
+                                notif,
+                                helpr: helpR.find(h => h._id == notif.identifier),
+                                profile: profiles.find(p => p._id == notif.trigger)
+                            };
+                        };
+                        if (notif.type === 'recommendation-comments') {
+                            data = {
+                                notif,
+                                user,
+                                myProfile: profile,
+                                profile: profiles.find(p => p._id == notif.trigger)
+                            };
+                        };
+                        return (
+                            <Notification
+                                data={data}
+                            />
+                        )
+                    })}
                 </ul>
             </div>
         </div>
