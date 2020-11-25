@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { SET_REDEEMABLES } from '../actions/redeemables'
+import { SET_REDEEMABLES, CLEAR_REDEEMABLES } from '../actions/redeemables'
 
 const initialState = {
     redeemables: [],
@@ -16,6 +16,8 @@ export default (state = initialState, action) => {
                 redeemables: action.redeemables,
                 loading: false
             }
+        case CLEAR_REDEEMABLES:
+            return initialState;
         default:
             return state
     }

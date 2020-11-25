@@ -1,7 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alerts';
-import { PROFILE_ERROR, TOGGLE_MODAL } from './profiles';
-import { SET_ROOMS } from './rooms'
+import { PROFILE_ERROR, TOGGLE_MODAL, CLEAR_PROFILE } from './profiles';
+import { REMOVE_ALL_ALERTS } from './alerts';
+import { CLEAR_EVENTS } from './events';
+import { CLEAR_HELP_REQUESTS } from './helpR';
+import { CLEAR_NOTIFICATIONS } from './notifications';
+import { CLEAR_REDEEMABLES } from './redeemables';
+import { SET_ROOMS, CLEAR_ROOMS } from './rooms';
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
@@ -14,7 +19,6 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
-export const CLEAR_PROFILE = 'CLEAR_PROFILE'; //when we logout we clear auth state but also profile logically
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const LINKEDIN_SUCCESS = 'LINKEDIN_SUCCESS';
 export const LINKEDIN_FAIL = 'LINKEDIN_FAIL';
@@ -61,7 +65,8 @@ export const setCurrentUser = data => {
 
 export const loadUser = () => {
     return async (dispatch, getState) => {
-        //Setting token as a header for all requests
+        // if (!getState().auth.isAuthenticated) {
+
         if (localStorage.token) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
         } else {
@@ -79,6 +84,7 @@ export const loadUser = () => {
         } catch (err) {
             return dispatch({ type: AUTH_ERROR });
         }
+        // }
     }
 }
 
@@ -161,6 +167,12 @@ export const logout = () => {
     return dispatch => {
         dispatch({ type: LOGOUT });
         dispatch({ type: CLEAR_PROFILE });
+        dispatch({ type: CLEAR_EVENTS });
+        dispatch({ type: CLEAR_HELP_REQUESTS });
+        dispatch({ type: CLEAR_NOTIFICATIONS });
+        dispatch({ type: CLEAR_ROOMS });
+        dispatch({ type: CLEAR_REDEEMABLES });
+        dispatch({ type: REMOVE_ALL_ALERTS });
     };
 }
 

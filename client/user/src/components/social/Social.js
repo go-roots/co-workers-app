@@ -33,8 +33,6 @@ const Social = () => {
         }
     }, [loadingUser]);
 
-    console.log(loadingHelpR);
-
 
     if (loadingMyProfile
         || loadingProfiles || loadingUser || notificationsLoading

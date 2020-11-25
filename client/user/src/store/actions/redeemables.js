@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const SET_REDEEMABLES = 'SET_REDEEMABLES';
 export const REDEEMABLES_ERROR = 'REDEEMABLES_ERROR';
+export const CLEAR_REDEEMABLES = 'CLEAR_REDEEMABLES';
 
 
 export const fetchRedeemables = () => {

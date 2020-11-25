@@ -1,15 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
-    SET_PROFILE,
-    SET_PROFILES,
-    PROFILE_ERROR,
-    UPDATE_PROFILE,
-    SET_OWN_PROFILE,
-    TOGGLE_MODAL
+    SET_PROFILE, SET_PROFILES, PROFILE_ERROR, UPDATE_PROFILE,
+    SET_OWN_PROFILE, TOGGLE_MODAL, CLEAR_PROFILE
 } from '../actions/profiles';
-import {
-    CLEAR_PROFILE
-} from '../actions/auth';
 
 //We don't necessarily need a redux state for storing state.profiles since we use it in
 //only one screen (dashboard), but it's just to have the whole data in one place.
@@ -19,8 +12,8 @@ const initialState = {
     myProfile: null, //used in social, rooms recommendations, ...
     profile: null, //Current profile being viewed (.../profile/:profileId)
     profiles: [], //List of extended profiles used in the dashboard, vary regarding the applied filters
-    messages: [],
-    friends: [],
+    messages: [], //list of received messages
+    friends: [], //Contains the list of friends and friend-requests
     loading: { myProfile: true, profiles: true },
     errors: {},
 };
@@ -61,10 +54,7 @@ export default (state = initialState, action) => {
                 profile: null,
             };
         case CLEAR_PROFILE:
-            return {
-                ...initialState,
-                modalOpened: state.modalOpened
-            };
+            return initialState;
         default:
             return state;
     }

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
 export const NOTIFICATION_ERROR = 'NOTIFICATION_ERROR';
+export const CLEAR_NOTIFICATIONS = 'CLEAR_NOTIFICATIONS';
 
 
 export const fetchNotifications = () => {

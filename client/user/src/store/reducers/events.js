@@ -2,7 +2,8 @@
 import {
     SET_EVENTS,
     EVENTS_ERROR,
-    UPDATE_ONE_EVENT
+    UPDATE_ONE_EVENT,
+    CLEAR_EVENTS
 } from '../actions/events';
 
 const initialState = {
@@ -32,6 +33,8 @@ export default (state = initialState, action) => {
                 error: action.error,
                 loading: false
             }
+        case CLEAR_EVENTS:
+            return initialState;
         default:
             return state;
     }

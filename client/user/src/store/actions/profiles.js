@@ -9,6 +9,7 @@ export const SET_PROFILES = 'SET_PROFILES';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const SET_FRIENDS = 'SET_FRIENDS';
+export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 
 
 export const modalHandler = (state, kind) => {

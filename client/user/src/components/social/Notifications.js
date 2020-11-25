@@ -4,13 +4,11 @@ import Notification from '../../models/Notification';
 
 const Notifications = ({ data: { notifications, profiles, profile, events, user, helpR } }) => {
 
-    console.log(helpR);
-
     return (
         <div className="card vh-container">
             <div className="card-body">
                 <h4 className="card-title">Notifications</h4>
-                <ul className="list-group">
+                {notifications.length ? (<ul className="list-group">
                     {notifications.map(notif => {
                         let data = {};
                         if (notif.type === 'event') {
@@ -48,7 +46,7 @@ const Notifications = ({ data: { notifications, profiles, profile, events, user,
                             />
                         )
                     })}
-                </ul>
+                </ul>) : null}
             </div>
         </div>
     )

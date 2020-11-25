@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
     SET_HELP_REQUESTS, HELP_REQUESTS_ERROR,
-    UPDATE_ONE_HELP_REQUEST, CREATE_HELP_REQUEST
+    UPDATE_ONE_HELP_REQUEST, CREATE_HELP_REQUEST, CLEAR_HELP_REQUESTS
 } from '../actions/helpR';
 
 const initialState = {
@@ -36,6 +36,8 @@ export default (state = initialState, action) => {
                 error: action.error,
                 loading: false
             }
+        case CLEAR_HELP_REQUESTS:
+            return initialState;
         default:
             return state;
     }

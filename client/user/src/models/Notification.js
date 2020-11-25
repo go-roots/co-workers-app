@@ -231,7 +231,7 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                             src={!imageError?.[profile._id] ? profile?.profile?.photo + "?" + new Date().getTime() : noimage}
                             onError={() => setImageError({ ...imageError, [profile._id]: true })}
                         />
-                        <p className="notif-text-button"><b>{profile?.firstName} {profile?.lastName}</b> has accepted your help request. He will reach out to you soon !</p>
+                        <p className="notif-text-button"><b>{profile.firstName} {profile.lastName}</b> has accepted your help request. {profile.firstName} will reach out to you soon !</p>
                     </li>
                 );
             case 'post-help-request':
@@ -245,7 +245,7 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                             src={!imageError?.[profile._id] ? profile?.profile?.photo + "?" + new Date().getTime() : noimage}
                             onError={() => setImageError({ ...imageError, [profile._id]: true })}
                         />
-                        <p className="notif-text-button">You asked <b>{profile?.firstName} {profile?.lastName}</b> for help. Feel free to leave a comment on her profile and recommend her skills !</p>
+                        <p className="notif-text-button">You asked <b>{profile.firstName} {profile.lastName}</b> for help. Feel free to leave a comment on {profile?.firstName}'s profile and recommend his/her skills !</p>
                         <div className="text-center">
                             <Link
                                 className="btn btn-info btn-sm notif-button"

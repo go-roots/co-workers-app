@@ -1,9 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import {
-    SET_ROOMS,
-    ROOMS_ERROR,
-    SET_RECOM_ROOMS,
-} from '../actions/rooms';
+import { SET_ROOMS, ROOMS_ERROR, SET_RECOM_ROOMS, CLEAR_ROOMS } from '../actions/rooms';
 
 const initialState = {
     rooms: [],
@@ -33,6 +29,8 @@ export default (state = initialState, action) => {
                 error: action.error,
                 loading: false,
             };
+        case CLEAR_ROOMS:
+            return initialState;
         default:
             return state;
     }

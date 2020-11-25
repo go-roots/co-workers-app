@@ -44,15 +44,8 @@ export default (state = initialState, action) => {
         case LOGOUT:
         case ACCOUNT_DELETED:
             localStorage.removeItem('token');
-            localStorage.removeItem('linkedinToken'); //if it exists...
-            return {
-                ...state,
-                token: null,
-                linkedinToken: null,
-                isAuthenticated: false,
-                loading: false,
-                user: null
-            };
+            localStorage.removeItem('linkedinToken');
+            return initialState;
         case USER_LOADED:
         case SET_CURRENT_USER:
             return {

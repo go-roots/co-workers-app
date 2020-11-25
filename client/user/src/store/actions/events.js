@@ -3,6 +3,8 @@ import axios from 'axios';
 export const SET_EVENTS = 'SET_EVENTS';
 export const UPDATE_ONE_EVENT = 'UPDATE_ONE_EVENT';
 export const EVENTS_ERROR = 'EVENTS_ERROR';
+export const CLEAR_EVENTS = 'CLEAR_EVENTS';
+
 
 export const fetchEvents = () => {
     return async (dispatch, getState) => {

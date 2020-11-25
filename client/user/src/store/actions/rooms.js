@@ -3,6 +3,8 @@ import axios from 'axios';
 export const SET_ROOMS = 'SET_ROOMS';
 export const ROOMS_ERROR = 'ROOMS_ERROR';
 export const SET_RECOM_ROOMS = 'SET_RECOM_ROOMS';
+export const CLEAR_ROOMS = 'CLEAR_ROOMS';
+
 
 export const fetchRooms = () => {
     return async (dispatch, getState) => {

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { SET_NOTIFICATIONS, NOTIFICATION_ERROR } from '../actions/notifications';
+import { SET_NOTIFICATIONS, NOTIFICATION_ERROR, CLEAR_NOTIFICATIONS } from '../actions/notifications';
 
 const initialState = {
     notifications: [],
@@ -21,6 +21,8 @@ export default (state = initialState, action) => {
                 error: action.error,
                 loading: false
             }
+        case CLEAR_NOTIFICATIONS:
+            return initialState;
         default:
             return state;
     }

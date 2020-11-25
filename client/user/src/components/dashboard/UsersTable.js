@@ -114,6 +114,8 @@ const UsersTable = ({ data: { profiles, me } }) => {
                             id="help-request"
                             data-toggle="modal"
                             data-target="#help-request-modal"
+                            data-backdrop="static"
+                            data-keyboard="false"
                             onClick={() => setIndividualHelpR(false)}
                         >
                             <HiOutlineLightBulb style={{ color: "rgb(255,255,0)", paddingTop: "2px", marginBottom: "-5px" }} />
@@ -267,6 +269,8 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 <ImLifebuoy
                                                     data-toggle="modal"
                                                     data-target="#help-request-modal"
+                                                    data-backdrop="static"
+                                                    data-keyboard="false"
                                                     className="ask-help-icon"
                                                     onClick={async () => {
                                                         await dispatch(setIndividualProfile(profile))
@@ -284,6 +288,8 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 <FaRegComment
                                                     data-toggle='modal'
                                                     data-target='#messaging-modal'
+                                                    data-backdrop="static"
+                                                    data-keyboard="false"
                                                     className="comment-icon"
                                                     size={25}
                                                     onClick={() => dispatch(setIndividualProfile(profile))}
@@ -300,7 +306,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                     <div className="modal-header align-items-center">
                                         <img className='rounded-circle' alt='' src={selectedProfile?.profile?.photo} width='50' height='50' />
                                         <h4 style={{ marginLeft: '10px' }} className="modal-title">{`${selectedProfile?.firstName} ${selectedProfile?.lastName}`}</h4>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <button onClick={() => setMessage("")} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
@@ -336,7 +342,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 style={{ marginLeft: '5px' }}
                                                 size='25'
                                             />
-                                        </button>) : (selectedProfile?.friends.friends.some(user => user.user == me.id) ? (
+                                        </button>) : (selectedProfile?.friends.friends.some(user => user.user == me.id) ? null : (
                                             <button
                                                 className="btn btn-primary d-flex flex-row align-items-center mr-auto"
                                                 type="button"
@@ -356,10 +362,16 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                     style={{ marginLeft: '5px' }}
                                                     size='25'
                                                 />
-                                            </button>
-                                        ) : null)
+                                            </button>))
                                         }
-                                        <button className="btn btn-light" type="button" data-dismiss="modal">Close</button>
+                                        <button
+                                            className="btn btn-light"
+                                            type="button"
+                                            data-dismiss="modal"
+                                            onClick={() => setMessage("")}
+                                        >
+                                            Close
+                                        </button>
                                         <button
                                             data-dismiss="modal"
                                             className="btn btn-primary"
@@ -371,9 +383,10 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 } catch (err) {
                                                     dispatch(setAlert('danger', err.response.data.error));
                                                 }
+                                                setMessage("");
                                             }}
                                         >
-                                            Save
+                                            Send
                                         </button>
                                     </div>
                                 </div>
@@ -385,7 +398,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                 <div className="modal-content">
                                     <div className="modal-header">
                                         <h4 className="modal-title">Help request</h4>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <button onClick={() => setQuestion("")} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
@@ -461,7 +474,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                                 dispatch(sendhelpR(users, question));
                                                 setQuestion("");
                                             }}>
-                                            Save
+                                            Send
                                         </button>
                                     </div>
                                 </div>
