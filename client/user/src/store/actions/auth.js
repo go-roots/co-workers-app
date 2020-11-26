@@ -1,12 +1,26 @@
 import axios from 'axios';
-import { setAlert } from './alerts';
-import { PROFILE_ERROR, TOGGLE_MODAL, CLEAR_PROFILE } from './profiles';
-import { REMOVE_ALL_ALERTS } from './alerts';
-import { CLEAR_EVENTS } from './events';
-import { CLEAR_HELP_REQUESTS } from './helpR';
-import { CLEAR_NOTIFICATIONS } from './notifications';
+import { REMOVE_ALL_ALERTS, setAlert } from './alerts';
+import {
+    CLEAR_EVENTS,
+    fetchEvents
+} from './events';
+import {
+    CLEAR_HELP_REQUESTS,
+    fetchHelpR
+} from './helpR';
+import {
+    CLEAR_NOTIFICATIONS,
+    fetchNotifications
+} from './notifications';
+import {
+    CLEAR_PROFILE, PROFILE_ERROR, TOGGLE_MODAL,
+    fetchProfiles, getCurrentProfile
+} from './profiles';
 import { CLEAR_REDEEMABLES } from './redeemables';
-import { SET_ROOMS, CLEAR_ROOMS } from './rooms';
+import {
+    CLEAR_ROOMS, SET_ROOMS,
+    fetchRecomendedRooms, fetchRooms
+} from './rooms';
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
@@ -65,26 +79,33 @@ export const setCurrentUser = data => {
 
 export const loadUser = () => {
     return async (dispatch, getState) => {
-        // if (!getState().auth.isAuthenticated) {
+        if (!getState().auth.isAuthenticated) {
 
-        if (localStorage.token) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
-        } else {
-            delete axios.defaults.headers.common['Authorization'];
+            if (localStorage.token) {
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
+            } else {
+                delete axios.defaults.headers.common['Authorization'];
+            }
+
+            try {
+                //The server will verify the token, and then get the user
+                const res = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/auth/me');
+                await dispatch({ type: USER_LOADED, user: res.data.data });
+                dispatch(fetchProfiles(null, null));
+                dispatch(getCurrentProfile());
+                dispatch(fetchRecomendedRooms());
+                dispatch(fetchRooms());
+                dispatch(fetchEvents());
+                dispatch(fetchNotifications());
+                dispatch(fetchHelpR());
+                dispatch(connectWSS());
+
+                const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/profiles/hasAProfile');
+                return dispatch({ type: TOGGLE_MODAL, state: !doIHaveAProfile.data.hasAProfile, kind: 'create' });
+            } catch (err) {
+                return dispatch({ type: AUTH_ERROR });
+            }
         }
-
-        try {
-            //The server will verify the token, and then get the user
-            const res = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/auth/me');
-            await dispatch({ type: USER_LOADED, user: res.data.data });
-            await dispatch(connectWSS());
-
-            const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/profiles/hasAProfile');
-            return dispatch({ type: TOGGLE_MODAL, state: !doIHaveAProfile.data.hasAProfile, kind: 'create' });
-        } catch (err) {
-            return dispatch({ type: AUTH_ERROR });
-        }
-        // }
     }
 }
 

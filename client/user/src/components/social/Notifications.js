@@ -42,6 +42,7 @@ const Notifications = ({ data: { notifications, profiles, profile, events, user,
                         };
                         return (
                             <Notification
+                                key={notif._id}
                                 data={data}
                             />
                         )

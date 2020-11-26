@@ -1,10 +1,5 @@
-import React, { Fragment, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getCurrentProfile, fetchProfiles } from '../../store/actions/profiles'
-import { fetchRooms } from '../../store/actions/rooms'
-import { fetchNotifications } from '../../store/actions/notifications'
-import { fetchEvents } from '../../store/actions/events'
-import { fetchHelpR } from '../../store/actions/helpR'
+import React, { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 import Friends from './Friends'
 import Messages from './Messages'
 import Notifications from './Notifications'
@@ -20,18 +15,6 @@ const Social = () => {
     const { events, loading: eventsLoading } = useSelector(state => state.events);
     const { helpR, loading: loadingHelpR } = useSelector(state => state.helpR)
     const { rooms, loading: loadingRooms } = useSelector(state => state.rooms);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (!loadingUser) {
-            dispatch(getCurrentProfile());
-            dispatch(fetchProfiles(null, null));
-            dispatch(fetchRooms());
-            dispatch(fetchNotifications());
-            dispatch(fetchEvents());
-            dispatch(fetchHelpR());
-        }
-    }, [loadingUser]);
 
 
     if (loadingMyProfile
