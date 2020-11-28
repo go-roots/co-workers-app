@@ -68,6 +68,12 @@ export const connectWSS = () => {
                             if (msg.event === 'setRooms') {
                                 dispatch({ type: SET_ROOMS, rooms: msg.payload.rooms });
                             } break;
+                        case 'helpR':
+                            if (msg.event === 'getHelpR') {
+                                dispatch(fetchHelpR());
+                            } break;
+                        case 'notifications':
+                            dispatch(fetchNotifications()); break;
                         default: break;
                     }
                 }

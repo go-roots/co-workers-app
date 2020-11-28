@@ -34,7 +34,7 @@ export const sendhelpR = (users, question) => {
         try {
             const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/help-requests', body);
             await dispatch({ type: CREATE_HELP_REQUEST, helpr: res.data.data });
-            return dispatch(setAlert('success', 'Your question has been successfully sumbitted !'));
+            await dispatch(setAlert('success', 'Your question has been successfully sumbitted !'));
         } catch (err) {
             const errors = err.response.data.errors;
 
@@ -42,6 +42,16 @@ export const sendhelpR = (users, question) => {
                 errors.forEach(error => dispatch(setAlert('danger', error.msg)));
             }
         }
+
+        const ws = getState().auth.socket;
+
+        return ws.send(JSON.stringify({
+            type: 'helpR',
+            event: 'sendHelpR',
+            payload: {
+                users
+            }
+        }));
     }
 }
 
