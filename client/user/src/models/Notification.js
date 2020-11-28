@@ -226,7 +226,7 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                                                     className='btn btn-success'
                                                     style={{ marginRight: '10px' }}
                                                     onClick={async () => {
-                                                        await dispatch(updateHelpR(helpr._id));
+                                                        await dispatch(updateHelpR(helpr._id, profile.id));
                                                         setHelpRModal(false);
                                                     }}
                                                 >

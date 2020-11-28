@@ -6,7 +6,7 @@ import logoMedium from '../../assets/img/logo_medium.svg';
 
 const Navbar = props => {
 
-    const notifications = useSelector(state => state.notifications.notifications);
+    const notifications = useSelector(state => state.notifications.notifications).filter(notif => !notif.seen);
 
     return (
         <nav className="navbar navbar-light navbar-expand-md">

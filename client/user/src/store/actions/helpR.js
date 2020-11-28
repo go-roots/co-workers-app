@@ -55,13 +55,13 @@ export const sendhelpR = (users, question) => {
     }
 }
 
-export const updateHelpR = helprId => {
+export const updateHelpR = (helprId, profileId) => {
     return async (dispatch, getState) => {
         try {
             const res = await axios.put(getState().globalVars.currentDomain + `/api/cw-api/help-requests/${helprId}`, { status: 'accepted' });
-            return dispatch({ type: UPDATE_ONE_HELP_REQUEST, helpr: res.data.data, helprId });
+            await dispatch({ type: UPDATE_ONE_HELP_REQUEST, helpr: res.data.data, helprId });
         } catch (err) {
-            return dispatch({
+            await dispatch({
                 type: HELP_REQUESTS_ERROR,
                 error: {
                     msg: err.response.statusText,
@@ -69,5 +69,15 @@ export const updateHelpR = helprId => {
                 }
             });
         }
+
+        const ws = getState().auth.socket;
+
+        return ws.send(JSON.stringify({
+            type: 'helpR',
+            event: 'acceptHelpR',
+            payload: {
+                userToUpdate: profileId
+            }
+        }));
     }
 }   
