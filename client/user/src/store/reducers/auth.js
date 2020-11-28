@@ -24,8 +24,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 token: action.token,
-                isAuthenticated: true,
-                loading: false
+                isAuthenticated: true
             };
         case LINKEDIN_SUCCESS:
             localStorage.setItem('token', action.token);

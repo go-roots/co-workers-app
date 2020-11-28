@@ -45,7 +45,13 @@ export const connectWSS = () => {
             const ws = new WebSocket(getState().globalVars.currentDomain.replace('http', 'ws'));
 
             ws.addEventListener('open', () => {
-                ws.send(JSON.stringify({ event: 'authorization', token: `Bearer ${token}` }));
+                ws.send(JSON.stringify({
+                    type: 'auth',
+                    event: 'authorize',
+                    payload: {
+                        token: `Bearer ${token}`
+                    }
+                }));
             });
 
             ws.addEventListener('error', err => {
@@ -55,11 +61,14 @@ export const connectWSS = () => {
 
             ws.addEventListener('message', message => {
                 if (message.isTrusted) {
-
                     const msg = JSON.parse(message.data);
 
-                    if (msg.event === 'rooms') {
-                        dispatch({ type: SET_ROOMS, rooms: msg.payload });
+                    switch (msg.type) {
+                        case 'rooms':
+                            if (msg.event === 'setRooms') {
+                                dispatch({ type: SET_ROOMS, rooms: msg.payload.rooms });
+                            } break;
+                        default: break;
                     }
                 }
             });
@@ -79,7 +88,8 @@ export const setCurrentUser = data => {
 
 export const loadUser = () => {
     return async (dispatch, getState) => {
-        if (!getState().auth.isAuthenticated) {
+        const auth = getState().auth;
+        if (!auth.isAuthenticated || auth.loading) {
 
             if (localStorage.token) {
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
@@ -122,9 +132,9 @@ export const registerUser = (firstName, lastName, email, password) => {
         try {
             const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/register', body, config);
 
-            dispatch({ type: REGISTER_SUCCESS, token: res.data.token });
-            dispatch(setAlert('success', 'Welcome to CO-workers !'));
-            dispatch(loadUser());
+            await dispatch({ type: REGISTER_SUCCESS, token: res.data.token });
+            await dispatch(setAlert('success', 'Welcome to CO-workers !'));
+            return dispatch(loadUser());
         } catch (err) {
             const errors = err.response.data.errors;
 
@@ -132,7 +142,7 @@ export const registerUser = (firstName, lastName, email, password) => {
                 errors.forEach(error => dispatch(setAlert('danger', error.msg)));
             }
 
-            dispatch({ type: REGISTER_FAIL });
+            return dispatch({ type: REGISTER_FAIL });
         }
     }
 }
@@ -150,8 +160,8 @@ export const loginUser = (email, password) => {
         try {
             const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/login', body, config);
 
-            dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
-            dispatch(loadUser());
+            await dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
+            return dispatch(loadUser());
         } catch (err) {
             const error = err.response.data.error;
 
@@ -159,7 +169,7 @@ export const loginUser = (email, password) => {
                 dispatch(setAlert('danger', error));
             }
 
-            dispatch({ type: LOGIN_FAIL });
+            return dispatch({ type: LOGIN_FAIL });
         }
     }
 }

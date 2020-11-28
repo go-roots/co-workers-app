@@ -1,19 +1,13 @@
 const express = require('express');
-const WebSocket = require('ws');
 const http = require('http');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
-const jwt = require('jsonwebtoken');
 const path = require('path');
 const errorHandler = require('./middlewares/error');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
 const fileupload = require('express-fileupload');
 const connectDB = require('./config/db');
-
-const User = require('./models/User');
-const Room = require('./models/Room');
 
 //load env vars
 dotenv.config({ path: './config/config.env' });
@@ -33,56 +27,35 @@ const redeemables = require('./routes/redeemables');
 const events = require('./routes/events');
 
 //Initialize express + socket server
+const WebSocket = require('ws');
+const WsHandler = require('./WS/ws-handler');
 const app = express();
 const server = http.createServer(app);
 
+//Hybrid system (both http + ws api)
+//Workflow : the CLIENT do his http req, db is updated.
+//Then the CLIENT sends an event through the ws protocol
 const wss = new WebSocket.Server({ server: server });
+const wsHandler = new WsHandler(wss);
 
-wss.on('connection', socket => {
-
-    let roomState = [];
-    let user = {};
-
+wss.on('connection', (socket, req) => {
     socket.on('message', message => {
         const msg = JSON.parse(message);
+        wsHandler.handle(msg, socket);
+    });
 
-        if (msg.event === 'authorization') {
-            if (!msg.token) {
-                console.log('wss: no token'.red.bold);
-                return socket.terminate();
-            }
-
-            try {
-                const token = msg.token.split(' ')[1];
-                const decoded = jwt.verify(token, process.env.JWT_SECRET);
-                user = User.findById(decoded.id);
-            } catch (error) {
-                console.log('wss: authentication failed'.red.bold);
-                return socket.terminate();
-            }
-            console.log('wss: authenticated and connected'.blue.bold);
-        }
+    socket.on('error', err => {
+        console.log(err.message.red.bold);
     });
 
     socket.on('close', () => {
         console.log('Connection closed'.red.bold);
         socket.terminate();
     });
-
-    setInterval(async () => {
-        const rooms = await Room.find();
-        if (JSON.stringify(rooms) != JSON.stringify(roomState)) {
-            socket.send(JSON.stringify({ event: 'rooms', payload: rooms }));
-            roomState = [...rooms];
-        }
-    }, 3000);
 });
 
 //body parser middleware
 app.use(express.json());
-
-//cookie parser
-app.use(cookieParser());
 
 // Dev logger middleware
 if (process.env.NODE_ENV === "development") {
