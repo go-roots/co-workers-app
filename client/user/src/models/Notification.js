@@ -6,6 +6,7 @@ import { setCurrentUser } from '../store/actions/auth'
 import { setIndividualProfile } from '../store/actions/profiles'
 import { setAlert } from '../store/actions/alerts'
 import { updateEvent } from '../store/actions/events'
+import { updateNotification } from '../store/actions/notifications'
 import { updateHelpR } from '../store/actions/helpR'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -55,12 +56,18 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
         switch (type) {
             case 'event':
                 return (
-                    <li className="list-group-item d-flex flex-column event-notif">
+                    <li
+                        className="list-group-item d-flex flex-column event-notif"
+                        style={{ cursor: 'pointer', backgroundColor: notif.seen ? '#bac4d4' : 'white' }}
+                    >
                         <p className="notif-text-button">{notif.title}</p>
                         <button
                             className="btn btn-warning btn-sm align-self-center notif-button"
                             type="button"
-                            onClick={() => setEventModal(true)}
+                            onClick={() => {
+                                setEventModal(true);
+                                !notif.seen && dispatch(updateNotification(notif._id));
+                            }}
                         >
                             View event
                         </button>
@@ -126,7 +133,10 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                 );
             case 'friend-request':
                 return (
-                    <li className="list-group-item d-flex flex-column friend-request-notif">
+                    <li
+                        className="list-group-item d-flex flex-column friend-request-notif"
+                        style={{ cursor: 'pointer', backgroundColor: notif.seen ? '#bac4d4' : 'white' }}
+                    >
                         <img
                             className="notif-image"
                             src={!imageError?.[profile._id] ? profile?.profile?.photo + "?" + new Date().getTime() : noimage}
@@ -138,14 +148,20 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                             <button
                                 className="btn btn-success btn-sm text-nowrap notif-button"
                                 type="button"
-                                onClick={e => onFriendRHandler(e, profile._id)}
+                                onClick={e => {
+                                    onFriendRHandler(e, profile._id);
+                                    !notif.seen && dispatch(updateNotification(notif._id));
+                                }}
                             >
                                 Accept
                             </button>
                             <button
                                 className="btn btn-danger btn-sm text-nowrap notif-button"
                                 type="button"
-                                onClick={e => onFriendRHandler(e, profile._id)}
+                                onClick={e => {
+                                    onFriendRHandler(e, profile._id);
+                                    !notif.seen && dispatch(updateNotification(notif._id));
+                                }}
                             >
                                 Decline
                             </button>
@@ -154,7 +170,10 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                 );
             case 'help-request':
                 return (
-                    <li className="list-group-item d-flex flex-column help-request-notif">
+                    <li
+                        className="list-group-item d-flex flex-column help-request-notif"
+                        style={{ cursor: 'pointer', backgroundColor: notif.seen ? '#bac4d4' : 'white' }}
+                    >
                         <img
                             className="notif-image"
                             src={!imageError?.[profile._id] ? profile?.profile?.photo + "?" + new Date().getTime() : noimage}
@@ -165,7 +184,10 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                         <button
                             className="btn btn-warning btn-sm align-self-center notif-button"
                             type="button"
-                            onClick={() => setHelpRModal(true)}
+                            onClick={() => {
+                                setHelpRModal(true);
+                                !notif.seen && dispatch(updateNotification(notif._id));
+                            }}
                         >
                             View request
                         </button>
@@ -222,7 +244,11 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                 );
             case 'accept-help-request':
                 return (
-                    <li className="list-group-item d-flex flex-column help-request-notif">
+                    <li
+                        className="list-group-item d-flex flex-column help-request-notif"
+                        style={{ cursor: 'pointer', backgroundColor: notif.seen ? '#bac4d4' : 'white' }}
+                        onClick={() => !notif.seen && dispatch(updateNotification(notif._id))}
+                    >
                         <img
                             className='rounded-circle'
                             width='70'
@@ -236,7 +262,10 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                 );
             case 'post-help-request':
                 return (
-                    <li className="list-group-item d-flex flex-column friend-request-notif">
+                    <li
+                        className="list-group-item d-flex flex-column friend-request-notif"
+                        style={{ cursor: 'pointer', backgroundColor: notif.seen ? '#bac4d4' : 'white' }}
+                    >
                         <img
                             className='rounded-circle'
                             width='70'
@@ -250,7 +279,10 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                             <Link
                                 className="btn btn-info btn-sm notif-button"
                                 to='/profile'
-                                onClick={() => dispatch(setIndividualProfile(profile))}
+                                onClick={() => {
+                                    dispatch(setIndividualProfile(profile));
+                                    !notif.seen && dispatch(updateNotification(notif._id));
+                                }}
                             >
                                 Go to profile
                             </Link>
@@ -259,7 +291,10 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                 );
             case 'recommendation-comments':
                 return (
-                    <li className="list-group-item d-flex flex-column friend-request-notif">
+                    <li
+                        className="list-group-item d-flex flex-column friend-request-notif"
+                        style={{ cursor: 'pointer', backgroundColor: notif.seen ? '#bac4d4' : 'white' }}
+                    >
                         <img
                             className='rounded-circle'
                             width='70'
@@ -273,7 +308,10 @@ const Notification = ({ data: { notif, profile, event, user, helpr, myProfile } 
                             <Link
                                 className="btn btn-info btn-sm notif-button"
                                 to='/profile'
-                                onClick={() => dispatch(setIndividualProfile({ ...user, profile: myProfile }))}
+                                onClick={() => {
+                                    dispatch(setIndividualProfile({ ...user, profile: myProfile }));
+                                    !notif.seen && dispatch(updateNotification(notif._id));
+                                }}
                             >
                                 My profile
                             </Link>

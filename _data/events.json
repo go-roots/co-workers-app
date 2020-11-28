@@ -53,6 +53,7 @@
         ]
     },
     {
+        "_id": "5fc28ac7002a136d3d9eb32a",
         "title": "Chinese class",
         "organizer": "5d7a514b5d2c12c7449be042",
         "image": "https://cdn.pixabay.com/photo/2012/02/29/11/53/chinese-18654_960_720.jpg",
@@ -86,6 +87,7 @@
         ]
     },
     {
+        "_id": "5fc28ac7002a136d3d9eb333",
         "title": "Speed chess",
         "organizer": "5d7a514b5d2c12c7449be042",
         "image": "https://cdn.pixabay.com/photo/2016/07/12/11/39/checkmate-1511866_960_720.jpg",

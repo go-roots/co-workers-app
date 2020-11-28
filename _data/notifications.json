@@ -4,7 +4,28 @@
         "title": "Halloween party",
         "trigger": "5d7a514b5d2c12c7449be042",
         "identifier": "5fb062d8c6dda57973fa3586",
-        "broadcast": true
+        "receiver": "5d7a514b5d2c12c7449be045"
+    },
+    {
+        "type": "event",
+        "title": "Cinema night",
+        "trigger": "5d7a514b5d2c12c7449be042",
+        "identifier": "5fbbfa038ea5c6a745e8b9a4",
+        "receiver": "5c8a1d5b0190b214360dc032"
+    },
+    {
+        "type": "event",
+        "title": "Chinese class",
+        "trigger": "5d7a514b5d2c12c7449be042",
+        "identifier": "5fc28ac7002a136d3d9eb32a",
+        "receiver": "5c8a1d5b0190b214360dc039"
+    },
+    {
+        "type": "event",
+        "title": "Speed chess",
+        "trigger": "5d7a514b5d2c12c7449be042",
+        "identifier": "5fc28ac7002a136d3d9eb333",
+        "receiver": "5c8a1d5b0190b214360dc031"
     },
     {
         "type": "friend-request",

@@ -17,8 +17,11 @@ const NotificationSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'user'
     },
+    seen: {
+        type: Boolean,
+        default: false
+    },
     identifier: mongoose.Schema.ObjectId,
-    broadcast: Boolean,
     createdAt: {
         type: Date,
         default: Date.now
