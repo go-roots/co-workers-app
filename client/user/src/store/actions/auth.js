@@ -105,7 +105,7 @@ export const loadUser = () => {
             return dispatch({ type: USER_LOADED, user: res.data.data });
         } catch (err) {
             dispatch({ type: AUTH_ERROR });
-            throw new Error('Authentication failed');
+            throw new Error('Error while loading data');
         }
     }
 }

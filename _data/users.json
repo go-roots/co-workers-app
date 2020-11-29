@@ -46,19 +46,22 @@
                 "from": "5c8a1d5b0190b214360dc032",
                 "firstName": "Ryan",
                 "lastName": "Sasha",
-                "text": "This is a test message"
+                "text": "This is a test message",
+                "seen": false
             },
             {
                 "from": "5c8a1d5b0190b214360dc032",
                 "firstName": "Ryan",
                 "lastName": "Sasha",
-                "text": "And here is another one"
+                "text": "And here is another one",
+                "seen": false
             },
             {
                 "from": "5d7a514b5d2c12c7449be046",
                 "firstName": "Kevin",
                 "lastName": "Smith",
-                "text": "Another one"
+                "text": "Another one",
+                "seen": false
             }
         ],
         "password": "testtest",
@@ -688,7 +691,8 @@
                 "from": "5c8a1d5b0190b214360dc039",
                 "firstName": "Ryan",
                 "lastName": "Bolin",
-                "text": "Hello world"
+                "text": "Hello world",
+                "seen": false
             }
         ]
     }

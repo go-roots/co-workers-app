@@ -121,7 +121,28 @@ exports.deleteMessage = asyncHandler(async (req, res, next) => {
 
     const updatedUser = await User.findByIdAndUpdate(
         req.user.id,
-        { $set: { messages: messages } },
+        { $set: { messages } },
+        { new: true }
+    );
+
+    res.status(200).json({ success: true, data: updatedUser });
+});
+
+// @desc        'See' a message
+// @route       UPDATE api/cw-api/users/message/:msgId
+// @access      Private
+exports.updateSeeMessage = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+    const messages = user.messages.map(msg => {
+        if (msg._id == req.params.msgId) {
+            msg.seen = true
+        }
+        return msg;
+    });
+
+    const updatedUser = await User.findByIdAndUpdate(
+        req.user.id,
+        { $set: { messages } },
         { new: true }
     );
 

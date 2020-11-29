@@ -2,11 +2,20 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logoMedium from '../../assets/img/logo_medium.svg';
+import { BiMessageRoundedError } from 'react-icons/bi';
 
 
 const Navbar = props => {
 
-    const notifications = useSelector(state => state.notifications.notifications).filter(notif => !notif.seen);
+    let { notifications, loading: loadingNotifications } = useSelector(state => state.notifications);
+    const { user, loading: loadingUser } = useSelector(state => state.auth);
+
+    if (loadingUser || loadingNotifications) {
+        return null
+    }
+
+    notifications = notifications.filter(notif => !notif.seen);
+    const messages = user.messages.filter(msg => !msg.seen);
 
     return (
         <nav className="navbar navbar-light navbar-expand-md">
@@ -23,9 +32,12 @@ const Navbar = props => {
                         <li className="nav-item"><Link className="nav-link active" to="/dashboard">My Dashboard</Link></li>
                         <li className="nav-item"><Link className="nav-link" to="/consumption">My Consumption</Link></li>
                         <li className="nav-item">
-                            <Link className="nav-link d-flex flex-row align-items-start" to="/social">
-                                <p>Social</p>
-                                <span style={{ fontSize: '11px' }} class="badge badge-pill badge-danger">{notifications.length ? notifications.length : ""}</span>
+                            <Link className="nav-link" to="/social">
+                                <div className='d-flex flex-row align-items-start'>
+                                    <p>Social</p>
+                                    {messages.length > 0 && <BiMessageRoundedError color='blue' size='21' />}
+                                    <span style={{ fontSize: '11px', marginTop: '1px' }} class="badge badge-pill badge-danger">{notifications.length ? notifications.length : ""}</span>
+                                </div>
                             </Link>
                         </li>
                         <li className="nav-item"><Link className="nav-link" to="/events">Events</Link></li>

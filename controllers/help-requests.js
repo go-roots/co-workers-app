@@ -1,5 +1,6 @@
 const HelpRequest = require('../models/HelpRequest')
 const Notification = require('../models/Notification')
+const Room = require('../models/Room');
 const ErrorResponse = require('../utils/errorResponse')
 const asyncHandler = require('../middlewares/async')
 
@@ -111,9 +112,11 @@ exports.updateHelpReq = asyncHandler(async (req, res, next) => {
             return next(new ErrorResponse('Allowed actions: accept the request', 403));
         }
 
+        const room = Room.find({ users: { $in: { user: req.user.id } } });
+
         await Notification.create({
             type: 'accept-help-request',
-            text: `${req.user.lastName} ${req.user.firstName} has accepted your help request (${req.user.room.name})`,
+            text: `${req.user.lastName} ${req.user.firstName} has accepted your help request (${room.name})`,
             receiver: helpRequest.requester,
             trigger: req.user.id,
             identifier: helpRequest._id

@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentUser } from '../../store/actions/auth'
 import { setAlert } from '../../store/actions/alerts'
+import { seeMessage } from '../../store/actions/user'
 import { TiMessages } from 'react-icons/ti'
 import { FaEnvelopeOpenText } from 'react-icons/fa'
 import Moment from 'react-moment'
 import ReactTooltip from 'react-tooltip';
 
 
-const Messages = ({ data: { profiles, user: me } }) => {
+const Messages = ({ data: { user: me } }) => {
 
     const [selectedMessage, setSelectedMessage] = useState({});
     const [msg, setMsg] = useState("");
@@ -33,7 +34,12 @@ const Messages = ({ data: { profiles, user: me } }) => {
                 </button>
                 <div className="border border-primary friends-msg-container">
                     {me.messages.map(msg => (
-                        <div key={msg._id} className="d-flex flex-row justify-content-between msg-item border border-bottom">
+                        <div
+                            key={msg._id}
+                            className="d-flex flex-row justify-content-between msg-item border border-bottom"
+                            style={{ backgroundColor: msg.seen ? '#bac4d4' : 'white' }}
+                            onClick={() => dispatch(seeMessage(msg._id))}
+                        >
                             <div className="d-flex flex-column justify-content-center">
                                 <p className="msg-name">{msg?.lastName} {msg?.firstName}</p>
                                 <p className="msg-date">
@@ -52,7 +58,10 @@ const Messages = ({ data: { profiles, user: me } }) => {
                                             type='button'
                                             data-toggle="modal"
                                             data-target="#answer-msg-modal"
-                                            onClick={() => setSelectedMessage(msg)}
+                                            onClick={() => {
+                                                setSelectedMessage(msg);
+                                                dispatch(seeMessage(msg._id));
+                                            }}
                                         >
                                             Answer
                                     </button>
@@ -61,7 +70,10 @@ const Messages = ({ data: { profiles, user: me } }) => {
                                             data-toggle="modal"
                                             data-target="#del-msg-modal"
                                             type='button'
-                                            onClick={() => setSelectedMessage(msg)}
+                                            onClick={() => {
+                                                setSelectedMessage(msg);
+                                                dispatch(seeMessage(msg._id));
+                                            }}
                                         >
                                             Delete
                                     </button>
@@ -139,7 +151,7 @@ const Messages = ({ data: { profiles, user: me } }) => {
                                     }
                                 }}
                             >
-                                Save
+                                Send
                             </button>
                         </div>
                     </div>

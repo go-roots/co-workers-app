@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setIndividualProfile, UPDATE_ONE_PROFILE } from './profiles';
+import { setCurrentUser, AUTH_ERROR } from './auth';
 import { setAlert } from './alerts'
 
 
@@ -67,5 +68,21 @@ export const sendMessage = (userId, firstName, lastName, message) => {
                 userToUpdate: userId
             }
         }));
+    }
+}
+
+export const seeMessage = messageId => {
+    return async (dispatch, getState) => {
+        try {
+            const res = await axios.put(getState().globalVars.currentDomain + '/api/cw-api/users/message/' + messageId);
+            return dispatch(setCurrentUser(res.data.data));
+        } catch (err) {
+            return dispatch({
+                type: AUTH_ERROR,
+                error: {
+                    msg: err.response.statusText, status: err.response.status
+                }
+            });
+        }
     }
 }

@@ -90,6 +90,10 @@ const UserSchema = new mongoose.Schema({
             text: String,
             firstName: String,
             lastName: String,
+            seen: {
+                type: Boolean,
+                default: false
+            },
             createdAt: {
                 type: Date,
                 default: Date.now
