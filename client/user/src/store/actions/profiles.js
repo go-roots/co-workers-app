@@ -10,6 +10,7 @@ export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const SET_FRIENDS = 'SET_FRIENDS';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+export const UPDATE_ONE_PROFILE = 'UPDATE_ONE_PROFILE';
 
 
 export const modalHandler = (state, kind) => {
@@ -36,8 +37,8 @@ export const getCurrentProfile = () => {
 export const fetchProfiles = (activitySector, status, friends) => {
     return async (dispatch, getState) => {
 
-        const domain = getState().globalVars.currentDomain + '/api/cw-api';
-        let query = '/users/extended?select=firstName,lastName,role,friends';
+        const baseUrl = getState().globalVars.currentDomain + '/api/cw-api/users/extended';
+        let query = '?select=firstName,lastName,role,friends';
 
         if (activitySector || status || friends) {
             if (activitySector) query += `&activitySector=${activitySector}`;
@@ -46,8 +47,28 @@ export const fetchProfiles = (activitySector, status, friends) => {
         }
 
         try {
-            const res = await axios.get(domain + query);
+            const res = await axios.get(baseUrl + query);
             return dispatch({ type: SET_PROFILES, profiles: res.data.data });
+        } catch (err) {
+            return dispatch({
+                type: PROFILE_ERROR, error: {
+                    msg: err.response.statusText,
+                    status: err.response.status
+                }
+            });
+        }
+    }
+}
+
+export const fetchProfileById = userId => {
+    return async (dispatch, getState) => {
+
+        const baseUrl = getState().globalVars.currentDomain + '/api/cw-api/users/extended/' + userId;
+        let query = '?select=firstName,lastName,role,friends';
+
+        try {
+            const res = await axios.get(baseUrl + query);
+            return dispatch({ type: UPDATE_ONE_PROFILE, profile: res.data.data, userId });
         } catch (err) {
             return dispatch({
                 type: PROFILE_ERROR, error: {

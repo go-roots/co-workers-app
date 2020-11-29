@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
     SET_PROFILE, SET_PROFILES, PROFILE_ERROR, UPDATE_PROFILE,
-    SET_OWN_PROFILE, TOGGLE_MODAL, CLEAR_PROFILE
+    SET_OWN_PROFILE, TOGGLE_MODAL, CLEAR_PROFILE, UPDATE_ONE_PROFILE
 } from '../actions/profiles';
 
 //We don't necessarily need a redux state for storing state.profiles since we use it in
@@ -35,6 +35,17 @@ export default (state = initialState, action) => {
                 myProfile: action.profile,
                 loading: { ...state.loading, myProfile: false },
             };
+        case UPDATE_ONE_PROFILE:
+            let updatedProfiles = [...state.profiles];
+            for (let p of updatedProfiles) {
+                if (p.id == action.userId) {
+                    p = action.profile;
+                }
+            }
+            return {
+                ...state,
+                profiles: updatedProfiles
+            }
         case SET_PROFILE:
             return {
                 ...state,

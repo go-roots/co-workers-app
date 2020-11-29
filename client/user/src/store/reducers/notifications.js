@@ -19,8 +19,8 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case UPDATE_ONE_NOTIFICATION:
-            const updatedNotifications = [...state.notifications];
-            for (const notif of updatedNotifications) {
+            let updatedNotifications = [...state.notifications];
+            for (let notif of updatedNotifications) {
                 if (notif._id == action.notifId) {
                     notif.seen = true;
                 }

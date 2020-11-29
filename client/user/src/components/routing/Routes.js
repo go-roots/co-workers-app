@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Navbar from '../layout/Navbar'
 import Dashboard from '../dashboard/Dashboard'
 import Social from '../social/Social'
@@ -14,6 +15,13 @@ import EditProfile from '../profile/edit-profile/EditProfile'
 
 
 const Routes = () => {
+
+    const auth = useSelector(state => state.auth);
+
+    if (!auth.isAuthenticated && !auth.loading) {
+        return <Redirect to='/login' />
+    }
+
     return (
         <Fragment>
             <Navbar />

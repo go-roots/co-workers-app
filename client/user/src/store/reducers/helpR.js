@@ -24,11 +24,15 @@ export default (state = initialState, action) => {
                 helpR: [...state.helpR, action.helpr]
             };
         case UPDATE_ONE_HELP_REQUEST:
-            let newHelpR = state.helpR.filter(h => h._id != action.helprId);
-            newHelpR.push(action.helpr);
+            let updatedHelpR = [...state.helpR];
+            for (let helpr of updatedHelpR) {
+                if (helpr._id == action.helprId) {
+                    helpr = action.helpr;
+                }
+            }
             return {
                 ...state,
-                helpR: newHelpR
+                helpR: updatedHelpR
             }
         case HELP_REQUESTS_ERROR:
             return {

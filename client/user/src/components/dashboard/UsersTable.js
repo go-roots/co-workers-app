@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, useState, useReducer, useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfiles, setIndividualProfile } from '../../store/actions/profiles';
 import { sendhelpR } from '../../store/actions/helpR';
-import { setAlert } from '../../store/actions/alerts'
+import { cancelFriendR, sendFriendR, sendMessage } from '../../store/actions/user'
 import { activitySectors } from '../../utils/constants'
 import Tooltip from '@material-ui/core/Tooltip';
 //Icons
@@ -48,7 +47,6 @@ const FiltersReducer = (state = initialState, action) => {
 
 const UsersTable = ({ data: { profiles, me } }) => {
 
-    const baseUrl = useSelector(state => state.globalVars.currentDomain + '/api/cw-api');
     const selectedProfile = useSelector(state => state.profiles.profile);
     const [individualHelpR, setIndividualHelpR] = useState(false);
     const [activeElements, setActiveElements] = useState([]);
@@ -326,16 +324,7 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                         {selectedProfile?.friends?.friendRequests.some(user => user.user == me.id) ? (<button
                                             className="btn btn-danger d-flex flex-row align-items-center mr-auto"
                                             type="button"
-                                            onClick={async () => {
-                                                try {
-                                                    const res = await axios.delete(baseUrl + '/users/friendReq/' + selectedProfile.id);
-                                                    await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
-                                                    await dispatch(setIndividualProfile(res.data.data));
-                                                    dispatch(setAlert('success', 'The friend request has been canceled!'));
-                                                } catch (err) {
-                                                    dispatch(setAlert('danger', err.response.data.error));
-                                                }
-                                            }}
+                                            onClick={() => dispatch(cancelFriendR(selectedProfile.id))}
                                         >
                                             Cancel friend request
                                             <AiOutlineUserDelete
@@ -346,15 +335,9 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                             <button
                                                 className="btn btn-primary d-flex flex-row align-items-center mr-auto"
                                                 type="button"
-                                                onClick={async () => {
-                                                    try {
-                                                        const res = await axios.put(baseUrl + '/users/friendReq/' + selectedProfile.id);
-                                                        await dispatch(fetchProfiles(appliedFilters.activity, appliedFilters.status, appliedFilters.friends));
-                                                        await dispatch(setIndividualProfile(res.data.data));
-                                                        dispatch(setAlert('success', `The friend request has been sent to ${selectedProfile?.firstName} ${selectedProfile?.lastName}!`));
-                                                    } catch (err) {
-                                                        dispatch(setAlert('danger', err.response.data.error));
-                                                    }
+                                                onClick={() => {
+                                                    const { id, firstName, lastName } = selectedProfile;
+                                                    dispatch(sendFriendR(id, firstName, lastName))
                                                 }}
                                             >
                                                 Add friend
@@ -377,12 +360,8 @@ const UsersTable = ({ data: { profiles, me } }) => {
                                             className="btn btn-primary"
                                             type="button"
                                             onClick={async () => {
-                                                try {
-                                                    await axios.post(baseUrl + '/users/message/' + selectedProfile.id, { message });
-                                                    dispatch(setAlert('success', `Your message has been sent to ${selectedProfile?.firstName} ${selectedProfile?.lastName}!`));
-                                                } catch (err) {
-                                                    dispatch(setAlert('danger', err.response.data.error));
-                                                }
+                                                const { id, firstName, lastName } = selectedProfile;
+                                                dispatch(sendMessage(id, firstName, lastName, message))
                                                 setMessage("");
                                             }}
                                         >

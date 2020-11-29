@@ -33,7 +33,7 @@ helpR.prototype.acceptHelpR = function (payload, socket) {
                 type: 'notifications'
             }));
         }
-    })
+    });
 }
 
 

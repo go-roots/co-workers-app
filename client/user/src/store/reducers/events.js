@@ -21,11 +21,15 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case UPDATE_ONE_EVENT:
-            let newEvents = state.events.filter(event => event._id != action.eventId);
-            newEvents.push(action.event);
+            let updatedEvents = [...state.events];
+            for (const event of updatedEvents) {
+                if (event._id == action.eventId) {
+                    event = action.event
+                }
+            }
             return {
                 ...state,
-                events: newEvents
+                events: updatedEvents
             }
         case EVENTS_ERROR:
             return {

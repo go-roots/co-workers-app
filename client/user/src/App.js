@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import ReduxThunk from 'redux-thunk';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import AOS from 'aos';
 
 import authReducer from './store/reducers/auth';
@@ -21,7 +21,7 @@ import redeemableReducer from './store/reducers/redeemables';
 import eventsReducer from './store/reducers/events';
 import notificationsReducer from './store/reducers/notifications';
 import helpRReducer from './store/reducers/helpR';
-import { loadUser } from './store/actions/auth';
+import { loadData, loadUser } from './store/actions/auth';
 
 import Routes from './components/routing/Routes';
 import Landing from './components/layout/Landing';
@@ -54,14 +54,13 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Redux
 
 const App = () => {
 
-  //Setting animation library
-  useEffect(() => {
-    AOS.init();
+  const connect = useCallback(async () => {
+    store.dispatch(loadUser()).then(() => store.dispatch(loadData())).catch(() => { });
   }, []);
 
-  //Tries to get the user if there's a token (auto-connect)
   useEffect(() => {
-    store.dispatch(loadUser());
+    AOS.init(); //Setting animation library
+    connect(); //Tries to get the user if there's a token (auto-connect)
   }, []);
 
   return (

@@ -172,7 +172,7 @@ exports.addFriendReq = asyncHandler(async (req, res, next) => {
         trigger: req.user.id
     });
 
-    user = await User.findById(userId).populate(['room', 'profile']);
+    user = await User.findById(userId).populate('profile');
     res.status(200).json({ success: true, data: user });
 });
 
@@ -196,7 +196,7 @@ exports.deleteFriendReq = asyncHandler(async (req, res, next) => {
 
     updatedUser.friends.friendRequests = updatedUser.friends.friendRequests.filter(fReq => fReq.user != req.user.id)
 
-    user = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).populate(['room', 'profile']);
+    user = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).populate('profile');
 
     await Notification.findOneAndRemove({
         receiver: userId,
@@ -287,7 +287,7 @@ exports.deleteFriend = asyncHandler(async (req, res, next) => {
     currentUser.friends.friends = currentUser.friends.friends.filter(f => f.friend != userId);
     await currentUser.save();
 
-    user = await User.findById(req.user.id).populate(['room', 'profile']);
+    user = await User.findById(req.user.id).populate('profile');
 
     res.status(200).json({ success: true, data: user });
 });

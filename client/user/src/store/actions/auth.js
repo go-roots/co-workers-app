@@ -18,7 +18,7 @@ import {
 } from './profiles';
 import { CLEAR_REDEEMABLES } from './redeemables';
 import {
-    CLEAR_ROOMS, SET_ROOMS,
+    CLEAR_ROOMS,
     fetchRecomendedRooms, fetchRooms
 } from './rooms';
 
@@ -64,16 +64,16 @@ export const connectWSS = () => {
                     const msg = JSON.parse(message.data);
 
                     switch (msg.type) {
-                        case 'rooms':
-                            if (msg.event === 'setRooms') {
-                                dispatch({ type: SET_ROOMS, rooms: msg.payload.rooms });
-                            } break;
                         case 'helpR':
                             if (msg.event === 'getHelpR') {
                                 dispatch(fetchHelpR());
                             } break;
                         case 'notifications':
                             dispatch(fetchNotifications()); break;
+                        case 'user':
+                            if (msg.event === 'reloadUser') {
+                                dispatch(loadUser());
+                            } break;
                         default: break;
                     }
                 }
@@ -94,34 +94,36 @@ export const setCurrentUser = data => {
 
 export const loadUser = () => {
     return async (dispatch, getState) => {
-        const auth = getState().auth;
-        if (!auth.isAuthenticated || auth.loading) {
-
-            if (localStorage.token) {
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
-            } else {
-                delete axios.defaults.headers.common['Authorization'];
-            }
-
-            try {
-                //The server will verify the token, and then get the user
-                const res = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/auth/me');
-                await dispatch({ type: USER_LOADED, user: res.data.data });
-                dispatch(fetchProfiles(null, null));
-                dispatch(getCurrentProfile());
-                dispatch(fetchRecomendedRooms());
-                dispatch(fetchRooms());
-                dispatch(fetchEvents());
-                dispatch(fetchNotifications());
-                dispatch(fetchHelpR());
-                dispatch(connectWSS());
-
-                const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/profiles/hasAProfile');
-                return dispatch({ type: TOGGLE_MODAL, state: !doIHaveAProfile.data.hasAProfile, kind: 'create' });
-            } catch (err) {
-                return dispatch({ type: AUTH_ERROR });
-            }
+        if (localStorage.token) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
+        } else {
+            delete axios.defaults.headers.common['Authorization'];
         }
+
+        try {
+            const res = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/auth/me');
+            return dispatch({ type: USER_LOADED, user: res.data.data });
+        } catch (err) {
+            dispatch({ type: AUTH_ERROR });
+            throw new Error('Authentication failed');
+        }
+    }
+}
+
+export const loadData = () => {
+    return async (dispatch, getState) => {
+
+        dispatch(fetchProfiles(null, null));
+        dispatch(getCurrentProfile());
+        dispatch(fetchRecomendedRooms());
+        dispatch(fetchRooms());
+        dispatch(fetchEvents());
+        dispatch(fetchNotifications());
+        dispatch(fetchHelpR());
+        dispatch(connectWSS());
+
+        const doIHaveAProfile = await axios.get(getState().globalVars.currentDomain + '/api/cw-api/profiles/hasAProfile');
+        return dispatch({ type: TOGGLE_MODAL, state: !doIHaveAProfile.data.hasAProfile, kind: 'create' });
     }
 }
 
@@ -137,10 +139,10 @@ export const registerUser = (firstName, lastName, email, password) => {
 
         try {
             const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/register', body, config);
-
             await dispatch({ type: REGISTER_SUCCESS, token: res.data.token });
             await dispatch(setAlert('success', 'Welcome to CO-workers !'));
-            return dispatch(loadUser());
+            await dispatch(loadUser());
+            return dispatch(loadData());
         } catch (err) {
             const errors = err.response.data.errors;
 
@@ -165,9 +167,9 @@ export const loginUser = (email, password) => {
 
         try {
             const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/login', body, config);
-
             await dispatch({ type: LOGIN_SUCCESS, token: res.data.token });
-            return dispatch(loadUser());
+            await dispatch(loadUser());
+            return dispatch(loadData());
         } catch (err) {
             const error = err.response.data.error;
 
@@ -193,7 +195,7 @@ export const linkedinConnect = code => {
             const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/linkedinAuth', body, config);
             dispatch({ type: LINKEDIN_SUCCESS, token: res.data.token, linkedinToken: res.data.linkedinToken });
             dispatch(setAlert('success', res.data.status === 'register' && 'Welcome to CO-workers !'))
-            dispatch(loadUser());
+            dispatch(loadData());
         } catch (err) {
             dispatch({ type: LINKEDIN_FAIL });
         }

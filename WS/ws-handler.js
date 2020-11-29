@@ -1,12 +1,14 @@
 const authHandler = require('./controllers/auth');
 const helpRHandler = require('./controllers/helpR');
+const userHandler = require('./controllers/user');
 
 
 function WsHandler(wss) {
     this.wss = wss;
     this.routes = {
         auth: new authHandler(wss),
-        helpR: new helpRHandler(wss)
+        helpR: new helpRHandler(wss),
+        user: new userHandler(wss)
     }
 }
 
