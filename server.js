@@ -54,6 +54,11 @@ wss.on('connection', (socket, req) => {
     });
 });
 
+//In-server emited events
+const commonEmitter = require('./utils/events_common');
+commonEmitter.addListener('userMoved', wsHandler.routes.room.updateUserPosition.bind(wsHandler.routes.room));
+commonEmitter.addListener('updateBalance', wsHandler.routes.transaction.updateBalance.bind(wsHandler.routes.transaction));
+
 //body parser middleware
 app.use(express.json());
 

@@ -3,6 +3,7 @@ const User = require('../models/User');
 const Profile = require('../models/Profile');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
+const commonEmitter = require('../utils/events_common');
 
 
 exports.getAllRooms = asyncHandler(async (req, res, next) => {
@@ -30,19 +31,21 @@ exports.updateRoomUser = asyncHandler(async (req, res, next) => {
 });
 
 exports.moveUsersInRoom = asyncHandler(async (req, res, next) => {
-    const bod = req.body
-    const users = bod.users
+    const { users } = req.body;
 
     for (i = 0; i < users.length; i++) {
-        let room = await Room.findOne({ "users.user": users[i].user });
-        if (room.name !== req.params.roomId) {
+        let currentUser = users[i].user;
+        let room = await Room.findOne({ "users.user": currentUser });
+        if (room && (room.name !== req.params.roomName)) {
             //Remove User from his old room
-            room.users = room.users.filter(user => user.user != users[i].user);
+            room.users = room.users.filter(user => user.user != currentUser);
             await room.save()
             //Add User to his new room
-            let newRoom = await Room.findOne({ name: req.params.roomId });
-            newRoom.users.push({ user: users[i].user });
+            let newRoom = await Room.findOne({ name: req.params.roomName });
+            newRoom.users.push({ user: currentUser });
             await newRoom.save()
+            //Emit the event to trigger ws
+            commonEmitter.emit('userMoved');
         }
     }
     res.status(200).json({ success: true });

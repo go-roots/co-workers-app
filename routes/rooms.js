@@ -26,6 +26,6 @@ router.route('/:roomId').post(protect, createRoom);
 router.route('/:roomId').delete(protect, deleteRoom);
 
 //route used by the face recognition web service
-router.route('/moveIn/:roomId').put(protect, moveUsersInRoom)
+router.route('/moveIn/:roomName').put(protect, moveUsersInRoom)
 
 module.exports = router

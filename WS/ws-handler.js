@@ -1,6 +1,8 @@
 const authHandler = require('./controllers/auth');
 const helpRHandler = require('./controllers/helpR');
 const userHandler = require('./controllers/user');
+const roomHandler = require('./controllers/room');
+const transactionHandler = require('./controllers/transaction');
 
 
 function WsHandler(wss) {
@@ -8,7 +10,9 @@ function WsHandler(wss) {
     this.routes = {
         auth: new authHandler(wss),
         helpR: new helpRHandler(wss),
-        user: new userHandler(wss)
+        user: new userHandler(wss),
+        room: new roomHandler(wss),
+        transaction: new transactionHandler(wss)
     }
 }
 

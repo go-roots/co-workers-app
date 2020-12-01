@@ -3,6 +3,7 @@ const Redeemable = require('../models/Redeemable');
 const Transaction = require('../models/Transaction');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
+const commonEmitter = require('../utils/events_common');
 
 
 //This controller is dealing with a transaction lifecycle
@@ -82,6 +83,9 @@ exports.fulfillTransaction = asyncHandler(async (req, res, next) => {
 
     transaction.status = 'fulfilled';
     await transaction.save();
+
+    //Emit the event to trigger ws
+    commonEmitter.emit('updateBalance', user.id);
 
     res.status(200).json({ success: true, data: { cwpoints: user.cwpoints.current } });
 });

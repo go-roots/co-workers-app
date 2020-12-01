@@ -74,6 +74,14 @@ export const connectWSS = () => {
                             if (msg.event === 'reloadUser') {
                                 dispatch(loadUser());
                             } break;
+                        case 'room':
+                            if (msg.event === 'userMoved') {
+                                dispatch(fetchRooms());
+                            } break;
+                        case 'transaction':
+                            if (msg.event === 'balanceUpdated') {
+                                dispatch(loadUser());
+                            } break;
                         default: break;
                     }
                 }
