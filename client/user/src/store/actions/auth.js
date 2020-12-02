@@ -14,7 +14,7 @@ import {
 } from './notifications';
 import {
     CLEAR_PROFILE, PROFILE_ERROR, TOGGLE_MODAL,
-    fetchProfiles, getCurrentProfile
+    fetchProfiles, getCurrentProfile, fetchProfileById
 } from './profiles';
 import { CLEAR_REDEEMABLES } from './redeemables';
 import {
@@ -76,7 +76,9 @@ export const connectWSS = () => {
                             } break;
                         case 'room':
                             if (msg.event === 'userMoved') {
-                                dispatch(fetchRooms());
+                                dispatch(fetchProfileById(msg.payload.user))
+                                    .then(dispatch(fetchRooms()))
+                                    .catch(e => void e);
                             } break;
                         case 'transaction':
                             if (msg.event === 'balanceUpdated') {
@@ -201,9 +203,10 @@ export const linkedinConnect = code => {
 
         try {
             const res = await axios.post(getState().globalVars.currentDomain + '/api/cw-api/auth/linkedinAuth', body, config);
-            dispatch({ type: LINKEDIN_SUCCESS, token: res.data.token, linkedinToken: res.data.linkedinToken });
-            dispatch(setAlert('success', res.data.status === 'register' && 'Welcome to CO-workers !'))
-            dispatch(loadData());
+            await dispatch({ type: LINKEDIN_SUCCESS, token: res.data.token, linkedinToken: res.data.linkedinToken });
+            await dispatch(setAlert('success', res.data.status === 'register' && 'Welcome to CO-workers !'))
+            await dispatch(loadUser());
+            return dispatch(loadData());
         } catch (err) {
             dispatch({ type: LINKEDIN_FAIL });
         }

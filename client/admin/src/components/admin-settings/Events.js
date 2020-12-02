@@ -38,7 +38,7 @@ const Events = () => {
                                 <a className="btn" role="button" data-toggle="modal" data-target="#modify-event-image">
                                     <img src={photo} width="180" height="150" />
                                 </a>
-                                <strong contenteditable="true">Chinese className</strong>
+                                <strong contenteditable="true">Chinese class</strong>
                             </div>
                             <p contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sodales at ipsum non fermentum.</p>
                         </div>

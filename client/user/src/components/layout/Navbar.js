@@ -36,7 +36,7 @@ const Navbar = props => {
                                 <div className='d-flex flex-row align-items-start'>
                                     <p>Social</p>
                                     {messages.length > 0 && <BiMessageRoundedError color='blue' size='21' />}
-                                    <span style={{ fontSize: '11px', marginTop: '1px' }} class="badge badge-pill badge-danger">{notifications.length ? notifications.length : ""}</span>
+                                    <span style={{ fontSize: '11px', marginTop: '1px' }} className="badge badge-pill badge-danger">{notifications.length ? notifications.length : ""}</span>
                                 </div>
                             </Link>
                         </li>

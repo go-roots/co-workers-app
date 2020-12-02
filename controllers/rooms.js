@@ -45,7 +45,7 @@ exports.moveUsersInRoom = asyncHandler(async (req, res, next) => {
             newRoom.users.push({ user: currentUser });
             await newRoom.save()
             //Emit the event to trigger ws
-            commonEmitter.emit('userMoved');
+            commonEmitter.emit('userMoved', currentUser);
         }
     }
     res.status(200).json({ success: true });

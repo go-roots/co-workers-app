@@ -5,7 +5,7 @@ import Events from './Events'
 
 const Settings = () => {
     return (
-        <div class="container-fluid">
+        <div className="container-fluid">
             <div className="row">
                 <Redeemables />
                 <Events />
